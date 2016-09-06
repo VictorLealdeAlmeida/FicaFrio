@@ -9,11 +9,17 @@
 /* Begin PBXBuildFile section */
 		D4BBC13A1D7EF7BB0058615A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1391D7EF7BB0058615A /* main.m */; };
 		D4BBC13D1D7EF7BB0058615A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */; };
-		D4BBC1401D7EF7BB0058615A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC13F1D7EF7BB0058615A /* ViewController.m */; };
 		D4BBC1431D7EF7BB0058615A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BBC1411D7EF7BB0058615A /* Main.storyboard */; };
 		D4BBC1461D7EF7BB0058615A /* FicaFrio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1441D7EF7BB0058615A /* FicaFrio.xcdatamodeld */; };
 		D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4BBC1471D7EF7BB0058615A /* Assets.xcassets */; };
 		D4BBC14B1D7EF7BB0058615A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BBC1491D7EF7BB0058615A /* LaunchScreen.storyboard */; };
+		D4BBC15B1D7F02AC0058615A /* CurrentStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC15A1D7F02AC0058615A /* CurrentStepViewController.m */; };
+		D4BBC15E1D7F033F0058615A /* GoalFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC15D1D7F033F0058615A /* GoalFeedbackViewController.m */; };
+		D4BBC1611D7F03630058615A /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1601D7F03630058615A /* FeedbackViewController.m */; };
+		D4BBC1671D7F0AC50058615A /* SetStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1661D7F0AC50058615A /* SetStepsViewController.m */; };
+		D4BBC16D1D7F0DB80058615A /* SetGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC16C1D7F0DB80058615A /* SetGoalViewController.swift */; };
+		D4BBC16F1D7F0DC30058615A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC16E1D7F0DC30058615A /* HomeViewController.swift */; };
+		D4BBC1711D7F0DD30058615A /* RelaxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +27,23 @@
 		D4BBC1391D7EF7BB0058615A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4BBC13B1D7EF7BB0058615A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D4BBC13E1D7EF7BB0058615A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D4BBC13F1D7EF7BB0058615A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D4BBC1421D7EF7BB0058615A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4BBC1451D7EF7BB0058615A /* FicaFrio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FicaFrio.xcdatamodel; sourceTree = "<group>"; };
 		D4BBC1471D7EF7BB0058615A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4BBC14A1D7EF7BB0058615A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4BBC14C1D7EF7BB0058615A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4BBC1591D7F02AC0058615A /* CurrentStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentStepViewController.h; sourceTree = "<group>"; };
+		D4BBC15A1D7F02AC0058615A /* CurrentStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentStepViewController.m; sourceTree = "<group>"; };
+		D4BBC15C1D7F033F0058615A /* GoalFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoalFeedbackViewController.h; sourceTree = "<group>"; };
+		D4BBC15D1D7F033F0058615A /* GoalFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoalFeedbackViewController.m; sourceTree = "<group>"; };
+		D4BBC15F1D7F03630058615A /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		D4BBC1601D7F03630058615A /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		D4BBC1621D7F0A6C0058615A /* FicaFrio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FicaFrio-Bridging-Header.h"; sourceTree = "<group>"; };
+		D4BBC1651D7F0AC50058615A /* SetStepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetStepsViewController.h; sourceTree = "<group>"; };
+		D4BBC1661D7F0AC50058615A /* SetStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetStepsViewController.m; sourceTree = "<group>"; };
+		D4BBC16C1D7F0DB80058615A /* SetGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetGoalViewController.swift; sourceTree = "<group>"; };
+		D4BBC16E1D7F0DC30058615A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelaxViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +62,7 @@
 			children = (
 				D4BBC1371D7EF7BB0058615A /* FicaFrio */,
 				D4BBC1361D7EF7BB0058615A /* Products */,
+				D4BBC1621D7F0A6C0058615A /* FicaFrio-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,8 +79,9 @@
 			children = (
 				D4BBC13B1D7EF7BB0058615A /* AppDelegate.h */,
 				D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */,
-				D4BBC13E1D7EF7BB0058615A /* ViewController.h */,
-				D4BBC13F1D7EF7BB0058615A /* ViewController.m */,
+				D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */,
+				D4BBC1581D7F023F0058615A /* Screen */,
+				D4BBC1571D7F01B70058615A /* Set Screens */,
 				D4BBC1411D7EF7BB0058615A /* Main.storyboard */,
 				D4BBC1471D7EF7BB0058615A /* Assets.xcassets */,
 				D4BBC1491D7EF7BB0058615A /* LaunchScreen.storyboard */,
@@ -80,6 +98,30 @@
 				D4BBC1391D7EF7BB0058615A /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4BBC1571D7F01B70058615A /* Set Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D4BBC16E1D7F0DC30058615A /* HomeViewController.swift */,
+				D4BBC1651D7F0AC50058615A /* SetStepsViewController.h */,
+				D4BBC1661D7F0AC50058615A /* SetStepsViewController.m */,
+				D4BBC16C1D7F0DB80058615A /* SetGoalViewController.swift */,
+			);
+			name = "Set Screens";
+			sourceTree = "<group>";
+		};
+		D4BBC1581D7F023F0058615A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				D4BBC1591D7F02AC0058615A /* CurrentStepViewController.h */,
+				D4BBC15A1D7F02AC0058615A /* CurrentStepViewController.m */,
+				D4BBC15C1D7F033F0058615A /* GoalFeedbackViewController.h */,
+				D4BBC15D1D7F033F0058615A /* GoalFeedbackViewController.m */,
+				D4BBC15F1D7F03630058615A /* FeedbackViewController.h */,
+				D4BBC1601D7F03630058615A /* FeedbackViewController.m */,
+			);
+			name = Screen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,7 +151,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "Victor Leal Porto de Almeida Arruda";
+				ORGANIZATIONNAME = PokeGroup;
 				TargetAttributes = {
 					D4BBC1341D7EF7BB0058615A = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -152,10 +194,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4BBC1671D7F0AC50058615A /* SetStepsViewController.m in Sources */,
 				D4BBC1461D7EF7BB0058615A /* FicaFrio.xcdatamodeld in Sources */,
-				D4BBC1401D7EF7BB0058615A /* ViewController.m in Sources */,
+				D4BBC15E1D7F033F0058615A /* GoalFeedbackViewController.m in Sources */,
 				D4BBC13D1D7EF7BB0058615A /* AppDelegate.m in Sources */,
+				D4BBC16D1D7F0DB80058615A /* SetGoalViewController.swift in Sources */,
+				D4BBC15B1D7F02AC0058615A /* CurrentStepViewController.m in Sources */,
+				D4BBC16F1D7F0DC30058615A /* HomeViewController.swift in Sources */,
 				D4BBC13A1D7EF7BB0058615A /* main.m in Sources */,
+				D4BBC1711D7F0DD30058615A /* RelaxViewController.swift in Sources */,
+				D4BBC1611D7F03630058615A /* FeedbackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,10 +317,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FicaFrio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FicaFrio-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -280,10 +331,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FicaFrio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FicaFrio-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -1,18 +1,19 @@
 //
-//  ViewController.m
+//  CurrentStepViewController.m
 //  FicaFrio
 //
 //  Created by Victor Leal Porto de Almeida Arruda on 06/09/16.
 //  Copyright © 2016 Victor Leal Porto de Almeida Arruda. All rights reserved.
 //
 
-#import "ViewController.h"
 
-@interface ViewController ()
+#import "CurrentStepViewController.h"
+
+@interface CurrentStepViewController ()
 
 @end
 
-@implementation ViewController
+@implementation CurrentStepViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
