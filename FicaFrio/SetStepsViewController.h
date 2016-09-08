@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Animation.h"
 
 @interface SetStepsViewController : UIViewController
+
 
 
 @end

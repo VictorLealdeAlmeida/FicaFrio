@@ -20,6 +20,7 @@
 		D4BBC16D1D7F0DB80058615A /* SetGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC16C1D7F0DB80058615A /* SetGoalViewController.swift */; };
 		D4BBC16F1D7F0DC30058615A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC16E1D7F0DC30058615A /* HomeViewController.swift */; };
 		D4BBC1711D7F0DD30058615A /* RelaxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */; };
+		D4BBC1A21D81B12E0058615A /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1A11D81B12E0058615A /* Animation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		D4BBC16C1D7F0DB80058615A /* SetGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetGoalViewController.swift; sourceTree = "<group>"; };
 		D4BBC16E1D7F0DC30058615A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelaxViewController.swift; sourceTree = "<group>"; };
+		D4BBC1A01D81B12E0058615A /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		D4BBC1A11D81B12E0058615A /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,7 @@
 				D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */,
 				D4BBC1581D7F023F0058615A /* Screen */,
 				D4BBC1571D7F01B70058615A /* Set Screens */,
+				D4BBC1A41D81B1450058615A /* Animation */,
 				D4BBC1411D7EF7BB0058615A /* Main.storyboard */,
 				D4BBC1471D7EF7BB0058615A /* Assets.xcassets */,
 				D4BBC1491D7EF7BB0058615A /* LaunchScreen.storyboard */,
@@ -122,6 +126,15 @@
 				D4BBC1601D7F03630058615A /* FeedbackViewController.m */,
 			);
 			name = Screen;
+			sourceTree = "<group>";
+		};
+		D4BBC1A41D81B1450058615A /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				D4BBC1A01D81B12E0058615A /* Animation.h */,
+				D4BBC1A11D81B12E0058615A /* Animation.m */,
+			);
+			name = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +214,7 @@
 				D4BBC16D1D7F0DB80058615A /* SetGoalViewController.swift in Sources */,
 				D4BBC15B1D7F02AC0058615A /* CurrentStepViewController.m in Sources */,
 				D4BBC16F1D7F0DC30058615A /* HomeViewController.swift in Sources */,
+				D4BBC1A21D81B12E0058615A /* Animation.m in Sources */,
 				D4BBC13A1D7EF7BB0058615A /* main.m in Sources */,
 				D4BBC1711D7F0DD30058615A /* RelaxViewController.swift in Sources */,
 				D4BBC1611D7F03630058615A /* FeedbackViewController.m in Sources */,
@@ -359,6 +373,7 @@
 				D4BBC1511D7EF7BB0058615A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
