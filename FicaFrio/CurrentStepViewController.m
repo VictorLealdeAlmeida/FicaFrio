@@ -12,11 +12,16 @@
 @interface CurrentStepViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
+@property (weak, nonatomic) IBOutlet UILabel *circleNumber;
+
 - (IBAction)circleButton:(id)sender;
+- (void) changeNumber;
 
 @end
 
 @implementation CurrentStepViewController
+
+int numberStep = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,5 +36,15 @@
 - (IBAction)circleButton:(id)sender {
     [self.circleView rotation: 1.0 option:0];
 }
+
+- (void) changeNumber{
+    if (numberStep <= 2){
+        numberStep++;
+    }else{
+        numberStep = 1;
+    }
+    _circleNumber.text = [NSString stringWithFormat: @"%d", numberStep];
+}
+
 
 @end

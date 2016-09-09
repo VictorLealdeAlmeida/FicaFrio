@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
 @property (weak, nonatomic) IBOutlet UILabel *stepNumber;
+@property (weak, nonatomic) IBOutlet UITextField *textStep;
 
 - (IBAction)Back:(id)sender;
 - (IBAction)circleTap:(id)sender;
@@ -26,7 +27,10 @@ int number = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [_textStep setDelegate:self];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,5 +56,10 @@ int number = 1;
     _stepNumber.text = [NSString stringWithFormat: @"%d", number];
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 @end
