@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Animation.h"
 
 @interface CurrentStepViewController : UIViewController
 

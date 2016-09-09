@@ -11,6 +11,9 @@
 
 @interface CurrentStepViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *circleView;
+- (IBAction)circleButton:(id)sender;
+
 @end
 
 @implementation CurrentStepViewController
@@ -23,6 +26,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)circleButton:(id)sender {
+    [self.circleView rotation: 1.0 option:0];
 }
 
 @end

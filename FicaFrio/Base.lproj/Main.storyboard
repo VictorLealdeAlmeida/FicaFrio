@@ -75,19 +75,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEa-h0-07R">
-                                <rect key="frame" x="171" y="251" width="32" height="30"/>
+                                <rect key="frame" x="171" y="89" width="32" height="30"/>
                                 <state key="normal" title="Step"/>
                                 <connections>
                                     <segue destination="O4b-DK-hPY" kind="show" id="eHC-N4-ioQ"/>
                                 </connections>
                             </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circuloPassos" translatesAutoresizingMaskIntoConstraints="NO" id="jeZ-L2-Rsu">
-                                <rect key="frame" x="67" y="317" width="240" height="226"/>
+                                <rect key="frame" x="67" y="369" width="240" height="226"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="q9u-m5-uPf" appends="YES" id="EsQ-M2-OKT"/>
                                 </connections>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k1d-5o-q4V">
+                                <rect key="frame" x="93" y="279" width="214" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -118,23 +123,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQ9-9t-q00">
-                                <rect key="frame" x="153" y="484" width="68" height="30"/>
+                                <rect key="frame" x="153" y="159" width="68" height="30"/>
                                 <state key="normal" title="Feedback"/>
                                 <connections>
                                     <segue destination="IH0-gW-iFA" kind="show" id="bS7-l1-X43"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH2-1Z-rDA">
-                                <rect key="frame" x="159" y="581" width="57" height="30"/>
+                                <rect key="frame" x="159" y="319" width="57" height="30"/>
                                 <state key="normal" title="Respirar"/>
                                 <connections>
                                     <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
+                                </connections>
+                            </button>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circuloPassos" translatesAutoresizingMaskIntoConstraints="NO" id="5ov-Kr-YOu">
+                                <rect key="frame" x="2" y="503" width="371" height="350"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-Yy-Zph">
+                                <rect key="frame" x="159" y="404" width="57" height="30"/>
+                                <state key="normal" title="Finalizar"/>
+                                <connections>
+                                    <action selector="circleButton:" destination="O4b-DK-hPY" eventType="touchUpInside" id="tH2-jA-MgH"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="circleView" destination="5ov-Kr-YOu" id="4lu-Vh-5sS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhY-xQ-jHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

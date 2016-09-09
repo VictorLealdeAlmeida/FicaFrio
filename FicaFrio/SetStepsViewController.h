@@ -11,6 +11,4 @@
 
 @interface SetStepsViewController : UIViewController
 
-
-
 @end

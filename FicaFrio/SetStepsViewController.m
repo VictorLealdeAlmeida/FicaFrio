@@ -26,22 +26,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)testeOutra:(id)sender {
-    
-    NSLog(@"testes");
-    
-}
 
 - (IBAction)circleTap:(id)sender {
-    //UIImage* circle= (UIImage*)sender;
-    //[circle rotation:1.0 option:0];
-    NSLog(@"aaa");
-    
     
     [self.circleView rotation: 1.0 option:0];
-    
-    
-    
     
 }
 
