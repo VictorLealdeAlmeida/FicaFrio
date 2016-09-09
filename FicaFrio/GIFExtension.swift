@@ -19,6 +19,7 @@ extension UIImage {
             return nil
         }
         
+        
         return UIImage.animatedImageWithSource(source)
     }
     

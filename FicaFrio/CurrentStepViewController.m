@@ -19,8 +19,8 @@
 - (void) changeNumber;
 
 
-
 @end
+
 
 @implementation CurrentStepViewController
 

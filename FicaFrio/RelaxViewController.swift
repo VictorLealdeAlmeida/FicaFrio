@@ -14,9 +14,9 @@ class RelaxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let RelaxGif = UIImage.gifImageWithName("oi")
+        let RelaxGif = UIImage.gifImageWithName("respiracao")
         let imageView = UIImageView(image: RelaxGif)
-        imageView.frame = CGRect(x: 40, y: 50.0, width: self.view.frame.size.width - 221, height: 223)
+        imageView.frame = CGRect(x: 110, y: 120, width: self.view.frame.size.width - 221, height: 223)
         view.addSubview(imageView)
         
         

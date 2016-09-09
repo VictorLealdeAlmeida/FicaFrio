@@ -14,7 +14,7 @@
 {
     [UIView animateWithDuration:secs delay:0.0 options:option
                      animations:^{
-                         self.transform = CGAffineTransformRotate(self.transform, M_PI*2/3);
+                         self.transform = CGAffineTransformRotate(self.transform, -M_PI*2/3);
                      }
                      completion:nil];
 }
