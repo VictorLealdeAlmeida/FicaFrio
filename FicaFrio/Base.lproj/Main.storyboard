@@ -103,10 +103,10 @@
                                 <rect key="frame" x="40" y="262" width="295" height="34"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEa-h0-07R">
-                                        <rect key="frame" x="210" y="2" width="30" height="30"/>
-                                        <state key="normal" title="OK"/>
+                                        <rect key="frame" x="206" y="2" width="39" height="30"/>
+                                        <state key="normal" title="NEXT"/>
                                         <connections>
-                                            <segue destination="O4b-DK-hPY" kind="show" id="eHC-N4-ioQ"/>
+                                            <action selector="nextStep:" destination="NTb-Zd-tsJ" eventType="touchUpInside" id="BDd-Z3-TcC"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -134,9 +134,11 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="buttonNext" destination="MEa-h0-07R" id="1TZ-j7-Kj0"/>
                         <outlet property="circleView" destination="jeZ-L2-Rsu" id="TlK-b8-VqW"/>
                         <outlet property="stepNumber" destination="hSp-4Q-fd5" id="bAt-f4-6sP"/>
                         <outlet property="textStep" destination="k1d-5o-q4V" id="9KL-xz-XwX"/>
+                        <segue destination="O4b-DK-hPY" kind="show" identifier="SetToCurrent" id="Fx5-TN-vww"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJw-a1-0Ke" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,20 +162,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQ9-9t-q00">
-                                <rect key="frame" x="305" y="442" width="68" height="30"/>
-                                <state key="normal" title="Feedback"/>
-                                <connections>
-                                    <segue destination="IH0-gW-iFA" kind="show" id="bS7-l1-X43"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH2-1Z-rDA">
-                                <rect key="frame" x="316" y="404" width="57" height="30"/>
-                                <state key="normal" title="Respirar"/>
-                                <connections>
-                                    <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
-                                </connections>
-                            </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circuloPassos" translatesAutoresizingMaskIntoConstraints="NO" id="5ov-Kr-YOu">
                                 <rect key="frame" x="2" y="503" width="371" height="350"/>
                                 <gestureRecognizers/>
@@ -197,6 +185,13 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH2-1Z-rDA">
+                                <rect key="frame" x="159" y="617" width="57" height="30"/>
+                                <state key="normal" title="Respirar"/>
+                                <connections>
+                                    <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -204,6 +199,7 @@
                     <connections>
                         <outlet property="circleNumber" destination="0CZ-EU-7UQ" id="ph0-fk-l5S"/>
                         <outlet property="circleView" destination="5ov-Kr-YOu" id="4lu-Vh-5sS"/>
+                        <outlet property="labelStep" destination="ycL-cC-Oy8" id="c5O-jK-48M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhY-xQ-jHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
