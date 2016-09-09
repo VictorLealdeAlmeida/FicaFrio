@@ -7,3 +7,25 @@
 //
 
 import Foundation
+import UIKit
+
+class RelaxViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let RelaxGif = UIImage.gifImageWithName("oi")
+        let imageView = UIImageView(image: RelaxGif)
+        imageView.frame = CGRect(x: 40, y: 50.0, width: self.view.frame.size.width - 221, height: 223)
+        view.addSubview(imageView)
+        
+        
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}

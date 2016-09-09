@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E6160911D82F160005A840C /* GIF Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6160901D82F160005A840C /* GIF Extension.swift */; };
+		1E6160931D82F223005A840C /* oi.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E6160921D82F223005A840C /* oi.gif */; };
 		D4BBC13A1D7EF7BB0058615A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1391D7EF7BB0058615A /* main.m */; };
 		D4BBC13D1D7EF7BB0058615A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */; };
 		D4BBC1431D7EF7BB0058615A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BBC1411D7EF7BB0058615A /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E6160901D82F160005A840C /* GIF Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GIF Extension.swift"; sourceTree = "<group>"; };
+		1E6160921D82F223005A840C /* oi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = oi.gif; sourceTree = "<group>"; };
 		D4BBC1351D7EF7BB0058615A /* FicaFrio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FicaFrio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BBC1391D7EF7BB0058615A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4BBC13B1D7EF7BB0058615A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				D4BBC13B1D7EF7BB0058615A /* AppDelegate.h */,
 				D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */,
 				D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */,
+				1E6160901D82F160005A840C /* GIF Extension.swift */,
+				1E6160921D82F223005A840C /* oi.gif */,
 				D4BBC1581D7F023F0058615A /* Screen */,
 				D4BBC1571D7F01B70058615A /* Set Screens */,
 				D4BBC1A41D81B1450058615A /* Animation */,
@@ -196,6 +202,7 @@
 			files = (
 				D4BBC14B1D7EF7BB0058615A /* LaunchScreen.storyboard in Resources */,
 				D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */,
+				1E6160931D82F223005A840C /* oi.gif in Resources */,
 				D4BBC1431D7EF7BB0058615A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4BBC1671D7F0AC50058615A /* SetStepsViewController.m in Sources */,
+				1E6160911D82F160005A840C /* GIF Extension.swift in Sources */,
 				D4BBC1461D7EF7BB0058615A /* FicaFrio.xcdatamodeld in Sources */,
 				D4BBC15E1D7F033F0058615A /* GoalFeedbackViewController.m in Sources */,
 				D4BBC13D1D7EF7BB0058615A /* AppDelegate.m in Sources */,
