@@ -13,11 +13,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
 @property (weak, nonatomic) IBOutlet UILabel *stepNumber;
 @property (weak, nonatomic) IBOutlet UITextField *textStep;
+@property (weak, nonatomic) IBOutlet UIButton *buttonNext;
 
 - (IBAction)Back:(id)sender;
 - (IBAction)circleTap:(id)sender;
+- (IBAction)nextStep:(id)sender;
 - (void)changeNumber;
-
+- (void)actionCircle;
 
 @end
 
@@ -27,15 +29,14 @@ int number = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    number = 1;
     [_textStep setDelegate:self];
     
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)Back:(id)sender {
@@ -43,8 +44,24 @@ int number = 1;
 }
 
 - (IBAction)circleTap:(id)sender {
-    [self changeNumber];
-    [self.circleView rotation: 1.0 option:0];
+    [self actionCircle];
+}
+
+- (IBAction)nextStep:(id)sender {
+    [self actionCircle];
+
+}
+
+- (void)actionCircle{
+    if (number < 3){
+        [self changeNumber];
+        [self.circleView rotation: 1.0 option:0];
+        if (number == 3){
+            [_buttonNext setTitle:@"GO!" forState:UIControlStateNormal];
+        }
+    }else{
+        [self performSegueWithIdentifier:@"SetToCurrent" sender:nil];
+    }
 }
 
 - (void)changeNumber{
