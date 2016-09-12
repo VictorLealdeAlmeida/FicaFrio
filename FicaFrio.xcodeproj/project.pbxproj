@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC93225B1D86C7DB000051B0 /* BD.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93225A1D86C7DB000051B0 /* BD.m */; };
+		AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322791D86EE15000051B0 /* Step+CoreDataProperties.m */; };
+		AC93227D1D86EE15000051B0 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93227B1D86EE15000051B0 /* Step.m */; };
+		AC9322881D86F206000051B0 /* Goal+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */; };
+		AC9322891D86F206000051B0 /* Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322871D86F206000051B0 /* Goal.m */; };
 		D4BBC13A1D7EF7BB0058615A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1391D7EF7BB0058615A /* main.m */; };
 		D4BBC13D1D7EF7BB0058615A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */; };
 		D4BBC1431D7EF7BB0058615A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BBC1411D7EF7BB0058615A /* Main.storyboard */; };
@@ -26,6 +31,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC9322591D86C7DB000051B0 /* BD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BD.h; sourceTree = "<group>"; };
+		AC93225A1D86C7DB000051B0 /* BD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BD.m; sourceTree = "<group>"; };
+		AC9322781D86EE15000051B0 /* Step+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Step+CoreDataProperties.h"; path = "../Step+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AC9322791D86EE15000051B0 /* Step+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Step+CoreDataProperties.m"; path = "../Step+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AC93227A1D86EE15000051B0 /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Step.h; path = ../Step.h; sourceTree = "<group>"; };
+		AC93227B1D86EE15000051B0 /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Step.m; path = ../Step.m; sourceTree = "<group>"; };
+		AC9322841D86F206000051B0 /* Goal+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Goal+CoreDataProperties.h"; path = "../Goal+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Goal+CoreDataProperties.m"; path = "../Goal+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AC9322861D86F206000051B0 /* Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Goal.h; path = ../Goal.h; sourceTree = "<group>"; };
+		AC9322871D86F206000051B0 /* Goal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Goal.m; path = ../Goal.m; sourceTree = "<group>"; };
 		D4BBC1351D7EF7BB0058615A /* FicaFrio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FicaFrio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BBC1391D7EF7BB0058615A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4BBC13B1D7EF7BB0058615A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC93226E1D86D1DE000051B0 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				AC9322591D86C7DB000051B0 /* BD.h */,
+				AC93225A1D86C7DB000051B0 /* BD.m */,
+				AC9322841D86F206000051B0 /* Goal+CoreDataProperties.h */,
+				AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */,
+				AC9322861D86F206000051B0 /* Goal.h */,
+				AC9322871D86F206000051B0 /* Goal.m */,
+				AC9322781D86EE15000051B0 /* Step+CoreDataProperties.h */,
+				AC9322791D86EE15000051B0 /* Step+CoreDataProperties.m */,
+				AC93227A1D86EE15000051B0 /* Step.h */,
+				AC93227B1D86EE15000051B0 /* Step.m */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
 		D4BBC12C1D7EF7BA0058615A = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +129,7 @@
 				D4BBC1491D7EF7BB0058615A /* LaunchScreen.storyboard */,
 				D4BBC14C1D7EF7BB0058615A /* Info.plist */,
 				D4BBC1441D7EF7BB0058615A /* FicaFrio.xcdatamodeld */,
+				AC93226E1D86D1DE000051B0 /* Database */,
 				D4BBC1381D7EF7BB0058615A /* Supporting Files */,
 			);
 			path = FicaFrio;
@@ -215,14 +248,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4BBC1671D7F0AC50058615A /* SetStepsViewController.m in Sources */,
+				AC93227D1D86EE15000051B0 /* Step.m in Sources */,
+				AC9322881D86F206000051B0 /* Goal+CoreDataProperties.m in Sources */,
 				D4BBC1461D7EF7BB0058615A /* FicaFrio.xcdatamodeld in Sources */,
 				D4BBC15E1D7F033F0058615A /* GoalFeedbackViewController.m in Sources */,
 				D4BBC13D1D7EF7BB0058615A /* AppDelegate.m in Sources */,
 				D4E76D771D8310B0006F7203 /* GIFExtension.swift in Sources */,
 				D4BBC16D1D7F0DB80058615A /* SetGoalViewController.swift in Sources */,
+				AC9322891D86F206000051B0 /* Goal.m in Sources */,
 				D4BBC15B1D7F02AC0058615A /* CurrentStepViewController.m in Sources */,
 				D4BBC16F1D7F0DC30058615A /* HomeViewController.swift in Sources */,
 				D4BBC1A21D81B12E0058615A /* Animation.m in Sources */,
+				AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */,
+				AC93225B1D86C7DB000051B0 /* BD.m in Sources */,
 				D4BBC13A1D7EF7BB0058615A /* main.m in Sources */,
 				D4BBC1711D7F0DD30058615A /* RelaxViewController.swift in Sources */,
 				D4BBC1611D7F03630058615A /* FeedbackViewController.m in Sources */,
