@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textStep;
 @property (weak, nonatomic) IBOutlet UIButton *buttonNext;
 @property (weak, nonatomic) IBOutlet UIView *viewButton;
+@property (weak, nonatomic) IBOutlet UIImageView *arrow;
 
 - (IBAction)Back:(id)sender;
 - (IBAction)circleTap:(id)sender;
@@ -39,16 +40,31 @@ int number = 1;
     [_textStep setDelegate:self];
     
     //Formatando o TextFild
-    _textStep.layer.cornerRadius = 10.0f;
-    _textStep.layer.masksToBounds = YES;
-
+    [self radiusView];
     
-    _viewButton.layer.cornerRadius = 10.0f;
-
+    //Sets para fazer o shake no textfild
     direction = 1;
     shakes = 55;
     [self shake:_textStep];
 
+}
+
+- (void)radiusView {
+    _textStep.layer.cornerRadius = 10.0f;
+    _textStep.layer.masksToBounds = YES;
+    
+    UIBezierPath *maskPath = [UIBezierPath
+                              bezierPathWithRoundedRect:_viewButton.bounds
+                              byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)
+                              cornerRadii:CGSizeMake(20, 20)
+                              ];
+    
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    
+    //maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    
+    _viewButton.layer.mask = maskLayer;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,6 +81,7 @@ int number = 1;
     }else{
         [self shake:_textStep];
         [self shake:_viewButton];
+        [self shake:_arrow];
     }
 }
 
@@ -74,6 +91,7 @@ int number = 1;
     }else{
         [self shake:_textStep];
         [self shake:_viewButton];
+        [self shake:_arrow];
     }
 }
 
