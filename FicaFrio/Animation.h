@@ -12,6 +12,7 @@
 @interface UIView (Animation)
 
 - (void) rotation:(float)secs option:(UIViewAnimationOptions)option;
+- (void) addSubviewWithZoomInAnimation:(float)secs option:(UIViewAnimationOptions)option delay:(float)delay nextImege:(UIImageView*)image;
 
 
 @end

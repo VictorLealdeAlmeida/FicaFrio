@@ -19,4 +19,23 @@
                      completion:nil];
 }
 
+- (void) addSubviewWithZoomInAnimation:(float)secs option:(UIViewAnimationOptions)option delay:(float)delay nextImege:(UIImageView*)image
+{
+    // now return the view to normal dimension, animating this tranformation
+    [UIView animateWithDuration:secs delay: delay options:option
+                     animations:^{
+                         self.transform = CGAffineTransformScale(self.transform, 1.2, 1.2);
+                     }
+                     completion:^(BOOL finished) {
+                         [UIView animateWithDuration:secs delay:0.0 options:option
+                                          animations:^{
+                                              self.transform = CGAffineTransformScale(self.transform, 0.83, 0.83);
+                                          }
+                                          completion:^(BOOL finished){
+                                              image.hidden = NO;
+                                          }];
+                     }];
+}
+
+
 @end

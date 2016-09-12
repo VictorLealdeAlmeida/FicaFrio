@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rao-Rf-tPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rao-Rf-tPL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -22,6 +22,13 @@
                                 <state key="normal" title="Entrar"/>
                                 <connections>
                                     <segue destination="Ksg-29-GAQ" kind="show" id="qwV-E3-3Nu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUn-zs-xcQ">
+                                <rect key="frame" x="146" y="510" width="82" height="34"/>
+                                <state key="normal" title="FeedBack"/>
+                                <connections>
+                                    <segue destination="qOg-3a-aVT" kind="show" id="JYC-8Z-0Wr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -193,6 +200,13 @@
                                     <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jq3-5O-Xkz">
+                                <rect key="frame" x="154" y="447" width="68" height="30"/>
+                                <state key="normal" title="Feedback"/>
+                                <connections>
+                                    <segue destination="IH0-gW-iFA" kind="show" id="kan-8F-qKA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -227,6 +241,34 @@
             </objects>
             <point key="canvasLocation" x="1213.5" y="2265.5"/>
         </scene>
+        <!--Feedback View Controller-->
+        <scene sceneID="LCK-qO-weu">
+            <objects>
+                <viewController id="qOg-3a-aVT" customClass="FeedbackViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gwn-gR-toy"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ue9-vh-r2Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ehU-k5-oHJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ona-RN-FVQ">
+                                <rect key="frame" x="7" y="211" width="361" height="245"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="chartsView" destination="ona-RN-FVQ" id="rax-0x-cks"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Jj-CS-0Kn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="186.5" y="1460.5"/>
+        </scene>
         <!--Goal Feedback View Controller-->
         <scene sceneID="M5M-Tg-APi">
             <objects>
@@ -238,13 +280,85 @@
                     <view key="view" contentMode="scaleToFill" id="Iet-Xq-qFh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="75" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSb-m4-B77">
+                                <rect key="frame" x="85" y="585" width="50" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="32" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eot-b9-4eT">
+                                <rect key="frame" x="263" y="583" width="63" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.27843137254901962" green="0.72941176470588232" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1G3-IF-n1Y">
+                                <rect key="frame" x="135" y="597" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lul-Xr-Ict">
+                                <rect key="frame" x="317" y="596" width="28" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.27843137254901962" green="0.72941176470588232" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circuloPassos" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-lr-5Kd">
+                                <rect key="frame" x="20" y="566" width="63" height="73"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circuloPassos" translatesAutoresizingMaskIntoConstraints="NO" id="aXW-ki-c7S">
+                                <rect key="frame" x="209" y="566" width="63" height="73"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="roda_01_2" translatesAutoresizingMaskIntoConstraints="NO" id="DpT-N9-hkt">
+                                <rect key="frame" x="76" y="208" width="224" height="159"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="roda_02_2" translatesAutoresizingMaskIntoConstraints="NO" id="Ydl-Db-pqk">
+                                <rect key="frame" x="192" y="314" width="127" height="191"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="roda_03_2" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-7c-Kla">
+                                <rect key="frame" x="53" y="315" width="131" height="190"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_2" translatesAutoresizingMaskIntoConstraints="NO" id="ErA-sK-ygK">
+                                <rect key="frame" x="147" y="337" width="83" height="84"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ojI-vH-R8b" appends="YES" id="Mfn-mJ-zeI"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show of ball, deu tudo certo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xc-Mv-cBl">
+                                <rect key="frame" x="31" y="131" width="313" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.27843137254901962" green="0.72941176470588232" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bpm" destination="1G3-IF-n1Y" id="FhJ-9x-Iof"/>
+                        <outlet property="bpmImage" destination="BHy-lr-5Kd" id="epF-vX-5Lx"/>
+                        <outlet property="bpmValue" destination="mSb-m4-B77" id="8O2-Y0-qIA"/>
+                        <outlet property="center" destination="ErA-sK-ygK" id="CNB-Zl-fel"/>
+                        <outlet property="min" destination="Eot-b9-4eT" id="b5Z-vi-Nzs"/>
+                        <outlet property="minImage" destination="aXW-ki-c7S" id="ZxT-dl-dbO"/>
+                        <outlet property="minValue" destination="Eot-b9-4eT" id="XWE-dL-CY3"/>
+                        <outlet property="step1" destination="DpT-N9-hkt" id="8Ri-u9-70P"/>
+                        <outlet property="step2" destination="Ydl-Db-pqk" id="2qm-X4-Vsq"/>
+                        <outlet property="step3" destination="FgE-7c-Kla" id="u7S-R1-QTp"/>
+                        <outlet property="titleGoal" destination="1G3-IF-n1Y" id="s4u-qP-WTw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Id5-pB-mOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ojI-vH-R8b">
+                    <connections>
+                        <action selector="animate:" destination="IH0-gW-iFA" id="ZnD-gZ-5sb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1698.5" y="1460.5"/>
+            <point key="canvasLocation" x="1709.5" y="1460.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PbC-fa-Z4f">
@@ -266,5 +380,9 @@
     </scenes>
     <resources>
         <image name="circuloPassos" width="543" height="543"/>
+        <image name="coracao_2" width="200" height="175"/>
+        <image name="roda_01_2" width="454" height="182"/>
+        <image name="roda_02_2" width="258" height="391"/>
+        <image name="roda_03_2" width="254" height="391"/>
     </resources>
 </document>

@@ -9,6 +9,7 @@
 #import "FeedbackViewController.h"
 
 @interface FeedbackViewController ()
+@property (weak, nonatomic) IBOutlet UIView *chartsView;
 
 @end
 
