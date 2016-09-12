@@ -26,6 +26,8 @@
 
 @implementation SetStepsViewController
 
+int direction;
+int shakes;
 int number = 1;
 
 - (void)viewDidLoad {
@@ -43,6 +45,9 @@ int number = 1;
     
     _viewButton.layer.cornerRadius = 10.0f;
 
+    direction = 1;
+    shakes = 55;
+    [self shake:_textStep];
 
 }
 
@@ -57,12 +62,18 @@ int number = 1;
 - (IBAction)circleTap:(id)sender {
     if (![_textStep.text  isEqual: @""]){
         [self actionCircle];
+    }else{
+        [self shake:_textStep];
+        [self shake:_viewButton];
     }
 }
 
 - (IBAction)nextStep:(id)sender {
     if (![_textStep.text  isEqual: @""]){
         [self actionCircle];
+    }else{
+        [self shake:_textStep];
+        [self shake:_viewButton];
     }
 }
 
@@ -91,10 +102,29 @@ int number = 1;
     _stepNumber.text = [NSString stringWithFormat: @"%d", number];
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void)shake:(UIView *)theOneYouWannaShake{
+
+    
+    [UIView animateWithDuration:0.03 animations:^
+     {
+         theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(5*direction, 0);
+     }
+                     completion:^(BOOL finished)
+     {
+         if(shakes >= 10)
+         {
+             theOneYouWannaShake.transform = CGAffineTransformIdentity;
+             return;
+         }
+         shakes++;
+         direction = direction * -1;
+         [self shake:theOneYouWannaShake];
+     }];
 }
 
 @end
