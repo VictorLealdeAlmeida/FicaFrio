@@ -7,6 +7,7 @@
 //
 
 #import "GoalFeedbackViewController.h"
+#import "Animation.m"
 
 @interface GoalFeedbackViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *step1;
@@ -28,6 +29,22 @@
 BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _step1.hidden = YES;
+    _step2.hidden = YES;
+    _step3.hidden = YES;
+    if(flag){
+        [_center setImage:[UIImage imageNamed:@"relogio_2"]];
+        flag = NO;
+    }else{
+        [_center setImage:[UIImage imageNamed:@"coracao_2"]];
+        flag = YES;
+    }
+    [_center addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0 nextImege:_step1];
+    [_step1 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0.5 nextImege:_step2];
+    [_step2 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.0 nextImege:_step3];
+    [_step3 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.5 nextImege:nil];
+
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -37,5 +54,19 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
 }
 
 - (IBAction)animate:(id)sender {
+    _step1.hidden = YES;
+    _step2.hidden = YES;
+    _step3.hidden = YES;
+    if(flag){
+        [_center setImage:[UIImage imageNamed:@"relogio_2"]];
+        flag = NO;
+    }else{
+        [_center setImage:[UIImage imageNamed:@"coracao_2"]];
+        flag = YES;
+    }
+    [_center addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0 nextImege:_step1];
+    [_step1 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0.5 nextImege:_step2];
+    [_step2 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.0 nextImege:_step3];
+    [_step3 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.5 nextImege:nil];
 }
 @end
