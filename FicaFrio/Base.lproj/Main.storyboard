@@ -100,7 +100,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YxG-K6-e9c">
-                                <rect key="frame" x="40" y="262" width="295" height="34"/>
+                                <rect key="frame" x="40" y="257" width="295" height="34"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEa-h0-07R">
                                         <rect key="frame" x="206" y="2" width="39" height="30"/>
@@ -111,10 +111,6 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SlG-7m-d9X">
-                                <rect key="frame" x="177" y="293" width="21" height="34"/>
-                                <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqO-od-BJB">
                                 <rect key="frame" x="167" y="617" width="41" height="30"/>
@@ -129,6 +125,10 @@
                                 <color key="textColor" red="0.08235294118" green="0.37647058820000001" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SlG-7m-d9X">
+                                <rect key="frame" x="177" y="289" width="21" height="34"/>
+                                <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -138,6 +138,7 @@
                         <outlet property="circleView" destination="jeZ-L2-Rsu" id="TlK-b8-VqW"/>
                         <outlet property="stepNumber" destination="hSp-4Q-fd5" id="bAt-f4-6sP"/>
                         <outlet property="textStep" destination="k1d-5o-q4V" id="9KL-xz-XwX"/>
+                        <outlet property="viewButton" destination="YxG-K6-e9c" id="dkC-sO-kaT"/>
                         <segue destination="O4b-DK-hPY" kind="show" identifier="SetToCurrent" id="Fx5-TN-vww"/>
                     </connections>
                 </viewController>

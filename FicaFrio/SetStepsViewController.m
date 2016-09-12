@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *stepNumber;
 @property (weak, nonatomic) IBOutlet UITextField *textStep;
 @property (weak, nonatomic) IBOutlet UIButton *buttonNext;
+@property (weak, nonatomic) IBOutlet UIView *viewButton;
 
 - (IBAction)Back:(id)sender;
 - (IBAction)circleTap:(id)sender;
@@ -31,8 +32,18 @@ int number = 1;
     [super viewDidLoad];
 
     number = 1;
+    
+    //Pra descer o teclado
     [_textStep setDelegate:self];
     
+    //Formatando o TextFild
+    _textStep.layer.cornerRadius = 10.0f;
+    _textStep.layer.masksToBounds = YES;
+
+    
+    _viewButton.layer.cornerRadius = 10.0f;
+
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,15 +55,22 @@ int number = 1;
 }
 
 - (IBAction)circleTap:(id)sender {
-    [self actionCircle];
+    if (![_textStep.text  isEqual: @""]){
+        [self actionCircle];
+    }
 }
 
 - (IBAction)nextStep:(id)sender {
-    [self actionCircle];
-
+    if (![_textStep.text  isEqual: @""]){
+        [self actionCircle];
+    }
 }
 
 - (void)actionCircle{
+    
+    _textStep.text = @"";
+    [self.view endEditing:YES];
+    
     if (number < 3){
         [self changeNumber];
         [self.circleView rotation: 1.0 option:0];
