@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewButton;
 @property (weak, nonatomic) IBOutlet UIImageView *arrow;
 
+
 - (IBAction)Back:(id)sender;
 - (IBAction)circleTap:(id)sender;
 - (IBAction)nextStep:(id)sender;

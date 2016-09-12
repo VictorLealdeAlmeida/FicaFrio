@@ -15,6 +15,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *circleNumber;
 @property (weak, nonatomic) IBOutlet UILabel *labelStep;
 
+//Popup
+@property (weak, nonatomic) IBOutlet UIView *containerPopup;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundPopup;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
+@property (weak, nonatomic) IBOutlet UIButton *grafButton;
+@property (weak, nonatomic) IBOutlet UILabel *backLabel;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *grafLabel;
+
 - (IBAction)circleButton:(id)sender;
 - (void) changeNumber;
 
@@ -41,10 +51,10 @@ int numberStep = 1;
     // Dispose of any resources that can be recreated.
 }
 
+
 - (IBAction)circleButton:(id)sender {
 
     [self changeNumber];
-    [self.circleView rotation: 1.0 option:0];
     _labelStep.text = [NSString stringWithFormat: @"%s", "steps[1]"];
 
 }
@@ -52,10 +62,13 @@ int numberStep = 1;
 - (void) changeNumber{
     if (numberStep <= 2){
         numberStep++;
+        [self.circleView rotation: 1.0 option:0];
+        _circleNumber.text = [NSString stringWithFormat: @"%d", numberStep];
     }else{
+        _containerPopup.hidden = false;
         numberStep = 1;
     }
-    _circleNumber.text = [NSString stringWithFormat: @"%d", numberStep];
+  
 }
 
 
