@@ -47,7 +47,6 @@ int number = 1;
     direction = 1;
     shakes = 55;
     [self shake:_textStep];
-
 }
 
 - (void)radiusView {
@@ -73,7 +72,6 @@ int number = 1;
 }
 
 - (IBAction)Back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)circleTap:(id)sender {
@@ -110,6 +108,18 @@ int number = 1;
     }else{
         [self performSegueWithIdentifier:@"SetToCurrent" sender:nil];
     }
+    
+}
+
+- (void)changeNumberColor:(int)value{
+    if (value == 1){
+        _stepNumber.textColor = [UIColor colorWithRed:0.78 green:0.89 blue:0.91 alpha:1.0];
+    }else if(value == 2){
+        _stepNumber.textColor = [UIColor colorWithRed:0.51 green:0.77 blue:0.82 alpha:1.0];
+    }else if(value == 3){
+        _stepNumber.textColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
+    }
+    
 }
 
 - (void)changeNumber{
@@ -118,7 +128,10 @@ int number = 1;
     }else{
         number = 1;
     }
+    
     _stepNumber.text = [NSString stringWithFormat: @"%d", number];
+    [self changeNumberColor: number];
+
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
