@@ -18,11 +18,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *arrow;
 
 
-- (IBAction)Back:(id)sender;
 - (IBAction)circleTap:(id)sender;
 - (IBAction)nextStep:(id)sender;
 - (void)changeNumber;
+
 - (void)actionCircle;
+- (IBAction)circleRigth:(id)sender;
+- (IBAction)circleLeft:(id)sender;
 
 @end
 
@@ -71,8 +73,7 @@ int number = 1;
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)Back:(id)sender {
-}
+
 
 - (IBAction)circleTap:(id)sender {
     if (![_textStep.text  isEqual: @""]){
@@ -83,6 +84,10 @@ int number = 1;
         [self shake:_arrow];
     }
 }
+
+   // printf("%d",21331);
+    //NSLog(@"%d",value);
+
 
 - (IBAction)nextStep:(id)sender {
     if (![_textStep.text  isEqual: @""]){
@@ -107,6 +112,38 @@ int number = 1;
         }
     }else{
         [self performSegueWithIdentifier:@"SetToCurrent" sender:nil];
+    }
+    
+}
+
+- (IBAction)circleRigth:(id)sender {
+    if (![_textStep.text  isEqual: @""]){
+        [self actionCircle];
+    }else{
+        [self shake:_textStep];
+        [self shake:_viewButton];
+        [self shake:_arrow];
+    }
+}
+
+- (IBAction)circleLeft:(id)sender {
+    if (number == 1){
+        [self shake:_circleView];
+        [self shake:_stepNumber];
+
+    }else if (number == 2){
+        number = 1;
+        _stepNumber.text = @"1";
+        [self changeNumberColor: number];
+        [self.circleView rotationOpposite: 1.0 option:0];
+        
+    }else if (number == 3){
+        number = 2;
+        _stepNumber.text = @"2";
+        [_buttonNext setTitle:@"NEXT" forState:UIControlStateNormal];
+        [self changeNumberColor: number];
+        [self.circleView rotationOpposite: 1.0 option:0];
+        
     }
     
 }
