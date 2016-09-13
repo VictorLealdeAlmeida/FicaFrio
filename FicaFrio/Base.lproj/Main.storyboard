@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rao-Rf-tPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rao-Rf-tPL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SF-Compact-Display-Light.otf">
+            <string>SFCompactDisplay-Light</string>
             <string>SFCompactDisplay-Light</string>
             <string>SFCompactDisplay-Light</string>
             <string>SFCompactDisplay-Light</string>
@@ -34,13 +35,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fundoRespiracao01" translatesAutoresizingMaskIntoConstraints="NO" id="Li1-it-D1R">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWG-SJ-qoo">
-                                <rect key="frame" x="324" y="293" width="42" height="30"/>
-                                <state key="normal" title="Entrar"/>
-                                <connections>
-                                    <segue destination="NTb-Zd-tsJ" kind="show" id="7N7-7x-x1a"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUn-zs-xcQ">
                                 <rect key="frame" x="106" y="145" width="82" height="34"/>
                                 <state key="normal" title="FeedBack"/>
@@ -48,24 +42,31 @@
                                     <segue destination="qOg-3a-aVT" kind="show" id="scD-ro-sTL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
-                                <rect key="frame" x="135" y="347" width="104" height="37"/>
-                                <state key="normal" title="Nova Tarefa"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
+                                <rect key="frame" x="109" y="497" width="156" height="47"/>
+                                <state key="normal" title="Nova Tarefa" image="botao_novaMeta"/>
                                 <connections>
                                     <action selector="NewGoalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6o8-NB-otu"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bf3-p5-Tgz">
-                                <rect key="frame" x="67" y="211" width="240" height="128"/>
+                                <rect key="frame" x="67" y="355" width="240" height="122"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JP0-pm-4PN">
-                                        <rect key="frame" x="32" y="58" width="189" height="30"/>
+                                        <rect key="frame" x="26" y="61" width="189" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="SetTask:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="A27-rY-nbw"/>
+                                            <segue destination="NTb-Zd-tsJ" kind="show" id="v8L-VH-WM5"/>
                                         </connections>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Insira sua meta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Ej-Ztt">
+                                        <rect key="frame" x="54" y="23" width="133" height="30"/>
+                                        <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="19"/>
+                                        <color key="textColor" red="0.43996394230769231" green="0.43996394230769231" blue="0.43996394230769231" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -75,6 +76,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="NewGoalView" destination="bf3-p5-Tgz" id="L2b-s0-c14"/>
+                        <outlet property="TaskText" destination="JP0-pm-4PN" id="sCr-Rs-LCn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -451,6 +453,7 @@
     <resources>
         <image name="botao_Tags" width="94" height="70"/>
         <image name="botao_comecarTarefa" width="400" height="363"/>
+        <image name="botao_novaMeta" width="600" height="196"/>
         <image name="botao_respirar" width="400" height="403"/>
         <image name="botao_setarProximaTarefa" width="92" height="80"/>
         <image name="circuloPassos" width="800" height="800"/>
