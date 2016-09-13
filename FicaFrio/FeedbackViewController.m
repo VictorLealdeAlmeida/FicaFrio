@@ -23,16 +23,22 @@
     _lineChartView.dragEnabled = YES;
     [_lineChartView setScaleEnabled:YES];
     _lineChartView.pinchZoomEnabled = YES;
-    _lineChartView.drawGridBackgroundEnabled = NO;
+    _lineChartView.drawGridBackgroundEnabled = YES;
+    _lineChartView.descriptionTextColor = [UIColor whiteColor];
+    _lineChartView.gridBackgroundColor = [UIColor colorWithRed:187.0f/255.0f green:228.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
+    _lineChartView.noDataText = @"No data provided";
+    _lineChartView.xAxis.drawGridLinesEnabled = NO;
+    _lineChartView.leftAxis.drawGridLinesEnabled = NO;
+    _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
     
-    _lineChartView.descriptionTextColor = [UIColor blueColor];
-    _lineChartView.gridBackgroundColor = [UIColor darkGrayColor];
-    _lineChartView.noDataText = @"No data provided";;
-    NSMutableArray *mes = [NSMutableArray arrayWithObjects: @"Jan",@"Feb",@"Mar",@"Apr",@"May",@"June",@"July",@"August",@"Sept", @"Oct",@"Nov", @"Dec", nil];
+
+    
+    
     NSMutableArray *valor = [NSMutableArray array];
+    NSArray *array = @[@2, @5, @7, @1, @4, @19, @21, @25, @30, @32, @37, @40];
     for (NSInteger i = 0; i < 12; i++)
         [valor addObject:[NSNumber numberWithInteger:i*3]];
-    [self setCharData:mes valor:valor];
+    [self setCharData:valor valor2:array];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -44,29 +50,47 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setCharData:(NSMutableArray*)mes valor:(NSMutableArray*)valor{
+- (void)setCharData:(NSMutableArray*)valor valor2:(NSArray*)valor2{
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
+    NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i <mes.count; i++) {
+    for (int i = 0; i <9; i++) {
         [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y:[valor[i] doubleValue]]];
+        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[valor2[i] doubleValue]]];
     }
     LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithValues: yVals1 label:@"First Set"];
+    LineChartDataSet *set2 = [[LineChartDataSet alloc] initWithValues: yVals2 label:@"Será que vai"];
     set1.axisDependency = AxisDependencyLeft;
-    [set1 setColor: [[UIColor redColor] colorWithAlphaComponent:0.5f]];
-    [set1 setCircleColor:[UIColor redColor]];
+    set2.axisDependency = AxisDependencyLeft;
+    [set1 setColor: [UIColor colorWithRed:23.0f/255.0f green:77.0f/255.0f blue:96.0f/255.0f alpha:5.0f]];
+    [set2 setColor:[UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:249.0f/255.0f alpha:5.0f]];
+    [set1 setCircleColor:[UIColor colorWithRed:23.0f/255.0f green:77.0f/255.0f blue:96.0f/255.0f alpha:5.0f]];
+    [set2 setCircleColor:[UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:249.0f/255.0f alpha:5.0f]];
     set1.lineWidth = 2.0;
+    set2.lineWidth = 2.0;
     set1.circleRadius = 6.0; // the radius of the node circle
+    set2.circleRadius = 6.0;
+    set1.fillAlpha = 65 / 255.0;
     set1.fillAlpha = 65 / 255.0;
     set1.fillColor = [UIColor blueColor];
-    set1.highlightColor = [UIColor whiteColor];
+    set2.fillColor = [UIColor yellowColor];
+    set1.highlightColor = [UIColor yellowColor];
+    set2.highlightColor = [UIColor redColor];
     set1.drawCircleHoleEnabled = true;
+    set2.drawCircleHoleEnabled = true;
+    //set2.mode = LineChartModeCubicBezier;
+    //set1.mode = LineChartModeCubicBezier;
+    set1.drawCubicEnabled = YES;
+    set2.drawCubicEnabled = YES;
+    set1.drawValuesEnabled = NO;
+    set2.drawValuesEnabled = NO;
+    
     
     //3 - create an array to store our LineChartDataSets
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject: set1];
+    [dataSets addObject:set2];
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-    
-    
     
     
     //4 - pass our months in for our x-axis label value along with our dataSets
