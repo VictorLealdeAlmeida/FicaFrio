@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "Animation.h"
 
-@interface SetStepsViewController : UIViewController
+@interface SetStepsViewController : UIViewController <UITextFieldDelegate>
 
 @end

@@ -8,12 +8,23 @@
 
 
 #import "CurrentStepViewController.h"
+#import "Step.h"
+#import "BD.h"
 
-@interface CurrentStepViewController ()
+@interface CurrentStepViewController () {
+    //int numberStep;
+    BD *database;
+    NSUserDefaults *defaults;
+    NSInteger stepNumber;
+    NSString *goalID;
+    Step *currentStep;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
-@property (weak, nonatomic) IBOutlet UILabel *circleNumber;
 @property (weak, nonatomic) IBOutlet UILabel *labelStep;
+@property (weak, nonatomic) IBOutlet UIButton *startStep;
+@property (weak, nonatomic) IBOutlet UIButton *endStep;
+
 
 //Popup
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundPopup;
@@ -24,12 +35,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *grafLabel;
 
+
 //Actions popup
-
-
 - (IBAction)circleButton:(id)sender;
-- (void) changeNumber;
+//- (void) changeNumber;
 - (IBAction)newGoal:(id)sender;
+- (IBAction)startStep:(id)sender;
 
 
 @end
@@ -37,18 +48,20 @@
 
 @implementation CurrentStepViewController
 
-int numberStep = 1;
-
-//Motion popup
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _startStep.hidden = false;
+    _endStep.hidden = true;
     
-    NSArray *steps;
-    steps = [NSArray arrayWithObjects: @") contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos", @"Because we used the NSArray class in the above example the contents of the array object cannot be changed subsequent to initialization.", @"The objects contained in an array are given index positions beginning at position zero. Each element may be accessed by passing the required index position through as an argument to the NSArray objectAtIndex", @"Yellow", nil];
+    // Database
+    defaults = [NSUserDefaults standardUserDefaults];
+    database = [BD new];
     
-
+    // Get current step
+    goalID = [defaults stringForKey:@"currentGoalID"];
+    stepNumber = [defaults integerForKey:@"currentStepNumber"];
+    NSLog(@"currentStep: %@", goalID);
+    [self updateStep];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,25 +73,40 @@ int numberStep = 1;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-
-- (IBAction)circleButton:(id)sender {
-
-    [self changeNumber];
-    _labelStep.text = [NSString stringWithFormat: @"%s", "steps[1]"];
-
+// When start button is clicked
+- (IBAction)startStep:(id)sender {
+    _startStep.hidden = true;
+    _endStep.hidden = false;
+    
+    // Store startDate
+    [database setStartDate:[NSDate date] toStep:currentStep];
 }
 
-- (void) changeNumber{
-    if (numberStep <= 2){
-        numberStep++;
+// endStep
+- (IBAction)circleButton:(id)sender {
+    // Store endDate
+    [database setEndDate:[NSDate date] toStep:currentStep];
+    // Show next step - store number and fetch next step
+    // If there are steps still
+    if (stepNumber < 3){
+        stepNumber++;
+        _startStep.hidden = false;
+        _endStep.hidden = true;
         [self.circleView rotation: 1.0 option:0];
-        _circleNumber.text = [NSString stringWithFormat: @"%d", numberStep];
-    }else{
-        [self showPopup];
- 
-        numberStep = 1;
+        [self updateStep];
+        [defaults setInteger:stepNumber forKey:@"currentStepNumber"];
+        [defaults synchronize];
     }
-  
+    // Final step ended
+    else {
+        [self showPopup];
+    }
+}
+
+- (void)updateStep {
+    NSLog(@"entered updateStep");
+    currentStep = [database fetchStep:(stepNumber-1) forGoalID:goalID];
+    _labelStep.text = currentStep.name;
 }
 
 - (void) showPopup{
@@ -101,6 +129,5 @@ int numberStep = 1;
     [_grafLabel setAlpha:0.95];
     [UIView commitAnimations];
 }
-
 
 @end

@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *goalID;
 @property (nullable, nonatomic, retain) NSString *goalName;
 @property (nullable, nonatomic, retain) NSNumber *duration;
-@property (nullable, nonatomic, retain) NSNumber *ongoing;
 
 @end
 

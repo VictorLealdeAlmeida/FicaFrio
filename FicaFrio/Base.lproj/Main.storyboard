@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rao-Rf-tPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NTb-Zd-tsJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="SF-Compact-Display-Regular.otf">
-            <string>SFCompactDisplay-Regular</string>
+        <mutableArray key="SF-Compact-Display-Light.otf">
+            <string>SFCompactDisplay-Light</string>
+            <string>SFCompactDisplay-Light</string>
+            <string>SFCompactDisplay-Light</string>
+            <string>SFCompactDisplay-Light</string>
+            <string>SFCompactDisplay-Light</string>
         </mutableArray>
         <mutableArray key="SF-Compact-Display-Thin.otf">
             <string>SFCompactDisplay-Thin</string>
@@ -28,13 +32,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fundoRespiracao01" translatesAutoresizingMaskIntoConstraints="NO" id="Li1-it-D1R">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWG-SJ-qoo">
-                                <rect key="frame" x="324" y="293" width="42" height="30"/>
-                                <state key="normal" title="Entrar"/>
-                                <connections>
-                                    <segue destination="NTb-Zd-tsJ" kind="show" id="7N7-7x-x1a"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUn-zs-xcQ">
                                 <rect key="frame" x="106" y="145" width="82" height="34"/>
                                 <state key="normal" title="FeedBack"/>
@@ -42,33 +39,48 @@
                                     <segue destination="qOg-3a-aVT" kind="show" id="scD-ro-sTL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
-                                <rect key="frame" x="135" y="347" width="104" height="37"/>
-                                <state key="normal" title="Nova Tarefa"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
+                                <rect key="frame" x="109" y="497" width="156" height="47"/>
+                                <state key="normal" title="Nova Tarefa" image="botao_novaMeta"/>
                                 <connections>
                                     <action selector="NewGoalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6o8-NB-otu"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bf3-p5-Tgz">
-                                <rect key="frame" x="67" y="211" width="240" height="128"/>
+                                <rect key="frame" x="67" y="355" width="240" height="122"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JP0-pm-4PN">
-                                        <rect key="frame" x="32" y="58" width="189" height="30"/>
+                                        <rect key="frame" x="26" y="61" width="189" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="SetTask:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="A27-rY-nbw"/>
+                                            <segue destination="NTb-Zd-tsJ" kind="show" id="v8L-VH-WM5"/>
                                         </connections>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Insira sua meta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Ej-Ztt">
+                                        <rect key="frame" x="54" y="23" width="133" height="30"/>
+                                        <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="19"/>
+                                        <color key="textColor" red="0.43996394230769231" green="0.43996394230769231" blue="0.43996394230769231" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgG-in-JaA">
+                                <rect key="frame" x="284" y="617" width="37" height="30"/>
+                                <state key="normal" title="Relax"/>
+                                <connections>
+                                    <segue destination="whk-Og-WXW" kind="show" id="LPp-dW-zOq"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="bqY-bP-R3Y"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="NewGoalView" destination="bf3-p5-Tgz" id="L2b-s0-c14"/>
+                        <outlet property="TaskText" destination="JP0-pm-4PN" id="sCr-Rs-LCn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -96,7 +108,7 @@
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.73333333333333328" green="0.89411764705882346" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.55769230769230771" green="0.55769230769230771" blue="0.55769230769230771" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="setinha" translatesAutoresizingMaskIntoConstraints="NO" id="Ve7-Uh-vFY">
@@ -119,16 +131,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.81960784313725488" green="0.82745098039215681" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NOME DA META AQUI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA4-UE-o8P">
-                                <rect key="frame" x="71" y="96" width="233" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Aqui vai ficar a descrição do que te pra fazer aqui vai ta" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUa-V4-jGp">
-                                <rect key="frame" x="7" y="125" width="361" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.27843137254901962" green="0.72941176470588232" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="48" y="125" width="278" height="22"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="12"/>
+                                <color key="textColor" red="0.59215686274509804" green="0.79607843137254897" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSp-4Q-fd5">
@@ -140,13 +146,26 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeo-SX-KFo">
                                 <rect key="frame" x="261" y="416" width="50" height="118"/>
                                 <connections>
-                                    <action selector="circleRigth:" destination="NTb-Zd-tsJ" eventType="touchUpInside" id="gYi-c4-gHW"/>
+                                    <action selector="circleRight:" destination="NTb-Zd-tsJ" eventType="touchUpInside" id="VAu-1Z-fgc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSC-nz-6mP">
                                 <rect key="frame" x="57" y="416" width="55" height="118"/>
                                 <connections>
                                     <action selector="circleLeft:" destination="NTb-Zd-tsJ" eventType="touchUpInside" id="D4S-uz-WzW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NOME DA META AQUI" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA4-UE-o8P">
+                                <rect key="frame" x="70" y="88" width="256" height="29"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="15"/>
+                                <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioc-nT-hx7">
+                                <rect key="frame" x="167" y="614" width="41" height="33"/>
+                                <state key="normal" title="Button" image="botao_comecarTarefa"/>
+                                <connections>
+                                    <action selector="setSteps:" destination="NTb-Zd-tsJ" eventType="touchUpInside" id="OIz-ld-Kss"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -157,6 +176,7 @@
                         <outlet property="arrow" destination="Ve7-Uh-vFY" id="sWv-UC-GEY"/>
                         <outlet property="buttonNext" destination="MEa-h0-07R" id="1TZ-j7-Kj0"/>
                         <outlet property="circleView" destination="jeZ-L2-Rsu" id="TlK-b8-VqW"/>
+                        <outlet property="setStepsButton" destination="Ioc-nT-hx7" id="no8-Rk-ZZA"/>
                         <outlet property="stepNumber" destination="hSp-4Q-fd5" id="bAt-f4-6sP"/>
                         <outlet property="textStep" destination="k1d-5o-q4V" id="9KL-xz-XwX"/>
                         <outlet property="viewButton" destination="YxG-K6-e9c" id="dkC-sO-kaT"/>
@@ -189,12 +209,6 @@
                                 <color key="textColor" red="0.2784313725" green="0.72941176470000002" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CZ-EU-7UQ">
-                                <rect key="frame" x="166" y="507" width="42" height="60"/>
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="60"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-Yy-Zph">
                                 <rect key="frame" x="162" y="389" width="50" height="46"/>
                                 <state key="normal" title="Concluído" image="botao_comecarTarefa"/>
@@ -209,11 +223,15 @@
                                     <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-FI-8B7">
+                                <rect key="frame" x="223" y="380" width="83" height="82"/>
+                                <state key="normal" title="startStep" image="botao_comecarTarefa"/>
+                                <connections>
+                                    <action selector="startStep:" destination="O4b-DK-hPY" eventType="touchUpInside" id="ygD-2H-qx6"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seta_tarefas" translatesAutoresizingMaskIntoConstraints="NO" id="SZ2-V2-nPY">
                                 <rect key="frame" x="165" y="467" width="43" height="37"/>
-                            </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fimDeMeta" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-lC-Xf1">
-                                <rect key="frame" x="34" y="61" width="306" height="546"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaI-Am-8nz">
                                 <rect key="frame" x="140" y="278" width="93" height="92"/>
@@ -251,6 +269,9 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fimDeMeta" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-lC-Xf1">
+                                <rect key="frame" x="34" y="61" width="306" height="546"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -259,13 +280,14 @@
                         <outlet property="backButton" destination="0hA-mw-Vhw" id="6Ex-hO-YDa"/>
                         <outlet property="backLabel" destination="OZY-mT-jQe" id="Ouf-cf-nZr"/>
                         <outlet property="backgroundPopup" destination="ahx-lC-Xf1" id="mbM-SG-Zcb"/>
-                        <outlet property="circleNumber" destination="0CZ-EU-7UQ" id="ph0-fk-l5S"/>
                         <outlet property="circleView" destination="5ov-Kr-YOu" id="4lu-Vh-5sS"/>
+                        <outlet property="endStep" destination="a1H-Yy-Zph" id="Z9j-wV-LbM"/>
                         <outlet property="grafButton" destination="KvY-Km-y9K" id="Ssu-vr-wgO"/>
                         <outlet property="grafLabel" destination="Nbp-MG-oHf" id="oK9-YC-kiI"/>
                         <outlet property="infoButton" destination="IaI-Am-8nz" id="j5X-wK-BWN"/>
                         <outlet property="infoLabel" destination="unE-3l-n0x" id="LTi-wF-n0U"/>
                         <outlet property="labelStep" destination="ycL-cC-Oy8" id="c5O-jK-48M"/>
+                        <outlet property="startStep" destination="QeX-FI-8B7" id="AtM-G1-6rU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhY-xQ-jHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,10 +382,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_3" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-lr-5Kd">
-                                <rect key="frame" x="31" y="569" width="57" height="67"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="relogio_2" translatesAutoresizingMaskIntoConstraints="NO" id="aXW-ki-c7S">
-                                <rect key="frame" x="214" y="565" width="61" height="75"/>
+                                <rect key="frame" x="43" y="578" width="40" height="49"/>
                             </imageView>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_2" translatesAutoresizingMaskIntoConstraints="NO" id="ErA-sK-ygK">
                                 <rect key="frame" x="152" y="342" width="72" height="73"/>
@@ -373,9 +392,9 @@
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show of ball, deu tudo certo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xc-Mv-cBl">
-                                <rect key="frame" x="31" y="131" width="313" height="53"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <color key="textColor" red="0.27843137254901962" green="0.72941176470588232" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="31" y="80" width="313" height="146"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="19"/>
+                                <color key="textColor" red="0.59215686274509804" green="0.79607843137254897" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lul-Xr-Ict">
@@ -395,6 +414,9 @@
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circulo_preto_teste" translatesAutoresizingMaskIntoConstraints="NO" id="06H-f1-1wa">
                                 <rect key="frame" x="-68" y="242" width="512" height="271"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="relogio_2" translatesAutoresizingMaskIntoConstraints="NO" id="aXW-ki-c7S">
+                                <rect key="frame" x="223" y="576" width="46" height="57"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -445,6 +467,7 @@
     <resources>
         <image name="botao_Tags" width="94" height="70"/>
         <image name="botao_comecarTarefa" width="400" height="363"/>
+        <image name="botao_novaMeta" width="600" height="196"/>
         <image name="botao_respirar" width="400" height="403"/>
         <image name="botao_setarProximaTarefa" width="92" height="80"/>
         <image name="circuloPassos" width="800" height="800"/>
@@ -463,4 +486,7 @@
         <image name="setinha" width="70" height="57"/>
         <image name="topo_02" width="800" height="800"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="VGn-O3-wNa"/>
+    </inferredMetricsTieBreakers>
 </document>
