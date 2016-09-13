@@ -7,6 +7,8 @@
 //
 
 #import "SetStepsViewController.h"
+#import "Step.h"
+#import "BD.h"
 
 @interface SetStepsViewController ()
 
@@ -29,13 +31,23 @@
 
 @implementation SetStepsViewController
 
-int direction;
-int shakes;
+int direction= 1;
+int shakes = 55;
 int number = 1;
+NSMutableArray *stepsNames;
+NSMutableArray *stepsTags;
+BD *database;
+NSUserDefaults *defaults;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //database
+    defaults = [NSUserDefaults standardUserDefaults];
+    database = [BD new];
+    stepsNames = [NSMutableArray array];
+    
     number = 1;
     
     //Pra descer o teclado
@@ -45,9 +57,25 @@ int number = 1;
     [self radiusView];
     
     //Sets para fazer o shake no textfild
-    direction = 1;
-    shakes = 55;
     [self shake:_textStep];
+}
+
+- (void)skipStep {
+    if (![_textStep.text  isEqual: @""]){
+        [stepsNames addObject:_textStep.text];
+        [self actionCircle];
+    }else{
+        [self shake:_textStep];
+        [self shake:_viewButton];
+        [self shake:_arrow];
+    }
+}
+
+- (void) addGoal {
+    NSString* goalName = @"placehoader goal";
+    NSString* goalID = [[NSUUID UUID] UUIDString];
+    [defaults setObject:goalID forKey:@"currentGoalID"];
+    [database createNewGoal:goalName withSteps:stepsNames tags:stepsTags andID:goalID];
 }
 
 - (void)radiusView {
@@ -81,13 +109,7 @@ int number = 1;
 
 
 - (IBAction)nextStep:(id)sender {
-    if (![_textStep.text  isEqual: @""]){
-        [self actionCircle];
-    }else{
-        [self shake:_textStep];
-        [self shake:_viewButton];
-        [self shake:_arrow];
-    }
+    [self skipStep];
 }
 
 - (void)actionCircle{
@@ -108,13 +130,7 @@ int number = 1;
 }
 
 - (IBAction)circleRigth:(id)sender {
-    if (![_textStep.text  isEqual: @""]){
-        [self actionCircle];
-    }else{
-        [self shake:_textStep];
-        [self shake:_viewButton];
-        [self shake:_arrow];
-    }
+    [self skipStep];
 }
 
 - (IBAction)circleLeft:(id)sender {
