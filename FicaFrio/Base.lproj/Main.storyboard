@@ -17,15 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fundoRespiracao01" translatesAutoresizingMaskIntoConstraints="NO" id="Li1-it-D1R">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWG-SJ-qoo">
-                                <rect key="frame" x="166" y="430" width="42" height="30"/>
+                                <rect key="frame" x="324" y="293" width="42" height="30"/>
                                 <state key="normal" title="Entrar"/>
                                 <connections>
                                     <segue destination="NTb-Zd-tsJ" kind="show" id="7N7-7x-x1a"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUn-zs-xcQ">
-                                <rect key="frame" x="146" y="510" width="82" height="34"/>
+                                <rect key="frame" x="106" y="145" width="82" height="34"/>
                                 <state key="normal" title="FeedBack"/>
                                 <connections>
                                     <segue destination="qOg-3a-aVT" kind="show" id="scD-ro-sTL"/>
@@ -53,7 +56,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.59850704669952393" blue="0.0040854103863239288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="bqY-bP-R3Y"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -81,17 +83,36 @@
                                 <rect key="frame" x="30" y="299" width="315" height="286"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="frameOrigin" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Digite sua meta" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k1d-5o-q4V">
-                                <rect key="frame" x="40" y="163" width="295" height="100"/>
-                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="frameOrigin" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Digite sua tarefa" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k1d-5o-q4V">
+                                <rect key="frame" x="48" y="159" width="278" height="100"/>
+                                <color key="backgroundColor" red="0.94509803921568625" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.73333333333333328" green="0.89411764705882346" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.55769230769230771" green="0.55769230769230771" blue="0.55769230769230771" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="setinha" translatesAutoresizingMaskIntoConstraints="NO" id="Ve7-Uh-vFY">
                                 <rect key="frame" x="167" y="289" width="41" height="31"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YxG-K6-e9c">
+                                <rect key="frame" x="48" y="253" width="278" height="38"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEa-h0-07R">
+                                        <rect key="frame" x="198" y="7" width="28" height="23"/>
+                                        <state key="normal" image="botao_setarProximaTarefa"/>
+                                        <connections>
+                                            <action selector="nextStep:" destination="NTb-Zd-tsJ" eventType="touchUpInside" id="BDd-Z3-TcC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArW-Zk-PXg">
+                                        <rect key="frame" x="58" y="7" width="28" height="23"/>
+                                        <state key="normal" image="botao_Tags"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81960784313725488" green="0.82745098039215681" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NOME DA META AQUI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA4-UE-o8P">
-                                <rect key="frame" x="71" y="96" width="233" height="21"/>
+                                <rect key="frame" x="71" y="96" width="233" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -102,19 +123,6 @@
                                 <color key="textColor" red="0.27843137254901962" green="0.72941176470588232" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YxG-K6-e9c">
-                                <rect key="frame" x="40" y="257" width="295" height="34"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEa-h0-07R">
-                                        <rect key="frame" x="206" y="2" width="39" height="30"/>
-                                        <state key="normal" title="NEXT"/>
-                                        <connections>
-                                            <action selector="nextStep:" destination="NTb-Zd-tsJ" eventType="touchUpInside" id="BDd-Z3-TcC"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.73333333333333328" green="0.73725490196078436" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSp-4Q-fd5">
                                 <rect key="frame" x="150" y="399" width="74" height="85"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="74"/>
@@ -167,13 +175,6 @@
                                 <rect key="frame" x="2" y="503" width="371" height="350"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-Yy-Zph">
-                                <rect key="frame" x="153" y="404" width="69" height="30"/>
-                                <state key="normal" title="Concluído"/>
-                                <connections>
-                                    <action selector="circleButton:" destination="O4b-DK-hPY" eventType="touchUpInside" id="tH2-jA-MgH"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-cC-Oy8">
                                 <rect key="frame" x="20" y="89" width="335" height="307"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -186,9 +187,16 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH2-1Z-rDA">
-                                <rect key="frame" x="159" y="617" width="57" height="30"/>
-                                <state key="normal" title="Respirar"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-Yy-Zph">
+                                <rect key="frame" x="162" y="389" width="50" height="46"/>
+                                <state key="normal" title="Concluído" image="botao_comecarTarefa"/>
+                                <connections>
+                                    <action selector="circleButton:" destination="O4b-DK-hPY" eventType="touchUpInside" id="tH2-jA-MgH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH2-1Z-rDA">
+                                <rect key="frame" x="162" y="598" width="49" height="49"/>
+                                <state key="normal" title="Respirar" image="botao_respirar"/>
                                 <connections>
                                     <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
                                 </connections>
@@ -232,6 +240,9 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seta_tarefas" translatesAutoresizingMaskIntoConstraints="NO" id="SZ2-V2-nPY">
+                                <rect key="frame" x="165" y="482" width="43" height="37"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -265,6 +276,11 @@
                     <view key="view" contentMode="scaleToFill" id="jPd-I5-wRI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fundoRespiracao01" translatesAutoresizingMaskIntoConstraints="NO" id="tu7-kC-kBw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.1058823529" green="0.054901960780000002" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="TS9-hd-8bG"/>
@@ -290,6 +306,9 @@
                                 <rect key="frame" x="7" y="200" width="361" height="256"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fundoRespiracao01" translatesAutoresizingMaskIntoConstraints="NO" id="df5-SM-EBg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -416,6 +435,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="botao_Tags" width="94" height="70"/>
+        <image name="botao_comecarTarefa" width="400" height="363"/>
+        <image name="botao_respirar" width="400" height="403"/>
+        <image name="botao_setarProximaTarefa" width="92" height="80"/>
         <image name="circuloPassos" width="543" height="543"/>
         <image name="circulo_preto_teste" width="800" height="800"/>
         <image name="coracao_2" width="200" height="175"/>
@@ -423,10 +446,12 @@
         <image name="direita_02" width="800" height="800"/>
         <image name="esquerda_02" width="800" height="800"/>
         <image name="fimDeMeta" width="800" height="1261"/>
+        <image name="fundoRespiracao01" width="750" height="1334"/>
         <image name="popupIcon1" width="250" height="193"/>
         <image name="popupIcon2" width="250" height="250"/>
         <image name="popupIcon3" width="250" height="323"/>
         <image name="relogio_2" width="200" height="175"/>
+        <image name="seta_tarefas" width="100" height="84"/>
         <image name="setinha" width="70" height="57"/>
         <image name="topo_02" width="800" height="800"/>
     </resources>
