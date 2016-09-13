@@ -10,16 +10,6 @@
 		9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; };
 		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09CF871D8817C30079E6FB /* FicaFrio.swift */; };
-		9F09CF991D8842720079E6FB /* SF-Compact-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CF901D8842720079E6FB /* SF-Compact-Display-Black.otf */; };
-		9F09CF9A1D8842720079E6FB /* SF-Compact-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CF911D8842720079E6FB /* SF-Compact-Display-Bold.otf */; };
-		9F09CF9B1D8842720079E6FB /* SF-Compact-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CF921D8842720079E6FB /* SF-Compact-Display-Heavy.otf */; };
-		9F09CF9C1D8842720079E6FB /* SF-Compact-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CF931D8842720079E6FB /* SF-Compact-Display-Light.otf */; };
-		9F09CF9D1D8842720079E6FB /* SF-Compact-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CF941D8842720079E6FB /* SF-Compact-Display-Medium.otf */; };
-		9F09CF9E1D8842720079E6FB /* SF-Compact-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CF951D8842720079E6FB /* SF-Compact-Display-Regular.otf */; };
-		9F09CF9F1D8842720079E6FB /* SF-Compact-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CF961D8842720079E6FB /* SF-Compact-Display-Semibold.otf */; };
-		9F09CFA01D8842720079E6FB /* SF-Compact-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CF971D8842720079E6FB /* SF-Compact-Display-Thin.otf */; };
-		9F09CFA11D8842720079E6FB /* SF-Compact-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CF981D8842720079E6FB /* SF-Compact-Display-Ultralight.otf */; };
-		9F09CFA61D8842950079E6FB /* SF-Compact-Text in Resources */ = {isa = PBXBuildFile; fileRef = 9F09CFA51D8842950079E6FB /* SF-Compact-Text */; };
 		AC93225B1D86C7DB000051B0 /* BD.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93225A1D86C7DB000051B0 /* BD.m */; };
 		AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322791D86EE15000051B0 /* Step+CoreDataProperties.m */; };
 		AC93227D1D86EE15000051B0 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93227B1D86EE15000051B0 /* Step.m */; };
@@ -374,16 +364,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F09CFA61D8842950079E6FB /* SF-Compact-Text in Resources */,
-				9F09CF991D8842720079E6FB /* SF-Compact-Display-Black.otf in Resources */,
-				9F09CF9A1D8842720079E6FB /* SF-Compact-Display-Bold.otf in Resources */,
-				9F09CF9B1D8842720079E6FB /* SF-Compact-Display-Heavy.otf in Resources */,
-				9F09CF9C1D8842720079E6FB /* SF-Compact-Display-Light.otf in Resources */,
-				9F09CF9D1D8842720079E6FB /* SF-Compact-Display-Medium.otf in Resources */,
-				9F09CF9E1D8842720079E6FB /* SF-Compact-Display-Regular.otf in Resources */,
-				9F09CF9F1D8842720079E6FB /* SF-Compact-Display-Semibold.otf in Resources */,
-				9F09CFA01D8842720079E6FB /* SF-Compact-Display-Thin.otf in Resources */,
-				9F09CFA11D8842720079E6FB /* SF-Compact-Display-Ultralight.otf in Resources */,
 				D4BBC14B1D7EF7BB0058615A /* LaunchScreen.storyboard in Resources */,
 				D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */,
 				D4E76D751D830FC1006F7203 /* respiracao.gif in Resources */,

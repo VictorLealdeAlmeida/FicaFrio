@@ -25,14 +25,15 @@
     _lineChartView.pinchZoomEnabled = YES;
     _lineChartView.drawGridBackgroundEnabled = YES;
     _lineChartView.descriptionTextColor = [UIColor whiteColor];
-    _lineChartView.gridBackgroundColor = [UIColor colorWithRed:187.0f/255.0f green:228.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
+    _lineChartView.gridBackgroundColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha: .0f];
     _lineChartView.noDataText = @"No data provided";
     _lineChartView.xAxis.drawGridLinesEnabled = NO;
     _lineChartView.leftAxis.drawGridLinesEnabled = NO;
     _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
-    
-
-    
+    _lineChartView.backgroundColor = [UIColor colorWithRed: 0/255.0f green: 0/255.0f blue: 0/255.0f alpha:.0f];
+    _lineChartView.xAxis.enabled = NO;
+    _lineChartView.leftAxis.enabled = NO;
+    _lineChartView.legend.enabled = NO;
     
     NSMutableArray *valor = [NSMutableArray array];
     NSArray *array = @[@2, @5, @7, @1, @4, @19, @21, @25, @30, @32, @37, @40];
@@ -58,6 +59,8 @@
         [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y:[valor[i] doubleValue]]];
         [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[valor2[i] doubleValue]]];
     }
+    [yVals1 addObject:[[ChartDataEntry alloc] initWithX:8  y:[valor[8] doubleValue]]];
+    [yVals2 addObject:[[ChartDataEntry alloc] initWithX:8 y:[valor2[8] doubleValue]]];
     LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithValues: yVals1 label:@"First Set"];
     LineChartDataSet *set2 = [[LineChartDataSet alloc] initWithValues: yVals2 label:@"Será que vai"];
     set1.axisDependency = AxisDependencyLeft;
@@ -71,11 +74,11 @@
     set1.circleRadius = 6.0; // the radius of the node circle
     set2.circleRadius = 6.0;
     set1.fillAlpha = 65 / 255.0;
-    set1.fillAlpha = 65 / 255.0;
-    set1.fillColor = [UIColor blueColor];
-    set2.fillColor = [UIColor yellowColor];
-    set1.highlightColor = [UIColor yellowColor];
-    set2.highlightColor = [UIColor redColor];
+    set2.fillAlpha = 65 / 255.0;
+    //set1.fillColor = [UIColor blueColor];
+    //set2.fillColor = [UIColor yellowColor];
+    set1.highlightColor = [[UIColor yellowColor] colorWithAlphaComponent:0.f];
+    set2.highlightColor = [[UIColor redColor] colorWithAlphaComponent:0.f];
     set1.drawCircleHoleEnabled = true;
     set2.drawCircleHoleEnabled = true;
     //set2.mode = LineChartModeCubicBezier;
