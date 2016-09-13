@@ -22,6 +22,5 @@
 @dynamic goalID;
 @dynamic goalName;
 @dynamic duration;
-@dynamic ongoing;
 
 @end

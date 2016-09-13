@@ -12,10 +12,10 @@
 @interface BD : NSObject
 
 - (void)createNewGoal:(NSString *)goalName withSteps:(NSMutableArray *)steps tags:(NSMutableArray *)tags andID:(NSString *)goalID;
-- (Step *)fetchOngoingStep;
-- (void)setStartDate:(NSDate *)startDate;
-- (void)setEndDate:(NSDate *)endDate;
-- (NSArray *)fetchStepsForGoalID:(NSString *)goalID;
+- (void)setStartDate:(NSDate *)startDate toStep:(Step *)ongoingStep;
+- (void)setEndDate:(NSDate *)endDate toStep:(Step *)ongoingStep;
+- (NSArray *)fetchStepsForGoalID: (NSString *)goalID;
+- (Step *)fetchStep:(NSInteger)stepNumber forGoalID:(NSString *)goalID ;
 - (NSArray *)fetchStepsWithTag:(NSString *)stepTag;
 
 @end
