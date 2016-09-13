@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *arrow;
 
 
-- (IBAction)circleTap:(id)sender;
 - (IBAction)nextStep:(id)sender;
 - (void)changeNumber;
 
@@ -75,15 +74,7 @@ int number = 1;
 
 
 
-- (IBAction)circleTap:(id)sender {
-    if (![_textStep.text  isEqual: @""]){
-        [self actionCircle];
-    }else{
-        [self shake:_textStep];
-        [self shake:_viewButton];
-        [self shake:_arrow];
-    }
-}
+
 
    // printf("%d",21331);
     //NSLog(@"%d",value);
