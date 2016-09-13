@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O4b-DK-hPY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rao-Rf-tPL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -202,6 +202,16 @@
                                     <action selector="circleButton:" destination="O4b-DK-hPY" eventType="touchUpInside" id="tH2-jA-MgH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH2-1Z-rDA">
+                                <rect key="frame" x="162" y="592" width="49" height="49"/>
+                                <state key="normal" title="Respirar" image="botao_respirar"/>
+                                <connections>
+                                    <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seta_tarefas" translatesAutoresizingMaskIntoConstraints="NO" id="SZ2-V2-nPY">
+                                <rect key="frame" x="165" y="467" width="43" height="37"/>
+                            </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fimDeMeta" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-lC-Xf1">
                                 <rect key="frame" x="34" y="61" width="306" height="546"/>
                             </imageView>
@@ -241,16 +251,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seta_tarefas" translatesAutoresizingMaskIntoConstraints="NO" id="SZ2-V2-nPY">
-                                <rect key="frame" x="165" y="467" width="43" height="37"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH2-1Z-rDA">
-                                <rect key="frame" x="162" y="592" width="49" height="49"/>
-                                <state key="normal" title="Respirar" image="botao_respirar"/>
-                                <connections>
-                                    <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -447,7 +447,7 @@
         <image name="botao_comecarTarefa" width="400" height="363"/>
         <image name="botao_respirar" width="400" height="403"/>
         <image name="botao_setarProximaTarefa" width="92" height="80"/>
-        <image name="circuloPassos" width="543" height="543"/>
+        <image name="circuloPassos" width="800" height="800"/>
         <image name="circulo_preto_teste" width="800" height="800"/>
         <image name="coracao_2" width="200" height="175"/>
         <image name="coracao_3" width="200" height="175"/>
