@@ -10,9 +10,39 @@ import Foundation
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
+    
+    
+    @IBOutlet weak var NewGoalView: UIView!
+    
+    
+    @IBAction func NewGoalButton(sender: UIButton) {
+        UIView.animateWithDuration(0.4, animations: {
+            self.NewGoalView.alpha = 1
+        })
+    }
+    
+    @IBAction func SetTask(sender: AnyObject) {
+        self.resignFirstResponder()
+    }
+    
+   
+    
+    // Configura view
+    func ShowNewGoalView() {
+        UIView.animateWithDuration(0.4, animations: {
+            self.NewGoalView.hidden = false
+            self.NewGoalView.alpha = 0.98
+        })
+    }
+    
+
     
     override func viewDidLoad() {
+        
+        NewGoalView.hidden = false
+        NewGoalView.alpha = 0
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }

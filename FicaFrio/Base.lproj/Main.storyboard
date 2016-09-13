@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="FicaFrio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="166" y="430" width="42" height="30"/>
                                 <state key="normal" title="Entrar"/>
                                 <connections>
-                                    <segue destination="Ksg-29-GAQ" kind="show" id="qwV-E3-3Nu"/>
+                                    <segue destination="NTb-Zd-tsJ" kind="show" id="7N7-7x-x1a"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUn-zs-xcQ">
@@ -31,43 +31,39 @@
                                     <segue destination="qOg-3a-aVT" kind="show" id="JYC-8Z-0Wr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
+                                <rect key="frame" x="135" y="347" width="104" height="37"/>
+                                <state key="normal" title="Nova Tarefa"/>
+                                <connections>
+                                    <action selector="NewGoalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6o8-NB-otu"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bf3-p5-Tgz">
+                                <rect key="frame" x="67" y="211" width="240" height="128"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JP0-pm-4PN">
+                                        <rect key="frame" x="32" y="58" width="189" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="SetTask:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="A27-rY-nbw"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.59850704669952393" blue="0.0040854103863239288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="bqY-bP-R3Y"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="NewGoalView" destination="bf3-p5-Tgz" id="L2b-s0-c14"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="186.5" y="652.5"/>
-        </scene>
-        <!--Set Steps View Controller-->
-        <scene sceneID="3tZ-zt-Q9v">
-            <objects>
-                <viewController id="Ksg-29-GAQ" customClass="SetStepsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Iyx-lS-fBh"/>
-                        <viewControllerLayoutGuide type="bottom" id="IWk-E4-Q5N"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PhJ-1a-gJq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8E-fB-6Zd">
-                                <rect key="frame" x="158" y="437" width="59" height="30"/>
-                                <state key="normal" title="Set Step"/>
-                                <connections>
-                                    <segue destination="NTb-Zd-tsJ" kind="show" id="LOH-Vt-JmB"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.59850704669952393" blue="0.0040854103863239288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6om-Hi-kCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="687.5" y="652.5"/>
+            <point key="canvasLocation" x="664.5" y="652.5"/>
         </scene>
         <!--Set Steps View Controller-->
         <scene sceneID="9sB-HH-TfL">
@@ -92,7 +88,7 @@
                                 <rect key="frame" x="40" y="163" width="295" height="100"/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="setinha" translatesAutoresizingMaskIntoConstraints="NO" id="Ve7-Uh-vFY">
                                 <rect key="frame" x="167" y="289" width="41" height="31"/>
@@ -122,17 +118,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.73333333333333328" green="0.73725490196078436" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqO-od-BJB">
-                                <rect key="frame" x="167" y="617" width="41" height="30"/>
-                                <state key="normal" title="Voltar"/>
-                                <connections>
-                                    <action selector="Back:" destination="NTb-Zd-tsJ" eventType="touchUpInside" id="Prd-Zm-wJs"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSp-4Q-fd5">
                                 <rect key="frame" x="150" y="399" width="74" height="85"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="74"/>
-                                <color key="textColor" red="0.08235294118" green="0.37647058820000001" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.68235294117647061" green="0.87058823529411766" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                         </subviews>
@@ -200,20 +189,59 @@
                                     <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
                                 </connections>
                             </button>
-                            <containerView hidden="YES" opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upB-Vu-sIy">
-                                <rect key="frame" x="30" y="95" width="315" height="493"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fimDeMeta" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-lC-Xf1">
+                                <rect key="frame" x="34" y="61" width="306" height="546"/>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaI-Am-8nz">
+                                <rect key="frame" x="140" y="278" width="93" height="92"/>
+                                <state key="normal" title="Infografo" image="popupIcon2"/>
                                 <connections>
-                                    <segue destination="VYy-DB-ktu" kind="embed" id="c11-6I-2f5"/>
+                                    <segue destination="IH0-gW-iFA" kind="show" id="u8p-fe-Ob6"/>
                                 </connections>
-                            </containerView>
+                            </button>
+                            <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hA-mw-Vhw">
+                                <rect key="frame" x="150" y="113" width="72" height="89"/>
+                                <state key="normal" title="Back" image="popupIcon3"/>
+                                <connections>
+                                    <action selector="newGoal:" destination="O4b-DK-hPY" eventType="touchUpInside" id="LQH-r7-Uo3"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvY-Km-y9K">
+                                <rect key="frame" x="134" y="446" width="105" height="74"/>
+                                <state key="normal" title="Geral" image="popupIcon1"/>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avaliação da Tarefa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unE-3l-n0x">
+                                <rect key="frame" x="77" y="388" width="221" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avaliação Geral" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbp-MG-oHf">
+                                <rect key="frame" x="77" y="533" width="221" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nova Meta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZY-mT-jQe">
+                                <rect key="frame" x="76" y="217" width="221" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="backButton" destination="0hA-mw-Vhw" id="6Ex-hO-YDa"/>
+                        <outlet property="backLabel" destination="OZY-mT-jQe" id="Ouf-cf-nZr"/>
+                        <outlet property="backgroundPopup" destination="ahx-lC-Xf1" id="mbM-SG-Zcb"/>
                         <outlet property="circleNumber" destination="0CZ-EU-7UQ" id="ph0-fk-l5S"/>
                         <outlet property="circleView" destination="5ov-Kr-YOu" id="4lu-Vh-5sS"/>
-                        <outlet property="containerPopup" destination="upB-Vu-sIy" id="Qzi-PN-zhK"/>
+                        <outlet property="grafButton" destination="KvY-Km-y9K" id="Ssu-vr-wgO"/>
+                        <outlet property="grafLabel" destination="Nbp-MG-oHf" id="oK9-YC-kiI"/>
+                        <outlet property="infoButton" destination="IaI-Am-8nz" id="j5X-wK-BWN"/>
+                        <outlet property="infoLabel" destination="unE-3l-n0x" id="LTi-wF-n0U"/>
                         <outlet property="labelStep" destination="ycL-cC-Oy8" id="c5O-jK-48M"/>
                     </connections>
                 </viewController>
@@ -268,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Jj-CS-0Kn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="186.5" y="1460.5"/>
+            <point key="canvasLocation" x="664.5" y="1460.5"/>
         </scene>
         <!--Goal Feedback View Controller-->
         <scene sceneID="M5M-Tg-APi">
@@ -306,15 +334,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="relogio_2" translatesAutoresizingMaskIntoConstraints="NO" id="aXW-ki-c7S">
                                 <rect key="frame" x="214" y="565" width="61" height="75"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="roda_01_2" translatesAutoresizingMaskIntoConstraints="NO" id="DpT-N9-hkt">
-                                <rect key="frame" x="76" y="208" width="224" height="159"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="roda_02_2" translatesAutoresizingMaskIntoConstraints="NO" id="Ydl-Db-pqk">
-                                <rect key="frame" x="192" y="314" width="127" height="191"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="roda_03_2" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-7c-Kla">
-                                <rect key="frame" x="53" y="315" width="131" height="190"/>
-                            </imageView>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_2" translatesAutoresizingMaskIntoConstraints="NO" id="ErA-sK-ygK">
                                 <rect key="frame" x="152" y="342" width="72" height="73"/>
                                 <gestureRecognizers/>
@@ -334,6 +353,18 @@
                                 <color key="textColor" red="0.27843137254901962" green="0.72941176470588232" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="esquerda_02" translatesAutoresizingMaskIntoConstraints="NO" id="9St-Zj-ern">
+                                <rect key="frame" x="-59" y="321" width="280" height="264"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="direita_02" translatesAutoresizingMaskIntoConstraints="NO" id="arX-L5-Bmz">
+                                <rect key="frame" x="155" y="319" width="280" height="264"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topo_02" translatesAutoresizingMaskIntoConstraints="NO" id="MVP-TA-h2h">
+                                <rect key="frame" x="48" y="144" width="280" height="264"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circulo_preto_teste" translatesAutoresizingMaskIntoConstraints="NO" id="06H-f1-1wa">
+                                <rect key="frame" x="-68" y="242" width="512" height="271"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -347,9 +378,9 @@
                         <outlet property="min" destination="Eot-b9-4eT" id="b5Z-vi-Nzs"/>
                         <outlet property="minImage" destination="aXW-ki-c7S" id="ZxT-dl-dbO"/>
                         <outlet property="minValue" destination="Eot-b9-4eT" id="XWE-dL-CY3"/>
-                        <outlet property="step1" destination="DpT-N9-hkt" id="8Ri-u9-70P"/>
-                        <outlet property="step2" destination="Ydl-Db-pqk" id="2qm-X4-Vsq"/>
-                        <outlet property="step3" destination="FgE-7c-Kla" id="u7S-R1-QTp"/>
+                        <outlet property="step1" destination="MVP-TA-h2h" id="4mW-tG-Usx"/>
+                        <outlet property="step2" destination="arX-L5-Bmz" id="Qyr-By-b4n"/>
+                        <outlet property="step3" destination="9St-Zj-ern" id="yq6-bC-OCq"/>
                         <outlet property="titleGoal" destination="1G3-IF-n1Y" id="s4u-qP-WTw"/>
                     </connections>
                 </viewController>
@@ -360,7 +391,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2249.5" y="1502.5"/>
+            <point key="canvasLocation" x="1839.5" y="1460.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PbC-fa-Z4f">
@@ -377,81 +408,22 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjo-rF-rqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-308.5" y="652.5"/>
-        </scene>
-        <!--Current Step View Controller-->
-        <scene sceneID="lnp-Rm-8oe">
-            <objects>
-                <viewController id="VYy-DB-ktu" customClass="CurrentStepViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7HN-Pw-RT9">
-                        <rect key="frame" x="0.0" y="0.0" width="315" height="493"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fimDeMeta" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-lC-Xf1">
-                                <rect key="frame" x="4" y="-24" width="306" height="546"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaI-Am-8nz">
-                                <rect key="frame" x="110" y="193" width="93" height="92"/>
-                                <state key="normal" title="Infografo" image="popupIcon2"/>
-                                <connections>
-                                    <segue destination="IH0-gW-iFA" kind="show" id="MdE-u0-Fhd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hA-mw-Vhw">
-                                <rect key="frame" x="120" y="28" width="72" height="89"/>
-                                <state key="normal" title="Back" image="popupIcon3"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvY-Km-y9K">
-                                <rect key="frame" x="104" y="361" width="105" height="74"/>
-                                <state key="normal" title="Geral" image="popupIcon1"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avaliação da Tarefa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unE-3l-n0x">
-                                <rect key="frame" x="47" y="303" width="221" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avaliação Geral" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbp-MG-oHf">
-                                <rect key="frame" x="47" y="448" width="221" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nova Meta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZY-mT-jQe">
-                                <rect key="frame" x="46" y="132" width="221" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="backButton" destination="0hA-mw-Vhw" id="Cri-Bs-ihV"/>
-                        <outlet property="backLabel" destination="OZY-mT-jQe" id="1PW-q7-lBY"/>
-                        <outlet property="backgroundPopup" destination="ahx-lC-Xf1" id="TLS-IN-c5E"/>
-                        <outlet property="grafButton" destination="KvY-Km-y9K" id="wob-IN-tUv"/>
-                        <outlet property="grafLabel" destination="Nbp-MG-oHf" id="HQV-Nd-3mR"/>
-                        <outlet property="infoButton" destination="IaI-Am-8nz" id="gyg-Bp-XFc"/>
-                        <outlet property="infoLabel" destination="unE-3l-n0x" id="0Nd-VE-oQ6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vVy-ST-hJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1702.5" y="1461"/>
+            <point key="canvasLocation" x="104.5" y="652.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="circuloPassos" width="543" height="543"/>
+        <image name="circulo_preto_teste" width="800" height="800"/>
         <image name="coracao_2" width="200" height="175"/>
         <image name="coracao_3" width="200" height="175"/>
+        <image name="direita_02" width="800" height="800"/>
+        <image name="esquerda_02" width="800" height="800"/>
         <image name="fimDeMeta" width="800" height="1261"/>
         <image name="popupIcon1" width="250" height="193"/>
         <image name="popupIcon2" width="250" height="250"/>
         <image name="popupIcon3" width="250" height="323"/>
         <image name="relogio_2" width="200" height="175"/>
-        <image name="roda_01_2" width="454" height="182"/>
-        <image name="roda_02_2" width="258" height="391"/>
-        <image name="roda_03_2" width="254" height="391"/>
         <image name="setinha" width="70" height="57"/>
+        <image name="topo_02" width="800" height="800"/>
     </resources>
 </document>
