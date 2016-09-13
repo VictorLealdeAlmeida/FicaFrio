@@ -15,6 +15,9 @@
 		AC93227D1D86EE15000051B0 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93227B1D86EE15000051B0 /* Step.m */; };
 		AC9322881D86F206000051B0 /* Goal+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */; };
 		AC9322891D86F206000051B0 /* Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322871D86F206000051B0 /* Goal.m */; };
+		D41384731D88489F00281B48 /* SF-Compact-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384701D88489F00281B48 /* SF-Compact-Display-Thin.otf */; };
+		D41384741D88489F00281B48 /* SF-Compact-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384711D88489F00281B48 /* SF-Compact-Display-Light.otf */; };
+		D41384751D88489F00281B48 /* SF-Compact-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384721D88489F00281B48 /* SF-Compact-Display-Regular.otf */; };
 		D41A6BAB1D871BB30074FA39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41A6BA91D871BB30074FA39 /* Main.storyboard */; };
 		D4BBC13A1D7EF7BB0058615A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1391D7EF7BB0058615A /* main.m */; };
 		D4BBC13D1D7EF7BB0058615A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */; };
@@ -98,6 +101,9 @@
 		AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Goal+CoreDataProperties.m"; path = "../Goal+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AC9322861D86F206000051B0 /* Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Goal.h; path = ../Goal.h; sourceTree = "<group>"; };
 		AC9322871D86F206000051B0 /* Goal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Goal.m; path = ../Goal.m; sourceTree = "<group>"; };
+		D41384701D88489F00281B48 /* SF-Compact-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Thin.otf"; sourceTree = "<group>"; };
+		D41384711D88489F00281B48 /* SF-Compact-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Light.otf"; sourceTree = "<group>"; };
+		D41384721D88489F00281B48 /* SF-Compact-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Regular.otf"; sourceTree = "<group>"; };
 		D41A6BAA1D871BB30074FA39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4BBC1351D7EF7BB0058615A /* FicaFrio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FicaFrio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BBC1391D7EF7BB0058615A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -168,6 +174,9 @@
 		D4BBC12C1D7EF7BA0058615A = {
 			isa = PBXGroup;
 			children = (
+				D41384701D88489F00281B48 /* SF-Compact-Display-Thin.otf */,
+				D41384711D88489F00281B48 /* SF-Compact-Display-Light.otf */,
+				D41384721D88489F00281B48 /* SF-Compact-Display-Regular.otf */,
 				9F09CF731D8817670079E6FB /* Charts.xcodeproj */,
 				D4BBC1371D7EF7BB0058615A /* FicaFrio */,
 				D4BBC1361D7EF7BB0058615A /* Products */,
@@ -280,7 +289,7 @@
 				TargetAttributes = {
 					D4BBC1341D7EF7BB0058615A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = A975LQD622;
+						DevelopmentTeam = AXFHUW5386;
 					};
 				};
 			};
@@ -344,6 +353,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41384731D88489F00281B48 /* SF-Compact-Display-Thin.otf in Resources */,
+				D41384741D88489F00281B48 /* SF-Compact-Display-Light.otf in Resources */,
+				D41384751D88489F00281B48 /* SF-Compact-Display-Regular.otf in Resources */,
 				D4BBC14B1D7EF7BB0058615A /* LaunchScreen.storyboard in Resources */,
 				D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */,
 				D4E76D751D830FC1006F7203 /* respiracao.gif in Resources */,
