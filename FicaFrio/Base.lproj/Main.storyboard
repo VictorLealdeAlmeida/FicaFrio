@@ -70,6 +70,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgG-in-JaA">
+                                <rect key="frame" x="284" y="617" width="37" height="30"/>
+                                <state key="normal" title="Relax"/>
+                                <connections>
+                                    <segue destination="whk-Og-WXW" kind="show" id="LPp-dW-zOq"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="bqY-bP-R3Y"/>
@@ -472,4 +479,7 @@
         <image name="setinha" width="70" height="57"/>
         <image name="topo_02" width="800" height="800"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LPp-dW-zOq"/>
+    </inferredMetricsTieBreakers>
 </document>
