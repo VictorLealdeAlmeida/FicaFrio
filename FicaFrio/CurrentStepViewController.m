@@ -21,8 +21,10 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
-@property (weak, nonatomic) IBOutlet UILabel *circleNumber;
 @property (weak, nonatomic) IBOutlet UILabel *labelStep;
+@property (weak, nonatomic) IBOutlet UIButton *startStep;
+@property (weak, nonatomic) IBOutlet UIButton *endStep;
+
 
 //Popup
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundPopup;
@@ -33,10 +35,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *grafLabel;
 
+
 //Actions popup
 - (IBAction)circleButton:(id)sender;
 //- (void) changeNumber;
 - (IBAction)newGoal:(id)sender;
+- (IBAction)startStep:(id)sender;
+
 
 @end
 
@@ -45,6 +50,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _startStep.hidden = false;
+    _endStep.hidden = true;
     
     //numberStep = 1;
     
@@ -71,26 +78,17 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (IBAction)circleButton:(id)sender {
-    [self endStep];
-}
-
 // When start button is clicked
-- (void)startStep {
-    // Change button image to "stop" image
+- (IBAction)startStep:(id)sender {
+    _startStep.hidden = true;
+    _endStep.hidden = false;
     
     // Store startDate
     [database setStartDate:[NSDate date] toStep:currentStep];
 }
 
-- (void)updateStep {
-    NSLog(@"entered updateStep");
-    currentStep = [database fetchStep:(stepNumber-1) forGoalID:goalID];
-    _labelStep.text = currentStep.name;
-    _circleNumber.text = [NSString stringWithFormat: @"%ld", (long)stepNumber];
-}
-
-- (void)endStep {
+// endStep
+- (IBAction)circleButton:(id)sender {
     // Store endDate
     [database setEndDate:[NSDate date] toStep:currentStep];
     // Show next step - store number and fetch next step
@@ -106,6 +104,13 @@
     else {
         [self showPopup];
     }
+}
+
+- (void)updateStep {
+    NSLog(@"entered updateStep");
+    currentStep = [database fetchStep:(stepNumber-1) forGoalID:goalID];
+    _labelStep.text = currentStep.name;
+    //_circleNumber.text = [NSString stringWithFormat: @"%ld", (long)stepNumber];
 }
 
 - (void) showPopup{

@@ -26,14 +26,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonNext;
 @property (weak, nonatomic) IBOutlet UIView *viewButton;
 @property (weak, nonatomic) IBOutlet UIImageView *arrow;
+@property (weak, nonatomic) IBOutlet UIButton *setStepsButton;
 
 
 - (IBAction)nextStep:(id)sender;
 
 - (void)rotateCircleToRight;
 - (void)rotateCircleToLeft;
-- (IBAction)circleRigth:(id)sender;
+- (IBAction)circleRight:(id)sender;
 - (IBAction)circleLeft:(id)sender;
+- (IBAction)setSteps:(id)sender;
 
 @end
 
@@ -42,7 +44,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    _setStepsButton.hidden = true;
+    
     // Database
     defaults = [NSUserDefaults standardUserDefaults];
     database = [BD new];
@@ -88,7 +91,7 @@
         NSLog(@"all steps are set");
         [self addGoal];
         NSLog(@"setSteps: %@", [defaults stringForKey:@"currentGoalID"]);
-        [self performSegueWithIdentifier:@"SetToCurrent" sender:nil];
+        _setStepsButton.hidden = false;
     }
 }
 
@@ -111,7 +114,7 @@
     }
 }
 
-- (IBAction)circleRigth:(id)sender {
+- (IBAction)circleRight:(id)sender {
     [self.view endEditing:YES]; // Hide keyboard
     [self rotateCircleToRight];
 }
@@ -119,6 +122,10 @@
 - (IBAction)circleLeft:(id)sender {
     [self.view endEditing:YES]; // Hide keyboard
     [self rotateCircleToLeft];
+}
+
+- (IBAction)setSteps:(id)sender {
+    [self performSegueWithIdentifier:@"SetToCurrent" sender:nil];
 }
 
 - (void)rotateCircleToRight {
