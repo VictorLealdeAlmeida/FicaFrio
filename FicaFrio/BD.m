@@ -20,14 +20,13 @@
 
 @implementation BD
 
-- (void)createNewGoal:(NSString *)goalName withSteps:(NSMutableArray *)steps andTags:(NSMutableArray *)tags {
+- (void)createNewGoal:(NSString *)goalName withSteps:(NSMutableArray *)steps tags:(NSMutableArray *)tags andID:(NSString *)goalID {
     _appDelegate = [[UIApplication sharedApplication] delegate];
     _managedContext = [_appDelegate managedObjectContext];
     
     Goal *newGoal = (Goal *)[NSEntityDescription insertNewObjectForEntityForName:@"Goal" inManagedObjectContext:_managedContext];
     
     newGoal.name = goalName;
-    NSString *goalID = [[NSUUID UUID] UUIDString];
     newGoal.goalID = goalID;
     
     for (int i = 0; i < steps.count; i++){

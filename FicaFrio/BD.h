@@ -11,7 +11,7 @@
 
 @interface BD : NSObject
 
-- (void)createNewGoal:(NSString *)goalName withSteps:(NSMutableArray *)steps andTags:(NSMutableArray *)tags;
+- (void)createNewGoal:(NSString *)goalName withSteps:(NSMutableArray *)steps tags:(NSMutableArray *)tags andID:(NSString *)goalID;
 - (Step *)fetchOngoingStep;
 - (void)setStartDate:(NSDate *)startDate;
 - (void)setEndDate:(NSDate *)endDate;
