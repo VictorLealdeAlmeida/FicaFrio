@@ -53,8 +53,6 @@
     _startStep.hidden = false;
     _endStep.hidden = true;
     
-    //numberStep = 1;
-    
     // Database
     defaults = [NSUserDefaults standardUserDefaults];
     database = [BD new];
@@ -64,9 +62,6 @@
     stepNumber = [defaults integerForKey:@"currentStepNumber"];
     NSLog(@"currentStep: %@", goalID);
     [self updateStep];
-    
-//    NSArray *steps;
-//    steps = [NSArray arrayWithObjects: @") contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos", @"Because we used the NSArray class in the above example the contents of the array object cannot be changed subsequent to initialization.", @"The objects contained in an array are given index positions beginning at position zero. Each element may be accessed by passing the required index position through as an argument to the NSArray objectAtIndex", @"Yellow", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +90,8 @@
     // If there are steps still
     if (stepNumber < 3){
         stepNumber++;
+        _startStep.hidden = false;
+        _endStep.hidden = true;
         [self.circleView rotation: 1.0 option:0];
         [self updateStep];
         [defaults setInteger:stepNumber forKey:@"currentStepNumber"];
@@ -110,7 +107,6 @@
     NSLog(@"entered updateStep");
     currentStep = [database fetchStep:(stepNumber-1) forGoalID:goalID];
     _labelStep.text = currentStep.name;
-    //_circleNumber.text = [NSString stringWithFormat: @"%ld", (long)stepNumber];
 }
 
 - (void) showPopup{

@@ -89,8 +89,6 @@
     // If all steps are set, show button to complete
     if (![stepsNames containsObject:@""]) {
         NSLog(@"all steps are set");
-        [self addGoal];
-        NSLog(@"setSteps: %@", [defaults stringForKey:@"currentGoalID"]);
         _setStepsButton.hidden = false;
     }
 }
@@ -125,6 +123,7 @@
 }
 
 - (IBAction)setSteps:(id)sender {
+    [self addGoal];
     [self performSegueWithIdentifier:@"SetToCurrent" sender:nil];
 }
 

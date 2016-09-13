@@ -48,22 +48,6 @@
     }
 }
 
-//- (Step *)fetchOngoingStep {
-//    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Step"];
-//    [fetchRequest setValue:[NSNumber numberWithBool:YES] forKey:@"ongoing"];
-//    
-//    NSError *error;
-//    NSArray *stepResults = [_managedContext executeFetchRequest:fetchRequest error:&error];
-//    if (!stepResults) {
-//        NSLog(@"Error fetching Step objects: %@\n%@", [error localizedDescription], [error userInfo]);
-//        abort();
-//        return nil;
-//    }
-//    else {
-//        return (Step*) stepResults[0];
-//    }
-//}
-
 - (void)setStartDate:(NSDate *)startDate toStep:(Step *)ongoingStep {
     if (ongoingStep != nil) {
         ongoingStep.startDate = startDate;
@@ -79,9 +63,11 @@
 - (void)setEndDate:(NSDate *)endDate toStep:(Step *)ongoingStep {
     if (ongoingStep != nil) {
         ongoingStep.endDate = endDate;
+        // Get duration in seconds
         NSTimeInterval intervalDuration = [endDate timeIntervalSinceDate: ongoingStep.startDate];
         ongoingStep.duration = [NSNumber numberWithDouble:intervalDuration];
         
+        NSLog(@"%@", ongoingStep);
         // Salvar endDate e duration no BD
         NSError *error;
         if (![_managedContext save:&error]) {
