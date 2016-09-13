@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; };
+		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09CF871D8817C30079E6FB /* FicaFrio.swift */; };
 		AC93225B1D86C7DB000051B0 /* BD.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93225A1D86C7DB000051B0 /* BD.m */; };
 		AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322791D86EE15000051B0 /* Step+CoreDataProperties.m */; };
 		AC93227D1D86EE15000051B0 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93227B1D86EE15000051B0 /* Step.m */; };
@@ -30,7 +33,61 @@
 		D4E76D771D8310B0006F7203 /* GIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E76D761D8310B0006F7203 /* GIFExtension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9F09CF7A1D8817670079E6FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F09CF731D8817670079E6FB /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		9F09CF7C1D8817670079E6FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F09CF731D8817670079E6FB /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		9F09CF7E1D8817670079E6FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F09CF731D8817670079E6FB /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		9F09CF801D8817670079E6FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F09CF731D8817670079E6FB /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		9F09CF841D8817A80079E6FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F09CF731D8817670079E6FB /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9F09CF861D8817A80079E6FB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		9F09CF731D8817670079E6FB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ChartsFramework/Charts.xcodeproj; sourceTree = "<group>"; };
+		9F09CF871D8817C30079E6FB /* FicaFrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FicaFrio.swift; sourceTree = SOURCE_ROOT; };
 		AC9322591D86C7DB000051B0 /* BD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BD.h; sourceTree = "<group>"; };
 		AC93225A1D86C7DB000051B0 /* BD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BD.m; sourceTree = "<group>"; };
 		AC9322781D86EE15000051B0 /* Step+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Step+CoreDataProperties.h"; path = "../Step+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -73,12 +130,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F09CF741D8817670079E6FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F09CF7B1D8817670079E6FB /* Charts.framework */,
+				9F09CF7D1D8817670079E6FB /* Charts.framework */,
+				9F09CF7F1D8817670079E6FB /* Charts.framework */,
+				9F09CF811D8817670079E6FB /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AC93226E1D86D1DE000051B0 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +168,7 @@
 		D4BBC12C1D7EF7BA0058615A = {
 			isa = PBXGroup;
 			children = (
+				9F09CF731D8817670079E6FB /* Charts.xcodeproj */,
 				D4BBC1371D7EF7BB0058615A /* FicaFrio */,
 				D4BBC1361D7EF7BB0058615A /* Products */,
 				D4BBC1621D7F0A6C0058615A /* FicaFrio-Bridging-Header.h */,
@@ -138,6 +208,7 @@
 		D4BBC1381D7EF7BB0058615A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9F09CF871D8817C30079E6FB /* FicaFrio.swift */,
 				D4BBC1391D7EF7BB0058615A /* main.m */,
 			);
 			name = "Supporting Files";
@@ -186,10 +257,12 @@
 				D4BBC1311D7EF7BB0058615A /* Sources */,
 				D4BBC1321D7EF7BB0058615A /* Frameworks */,
 				D4BBC1331D7EF7BB0058615A /* Resources */,
+				9F09CF861D8817A80079E6FB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9F09CF851D8817A80079E6FB /* PBXTargetDependency */,
 			);
 			name = FicaFrio;
 			productName = FicaFrio;
@@ -222,12 +295,49 @@
 			mainGroup = D4BBC12C1D7EF7BA0058615A;
 			productRefGroup = D4BBC1361D7EF7BB0058615A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9F09CF741D8817670079E6FB /* Products */;
+					ProjectRef = 9F09CF731D8817670079E6FB /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D4BBC1341D7EF7BB0058615A /* FicaFrio */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9F09CF7B1D8817670079E6FB /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 9F09CF7A1D8817670079E6FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9F09CF7D1D8817670079E6FB /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 9F09CF7C1D8817670079E6FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9F09CF7F1D8817670079E6FB /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 9F09CF7E1D8817670079E6FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9F09CF811D8817670079E6FB /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 9F09CF801D8817670079E6FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D4BBC1331D7EF7BB0058615A /* Resources */ = {
@@ -258,6 +368,7 @@
 				D4BBC16D1D7F0DB80058615A /* SetGoalViewController.swift in Sources */,
 				AC9322891D86F206000051B0 /* Goal.m in Sources */,
 				D4BBC15B1D7F02AC0058615A /* CurrentStepViewController.m in Sources */,
+				9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */,
 				D4BBC16F1D7F0DC30058615A /* HomeViewController.swift in Sources */,
 				D4BBC1A21D81B12E0058615A /* Animation.m in Sources */,
 				AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */,
@@ -269,6 +380,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9F09CF851D8817A80079E6FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = 9F09CF841D8817A80079E6FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D41A6BA91D871BB30074FA39 /* Main.storyboard */ = {
@@ -381,9 +500,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = FicaFrio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio;
+				PRODUCT_MODULE_NAME = FicaFrio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FicaFrio-Bridging-Header.h";
@@ -399,9 +521,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = FicaFrio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio;
+				PRODUCT_MODULE_NAME = FicaFrio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FicaFrio-Bridging-Header.h";
