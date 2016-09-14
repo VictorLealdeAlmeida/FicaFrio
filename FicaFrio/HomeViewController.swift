@@ -39,7 +39,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
-
     
     override func viewDidLoad() {
     
@@ -50,7 +49,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         TaskText.delegate = self;
         TaskText.clearsOnBeginEditing = true
         
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+     // Configura a logo
+        let logoGif = UIImage.gifImageWithName("logoteste")
+        let imageView = UIImageView(image: logoGif)
+        imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3, height: imageView.frame.size.height/3)
+        view.addSubview(imageView)
+        
     }
 
     override func didReceiveMemoryWarning() {
