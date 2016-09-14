@@ -206,4 +206,26 @@
     _viewButton.layer.mask = maskLayer;
 }
 
+// Escolha de tags
+- (void) showPopup{
+    _backgroundPopup.hidden = false;
+    _backButton.hidden = false;
+    _infoButton.hidden = false;
+    _grafButton.hidden = false;
+    _backLabel.hidden = false;
+    _infoLabel.hidden = false;
+    _grafLabel.hidden = false;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.7];
+    [_backgroundPopup setAlpha:0.95];
+    [_backButton setAlpha:0.95];
+    [_infoButton setAlpha:0.95];
+    [_grafButton setAlpha:0.95];
+    [_backLabel setAlpha:0.95];
+    [_infoLabel setAlpha:0.95];
+    [_grafLabel setAlpha:0.95];
+    [UIView commitAnimations];
+}
+
 @end
