@@ -85,6 +85,18 @@
     [super didReceiveMemoryWarning];
 }
 
+//Funcao que limita o numero de caracteres no textfield
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // Prevent crashing undo bug – see note below.
+    if(range.length + range.location > textField.text.length)
+    {
+        return NO;
+    }
+    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return newLength <= 140;
+}
+
 - (void) addGoal {
     NSString* goalName = @"placeholder goal";
     NSString* goalID = [[NSUUID UUID] UUIDString];

@@ -54,7 +54,7 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
     [_step3 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.5 nextImege:nil];
 
     //Chamada de func que monta o grafico
-    [self selectGraf:3 value2:2 value3:1];
+    [self selectGraf:1 value2:4 value3:3];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,24 +135,24 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
 
         }
     }else if((valueTwo > valueOne) && (valueTwo > valueThree)){
-        [_step2 setImage:[UIImage imageNamed:@"esquerda_01"]];
+        [_step3 setImage:[UIImage imageNamed:@"esquerda_01"]];
         if(valueOne > valueThree){
             [_step1 setImage:[UIImage imageNamed:@"topo_02"]];
-            [_step3 setImage:[UIImage imageNamed:@"direita_03"]];
+            [_step2 setImage:[UIImage imageNamed:@"direita_03"]];
             
         }else{
             [_step1 setImage:[UIImage imageNamed:@"topo_03"]];
-            [_step3 setImage:[UIImage imageNamed:@"direita_02"]];
+            [_step2 setImage:[UIImage imageNamed:@"direita_02"]];
         }
-    }else if((valueTwo > valueOne) && (valueTwo > valueThree)){
-        [_step3 setImage:[UIImage imageNamed:@"direita_01"]];
+    }else if((valueThree > valueOne) && (valueThree > valueTwo)){
+        [_step2 setImage:[UIImage imageNamed:@"direita_01"]];
         if(valueOne > valueTwo){
             [_step1 setImage:[UIImage imageNamed:@"topo_02"]];
-            [_step2 setImage:[UIImage imageNamed:@"esquerda_03"]];
+            [_step3 setImage:[UIImage imageNamed:@"esquerda_03"]];
             
         }else{
             [_step1 setImage:[UIImage imageNamed:@"topo_03"]];
-            [_step2 setImage:[UIImage imageNamed:@"esquerda_02"]];
+            [_step3 setImage:[UIImage imageNamed:@"esquerda_02"]];
         }
     }
 }
