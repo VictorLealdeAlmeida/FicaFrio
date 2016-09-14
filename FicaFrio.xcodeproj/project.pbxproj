@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E6D29B51D89A070008734E0 /* logoteste.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E6D29B41D89A070008734E0 /* logoteste.gif */; };
 		9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; };
 		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09CF871D8817C30079E6FB /* FicaFrio.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E6D29B41D89A070008734E0 /* logoteste.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logoteste.gif; sourceTree = "<group>"; };
 		9F09CF731D8817670079E6FB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ChartsFramework/Charts.xcodeproj; sourceTree = "<group>"; };
 		9F09CF871D8817C30079E6FB /* FicaFrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FicaFrio.swift; sourceTree = SOURCE_ROOT; };
 		AC9322591D86C7DB000051B0 /* BD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BD.h; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				D4BBC16E1D7F0DC30058615A /* HomeViewController.swift */,
+				1E6D29B41D89A070008734E0 /* logoteste.gif */,
 				D4BBC1651D7F0AC50058615A /* SetStepsViewController.h */,
 				D4BBC1661D7F0AC50058615A /* SetStepsViewController.m */,
 				D4BBC16C1D7F0DB80058615A /* SetGoalViewController.swift */,
@@ -284,12 +287,12 @@
 		D4BBC12D1D7EF7BB0058615A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = PokeGroup;
 				TargetAttributes = {
 					D4BBC1341D7EF7BB0058615A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = AXFHUW5386;
+						DevelopmentTeam = A975LQD622;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -361,6 +364,7 @@
 				D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */,
 				D4E76D751D830FC1006F7203 /* respiracao.gif in Resources */,
 				D41A6BAB1D871BB30074FA39 /* Main.storyboard in Resources */,
+				1E6D29B51D89A070008734E0 /* logoteste.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,8 +440,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -481,8 +487,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -501,6 +509,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -509,12 +518,13 @@
 		D4BBC1501D7EF7BB0058615A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = A975LQD622;
 				INFOPLIST_FILE = FicaFrio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio;
@@ -531,12 +541,13 @@
 		D4BBC1511D7EF7BB0058615A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = A975LQD622;
 				INFOPLIST_FILE = FicaFrio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio;
