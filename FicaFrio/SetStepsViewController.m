@@ -28,14 +28,22 @@
 @property (weak, nonatomic) IBOutlet UIImageView *arrow;
 @property (weak, nonatomic) IBOutlet UIButton *setStepsButton;
 
+@property (weak, nonatomic) IBOutlet UIImageView *tagPopup;
+@property (weak, nonatomic) IBOutlet UILabel *pickTagLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagOne;
+@property (weak, nonatomic) IBOutlet UILabel *tagTwo;
+@property (weak, nonatomic) IBOutlet UILabel *tagThree;
+@property (weak, nonatomic) IBOutlet UILabel *tagFour;
+@property (weak, nonatomic) IBOutlet UILabel *tagFive;
+
 
 - (IBAction)nextStep:(id)sender;
-
 - (void)rotateCircleToRight;
 - (void)rotateCircleToLeft;
 - (IBAction)circleRight:(id)sender;
 - (IBAction)circleLeft:(id)sender;
 - (IBAction)setSteps:(id)sender;
+- (IBAction)pickTag:(id)sender;
 
 @end
 
@@ -127,6 +135,10 @@
     [self performSegueWithIdentifier:@"SetToCurrent" sender:nil];
 }
 
+- (IBAction)pickTag:(id)sender {
+    [self showTagPopup];
+}
+
 - (void)rotateCircleToRight {
     [self incrementNumber];
     [self updateStepText];
@@ -207,24 +219,24 @@
 }
 
 // Escolha de tags
-- (void) showPopup{
-    _backgroundPopup.hidden = false;
-    _backButton.hidden = false;
-    _infoButton.hidden = false;
-    _grafButton.hidden = false;
-    _backLabel.hidden = false;
-    _infoLabel.hidden = false;
-    _grafLabel.hidden = false;
+- (void) showTagPopup{
+    _tagPopup.hidden = false;
+    _pickTagLabel.hidden = false;
+    _tagOne.hidden = false;
+    _tagTwo.hidden = false;
+    _tagThree.hidden = false;
+    _tagFour.hidden = false;
+    _tagFive.hidden = false;
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
-    [_backgroundPopup setAlpha:0.95];
-    [_backButton setAlpha:0.95];
-    [_infoButton setAlpha:0.95];
-    [_grafButton setAlpha:0.95];
-    [_backLabel setAlpha:0.95];
-    [_infoLabel setAlpha:0.95];
-    [_grafLabel setAlpha:0.95];
+    [_tagPopup setAlpha:0.95];
+    [_pickTagLabel setAlpha:0.95];
+    [_tagOne setAlpha:0.95];
+    [_tagTwo setAlpha:0.95];
+    [_tagThree setAlpha:0.95];
+    [_tagFour setAlpha:0.95];
+    [_tagFive setAlpha:0.95];
     [UIView commitAnimations];
 }
 
