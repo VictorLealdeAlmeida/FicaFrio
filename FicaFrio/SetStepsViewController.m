@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewButton; // ? shakes
 @property (weak, nonatomic) IBOutlet UIImageView *arrow; // ? shakes
 @property (weak, nonatomic) IBOutlet UIButton *setStepsButton; // setAllStepsButton ou confirmStepsButton
+@property (weak, nonatomic) IBOutlet UIView *darkView;
 
 // Tag-related outlets
 @property (weak, nonatomic) IBOutlet UIImageView *tagPopup; // tagPopupView
@@ -50,6 +51,7 @@
 - (IBAction)setTagThree:(UIButton *)sender;
 - (IBAction)setTagFour:(UIButton *)sender;
 - (IBAction)setTagFive:(UIButton *)sender;
+- (IBAction)closeViewTag:(id)sender;
 
 
 @end
@@ -179,6 +181,11 @@
     tagNumber = 5;
     [self closeTagPopup];
 }
+
+- (IBAction)closeViewTag:(id)sender {
+    tagNumber = 5;
+    [self closeTagPopup];
+}
 // ----------------------------------------------------------------
 
 // Rotation-related -----------------------------------------------
@@ -292,6 +299,8 @@
 // Choosing tags -----------------------------------------------------
 - (void) showTagPopup{
     // Show all the popup elements
+    
+    _darkView.hidden = false;
     _tagPopup.hidden = false;
     _pickTagLabel.hidden = false;
     _tagOneButton.hidden = false;
@@ -302,6 +311,7 @@
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
+    [_darkView setAlpha:0.55];
     [_tagPopup setAlpha:0.95];
     [_pickTagLabel setAlpha:0.95];
     [_tagOneButton setAlpha:0.95];
@@ -319,6 +329,7 @@
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
+    [_darkView setAlpha:0.0];
     [_tagPopup setAlpha:0.0];
     [_pickTagLabel setAlpha:0.0];
     [_tagOneButton setAlpha:0.0];
@@ -328,7 +339,21 @@
     [_tagFiveButton setAlpha:0.0];
     [UIView commitAnimations];
     
+    //Timer pra acontecer a animacao antes do hidden
+    [NSTimer scheduledTimerWithTimeInterval:0.7
+                                     target:self
+                                   selector:@selector(closeTagPopupHidden)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+
+    
+    [self checkIfCanGoToNextStep];
+}
+
+- (void) closeTagPopupHidden{
     // Hide all the popup elements
+    _darkView.hidden = true;
     _tagPopup.hidden = true;
     _pickTagLabel.hidden = true;
     _tagOneButton.hidden = true;
@@ -336,8 +361,6 @@
     _tagThreeButton.hidden = true;
     _tagFourButton.hidden = true;
     _tagFiveButton.hidden = true;
-    
-    [self checkIfCanGoToNextStep];
 }
 // --------------------------------------------------------------------
 
