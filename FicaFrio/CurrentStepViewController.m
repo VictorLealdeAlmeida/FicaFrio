@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *backLabel;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *grafLabel;
+@property (weak, nonatomic) IBOutlet UIView *darkView;
 
 
 //Actions popup
@@ -111,6 +112,7 @@
 }
 
 - (void) showPopup{
+    _darkView.hidden = false;
     _backgroundPopup.hidden = false;
     _backButton.hidden = false;
     _infoButton.hidden = false;
@@ -121,6 +123,7 @@
 
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
+    [_darkView setAlpha:0.55];
     [_backgroundPopup setAlpha:0.95];
     [_backButton setAlpha:0.95];
     [_infoButton setAlpha:0.95];
