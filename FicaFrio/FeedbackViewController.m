@@ -49,17 +49,22 @@
     _lineChartView.leftAxis.enabled = NO;
     _lineChartView.legend.enabled = NO;
     
+    //BalloonMarker
+    //BalloonMarker
+    BalloonMarker *maker = [[BalloonMarker alloc] initWithColor: [UIColor colorWithRed: 94/255.0f green: 170/255.0f blue: 170/255.0f alpha: 0.4f] font: [UIFont systemFontOfSize:12.0]
+                                                      textColor: UIColor.whiteColor insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
+    maker.chartView = _lineChartView;
+    maker.minimumSize = CGSizeMake(80.f, 40.f);
+    _lineChartView.marker = maker;
     
-    double valor = 4.0f;
     NSArray *array = @[@2, @5, @7, @10, @4, @19, @21, @12, @30, @32, @37, @40];
-    [self setCharData:valor valor2:array];
+    [self setCharData:8 valor2:array];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 
     // Dispose of any resources that can be recreated.
 }
@@ -68,11 +73,11 @@
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i <12; i++) {
+    for (int i = 0; i <valor2.count; i++) {
         [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: valor]];
         [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[valor2[i] doubleValue]]];
     }
-    [yVals2 addObject:[[ChartDataEntry alloc] initWithX:11 y:[valor2[11] doubleValue]]];
+    [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[valor2[(valor2.count - 1)] doubleValue]]];
     
     LineChartDataSet *set1 = nil;
     LineChartDataSet *set2 = nil;
@@ -84,7 +89,7 @@
         set2.values = yVals2;
         [_lineChartView.data notifyDataChanged];
         [_lineChartView notifyDataSetChanged];
-        [_lineChartView animateWithXAxisDuration:1.0];
+        [_lineChartView animateWithXAxisDuration: 1.5];
         
     }else{
         set1 = [[LineChartDataSet alloc] initWithValues: yVals1 label:@""];
@@ -122,7 +127,7 @@
         //5 - finally set our data
         _lineChartView.data = data;
         _lineChartView.rightAxis.enabled = NO;
-        [_lineChartView animateWithXAxisDuration:1.0];
+        [_lineChartView animateWithXAxisDuration:1.5];
     }
     
 }
@@ -153,7 +158,39 @@
         [self setCharData: 9.0 valor2:array3];
         
     }
+    if ([pickerData[row] isEqualToString:@"Autoexposição"]){
+        [self setCharData: 10.0 valor2:array3];
+        
+    }
+    if ([pickerData[row] isEqualToString: @"Trabalho"]){
+        [self setCharData: 15.0 valor2:array3];
+        
+    }
+    if ([pickerData[row] isEqualToString:@"Interação Social"]){
+        [self setCharData: 8.0 valor2:array3];
+        
+    }
+    if ([pickerData[row] isEqualToString:@"Outros"]){
+        [self setCharData: 20.0 valor2:array3];
+        
+    }
+   
 }
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel *pickerLabel = (UILabel*)view;
+    if (!pickerLabel)
+    {
+        pickerLabel = [[UILabel alloc] init];
+        [pickerLabel setTextColor:[UIColor whiteColor]];
+        [pickerLabel setFont:[UIFont fontWithName:@"SF-Compact-Display-Regular.otf" size: 15]];
+        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
+    }
+    [pickerLabel setText:[pickerData objectAtIndex:row]];
+    return pickerLabel;
+}
+
 
 
 @end

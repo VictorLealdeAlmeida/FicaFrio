@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qOg-3a-aVT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -30,8 +30,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fundoRespiracao01" translatesAutoresizingMaskIntoConstraints="NO" id="Li1-it-D1R">
-                                <frame key="frameInset" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <frame key="frameInset"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUn-zs-xcQ">
                                 <frame key="frameInset" minX="106" minY="145" width="82" height="34"/>
@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
-                                <frame key="frameInset" minX="109" minY="494" width="156" height="47"/>
+                                <frame key="frameInset" minX="109" minY="531" width="156" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Nova Tarefa" image="botao_novaMeta"/>
                                 <connections>
@@ -50,11 +50,11 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bf3-p5-Tgz">
-                                <frame key="frameInset" minX="67" minY="317" width="240" height="122"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <frame key="frameInset" minX="56" minY="401" maxX="79" maxY="144"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="balao_InsirasuaMeta2" translatesAutoresizingMaskIntoConstraints="NO" id="iha-Oj-Tyn">
-                                        <frame key="frameInset" minX="-3" minY="-3" width="240" height="128"/>
+                                        <frame key="frameInset" minX="3" minY="-3" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Insira sua meta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Ej-Ztt">
@@ -68,7 +68,7 @@
                                         <frame key="frameInset" minX="32" minY="61" width="183" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                         <connections>
                                             <action selector="SetTask:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="A27-rY-nbw"/>
                                             <segue destination="NTb-Zd-tsJ" kind="show" id="v8L-VH-WM5"/>
@@ -191,6 +191,15 @@
                                 <color key="textColor" red="0.73333333333333328" green="0.89411764705882346" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="spO-Nv-gvL">
+                                <frame key="frameInset" width="375" height="670"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="sdh-6M-mWx" appends="YES" id="Zxr-2b-qiZ"/>
+                                </connections>
+                            </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="popup_TagSeco" translatesAutoresizingMaskIntoConstraints="NO" id="OID-TJ-rVd">
                                 <frame key="frameInset" minX="29" minY="164" width="316" height="339"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -264,6 +273,7 @@
                         <outlet property="arrow" destination="Ve7-Uh-vFY" id="sWv-UC-GEY"/>
                         <outlet property="buttonNext" destination="MEa-h0-07R" id="1TZ-j7-Kj0"/>
                         <outlet property="circleView" destination="jeZ-L2-Rsu" id="TlK-b8-VqW"/>
+                        <outlet property="darkView" destination="spO-Nv-gvL" id="Wad-bP-TZk"/>
                         <outlet property="pickTagLabel" destination="aP8-LB-0qu" id="nSx-w5-U9I"/>
                         <outlet property="setStepsButton" destination="Ioc-nT-hx7" id="no8-Rk-ZZA"/>
                         <outlet property="stepNumber" destination="hSp-4Q-fd5" id="bAt-f4-6sP"/>
@@ -280,6 +290,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJw-a1-0Ke" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sdh-6M-mWx">
+                    <connections>
+                        <action selector="closeViewTag:" destination="NTb-Zd-tsJ" id="ibp-xl-QLn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1212" y="651.72413793103453"/>
         </scene>
@@ -335,6 +350,12 @@
                                 <frame key="frameInset" minX="165" minY="467" width="43" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEl-E5-AmY">
+                                <frame key="frameInset" minX="-1" minY="-1" width="375" height="670"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fimDeMeta" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-lC-Xf1">
                                 <frame key="frameInset" minX="34" minY="61" width="306" height="546"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -389,6 +410,7 @@
                         <outlet property="backLabel" destination="OZY-mT-jQe" id="Ouf-cf-nZr"/>
                         <outlet property="backgroundPopup" destination="ahx-lC-Xf1" id="mbM-SG-Zcb"/>
                         <outlet property="circleView" destination="5ov-Kr-YOu" id="4lu-Vh-5sS"/>
+                        <outlet property="darkView" destination="rEl-E5-AmY" id="XZn-WH-yiz"/>
                         <outlet property="endStep" destination="a1H-Yy-Zph" id="Z9j-wV-LbM"/>
                         <outlet property="grafButton" destination="KvY-Km-y9K" id="Ssu-vr-wgO"/>
                         <outlet property="grafLabel" destination="Nbp-MG-oHf" id="oK9-YC-kiI"/>
