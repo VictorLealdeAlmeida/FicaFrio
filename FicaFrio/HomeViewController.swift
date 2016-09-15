@@ -12,6 +12,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UITextFieldDelegate {
     
+    var CurrentGoal : String = ""
     
     @IBOutlet weak var NewGoalView: UIView!
     
@@ -26,10 +27,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func SetTask(sender: AnyObject) {
         self.resignFirstResponder()
+        CurrentGoal = TaskText.text!
 
     }
     
-   
     
     // Configura view
     func ShowNewGoalView() {
@@ -49,16 +50,17 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         TaskText.delegate = self;
         TaskText.clearsOnBeginEditing = true
         
-        
+
         
      // Configura a logo
-        let logoGif = UIImage.gifImageWithName("logoteste")
+        let logoGif = UIImage.gifImageWithName("logo")
         let imageView = UIImageView(image: logoGif)
         imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3, height: imageView.frame.size.height/3)
         view.addSubview(imageView)
         
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,10 +69,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     // UITextField Delegates
     func textFieldDidBeginEditing(textField: UITextField) {
         print("TextField did begin editing method called")
+        ViewUpanimateMoving(true, upValue: 100)
     }
     func textFieldDidEndEditing(textField: UITextField) {
         print("TextField did end editing method called")
         TaskText.resignFirstResponder();
+        ViewUpanimateMoving(false, upValue: 100)
 
     }
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -94,6 +98,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         print("TextField should return method called")
         TaskText.resignFirstResponder();
         return true;
+    }
+    func ViewUpanimateMoving (up:Bool, upValue :CGFloat){
+        let durationMovement:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -upValue : upValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(durationMovement)
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
     }
 
     
