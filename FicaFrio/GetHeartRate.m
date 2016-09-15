@@ -18,7 +18,10 @@ typedef NS_ENUM(NSUInteger, CURRENT_STATE) {
 
 #define MIN_FRAMES_FOR_FILTER_TO_SETTLE 10
 
-@interface GetHeartRate ()<AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface GetHeartRate ()<AVCaptureVideoDataOutputSampleBufferDelegate> {
+    float avgHeartRate;
+    NSUserDefaults *defaults;
+}
 
 @property(nonatomic, strong) AVCaptureSession *session;
 @property(nonatomic, strong) AVCaptureDevice *camera;
@@ -34,6 +37,8 @@ typedef NS_ENUM(NSUInteger, CURRENT_STATE) {
 - (id)init {
     self = [super init];
     if (self) {
+        avgHeartRate = 0.0;
+        defaults = [NSUserDefaults standardUserDefaults];
         self.filter=[[Filter alloc] init];
         self.pulseDetector=[[PulseDetector alloc] init];
         [self startCameraCapture];
@@ -220,12 +225,13 @@ void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v ) {
     float avePeriod=[self.pulseDetector getAverage];
     if(avePeriod==INVALID_PULSE_PERIOD) {
         // no value available
-        //self.pulseRate.text=@"--";
     } else {
         // got a value so show it
         float pulse=60.0/avePeriod;
-        //self.pulseRate.text=[NSString stringWithFormat:@"%0.0f", pulse];
         NSLog(@"Pulse rate: %f", pulse);
+        avgHeartRate = (avgHeartRate + pulse)/2;
+        NSLog(@"Average heart rate: %f", avgHeartRate);
+        [defaults setFloat:avgHeartRate forKey:@"avgHeartRate"];
     }
 }
 

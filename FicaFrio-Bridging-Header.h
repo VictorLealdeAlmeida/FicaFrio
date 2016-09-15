@@ -4,3 +4,5 @@
 
 
 #import "GetHeartRate.h"
+#import "BD.h"
+#import "Step.h"
