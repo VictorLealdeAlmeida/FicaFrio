@@ -85,6 +85,18 @@
     }
 }
 
+- (void)setAvgHeartRate:(float)avgHeartRate toStep:(Step *)ongoingStep {
+    if (ongoingStep != nil) {
+        ongoingStep.avgHeartRate = [NSNumber numberWithFloat:avgHeartRate];
+        
+        // Salvar startDate no BD
+        NSError *error;
+        if (![_managedContext save:&error]) {
+            NSLog(@"Error saving start date to step: %@", [error localizedDescription]);
+        }
+    }
+}
+
 - (NSArray *)fetchStepsForGoalID: (NSString *)goalID {
     NSLog(@"entered fetchStepsForGoalID");
     //_appDelegate = [[UIApplication sharedApplication] delegate];

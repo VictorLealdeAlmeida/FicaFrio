@@ -14,6 +14,7 @@
 - (void)createNewGoal:(NSString *)goalName withSteps:(NSMutableArray *)steps tags:(NSMutableArray *)tags andID:(NSString *)goalID;
 - (void)setStartDate:(NSDate *)startDate toStep:(Step *)ongoingStep;
 - (void)setEndDate:(NSDate *)endDate toStep:(Step *)ongoingStep;
+- (void)setAvgHeartRate:(float)avgHeartRate toStep:(Step *)ongoingStep;
 - (NSArray *)fetchStepsForGoalID: (NSString *)goalID;
 - (Step *)fetchStep:(NSInteger)stepNumber forGoalID:(NSString *)goalID ;
 - (NSArray *)fetchStepsWithTag:(NSString *)stepTag;
