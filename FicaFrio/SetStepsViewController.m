@@ -14,6 +14,7 @@
     int direction;
     int shakes;
     int number;
+    int tagNumber;
     NSMutableArray *stepsNames;
     NSMutableArray *stepsTags;
     BD *database;
@@ -30,12 +31,12 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *tagPopup;
 @property (weak, nonatomic) IBOutlet UILabel *pickTagLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tagOne;
-@property (weak, nonatomic) IBOutlet UILabel *tagTwo;
-@property (weak, nonatomic) IBOutlet UILabel *tagThree;
-@property (weak, nonatomic) IBOutlet UILabel *tagFour;
-@property (weak, nonatomic) IBOutlet UILabel *tagFive;
-
+@property (weak, nonatomic) IBOutlet UIButton *tagOneButton;
+@property (weak, nonatomic) IBOutlet UIButton *tagTwoButton;
+@property (weak, nonatomic) IBOutlet UIButton *tagThreeButton;
+@property (weak, nonatomic) IBOutlet UIButton *tagFourButton;
+@property (weak, nonatomic) IBOutlet UIButton *tagFiveButton;
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 
 - (IBAction)nextStep:(id)sender;
 - (void)rotateCircleToRight;
@@ -44,6 +45,12 @@
 - (IBAction)circleLeft:(id)sender;
 - (IBAction)setSteps:(id)sender;
 - (IBAction)pickTag:(id)sender;
+- (IBAction)setTagOne:(UIButton *)sender;
+- (IBAction)setTagTwo:(UIButton *)sender;
+- (IBAction)setTagThree:(UIButton *)sender;
+- (IBAction)setTagFour:(UIButton *)sender;
+- (IBAction)setTagFive:(UIButton *)sender;
+
 
 @end
 
@@ -58,6 +65,7 @@
     defaults = [NSUserDefaults standardUserDefaults];
     database = [BD new];
     stepsNames = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
+    stepsTags = [NSMutableArray arrayWithArray:@[@"Autoexposição", @"Estudos", @"Trabalho", @"Interação Social", @"Outros"]];
     
     number = 1;
     direction= 1;
@@ -139,6 +147,31 @@
     [self showTagPopup];
 }
 
+- (IBAction)setTagOne:(id)sender {
+    tagNumber = 1;
+    [self closeTagPopup];
+}
+
+- (IBAction)setTagTwo:(UIButton *)sender {
+    tagNumber = 2;
+    [self closeTagPopup];
+}
+
+- (IBAction)setTagThree:(UIButton *)sender {
+    tagNumber = 3;
+    [self closeTagPopup];
+}
+
+- (IBAction)setTagFour:(UIButton *)sender {
+    tagNumber = 4;
+    [self closeTagPopup];
+}
+
+- (IBAction)setTagFive:(UIButton *)sender {
+    tagNumber = 5;
+    [self closeTagPopup];
+}
+
 - (void)rotateCircleToRight {
     [self incrementNumber];
     [self updateStepText];
@@ -159,13 +192,16 @@
 }
 
 - (void)changeNumberColor{
+    UIColor *textColor;
     if (number == 1){
-        _stepNumber.textColor = [UIColor colorWithRed:0.78 green:0.89 blue:0.91 alpha:1.0];
+        textColor = [UIColor colorWithRed:0.78 green:0.89 blue:0.91 alpha:1.0];
     }else if(number == 2){
-        _stepNumber.textColor = [UIColor colorWithRed:0.51 green:0.77 blue:0.82 alpha:1.0];
+        textColor = [UIColor colorWithRed:0.51 green:0.77 blue:0.82 alpha:1.0];
     }else if(number == 3){
-        _stepNumber.textColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
+        textColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
     }
+    _stepNumber.textColor = textColor;
+    _tagLabel.textColor = textColor;
 }
 
 - (void)incrementNumber{
@@ -222,22 +258,46 @@
 - (void) showTagPopup{
     _tagPopup.hidden = false;
     _pickTagLabel.hidden = false;
-    _tagOne.hidden = false;
-    _tagTwo.hidden = false;
-    _tagThree.hidden = false;
-    _tagFour.hidden = false;
-    _tagFive.hidden = false;
+    _tagOneButton.hidden = false;
+    _tagTwoButton.hidden = false;
+    _tagThreeButton.hidden = false;
+    _tagFourButton.hidden = false;
+    _tagFiveButton.hidden = false;
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
     [_tagPopup setAlpha:0.95];
     [_pickTagLabel setAlpha:0.95];
-    [_tagOne setAlpha:0.95];
-    [_tagTwo setAlpha:0.95];
-    [_tagThree setAlpha:0.95];
-    [_tagFour setAlpha:0.95];
-    [_tagFive setAlpha:0.95];
+    [_tagOneButton setAlpha:0.95];
+    [_tagTwoButton setAlpha:0.95];
+    [_tagThreeButton setAlpha:0.95];
+    [_tagFourButton setAlpha:0.95];
+    [_tagFiveButton setAlpha:0.95];
     [UIView commitAnimations];
+}
+
+- (void) closeTagPopup{
+    _tagLabel.text = [stepsTags objectAtIndex:(tagNumber-1)];
+    _tagLabel.hidden = false;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.7];
+    [_tagPopup setAlpha:0.0];
+    [_pickTagLabel setAlpha:0.0];
+    [_tagOneButton setAlpha:0.0];
+    [_tagTwoButton setAlpha:0.0];
+    [_tagThreeButton setAlpha:0.0];
+    [_tagFourButton setAlpha:0.0];
+    [_tagFiveButton setAlpha:0.0];
+    [UIView commitAnimations];
+    
+    _tagPopup.hidden = true;
+    _pickTagLabel.hidden = true;
+    _tagOneButton.hidden = true;
+    _tagTwoButton.hidden = true;
+    _tagThreeButton.hidden = true;
+    _tagFourButton.hidden = true;
+    _tagFiveButton.hidden = true;
 }
 
 @end
