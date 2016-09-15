@@ -16,15 +16,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *center;
 @property (weak, nonatomic) IBOutlet UILabel *titleGoal;
 @property (weak, nonatomic) IBOutlet UILabel *bpm;
-@property (weak, nonatomic) IBOutlet UIImageView *bpmImage;
 @property (weak, nonatomic) IBOutlet UILabel *bpmValue;
 @property (strong, nonatomic) IBOutlet UIView *min;
-@property (weak, nonatomic) IBOutlet UIImageView *minImage;
 @property (weak, nonatomic) IBOutlet UILabel *minValue;
+@property (weak, nonatomic) IBOutlet UIButton *heartButton;
+@property (weak, nonatomic) IBOutlet UIButton *timerButton;
 
 - (IBAction)animate:(id)sender;
 - (IBAction)heart:(id)sender;
 - (IBAction)timer:(id)sender;
+
 -(void)selectGraf: (int)valueOne value2: (int)valueTwo value3: (int)valueThree;
 
 @end
@@ -32,7 +33,7 @@
 @implementation GoalFeedbackViewController
 
 int direction= 1;
-int shakes = 55;
+int shakes = 47;
 
 BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
 - (void)viewDidLoad {
@@ -52,8 +53,8 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
     [_step2 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.0 nextImege:_step3];
     [_step3 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.5 nextImege:nil];
 
-    [self selectGraf:3 value2:2 value3:1];
-    // Do any additional setup after loading the view, typically from a nib.
+    //Chamada de func que monta o grafico
+    [self selectGraf:1 value2:4 value3:3];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +64,23 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
 
 - (IBAction)animate:(id)sender {
     [self animateAction];
+}
+
+- (IBAction)heart:(id)sender {
+    printf("%d",34);
+    if (!flag){
+        [self animateAction];
+    }else{
+        [self shake:_heartButton];
+    }
+}
+
+- (IBAction)timer:(id)sender {
+    if (flag){
+        [self animateAction];
+    }else{
+        [self shake:_timerButton];
+    }
 }
 
 -(void)animateAction{
@@ -98,22 +116,11 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
                      }];
 }
 
-- (IBAction)heart:(id)sender{
-    if (flag){
-        [self animateAction];
-    }else{
-        [self shake:_bpmImage];
-    }
-}
 
-- (IBAction)timer:(id)sender{
-    if (!flag){
-        [self animateAction];
-    }else{
-        [self shake:_minImage];
-    }
-}
 
+
+//Func que escolhe o tamnho da imagem de cada estapa a partir dos valores recebidos
+//Ainda tem que fazer os casos de valores iguais
 -(void)selectGraf: (int)valueOne value2: (int)valueTwo value3: (int)valueThree{
    
     if ((valueOne > valueTwo) && (valueOne > valueThree)){
@@ -128,24 +135,24 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
 
         }
     }else if((valueTwo > valueOne) && (valueTwo > valueThree)){
-        [_step2 setImage:[UIImage imageNamed:@"esquerda_01"]];
+        [_step3 setImage:[UIImage imageNamed:@"esquerda_01"]];
         if(valueOne > valueThree){
             [_step1 setImage:[UIImage imageNamed:@"topo_02"]];
-            [_step3 setImage:[UIImage imageNamed:@"direita_03"]];
+            [_step2 setImage:[UIImage imageNamed:@"direita_03"]];
             
         }else{
             [_step1 setImage:[UIImage imageNamed:@"topo_03"]];
-            [_step3 setImage:[UIImage imageNamed:@"direita_02"]];
+            [_step2 setImage:[UIImage imageNamed:@"direita_02"]];
         }
-    }else if((valueTwo > valueOne) && (valueTwo > valueThree)){
-        [_step3 setImage:[UIImage imageNamed:@"direita_01"]];
+    }else if((valueThree > valueOne) && (valueThree > valueTwo)){
+        [_step2 setImage:[UIImage imageNamed:@"direita_01"]];
         if(valueOne > valueTwo){
             [_step1 setImage:[UIImage imageNamed:@"topo_02"]];
-            [_step2 setImage:[UIImage imageNamed:@"esquerda_03"]];
+            [_step3 setImage:[UIImage imageNamed:@"esquerda_03"]];
             
         }else{
             [_step1 setImage:[UIImage imageNamed:@"topo_03"]];
-            [_step2 setImage:[UIImage imageNamed:@"esquerda_02"]];
+            [_step3 setImage:[UIImage imageNamed:@"esquerda_02"]];
         }
     }
 }

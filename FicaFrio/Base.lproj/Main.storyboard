@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NTb-Zd-tsJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -47,14 +47,6 @@
                                 <state key="normal" title="Nova Tarefa" image="botao_novaMeta"/>
                                 <connections>
                                     <action selector="NewGoalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6o8-NB-otu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgG-in-JaA">
-                                <frame key="frameInset" minX="284" minY="617" width="37" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Relax"/>
-                                <connections>
-                                    <segue destination="whk-Og-WXW" kind="show" id="LPp-dW-zOq"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bf3-p5-Tgz">
@@ -120,7 +112,7 @@
                                 <color key="tintColor" red="0.73333333333333328" green="0.89411764705882346" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.55769230769230771" green="0.55769230769230771" blue="0.55769230769230771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="setinha" translatesAutoresizingMaskIntoConstraints="NO" id="Ve7-Uh-vFY">
                                 <frame key="frameInset" minX="167" minY="289" width="41" height="31"/>
@@ -466,7 +458,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Jj-CS-0Kn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="278" y="1864"/>
+            <point key="canvasLocation" x="342" y="1460"/>
         </scene>
         <!--Goal Feedback View Controller-->
         <scene sceneID="M5M-Tg-APi">
@@ -501,10 +493,6 @@
                                 <color key="textColor" red="0.082352941176470587" green="0.37647058823529411" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_3" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-lr-5Kd">
-                                <frame key="frameInset" minX="43" minY="578" width="40" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_2" translatesAutoresizingMaskIntoConstraints="NO" id="ErA-sK-ygK">
                                 <frame key="frameInset" minX="152" minY="342" width="72" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -539,25 +527,38 @@
                                 <frame key="frameInset" minX="48" minY="144" width="280" height="264"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="relogio_2" translatesAutoresizingMaskIntoConstraints="NO" id="aXW-ki-c7S">
-                                <frame key="frameInset" minX="223" minY="576" width="46" height="57"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMT-vG-Z2q">
+                                <frame key="frameInset" minX="48" minY="582" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <state key="normal" title="Heart" image="coracao_3"/>
+                                <connections>
+                                    <action selector="heart:" destination="IH0-gW-iFA" eventType="touchUpInside" id="A2W-Ul-nKL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twj-Vl-p1j">
+                                <frame key="frameInset" minX="229" minY="582" width="47" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Heart" image="relogio_2"/>
+                                <connections>
+                                    <action selector="heart:" destination="IH0-gW-iFA" eventType="touchUpInside" id="uyx-08-iPQ"/>
+                                    <action selector="timer:" destination="IH0-gW-iFA" eventType="touchUpInside" id="a08-IT-6Xc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="qye-gE-BFv"/>
                     <connections>
                         <outlet property="bpm" destination="1G3-IF-n1Y" id="FhJ-9x-Iof"/>
-                        <outlet property="bpmImage" destination="BHy-lr-5Kd" id="epF-vX-5Lx"/>
                         <outlet property="bpmValue" destination="mSb-m4-B77" id="8O2-Y0-qIA"/>
                         <outlet property="center" destination="ErA-sK-ygK" id="CNB-Zl-fel"/>
+                        <outlet property="heartButton" destination="qMT-vG-Z2q" id="KTG-MF-INE"/>
                         <outlet property="min" destination="Eot-b9-4eT" id="b5Z-vi-Nzs"/>
-                        <outlet property="minImage" destination="aXW-ki-c7S" id="ZxT-dl-dbO"/>
                         <outlet property="minValue" destination="Eot-b9-4eT" id="XWE-dL-CY3"/>
                         <outlet property="step1" destination="MVP-TA-h2h" id="4mW-tG-Usx"/>
                         <outlet property="step2" destination="arX-L5-Bmz" id="Qyr-By-b4n"/>
                         <outlet property="step3" destination="9St-Zj-ern" id="yq6-bC-OCq"/>
+                        <outlet property="timerButton" destination="Twj-Vl-p1j" id="VRS-E3-EQT"/>
                         <outlet property="titleGoal" destination="1G3-IF-n1Y" id="s4u-qP-WTw"/>
                     </connections>
                 </viewController>
@@ -568,13 +569,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1839.5" y="1460.5"/>
+            <point key="canvasLocation" x="2197.5999999999999" y="1459.52023988006"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PbC-fa-Z4f">
             <objects>
                 <navigationController id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -610,7 +611,4 @@
         <image name="setinha" width="70" height="57"/>
         <image name="topo_02" width="800" height="800"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="LPp-dW-zOq"/>
-    </inferredMetricsTieBreakers>
 </document>

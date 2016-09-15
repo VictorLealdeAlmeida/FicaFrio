@@ -17,6 +17,7 @@
     int tagNumber;
     NSMutableArray *stepsNames;
     NSMutableArray *stepsTags;
+    NSArray *tags;
     BD *database;
     NSUserDefaults *defaults;
 }
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *arrow;
 @property (weak, nonatomic) IBOutlet UIButton *setStepsButton;
 
+// Tag-related outlets
 @property (weak, nonatomic) IBOutlet UIImageView *tagPopup;
 @property (weak, nonatomic) IBOutlet UILabel *pickTagLabel;
 @property (weak, nonatomic) IBOutlet UIButton *tagOneButton;
@@ -65,7 +67,8 @@
     defaults = [NSUserDefaults standardUserDefaults];
     database = [BD new];
     stepsNames = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
-    stepsTags = [NSMutableArray arrayWithArray:@[@"Autoexposição", @"Estudos", @"Trabalho", @"Interação Social", @"Outros"]];
+    stepsTags = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
+    tags = @[@"Autoexposição", @"Estudos", @"Trabalho", @"Interação Social", @"Outros"];
     
     number = 1;
     direction= 1;
@@ -85,6 +88,18 @@
     [super didReceiveMemoryWarning];
 }
 
+//Funcao que limita o numero de caracteres no textfield
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // Prevent crashing undo bug – see note below.
+    if(range.length + range.location > textField.text.length)
+    {
+        return NO;
+    }
+    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return newLength <= 140;
+}
+
 - (void) addGoal {
     NSString* goalName = @"placeholder goal";
     NSString* goalID = [[NSUUID UUID] UUIDString];
@@ -102,8 +117,12 @@
         // Rotate circle to right if the step was saved and isn't the last one filled
         [self rotateCircleToRight];
     }
-    // If all steps are set, show button to complete
-    if (![stepsNames containsObject:@""]) {
+    [self checkIfCanFinish];
+}
+
+- (void)checkIfCanFinish {
+    // If all steps names and tags are set, show button to complete
+    if (![stepsNames containsObject:@""] && ![stepsTags containsObject:@""]) {
         NSLog(@"all steps are set");
         _setStepsButton.hidden = false;
     }
@@ -111,10 +130,10 @@
 
 - (BOOL)saveStep {
     // If user wrote step name, store it at stepsNames
-    if(![_textStep.text  isEqual: @""]){
+    if(![_textStep.text  isEqual: @""] ){
         [stepsNames replaceObjectAtIndex:(number-1) withObject:_textStep.text];
         // If it's the last step to be filled, return false to avoid rotation
-        if (![stepsNames containsObject:@""]){
+        if (![stepsNames containsObject:@""] && ![stepsTags containsObject:@""]){
             return false;
         }
         return true;
@@ -188,6 +207,7 @@
 - (void)updateStepText {
     _textStep.text = [stepsNames objectAtIndex:(number-1)];
     _stepNumber.text = [NSString stringWithFormat:@"%d", number];
+    _tagLabel.text = [stepsTags objectAtIndex:(number-1)];
     [self changeNumberColor];
 }
 
@@ -217,6 +237,16 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.view endEditing:YES]; // Hide keyboard
+    
+    if ([self saveStep]) {
+        // Rotate circle to right if the step was saved and isn't the last one filled
+        [self rotateCircleToRight];
+    }
+    [self checkIfCanFinish];
 }
 
 // Shake UIView passed as parameter
@@ -277,7 +307,8 @@
 }
 
 - (void) closeTagPopup{
-    _tagLabel.text = [stepsTags objectAtIndex:(tagNumber-1)];
+    _tagLabel.text = [tags objectAtIndex:(tagNumber-1)];
+    [stepsTags replaceObjectAtIndex:(number-1) withObject:[tags objectAtIndex:(tagNumber-1)]];
     _tagLabel.hidden = false;
     
     [UIView beginAnimations:nil context:NULL];
@@ -298,6 +329,8 @@
     _tagThreeButton.hidden = true;
     _tagFourButton.hidden = true;
     _tagFiveButton.hidden = true;
+    
+    [self checkIfCanFinish];
 }
 
 @end
