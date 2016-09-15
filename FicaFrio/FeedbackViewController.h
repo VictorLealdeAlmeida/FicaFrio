@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeedbackViewController : UIViewController
+@interface FeedbackViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 
 @end

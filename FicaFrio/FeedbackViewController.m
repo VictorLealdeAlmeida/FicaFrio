@@ -11,13 +11,25 @@
 
 @interface FeedbackViewController () <ChartViewDelegate>
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerTag;
 
 @end
 
 @implementation FeedbackViewController
+ NSArray *pickerData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //PikerView
+    //inicializaçao
+    pickerData = @[@"Autoexposição", @"Estudos", @"Trabalho", @"Interação Social", @"Outros"];
+    
+    //Connet data
+    _pickerTag.dataSource = self;
+    _pickerTag.delegate = self;
+    
+
     
     //Configuraçao de estilo do grafico
     _lineChartView.delegate = self;
@@ -28,21 +40,18 @@
     _lineChartView.drawGridBackgroundEnabled = YES;
     _lineChartView.descriptionTextColor = [UIColor whiteColor];
     _lineChartView.gridBackgroundColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha: .0f];
-    _lineChartView.noDataText = @"No data provided";
+    _lineChartView.noDataText = @"Não há dado para essa Tag";
     _lineChartView.noDataTextColor = [UIColor whiteColor];
     _lineChartView.xAxis.drawGridLinesEnabled = NO;
     _lineChartView.leftAxis.drawGridLinesEnabled = NO;
-    _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
     _lineChartView.backgroundColor = [UIColor colorWithRed: 0/255.0f green: 0/255.0f blue: 0/255.0f alpha:.0f];
     _lineChartView.xAxis.enabled = NO;
     _lineChartView.leftAxis.enabled = NO;
     _lineChartView.legend.enabled = NO;
     
-        
-    NSMutableArray *valor = [NSMutableArray array];
+    
+    double valor = 4.0f;
     NSArray *array = @[@2, @5, @7, @10, @4, @19, @21, @12, @30, @32, @37, @40];
-    for (NSInteger i = 0; i < 12; i++)
-        [valor addObject:[NSNumber numberWithInteger:i*3]];
     [self setCharData:valor valor2:array];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -55,60 +64,96 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setCharData:(NSMutableArray*)valor valor2:(NSArray*)valor2{
+- (void)setCharData:(double)valor valor2:(NSArray*)valor2{
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
     for (int i = 0; i <12; i++) {
-        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: 7]];
+        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: valor]];
         [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[valor2[i] doubleValue]]];
     }
     [yVals2 addObject:[[ChartDataEntry alloc] initWithX:11 y:[valor2[11] doubleValue]]];
-    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithValues: yVals1 label:@""];
-    LineChartDataSet *set2 = [[LineChartDataSet alloc] initWithValues: yVals2 label:@""];
-    set1.axisDependency = AxisDependencyLeft;
-    set2.axisDependency = AxisDependencyLeft;
-    [set1 setColor: [UIColor colorWithRed:120.0f/255.0f green:189.0f/255.0f blue:186.0f/255.0f alpha:5.0f]];
-    [set2 setColor:[UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:249.0f/255.0f alpha:5.0f]];
-    [set2 setCircleColor:[UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:249.0f/255.0f alpha:5.0f]];
-    set1.lineWidth = 2.0;
-    set2.lineWidth = 2.0;
-    set1.drawCirclesEnabled = NO;
-    //set1.circleRadius = 6.0; // the radius of the node circle
-    set2.circleRadius = 6.0;
-    set1.fillAlpha = 65 / 255.0;
-    set2.fillAlpha = 65 / 255.0;
-    set1.fillColor = [UIColor blueColor];
-    set2.fillColor = [UIColor yellowColor];
-    //set1.highlightColor = [[UIColor yellowColor] colorWithAlphaComponent:0.f];
-    set2.highlightColor = [[UIColor redColor] colorWithAlphaComponent:0.f];
-    //set1.drawCircleHoleEnabled = true;
-    set2.drawCircleHoleEnabled = true;
-    set2.mode = LineChartModeCubicBezier;
-    set1.mode = LineChartModeLinear;
-    //set1.drawCubicEnabled = YES;
-    //set2.drawCubicEnabled = YES;
-    set1.drawValuesEnabled = NO;
-    set2.drawValuesEnabled = NO;
+    
+    LineChartDataSet *set1 = nil;
+    LineChartDataSet *set2 = nil;
+    
+    if (_lineChartView.data.dataSetCount > 0){
+        set1 = (LineChartDataSet *)_lineChartView.data.dataSets[0];
+        set2 = (LineChartDataSet *)_lineChartView.data.dataSets[1];
+        set1.values = yVals1;
+        set2.values = yVals2;
+        [_lineChartView.data notifyDataChanged];
+        [_lineChartView notifyDataSetChanged];
+        [_lineChartView animateWithXAxisDuration:1.0];
+        
+    }else{
+        set1 = [[LineChartDataSet alloc] initWithValues: yVals1 label:@""];
+        set2 = [[LineChartDataSet alloc] initWithValues: yVals2 label:@""];
+        set1.axisDependency = AxisDependencyLeft;
+        set2.axisDependency = AxisDependencyLeft;
+        [set1 setColor: [UIColor colorWithRed:120.0f/255.0f green:189.0f/255.0f blue:186.0f/255.0f alpha:5.0f]];
+        [set2 setColor:[UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:249.0f/255.0f alpha:5.0f]];
+        [set2 setCircleColor:[UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:249.0f/255.0f alpha:5.0f]];
+        set1.lineWidth = 2.0;
+        set2.lineWidth = 2.0;
+        set1.drawCirclesEnabled = NO;
+        set2.circleRadius = 6.0;
+        set1.fillAlpha = 65 / 255.0;
+        set2.fillAlpha = 65 / 255.0;
+        set1.fillColor = [UIColor blueColor];
+        set2.fillColor = [UIColor yellowColor];
+        set2.highlightColor = [[UIColor redColor] colorWithAlphaComponent:0.f];
+        set2.drawCircleHoleEnabled = true;
+        set2.mode = LineChartModeCubicBezier;
+        set1.mode = LineChartModeLinear;
+        set1.drawValuesEnabled = NO;
+        set2.drawValuesEnabled = NO;
+
+        //3 - create an array to store our LineChartDataSets
+        NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+        [dataSets addObject: set1];
+        [dataSets addObject:set2];
+        LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
     
     
-    //3 - create an array to store our LineChartDataSets
-    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-    [dataSets addObject: set1];
-    [dataSets addObject:set2];
-    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+        //4 - pass our months in for our x-axis label value along with our dataSets
+        [data setValueTextColor: [UIColor whiteColor]];
     
-    
-    //4 - pass our months in for our x-axis label value along with our dataSets
-    [data setValueTextColor: [UIColor whiteColor]];
-    
-    //5 - finally set our data
-    _lineChartView.data = data;
-    _lineChartView.rightAxis.enabled = NO;
-    [_lineChartView animateWithXAxisDuration:1.0];
+        //5 - finally set our data
+        _lineChartView.data = data;
+        _lineChartView.rightAxis.enabled = NO;
+        [_lineChartView animateWithXAxisDuration:1.0];
+    }
     
 }
 
+// The number of columns of data
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+   
+    return pickerData[row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSArray *array3 = @[@4, @10, @7, @10, @4, @19, @21, @12, @35, @32, @37, @40];
+    if ([pickerData[row] isEqualToString:@"Estudos"]){
+        [self setCharData: 9.0 valor2:array3];
+        
+    }
+}
 
 
 @end
