@@ -18,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Configuraçao de estilo do grafico
     _lineChartView.delegate = self;
     _lineChartView.descriptionText = @"Tap node for details";
     _lineChartView.dragEnabled = YES;
@@ -27,6 +29,7 @@
     _lineChartView.descriptionTextColor = [UIColor whiteColor];
     _lineChartView.gridBackgroundColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha: .0f];
     _lineChartView.noDataText = @"No data provided";
+    _lineChartView.noDataTextColor = [UIColor whiteColor];
     _lineChartView.xAxis.drawGridLinesEnabled = NO;
     _lineChartView.leftAxis.drawGridLinesEnabled = NO;
     _lineChartView.xAxis.labelPosition = XAxisLabelPositionBottom;
@@ -35,8 +38,9 @@
     _lineChartView.leftAxis.enabled = NO;
     _lineChartView.legend.enabled = NO;
     
+        
     NSMutableArray *valor = [NSMutableArray array];
-    NSArray *array = @[@2, @5, @7, @1, @4, @19, @21, @25, @30, @32, @37, @40];
+    NSArray *array = @[@2, @5, @7, @10, @4, @19, @21, @12, @30, @32, @37, @40];
     for (NSInteger i = 0; i < 12; i++)
         [valor addObject:[NSNumber numberWithInteger:i*3]];
     [self setCharData:valor valor2:array];
@@ -55,36 +59,35 @@
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i <9; i++) {
-        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y:[valor[i] doubleValue]]];
+    for (int i = 0; i <12; i++) {
+        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: 7]];
         [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[valor2[i] doubleValue]]];
     }
-    [yVals1 addObject:[[ChartDataEntry alloc] initWithX:8  y:[valor[8] doubleValue]]];
-    [yVals2 addObject:[[ChartDataEntry alloc] initWithX:8 y:[valor2[8] doubleValue]]];
-    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithValues: yVals1 label:@"First Set"];
-    LineChartDataSet *set2 = [[LineChartDataSet alloc] initWithValues: yVals2 label:@"Será que vai"];
+    [yVals2 addObject:[[ChartDataEntry alloc] initWithX:11 y:[valor2[11] doubleValue]]];
+    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithValues: yVals1 label:@""];
+    LineChartDataSet *set2 = [[LineChartDataSet alloc] initWithValues: yVals2 label:@""];
     set1.axisDependency = AxisDependencyLeft;
     set2.axisDependency = AxisDependencyLeft;
-    [set1 setColor: [UIColor colorWithRed:23.0f/255.0f green:77.0f/255.0f blue:96.0f/255.0f alpha:5.0f]];
+    [set1 setColor: [UIColor colorWithRed:120.0f/255.0f green:189.0f/255.0f blue:186.0f/255.0f alpha:5.0f]];
     [set2 setColor:[UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:249.0f/255.0f alpha:5.0f]];
-    [set1 setCircleColor:[UIColor colorWithRed:23.0f/255.0f green:77.0f/255.0f blue:96.0f/255.0f alpha:5.0f]];
     [set2 setCircleColor:[UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:249.0f/255.0f alpha:5.0f]];
     set1.lineWidth = 2.0;
     set2.lineWidth = 2.0;
-    set1.circleRadius = 6.0; // the radius of the node circle
+    set1.drawCirclesEnabled = NO;
+    //set1.circleRadius = 6.0; // the radius of the node circle
     set2.circleRadius = 6.0;
     set1.fillAlpha = 65 / 255.0;
     set2.fillAlpha = 65 / 255.0;
-    //set1.fillColor = [UIColor blueColor];
-    //set2.fillColor = [UIColor yellowColor];
-    set1.highlightColor = [[UIColor yellowColor] colorWithAlphaComponent:0.f];
+    set1.fillColor = [UIColor blueColor];
+    set2.fillColor = [UIColor yellowColor];
+    //set1.highlightColor = [[UIColor yellowColor] colorWithAlphaComponent:0.f];
     set2.highlightColor = [[UIColor redColor] colorWithAlphaComponent:0.f];
-    set1.drawCircleHoleEnabled = true;
+    //set1.drawCircleHoleEnabled = true;
     set2.drawCircleHoleEnabled = true;
-    //set2.mode = LineChartModeCubicBezier;
-    //set1.mode = LineChartModeCubicBezier;
-    set1.drawCubicEnabled = YES;
-    set2.drawCubicEnabled = YES;
+    set2.mode = LineChartModeCubicBezier;
+    set1.mode = LineChartModeLinear;
+    //set1.drawCubicEnabled = YES;
+    //set2.drawCubicEnabled = YES;
     set1.drawValuesEnabled = NO;
     set2.drawValuesEnabled = NO;
     
