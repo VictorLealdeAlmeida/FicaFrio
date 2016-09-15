@@ -19,6 +19,7 @@ class RelaxViewController: UIViewController {
         imageView.frame = CGRect(x: 110, y: 120, width: self.view.frame.size.width - 221, height: 223)
         view.addSubview(imageView)
         
+        let startReadingHeartRate = GetHeartRate.init()
         
         // Do any additional setup after loading the view, typically from a nib.
     }

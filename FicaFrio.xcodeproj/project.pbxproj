@@ -11,6 +11,9 @@
 		9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; };
 		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09CF871D8817C30079E6FB /* FicaFrio.swift */; };
+		AC3CA2081D8AD0D500B985B1 /* GetHeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */; };
+		AC3CA20B1D8AD13300B985B1 /* PulseDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA20A1D8AD13300B985B1 /* PulseDetector.mm */; };
+		AC3CA20E1D8AD19200B985B1 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA20D1D8AD19200B985B1 /* Filter.m */; };
 		AC93225B1D86C7DB000051B0 /* BD.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93225A1D86C7DB000051B0 /* BD.m */; };
 		AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322791D86EE15000051B0 /* Step+CoreDataProperties.m */; };
 		AC93227D1D86EE15000051B0 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93227B1D86EE15000051B0 /* Step.m */; };
@@ -93,6 +96,12 @@
 		1E6D29B41D89A070008734E0 /* logoteste.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logoteste.gif; sourceTree = "<group>"; };
 		9F09CF731D8817670079E6FB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ChartsFramework/Charts.xcodeproj; sourceTree = "<group>"; };
 		9F09CF871D8817C30079E6FB /* FicaFrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FicaFrio.swift; sourceTree = SOURCE_ROOT; };
+		AC3CA2061D8AD0D500B985B1 /* GetHeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHeartRate.h; sourceTree = "<group>"; };
+		AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHeartRate.m; sourceTree = "<group>"; };
+		AC3CA2091D8AD13300B985B1 /* PulseDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulseDetector.h; sourceTree = "<group>"; };
+		AC3CA20A1D8AD13300B985B1 /* PulseDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PulseDetector.mm; sourceTree = "<group>"; };
+		AC3CA20C1D8AD19200B985B1 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
+		AC3CA20D1D8AD19200B985B1 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
 		AC9322591D86C7DB000051B0 /* BD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BD.h; sourceTree = "<group>"; };
 		AC93225A1D86C7DB000051B0 /* BD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BD.m; sourceTree = "<group>"; };
 		AC9322781D86EE15000051B0 /* Step+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Step+CoreDataProperties.h"; path = "../Step+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -156,6 +165,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AC3CA1F91D8ACF0C00B985B1 /* iPhone_pulseRate */ = {
+			isa = PBXGroup;
+			children = (
+				AC3CA2061D8AD0D500B985B1 /* GetHeartRate.h */,
+				AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */,
+				AC3CA2091D8AD13300B985B1 /* PulseDetector.h */,
+				AC3CA20A1D8AD13300B985B1 /* PulseDetector.mm */,
+				AC3CA20C1D8AD19200B985B1 /* Filter.h */,
+				AC3CA20D1D8AD19200B985B1 /* Filter.m */,
+			);
+			name = iPhone_pulseRate;
+			sourceTree = "<group>";
+		};
 		AC93226E1D86D1DE000051B0 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +223,7 @@
 				D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */,
 				D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */,
 				D4E76D761D8310B0006F7203 /* GIFExtension.swift */,
+				AC3CA1F91D8ACF0C00B985B1 /* iPhone_pulseRate */,
 				D4E76D741D830FC1006F7203 /* respiracao.gif */,
 				D4BBC1581D7F023F0058615A /* Screen */,
 				D4BBC1571D7F01B70058615A /* Set Screens */,
@@ -381,14 +404,17 @@
 				D4BBC1461D7EF7BB0058615A /* FicaFrio.xcdatamodeld in Sources */,
 				D4BBC15E1D7F033F0058615A /* GoalFeedbackViewController.m in Sources */,
 				D4BBC13D1D7EF7BB0058615A /* AppDelegate.m in Sources */,
+				AC3CA20B1D8AD13300B985B1 /* PulseDetector.mm in Sources */,
 				D4E76D771D8310B0006F7203 /* GIFExtension.swift in Sources */,
 				D4BBC16D1D7F0DB80058615A /* SetGoalViewController.swift in Sources */,
 				AC9322891D86F206000051B0 /* Goal.m in Sources */,
 				D4BBC15B1D7F02AC0058615A /* CurrentStepViewController.m in Sources */,
+				AC3CA2081D8AD0D500B985B1 /* GetHeartRate.m in Sources */,
 				9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */,
 				D4BBC16F1D7F0DC30058615A /* HomeViewController.swift in Sources */,
 				D4BBC1A21D81B12E0058615A /* Animation.m in Sources */,
 				AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */,
+				AC3CA20E1D8AD19200B985B1 /* Filter.m in Sources */,
 				AC93225B1D86C7DB000051B0 /* BD.m in Sources */,
 				D4BBC13A1D7EF7BB0058615A /* main.m in Sources */,
 				D4BBC1711D7F0DD30058615A /* RelaxViewController.swift in Sources */,

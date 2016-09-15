@@ -57,10 +57,10 @@
     defaults = [NSUserDefaults standardUserDefaults];
     database = [BD new];
     
-    // Get current step
+    // Get current step (goal and number)
     goalID = [defaults stringForKey:@"currentGoalID"];
     stepNumber = [defaults integerForKey:@"currentStepNumber"];
-    NSLog(@"currentStep: %@", goalID);
+    
     [self updateStep];
 }
 
@@ -82,12 +82,12 @@
     [database setStartDate:[NSDate date] toStep:currentStep];
 }
 
-// endStep
+// endStep - When end button is clicked
 - (IBAction)circleButton:(id)sender {
     // Store endDate
     [database setEndDate:[NSDate date] toStep:currentStep];
     // Show next step - store number and fetch next step
-    // If there are steps still
+    // If there are still steps
     if (stepNumber < 3){
         stepNumber++;
         _startStep.hidden = false;
@@ -107,6 +107,7 @@
     NSLog(@"entered updateStep");
     currentStep = [database fetchStep:(stepNumber-1) forGoalID:goalID];
     _labelStep.text = currentStep.name;
+    // update goal and tag too
 }
 
 - (void) showPopup{

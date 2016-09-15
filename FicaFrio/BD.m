@@ -20,10 +20,19 @@
 
 @implementation BD
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        _appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        _managedContext = [_appDelegate managedObjectContext];
+    }
+    return self;
+}
+
 - (void)createNewGoal:(NSString *)goalName withSteps:(NSMutableArray *)steps tags:(NSMutableArray *)tags andID:(NSString *)goalID {
     NSLog(@"entered createNewGoal");
-    _appDelegate = [[UIApplication sharedApplication] delegate];
-    _managedContext = [_appDelegate managedObjectContext];
+    //_appDelegate = [[UIApplication sharedApplication] delegate];
+    //_managedContext = [_appDelegate managedObjectContext];
     
     Goal *newGoal = (Goal *)[NSEntityDescription insertNewObjectForEntityForName:@"Goal" inManagedObjectContext:_managedContext];
     
@@ -78,8 +87,8 @@
 
 - (NSArray *)fetchStepsForGoalID: (NSString *)goalID {
     NSLog(@"entered fetchStepsForGoalID");
-    _appDelegate = [[UIApplication sharedApplication] delegate];
-    _managedContext = [_appDelegate managedObjectContext];
+    //_appDelegate = [[UIApplication sharedApplication] delegate];
+    //_managedContext = [_appDelegate managedObjectContext];
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:[NSEntityDescription entityForName:@"Step" inManagedObjectContext:_managedContext]];
@@ -114,8 +123,8 @@
 }
 
 - (NSArray *)fetchStepsWithTag:(NSString *)stepTag {
-    _appDelegate = [[UIApplication sharedApplication] delegate];
-    _managedContext = [_appDelegate managedObjectContext];
+    //_appDelegate = [[UIApplication sharedApplication] delegate];
+    //_managedContext = [_appDelegate managedObjectContext];
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     //[fetchRequest setValue:stepTag forKey:@"tag"];
