@@ -117,7 +117,6 @@
             [self rotateCircleToRight];
         }
         else {
-            NSLog(@"direction: %d and shakes: %d", direction, shakes);
             [self shake:_textStep];
             [self shake:_viewButton];
             [self shake:_arrow];
