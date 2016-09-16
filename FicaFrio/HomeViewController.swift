@@ -115,6 +115,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         print("TextField should return method called")
         TaskText.resignFirstResponder();
+        self.performSegueWithIdentifier("homeToSet", sender: self)
         return true;
     }
     
