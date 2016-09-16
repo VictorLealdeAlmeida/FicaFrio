@@ -15,6 +15,9 @@
     NSUserDefaults *defaults;
     NSString *goalID;
     NSArray *goalSteps;
+    NSMutableArray *time;
+    NSMutableArray *avgRate;
+    Step *step;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *step1;
 @property (weak, nonatomic) IBOutlet UIImageView *step2;
@@ -40,23 +43,28 @@
 
 int direction= 1;
 int shakes = 47;
-
 BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // Pegar dados do banco
+    time = [NSMutableArray array];
+    avgRate = [NSMutableArray array];
     database = [BD new];
     defaults = [NSUserDefaults standardUserDefaults];
-    goalID = [defaults stringForKey:@"goalID"];
+    goalID = [defaults stringForKey:@"currentGoalID"];
     goalSteps = [database fetchStepsForGoalID:goalID];
+    printf("\n%lu", (unsigned long)goalSteps.count);
+    NSLog(@"Aqui %@",goalID);
     
     for (int i = 0; i < goalSteps.count; i++){
-        Step *step = [goalSteps objectAtIndex:i];
+        step = goalSteps[i];
+        [time addObject: step.duration];
+        [avgRate addObject: step.avgHeartRate];
         //step.avgHeartRate  - média de batimentos do passo i
         //step.duration      - duração do passo i
     }
-    // ---------------------
     
     _step1.hidden = YES;
     _step2.hidden = YES;
@@ -74,7 +82,7 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
     [_step3 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.5 nextImege:nil];
 
     //Chamada de func que monta o grafico
-    [self selectGraf:1 value2:4 value3:3];
+    [self selectGraf: [[avgRate objectAtIndex: 0] intValue] value2: [[avgRate objectAtIndex: 1] intValue] value3: [[avgRate objectAtIndex: 2] intValue]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,9 +117,11 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
     _step3.hidden = YES;
     if(flag){
         [_center setImage:[UIImage imageNamed:@"relogio_2"]];
+        [self selectGraf: [[time objectAtIndex: 0] intValue] value2: [[time objectAtIndex: 1] intValue] value3: [[time objectAtIndex: 2] intValue]];
         flag = NO;
     }else{
         [_center setImage:[UIImage imageNamed:@"coracao_2"]];
+        [self selectGraf: [[avgRate objectAtIndex: 0] intValue] value2: [[avgRate objectAtIndex: 1] intValue] value3: [[avgRate objectAtIndex: 2] intValue]];
         flag = YES;
     }
     [_center addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0 nextImege:_step1];

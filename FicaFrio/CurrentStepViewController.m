@@ -92,6 +92,7 @@ NSDate *dateTime;
     
     // Store startDate
     [database setStartDate:[NSDate date] toStep:currentStep];
+    [defaults synchronize];
 }
 
 // endStep - When end button is clicked
@@ -108,7 +109,7 @@ NSDate *dateTime;
         [self updateStep];
         [defaults setInteger:stepNumber forKey:@"currentStepNumber"];
         [defaults setObject:currentStep.tag forKey:@"currentStepTag"];
-        //[defaults synchronize];
+        [defaults synchronize];
     }
     // Final step ended
     else {

@@ -160,7 +160,7 @@
     [defaults setObject:goalID forKey:@"currentGoalID"];
     [defaults setInteger:1 forKey:@"currentStepNumber"];
     [defaults setObject:[stepsTags objectAtIndex:0] forKey:@"currentStepTag"];
-    //[defaults synchronize];
+    [defaults synchronize];
     [database createNewGoal:goalName withSteps:stepsNames tags:stepsTags andID:goalID];
 }
 

@@ -11,7 +11,17 @@
 #import "Step.h"
 @import Charts;
 
-@interface FeedbackViewController () <ChartViewDelegate>
+@interface FeedbackViewController () <ChartViewDelegate>{
+    NSArray *pickerData;
+    NSArray *arrayAutoexposicao;
+    NSArray *arrayEstudos;
+    NSArray *arrayTrabalho;
+    NSArray *arrayInteracaoSocial;
+    NSArray *arrayOutros;
+    Step *currentStep;
+    double average;
+    BD *dataBD;
+}
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerTag;
 @property (weak, nonatomic) IBOutlet UILabel *mediaTag;
@@ -21,15 +31,6 @@
 @end
 
 @implementation FeedbackViewController
-NSArray *pickerData;
-NSArray *arrayAutoexposicao;
-NSArray *arrayEstudos;
-NSArray *arrayTrabalho;
-NSArray *arrayInteracaoSocial;
-NSArray *arrayOutros;
-Step *currentStep;
-double average;
-BD *dataBD;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -111,14 +112,17 @@ BD *dataBD;
     LineChartDataSet *set2 = nil;
     
     if (_lineChartView.data.dataSetCount > 0){
-        set1 = (LineChartDataSet *)_lineChartView.data.dataSets[0];
-        set2 = (LineChartDataSet *)_lineChartView.data.dataSets[1];
-        set1.values = yVals1;
-        set2.values = yVals2;
+        if (valor2.count == 0){
+            _lineChartView.data = nil;
+        }else{
+            set1 = (LineChartDataSet *)_lineChartView.data.dataSets[0];
+            set2 = (LineChartDataSet *)_lineChartView.data.dataSets[1];
+            set1.values = yVals1;
+            set2.values = yVals2;
+        }
         [_lineChartView.data notifyDataChanged];
         [_lineChartView notifyDataSetChanged];
         [_lineChartView animateWithXAxisDuration: 1.5];
-        
     }else{
         set1 = [[LineChartDataSet alloc] initWithValues: yVals1 label:@""];
         set2 = [[LineChartDataSet alloc] initWithValues: yVals2 label:@""];
@@ -133,10 +137,10 @@ BD *dataBD;
         set2.circleRadius = 6.0;
         set1.fillAlpha = 65 / 255.0;
         set2.fillAlpha = 65 / 255.0;
-        set1.fillColor = [UIColor blueColor];
-        set2.fillColor = [UIColor yellowColor];
-        set2.highlightColor = [[UIColor redColor] colorWithAlphaComponent:0.f];
-        set1.highlightColor = [[UIColor redColor] colorWithAlphaComponent:0.f];
+        set1.fillColor = [UIColor whiteColor];
+        set2.fillColor = [UIColor whiteColor];
+        set2.highlightColor = [[UIColor whiteColor] colorWithAlphaComponent:0.f];
+        set1.highlightColor = [[UIColor whiteColor] colorWithAlphaComponent:0.f];
         set2.drawCircleHoleEnabled = true;
         set2.mode = LineChartModeCubicBezier;
         set1.mode = LineChartModeLinear;

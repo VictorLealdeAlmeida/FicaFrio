@@ -98,7 +98,7 @@ public class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     public var noDataText = "No chart data available."
     
     /// color of the no data text
-    public var noDataTextColor: NSUIColor = NSUIColor.blackColor()
+    public var noDataTextColor: NSUIColor = NSUIColor.whiteColor()
     
     /// text that is displayed when the chart is empty that describes why the chart is empty
     public var noDataTextDescription: String?
