@@ -104,6 +104,7 @@ bool selectHeart = false;
     
     // Store startDate
     [database setStartDate:[NSDate date] toStep:currentStep];
+    //[defaults synchronize];
 }
 
 // endStep - When end button is clicked
