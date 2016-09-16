@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E50F5E11D8B08A400CD05EC /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E50F5E01D8B08A400CD05EC /* logo.gif */; };
+		1E50F5EC1D8C2B9D00CD05EC /* Espiral3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E50F5EB1D8C2B9D00CD05EC /* Espiral3.gif */; };
+		1E50F5F21D8C2FE300CD05EC /* GIF_INICIAL_1VEZ.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E50F5F11D8C2FE300CD05EC /* GIF_INICIAL_1VEZ.gif */; };
 		1E6D29B51D89A070008734E0 /* logoteste.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E6D29B41D89A070008734E0 /* logoteste.gif */; };
 		9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; };
 		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -95,7 +96,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1E50F5E01D8B08A400CD05EC /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo.gif; sourceTree = "<group>"; };
+		1E50F5EB1D8C2B9D00CD05EC /* Espiral3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Espiral3.gif; sourceTree = "<group>"; };
+		1E50F5F11D8C2FE300CD05EC /* GIF_INICIAL_1VEZ.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF_INICIAL_1VEZ.gif; sourceTree = "<group>"; };
 		1E6D29B41D89A070008734E0 /* logoteste.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logoteste.gif; sourceTree = "<group>"; };
 		9F09CF731D8817670079E6FB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ChartsFramework/Charts.xcodeproj; sourceTree = "<group>"; };
 		9F09CF871D8817C30079E6FB /* FicaFrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FicaFrio.swift; sourceTree = SOURCE_ROOT; };
@@ -226,6 +228,8 @@
 		D4BBC1371D7EF7BB0058615A /* FicaFrio */ = {
 			isa = PBXGroup;
 			children = (
+				1E50F5EB1D8C2B9D00CD05EC /* Espiral3.gif */,
+				1E50F5F11D8C2FE300CD05EC /* GIF_INICIAL_1VEZ.gif */,
 				D4BBC13B1D7EF7BB0058615A /* AppDelegate.h */,
 				D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */,
 				D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */,
@@ -261,7 +265,6 @@
 			children = (
 				D4BBC16E1D7F0DC30058615A /* HomeViewController.swift */,
 				1E6D29B41D89A070008734E0 /* logoteste.gif */,
-				1E50F5E01D8B08A400CD05EC /* logo.gif */,
 				D4BBC1651D7F0AC50058615A /* SetStepsViewController.h */,
 				D4BBC1661D7F0AC50058615A /* SetStepsViewController.m */,
 				D4BBC16C1D7F0DB80058615A /* SetGoalViewController.swift */,
@@ -395,8 +398,9 @@
 				D41384751D88489F00281B48 /* SF-Compact-Display-Regular.otf in Resources */,
 				D4BBC14B1D7EF7BB0058615A /* LaunchScreen.storyboard in Resources */,
 				D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */,
+				1E50F5F21D8C2FE300CD05EC /* GIF_INICIAL_1VEZ.gif in Resources */,
 				AC9148E41D8B8741005383AA /* Localizable.strings in Resources */,
-				1E50F5E11D8B08A400CD05EC /* logo.gif in Resources */,
+				1E50F5EC1D8C2B9D00CD05EC /* Espiral3.gif in Resources */,
 				D4E76D751D830FC1006F7203 /* respiracao.gif in Resources */,
 				D41A6BAB1D871BB30074FA39 /* Main.storyboard in Resources */,
 				1E6D29B51D89A070008734E0 /* logoteste.gif in Resources */,
