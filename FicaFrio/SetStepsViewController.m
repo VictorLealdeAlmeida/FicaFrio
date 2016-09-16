@@ -33,7 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *tagButton;
+//@property (weak, nonatomic) IBOutlet UIButton *tagButton;
 @property (weak, nonatomic) IBOutlet UIButton *setStepButton;
 
 // Tag-related outlets
@@ -44,7 +44,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *tagThreeButton;
 @property (weak, nonatomic) IBOutlet UIButton *tagFourButton;
 @property (weak, nonatomic) IBOutlet UIButton *tagFiveButton;
-@property (weak, nonatomic) IBOutlet UILabel *stepTagLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *stepTagLabel;
+@property (weak, nonatomic) IBOutlet UIButton *stepTagButton;
+
 
 
 - (IBAction)goToNextStep:(UIButton *)sender;
@@ -53,13 +55,14 @@
 - (IBAction)circleLeft:(id)sender;
 - (IBAction)goToNextScreen:(UIButton *)sender;
 
-- (IBAction)pickTag:(id)sender;
+//- (IBAction)pickTag:(id)sender;
 - (IBAction)setTagOne:(UIButton *)sender;
 - (IBAction)setTagTwo:(UIButton *)sender;
 - (IBAction)setTagThree:(UIButton *)sender;
 - (IBAction)setTagFour:(UIButton *)sender;
 - (IBAction)setTagFive:(UIButton *)sender;
 - (IBAction)closeViewTag:(id)sender;
+- (IBAction)changeTag:(UIButton *)sender;
 
 
 @end
@@ -166,10 +169,10 @@
 
 // Tag-related ----------------------------------------------------
 
-- (IBAction)pickTag:(id)sender {
-    [self.view endEditing:YES]; // Force end editing
-    [self showTagPopup];
-}
+//- (IBAction)pickTag:(id)sender {
+//    [self.view endEditing:YES]; // Force end editing
+//    [self showTagPopup];
+//}
 
 - (IBAction)setTagOne:(UIButton *)sender {
     tagNumber = 1;
@@ -200,16 +203,21 @@
     tagNumber = 5;
     [self closeTagPopup];
 }
+
+- (IBAction)changeTag:(UIButton *)sender {
+    [self showTagPopup];
+}
+
 // ----------------------------------------------------------------
 
 // Rotation-related -----------------------------------------------
 - (IBAction)circleRight:(id)sender {
-    [self.view endEditing:YES]; // Force end editing
+    //[self.view endEditing:YES]; // Force end editing
     [self rotateCircleToRight];
 }
 
 - (IBAction)circleLeft:(id)sender {
-    [self.view endEditing:YES]; // Force end editing
+    //[self.view endEditing:YES]; // Force end editing
     [self rotateCircleToLeft];
 }
 
@@ -230,7 +238,8 @@
 - (void)updateStepText {
     _stepNameTextField.text = [stepsNames objectAtIndex:(number-1)];
     _stepNumberLabel.text = [NSString stringWithFormat:@"%d", number];
-    _stepTagLabel.text = [stepsTags objectAtIndex:(number-1)];
+    //_stepTagLabel.text = [stepsTags objectAtIndex:(number-1)];
+    [_stepTagButton setTitle:[stepsTags objectAtIndex:(number-1)] forState:UIControlStateNormal];
     [self matchTextColorToStep];
 }
 
@@ -245,7 +254,8 @@
         textColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
     }
     _stepNumberLabel.textColor = textColor;
-    _stepTagLabel.textColor = textColor;
+    //_stepTagLabel.textColor = textColor;]
+    [_stepTagButton setTitleColor:textColor forState:UIControlStateNormal];
 }
 // ----------------------------------------------------------------
 
@@ -351,7 +361,8 @@
 - (void) closeTagPopup{
     [stepsTags replaceObjectAtIndex:(number-1) withObject:[tags objectAtIndex:(tagNumber-1)]];
     [self updateStepText];
-    _stepTagLabel.hidden = false;
+    //_stepTagLabel.hidden = false;
+    _stepTagButton.hidden = false;
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
