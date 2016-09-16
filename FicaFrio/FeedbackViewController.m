@@ -39,7 +39,7 @@ BD *dataBD;
     
     //PikerView
     //inicializaçao
-    pickerData = @[@"Autoexposição", @"Estudos", @"Trabalho", @"Interação Social", @"Outros"];
+    pickerData = @[@"Self-exposure", @"Studies", @"Work", @"Social interaction", @"Others"];
     
     //Connet data
     _pickerTag.dataSource = self;
@@ -65,6 +65,10 @@ BD *dataBD;
     _lineChartView.leftAxis.enabled = NO;
     _lineChartView.legend.enabled = NO;
     
+    //ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:10.0 label:@""];
+   // [_lineChartView.xAxis addLimitLine:llXAxis];
+
+    
     //BalloonMarker
     BalloonMarker *maker = [[BalloonMarker alloc] initWithColor: [UIColor colorWithRed: 94/255.0f green: 170/255.0f blue: 170/255.0f alpha: 0.4f] font: [UIFont systemFontOfSize:12.0] textColor: UIColor.whiteColor insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
     maker.chartView = _lineChartView;
@@ -88,10 +92,14 @@ BD *dataBD;
     
     for (int i = 0; i <valor2.count; i++) {
         currentStep = valor2[i];
-        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: valor]];
         [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[currentStep.avgHeartRate doubleValue]]];
         average = average + [currentStep.avgHeartRate doubleValue];
     }
+    
+    for (int i = 0; i <valor2.count; i++){
+        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: average]];
+    }
+    
     if(valor2.count>0){
         [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[currentStep.avgHeartRate doubleValue]]];
         average = average/valor2.count;
@@ -146,7 +154,9 @@ BD *dataBD;
         [data setValueTextColor: [UIColor whiteColor]];
     
         //5 - finally set our data
-        _lineChartView.data = data;
+        if(valor2.count > 0){
+            _lineChartView.data = data;
+        }
         _lineChartView.rightAxis.enabled = NO;
         [_lineChartView animateWithXAxisDuration:1.5];
     }
@@ -176,23 +186,23 @@ BD *dataBD;
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if ([pickerData[row] isEqualToString:@"Estudos"]){
+    if ([pickerData[row] isEqualToString:@"Studies"]){
         [self setCharData: 85.0 valor2:arrayEstudos];
         
     }
-    if ([pickerData[row] isEqualToString:@"Autoexposição"]){
+    if ([pickerData[row] isEqualToString:@"Self-exposure"]){
         [self setCharData: 85.0 valor2:arrayAutoexposicao];
         
     }
-    if ([pickerData[row] isEqualToString: @"Trabalho"]){
+    if ([pickerData[row] isEqualToString: @"Work"]){
         [self setCharData: 85.0 valor2:arrayTrabalho];
         
     }
-    if ([pickerData[row] isEqualToString:@"Interação Social"]){
+    if ([pickerData[row] isEqualToString:@"Social interaction"]){
         [self setCharData: 85.0 valor2:arrayInteracaoSocial];
         
     }
-    if ([pickerData[row] isEqualToString:@"Outros"]){
+    if ([pickerData[row] isEqualToString:@"Others"]){
         [self setCharData: 85.0 valor2:arrayOutros];
         
     }
@@ -215,11 +225,12 @@ BD *dataBD;
 }
 
 -(void)inicializaVetoresTag{
-    arrayAutoexposicao = [dataBD fetchStepsWithTag:@"Autoexposicao"];
-    arrayEstudos = [dataBD fetchStepsWithTag:@"Estudos"];
-    arrayInteracaoSocial = [dataBD fetchStepsWithTag: @"Interação Social"];
-    arrayTrabalho = [dataBD fetchStepsWithTag: @"Trabalho"];
-    arrayOutros = [dataBD fetchStepsWithTag: @"Outros"];
+    arrayAutoexposicao = [dataBD fetchStepsWithTag: NSLocalizedString(@"Autoexposição", @"")];
+    arrayEstudos = [dataBD fetchStepsWithTag: NSLocalizedString(@"Estudos", @"")];
+    arrayInteracaoSocial = [dataBD fetchStepsWithTag: NSLocalizedString(@"Interação Social",@"")];
+    arrayTrabalho = [dataBD fetchStepsWithTag: NSLocalizedString(@"Trabalho", @"")];
+    arrayOutros = [dataBD fetchStepsWithTag: NSLocalizedString(@"Outros", @"")];
+    [self setCharData: 85 valor2: arrayAutoexposicao];
 }
 
 
