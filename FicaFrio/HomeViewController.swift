@@ -35,8 +35,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
                 self.NewGoalView.alpha = 0
             }
             
-     //     self.NewGoalView.hidden = false
-
             }, completion: {(finished:Bool) in
                 if self.NewGoalView.alpha == 0{
                     self.NewGoalView.hidden = true
