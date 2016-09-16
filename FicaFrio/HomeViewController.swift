@@ -109,7 +109,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         print("While entering the characters this method gets called")
-        return true
+        let maxLength = 140
+        let currentString: NSString = textField.text!
+        let newString: NSString =
+            currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxLength
+        
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         print("TextField should return method called")
