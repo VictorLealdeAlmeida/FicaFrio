@@ -8,8 +8,14 @@
 
 #import "GoalFeedbackViewController.h"
 #import "Animation.m"
+#import "BD.h"
 
-@interface GoalFeedbackViewController ()
+@interface GoalFeedbackViewController () {
+    BD *database;
+    NSUserDefaults *defaults;
+    NSString *goalID;
+    NSArray *goalSteps;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *step1;
 @property (weak, nonatomic) IBOutlet UIImageView *step2;
 @property (weak, nonatomic) IBOutlet UIImageView *step3;
@@ -38,6 +44,20 @@ int shakes = 47;
 BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Pegar dados do banco
+    database = [BD new];
+    defaults = [NSUserDefaults standardUserDefaults];
+    goalID = [defaults stringForKey:@"goalID"];
+    goalSteps = [database fetchStepsForGoalID:goalID];
+    
+    for (int i = 0; i < goalSteps.count; i++){
+        Step *step = [goalSteps objectAtIndex:i];
+        //step.avgHeartRate  - média de batimentos do passo i
+        //step.duration      - duração do passo i
+    }
+    // ---------------------
+    
     _step1.hidden = YES;
     _step2.hidden = YES;
     _step3.hidden = YES;
