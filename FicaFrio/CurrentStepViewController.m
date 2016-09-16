@@ -64,6 +64,7 @@
 @implementation CurrentStepViewController
 
 NSDate *dateTime;
+NSTimer *timerAnimation;
 bool selectHeart = false;
 
 - (void)viewDidLoad {
@@ -101,15 +102,32 @@ bool selectHeart = false;
 - (IBAction)startStep:(id)sender {
     _startStep.hidden = true;
     _endStep.hidden = false;
-    
+    printf("%d",2323);
     // Store startDate
     [database setStartDate:[NSDate date] toStep:currentStep];
+    
+    //Timer pra acontecer a animacao
+    [self.endStep rotation360:3 option: 0];
+    timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3
+                                     target:self
+                                   selector:@selector(animationButton)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+
+}
+
+- (void)animationButton{
+    [self.endStep rotation360:3 option: 0];
 }
 
 // endStep - When end button is clicked
 - (IBAction)circleButton:(id)sender {
     // Store endDate
     [database setEndDate:[NSDate date] toStep:currentStep];
+    
+    [timerAnimation invalidate];
+    
     // Show next step - store number and fetch next step
     // If there are still steps
     if (stepNumber < 3){

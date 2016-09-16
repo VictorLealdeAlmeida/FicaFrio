@@ -335,7 +335,6 @@
     [_tagFourButton setTitle:tags[3] forState:UIControlStateNormal];
     [_tagFiveButton setTitle:tags[4] forState:UIControlStateNormal];
     
-    
     _darkView.hidden = false;
     _tagPopupView.hidden = false;
     _pickTagLabel.hidden = false;
