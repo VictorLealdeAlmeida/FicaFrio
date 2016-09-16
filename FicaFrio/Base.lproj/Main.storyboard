@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O4b-DK-hPY">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -356,10 +356,10 @@
                                 <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-cC-Oy8">
-                                <frame key="frameInset" minX="49" minY="95" width="277" height="307"/>
+                                <frame key="frameInset" minX="57" minY="77" width="260" height="307"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Thin" family="SF Compact Display" pointSize="25"/>
-                                <color key="textColor" red="0.2784313725" green="0.72941176470000002" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.47058823529999999" green="0.74117647060000003" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-Yy-Zph">
@@ -375,7 +375,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Respirar" image="botao_respirar"/>
                                 <connections>
-                                    <segue destination="whk-Og-WXW" kind="show" id="Yxx-gj-Ryl"/>
+                                    <action selector="startRelax:" destination="O4b-DK-hPY" eventType="touchUpInside" id="Rza-YZ-ho1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-FI-8B7">
@@ -390,14 +390,14 @@
                                 <frame key="frameInset" minX="165" minY="467" width="43" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Clique para começar o passo. ---" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSm-u2-YBc">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Clique para começar o passo. ---" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSm-u2-YBc">
                                 <frame key="frameInset" minX="48" minY="127" width="278" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="12"/>
                                 <color key="textColor" red="0.59215686270000001" green="0.79607843140000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSj-5u-FI4">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSj-5u-FI4">
                                 <frame key="frameInset" minX="117" minY="329" width="140" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -461,13 +461,58 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFP-yM-hgR" userLabel="Relax Popup View">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opcaoBatimento_fundo" translatesAutoresizingMaskIntoConstraints="NO" id="yEp-JA-ini"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deseja medir seus batimentos enquanto respira?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjl-LM-FaJ">
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8v-2V-Wgo">
+                                        <state key="normal" title="Button" image="botao_soRespirar"/>
+                                        <connections>
+                                            <action selector="justRelax:" destination="O4b-DK-hPY" eventType="touchUpInside" id="4CN-RN-KQO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2IS-i8-HYa">
+                                        <state key="normal" title="Button" image="botao_RespirarBatimento"/>
+                                        <connections>
+                                            <action selector="relaxAndMeasure:" destination="O4b-DK-hPY" eventType="touchUpInside" id="NfU-iY-Nlk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2IS-i8-HYa" firstAttribute="width" secondItem="yEp-JA-ini" secondAttribute="width" multiplier="0.71" id="3ns-v6-TBb"/>
+                                    <constraint firstItem="yEp-JA-ini" firstAttribute="centerY" secondItem="wFP-yM-hgR" secondAttribute="centerY" id="6WQ-zp-y9u"/>
+                                    <constraint firstItem="Tjl-LM-FaJ" firstAttribute="centerX" secondItem="yEp-JA-ini" secondAttribute="centerX" id="97T-dl-UxJ"/>
+                                    <constraint firstItem="yEp-JA-ini" firstAttribute="height" secondItem="wFP-yM-hgR" secondAttribute="height" id="BT8-Kz-wFs"/>
+                                    <constraint firstItem="2IS-i8-HYa" firstAttribute="centerX" secondItem="yEp-JA-ini" secondAttribute="centerX" id="Bwb-we-nwe"/>
+                                    <constraint firstItem="u8v-2V-Wgo" firstAttribute="centerX" secondItem="yEp-JA-ini" secondAttribute="centerX" id="Doc-fP-fMp"/>
+                                    <constraint firstItem="yEp-JA-ini" firstAttribute="width" secondItem="wFP-yM-hgR" secondAttribute="width" id="ETW-0K-yeh"/>
+                                    <constraint firstItem="2IS-i8-HYa" firstAttribute="centerY" secondItem="yEp-JA-ini" secondAttribute="centerY" multiplier="1.5" id="OtT-KK-7V0"/>
+                                    <constraint firstItem="Tjl-LM-FaJ" firstAttribute="width" secondItem="yEp-JA-ini" secondAttribute="width" multiplier="0.77" id="W0W-5u-SOF"/>
+                                    <constraint firstItem="Tjl-LM-FaJ" firstAttribute="centerY" secondItem="yEp-JA-ini" secondAttribute="centerY" multiplier="0.32" id="ZBX-wP-N45"/>
+                                    <constraint firstItem="u8v-2V-Wgo" firstAttribute="height" secondItem="yEp-JA-ini" secondAttribute="height" multiplier="0.2" id="cBK-q3-JkH"/>
+                                    <constraint firstItem="Tjl-LM-FaJ" firstAttribute="height" secondItem="yEp-JA-ini" secondAttribute="height" multiplier="0.17" id="cJ9-2K-vn7"/>
+                                    <constraint firstItem="2IS-i8-HYa" firstAttribute="height" secondItem="yEp-JA-ini" secondAttribute="height" multiplier="0.2" id="duy-lB-Ryd"/>
+                                    <constraint firstItem="yEp-JA-ini" firstAttribute="centerX" secondItem="wFP-yM-hgR" secondAttribute="centerX" id="jWa-hB-4NT"/>
+                                    <constraint firstItem="u8v-2V-Wgo" firstAttribute="width" secondItem="yEp-JA-ini" secondAttribute="width" multiplier="0.71" id="pne-vT-357"/>
+                                    <constraint firstItem="u8v-2V-Wgo" firstAttribute="centerY" secondItem="yEp-JA-ini" secondAttribute="centerY" multiplier="0.81" id="uQv-E8-6Yq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rEl-E5-AmY" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="8Zo-45-rt7"/>
                             <constraint firstItem="rEl-E5-AmY" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" id="Izl-Fx-4s5"/>
+                            <constraint firstItem="wFP-yM-hgR" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" multiplier="0.62" id="PuZ-Y9-cj0"/>
                             <constraint firstItem="rEl-E5-AmY" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="QKA-yN-gOA"/>
+                            <constraint firstItem="wFP-yM-hgR" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="0.75" id="fGz-kF-Lxg"/>
+                            <constraint firstItem="wFP-yM-hgR" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="lfx-lh-HmC"/>
                             <constraint firstItem="rEl-E5-AmY" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" id="pNh-g4-rdo"/>
+                            <constraint firstItem="wFP-yM-hgR" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="uq0-hc-dYQ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -484,8 +529,10 @@
                         <outlet property="infoButton" destination="IaI-Am-8nz" id="j5X-wK-BWN"/>
                         <outlet property="infoLabel" destination="unE-3l-n0x" id="LTi-wF-n0U"/>
                         <outlet property="labelStep" destination="ycL-cC-Oy8" id="c5O-jK-48M"/>
+                        <outlet property="relaxPopupView" destination="wFP-yM-hgR" id="s69-Qj-NRm"/>
                         <outlet property="startStep" destination="QeX-FI-8B7" id="AtM-G1-6rU"/>
                         <outlet property="tagLabel" destination="HSj-5u-FI4" id="254-6I-nAy"/>
+                        <segue destination="whk-Og-WXW" kind="show" identifier="currentToRelax" id="Jv2-zM-KJO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhY-xQ-jHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -509,27 +556,6 @@
                                 <frame key="frameInset" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="opcaoBatimento_fundo" translatesAutoresizingMaskIntoConstraints="NO" id="yEp-JA-ini">
-                                <frame key="frameInset" minX="51" minY="159" width="273" height="388"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2IS-i8-HYa">
-                                <frame key="frameInset" minX="88" minY="414" width="199" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="botao_RespirarBatimento"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8v-2V-Wgo">
-                                <frame key="frameInset" minX="88" minY="271" width="199" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="botao_soRespirar"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deseja medir seus batimentos enquanto respira?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjl-LM-FaJ">
-                                <frame key="frameInset" minX="79" minY="182" width="217" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1058823529" green="0.054901960780000002" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>

@@ -40,12 +40,18 @@
 @property (weak, nonatomic) IBOutlet UIView *darkView;
 
 
+@property (weak, nonatomic) IBOutlet UIView *relaxPopupView;
+
+
+
 //Actions popup
 - (IBAction)circleButton:(id)sender;
 //- (void) changeNumber;
 - (IBAction)newGoal:(id)sender;
 - (IBAction)startStep:(id)sender;
-
+- (IBAction)startRelax:(UIButton *)sender;
+- (IBAction)justRelax:(UIButton *)sender;
+- (IBAction)relaxAndMeasure:(UIButton *)sender;
 
 @end
 
@@ -146,6 +152,30 @@ NSDate *dateTime;
     [_backLabel setAlpha:0.95];
     [_infoLabel setAlpha:0.95];
     [_grafLabel setAlpha:0.95];
+    [UIView commitAnimations];
+}
+
+- (IBAction)startRelax:(UIButton *)sender {
+    [self showRelaxPopup];
+}
+
+- (IBAction)justRelax:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"currentToRelax" sender:self];
+    // sem medir o batimento
+}
+
+- (IBAction)relaxAndMeasure:(UIButton *)sender {
+    // [self showTutorialPopup];
+    // medindo o batimento
+}
+
+- (void) showRelaxPopup {
+    _relaxPopupView.hidden = false;
+    _darkView.hidden = false;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.7];
+    [_darkView setAlpha:0.55];
+    [_relaxPopupView setAlpha:0.95];
     [UIView commitAnimations];
 }
 
