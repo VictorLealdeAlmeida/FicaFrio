@@ -1,0 +1,111 @@
+
+/* Class = "UIButton"; normalTitle = "Autoexposição"; ObjectID = "0Es-bb-5xN"; */
+"0Es-bb-5xN.normalTitle" = "Autoexposição";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "0hA-mw-Vhw"; */
+"0hA-mw-Vhw.normalTitle" = "Back";
+
+/* Class = "UILabel"; text = "bpm"; ObjectID = "1G3-IF-n1Y"; */
+"1G3-IF-n1Y.text" = "bpm";
+
+/* Class = "UILabel"; text = "Show of ball, deu tudo certo"; ObjectID = "2Xc-Mv-cBl"; */
+"2Xc-Mv-cBl.text" = "Show of ball, deu tudo certo";
+
+/* Class = "UILabel"; text = "Insira sua meta"; ObjectID = "2tc-Ej-Ztt"; */
+"2tc-Ej-Ztt.text" = "Insira sua meta";
+
+/* Class = "UILabel"; text = "bpm"; ObjectID = "CPm-Bi-c7M"; */
+"CPm-Bi-c7M.text" = "bpm";
+
+/* Class = "UILabel"; text = "Divida sua meta em três passos e não esqueça de escolher uma tag para cada um deles!"; ObjectID = "CUa-V4-jGp"; */
+"CUa-V4-jGp.text" = "Divida sua meta em três passos e não esqueça de escolher uma tag para cada um deles!";
+
+/* Class = "UILabel"; text = "32"; ObjectID = "Eot-b9-4eT"; */
+"Eot-b9-4eT.text" = "32";
+
+/* Class = "UIButton"; normalTitle = "Estudos"; ObjectID = "Evd-bf-N1S"; */
+"Evd-bf-N1S.normalTitle" = "Estudos";
+
+/* Class = "UIButton"; normalTitle = "Infografo"; ObjectID = "IaI-Am-8nz"; */
+"IaI-Am-8nz.normalTitle" = "Infografo";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ioc-nT-hx7"; */
+"Ioc-nT-hx7.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Batimentos"; ObjectID = "KUp-1J-DnY"; */
+"KUp-1J-DnY.text" = "Batimentos";
+
+/* Class = "UIButton"; normalTitle = "Geral"; ObjectID = "KvY-Km-y9K"; */
+"KvY-Km-y9K.normalTitle" = "Geral";
+
+/* Class = "UILabel"; text = "min"; ObjectID = "Lul-Xr-Ict"; */
+"Lul-Xr-Ict.text" = "min";
+
+/* Class = "UILabel"; text = "Avaliação Geral"; ObjectID = "Nbp-MG-oHf"; */
+"Nbp-MG-oHf.text" = "Avaliação Geral";
+
+/* Class = "UILabel"; text = "Nova Meta"; ObjectID = "OZY-mT-jQe"; */
+"OZY-mT-jQe.text" = "Nova Meta";
+
+/* Class = "UIButton"; normalTitle = "startStep"; ObjectID = "QeX-FI-8B7"; */
+"QeX-FI-8B7.normalTitle" = "startStep";
+
+/* Class = "UIButton"; normalTitle = "Interação Social"; ObjectID = "RYJ-dR-Hzo"; */
+"RYJ-dR-Hzo.normalTitle" = "Interação Social";
+
+/* Class = "UIButton"; normalTitle = "Heart"; ObjectID = "Twj-Vl-p1j"; */
+"Twj-Vl-p1j.normalTitle" = "Heart";
+
+/* Class = "UILabel"; text = "NOME DA META AQUI"; ObjectID = "XA4-UE-o8P"; */
+"XA4-UE-o8P.text" = "NOME DA META AQUI";
+
+/* Class = "UILabel"; text = "Tag"; ObjectID = "YbV-Pr-Wfh"; */
+"YbV-Pr-Wfh.text" = "Tag";
+
+/* Class = "UIButton"; normalTitle = "Concluído"; ObjectID = "a1H-Yy-Zph"; */
+"a1H-Yy-Zph.normalTitle" = "Concluído";
+
+/* Class = "UILabel"; text = "ESCOLHA UMA CATEGORIA"; ObjectID = "aP8-LB-0qu"; */
+"aP8-LB-0qu.text" = "ESCOLHA UMA CATEGORIA";
+
+/* Class = "UIButton"; normalTitle = "FeedBack"; ObjectID = "aUn-zs-xcQ"; */
+"aUn-zs-xcQ.normalTitle" = "FeedBack";
+
+/* Class = "UILabel"; text = "bpm"; ObjectID = "dcG-cN-q0f"; */
+"dcG-cN-q0f.text" = "bpm";
+
+/* Class = "UIButton"; normalTitle = "Trabalho"; ObjectID = "evw-3v-Rch"; */
+"evw-3v-Rch.normalTitle" = "Trabalho";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "hSp-4Q-fd5"; */
+"hSp-4Q-fd5.text" = "1";
+
+/* Class = "UITextField"; placeholder = "Digite sua tarefa"; ObjectID = "k1d-5o-q4V"; */
+"k1d-5o-q4V.placeholder" = "Digite sua tarefa";
+
+/* Class = "UILabel"; text = "99"; ObjectID = "lmE-TL-j3Q"; */
+"lmE-TL-j3Q.text" = "99";
+
+/* Class = "UIButton"; normalTitle = "Outros"; ObjectID = "lwY-ZA-aPW"; */
+"lwY-ZA-aPW.normalTitle" = "Outros";
+
+/* Class = "UILabel"; text = "75"; ObjectID = "mSb-m4-B77"; */
+"mSb-m4-B77.text" = "75";
+
+/* Class = "UIButton"; normalTitle = "Heart"; ObjectID = "qMT-vG-Z2q"; */
+"qMT-vG-Z2q.normalTitle" = "Heart";
+
+/* Class = "UIButton"; normalTitle = "Respirar"; ObjectID = "rH2-1Z-rDA"; */
+"rH2-1Z-rDA.normalTitle" = "Respirar";
+
+/* Class = "UILabel"; text = "85"; ObjectID = "rmB-CP-FQ6"; */
+"rmB-CP-FQ6.text" = "85";
+
+/* Class = "UIButton"; normalTitle = "Nova Tarefa"; ObjectID = "te2-8B-Iba"; */
+"te2-8B-Iba.normalTitle" = "Nova Tarefa";
+
+/* Class = "UILabel"; text = "Avaliação da Tarefa"; ObjectID = "unE-3l-n0x"; */
+"unE-3l-n0x.text" = "Avaliação da Tarefa";
+
+/* Class = "UILabel"; text = "o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos"; ObjectID = "ycL-cC-Oy8"; */
+"ycL-cC-Oy8.text" = "o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos";

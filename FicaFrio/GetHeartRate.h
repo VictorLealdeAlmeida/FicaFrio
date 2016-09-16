@@ -11,4 +11,6 @@
 
 @interface GetHeartRate : NSObject
 
+-(void) pause;
+
 @end

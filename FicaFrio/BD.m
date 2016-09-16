@@ -89,6 +89,7 @@
     if (ongoingStep != nil) {
         ongoingStep.avgHeartRate = [NSNumber numberWithFloat:avgHeartRate];
         
+        NSLog(@"Average heart rate %@ saved to %@", ongoingStep.avgHeartRate, ongoingStep);
         // Salvar startDate no BD
         NSError *error;
         if (![_managedContext save:&error]) {

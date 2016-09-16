@@ -107,19 +107,19 @@ typedef NS_ENUM(NSUInteger, CURRENT_STATE) {
 }
 
 //#pragma mark Pause and Resume of pulse detection
-//-(void) pause {
-//    if(self.currentState==STATE_PAUSED) return;
-//
-//    // switch off the torch
-//    if([self.camera isTorchModeSupported:AVCaptureTorchModeOn]) {
-//        [self.camera lockForConfiguration:nil];
-//        self.camera.torchMode=AVCaptureTorchModeOff;
-//        [self.camera unlockForConfiguration];
-//    }
-//    self.currentState=STATE_PAUSED;
-//    // let the application go to sleep if the phone is idle
-//    [UIApplication sharedApplication].idleTimerDisabled = NO;
-//}
+-(void) pause {
+    if(self.currentState==STATE_PAUSED) return;
+
+    // switch off the torch
+    if([self.camera isTorchModeSupported:AVCaptureTorchModeOn]) {
+        [self.camera lockForConfiguration:nil];
+        self.camera.torchMode=AVCaptureTorchModeOff;
+        [self.camera unlockForConfiguration];
+    }
+    self.currentState=STATE_PAUSED;
+    // let the application go to sleep if the phone is idle
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
+}
 //
 //-(void) resume {
 //    if(self.currentState!=STATE_PAUSED) return;
@@ -225,6 +225,7 @@ void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v ) {
     float avePeriod=[self.pulseDetector getAverage];
     if(avePeriod==INVALID_PULSE_PERIOD) {
         // no value available
+        NSLog(@"Invalid pulse rate");
     } else {
         // got a value so show it
         float pulse=60.0/avePeriod;

@@ -11,10 +11,12 @@ import UIKit
 
 class RelaxViewController: UIViewController {
     
+    var startReadingHeartRate : GetHeartRate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let RelaxGif = UIImage.gifImageWithName("respiracao")
+        let RelaxGif = UIImage.gifImageWithName("Espiral3")
         let imageView = UIImageView(image: RelaxGif)
         imageView.frame = CGRect(x: 110, y: 120, width: self.view.frame.size.width - 221, height: 223)
         view.addSubview(imageView)
@@ -23,7 +25,7 @@ class RelaxViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         let database = BD.init()
         
-        let startReadingHeartRate = GetHeartRate.init()
+        startReadingHeartRate = GetHeartRate.init()
         
         // Get current step and save its average heart rate on the database
         let currentGoalID = defaults.stringForKey("currentGoalID")
@@ -34,9 +36,11 @@ class RelaxViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated);
-        
+        print("viewWillDisappear")
+        startReadingHeartRate?.pause()
+        startReadingHeartRate = nil
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
