@@ -12,6 +12,7 @@ import UIKit
 class RelaxViewController: UIViewController {
     
     var startReadingHeartRate : GetHeartRate?
+    var selectHeartHate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,8 @@ class RelaxViewController: UIViewController {
         let currentStep = database.fetchStep(stepNumber, forGoalID: currentGoalID)
         let avgHeartRate = defaults.floatForKey("avgHeartRate")
         database.setAvgHeartRate(avgHeartRate, toStep: currentStep)
+        
+       // print(selectHeartHate)
     }
     
     override func viewWillDisappear(animated: Bool) {

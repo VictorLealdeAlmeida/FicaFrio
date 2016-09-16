@@ -8,6 +8,7 @@
 
 
 #import "CurrentStepViewController.h"
+#import "FicaFrio-Swift.h"
 #import "Step.h"
 #import "BD.h"
 
@@ -63,6 +64,7 @@
 @implementation CurrentStepViewController
 
 NSDate *dateTime;
+bool selectHeart = false;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -226,6 +228,18 @@ NSDate *dateTime;
    // localNotification.repeatInterval = 5;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+}
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    if ([segue.identifier isEqualToString:@"CurrentToRelax"]) {
+        RelaxViewController *d = (RelaxViewController *)segue.destinationViewController;
+        d.selectHeartHate = selectHeart;
+    
+    }
     
 }
 
