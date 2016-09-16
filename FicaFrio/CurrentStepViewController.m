@@ -110,7 +110,7 @@ bool selectHeart = false;
 
 
     //Timer pra acontecer a animacao
-    [self.endStep rotation360:3 option: 0];
+    [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
     timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3
                                      target:self
                                    selector:@selector(animationButton)
@@ -121,7 +121,7 @@ bool selectHeart = false;
 }
 
 - (void)animationButton{
-    [self.endStep rotation360:3 option: 0];
+    [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
 }
 
 // endStep - When end button is clicked

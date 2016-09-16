@@ -10,6 +10,7 @@
 		1E50F5EC1D8C2B9D00CD05EC /* Espiral3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E50F5EB1D8C2B9D00CD05EC /* Espiral3.gif */; };
 		1E50F6011D8C49C600CD05EC /* GifInicial.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E50F6001D8C49C600CD05EC /* GifInicial.gif */; };
 		1E50F6061D8C49E800CD05EC /* GIF_INICIAL_CERTO.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E50F6051D8C49E800CD05EC /* GIF_INICIAL_CERTO.gif */; };
+		1E50F6081D8C8DD700CD05EC /* gif2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E50F6071D8C8DD700CD05EC /* gif2.gif */; };
 		1E6D29B51D89A070008734E0 /* logoteste.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1E6D29B41D89A070008734E0 /* logoteste.gif */; };
 		9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; };
 		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -100,6 +101,7 @@
 		1E50F5EB1D8C2B9D00CD05EC /* Espiral3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Espiral3.gif; sourceTree = "<group>"; };
 		1E50F6001D8C49C600CD05EC /* GifInicial.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GifInicial.gif; sourceTree = "<group>"; };
 		1E50F6051D8C49E800CD05EC /* GIF_INICIAL_CERTO.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF_INICIAL_CERTO.gif; sourceTree = "<group>"; };
+		1E50F6071D8C8DD700CD05EC /* gif2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif2.gif; sourceTree = "<group>"; };
 		1E6D29B41D89A070008734E0 /* logoteste.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logoteste.gif; sourceTree = "<group>"; };
 		9F09CF731D8817670079E6FB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ChartsFramework/Charts.xcodeproj; sourceTree = "<group>"; };
 		9F09CF871D8817C30079E6FB /* FicaFrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FicaFrio.swift; sourceTree = SOURCE_ROOT; };
@@ -230,6 +232,7 @@
 		D4BBC1371D7EF7BB0058615A /* FicaFrio */ = {
 			isa = PBXGroup;
 			children = (
+				1E50F6071D8C8DD700CD05EC /* gif2.gif */,
 				1E50F5EB1D8C2B9D00CD05EC /* Espiral3.gif */,
 				1E50F6001D8C49C600CD05EC /* GifInicial.gif */,
 				1E50F6051D8C49E800CD05EC /* GIF_INICIAL_CERTO.gif */,
@@ -400,6 +403,7 @@
 				1E50F6011D8C49C600CD05EC /* GifInicial.gif in Resources */,
 				D41384741D88489F00281B48 /* SF-Compact-Display-Light.otf in Resources */,
 				D41384751D88489F00281B48 /* SF-Compact-Display-Regular.otf in Resources */,
+				1E50F6081D8C8DD700CD05EC /* gif2.gif in Resources */,
 				D4BBC14B1D7EF7BB0058615A /* LaunchScreen.storyboard in Resources */,
 				D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */,
 				AC9148E41D8B8741005383AA /* Localizable.strings in Resources */,
