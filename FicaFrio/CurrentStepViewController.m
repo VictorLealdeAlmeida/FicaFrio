@@ -8,6 +8,7 @@
 
 
 #import "CurrentStepViewController.h"
+#import "FicaFrio-Swift.h"
 #import "Step.h"
 #import "BD.h"
 
@@ -40,11 +41,21 @@
 @property (weak, nonatomic) IBOutlet UIView *darkView;
 
 
+@property (weak, nonatomic) IBOutlet UIView *relaxPopupView;
+@property (weak, nonatomic) IBOutlet UIView *tutorialPopupView;
+
+
+
+
 //Actions popup
 - (IBAction)circleButton:(id)sender;
 //- (void) changeNumber;
 - (IBAction)newGoal:(id)sender;
 - (IBAction)startStep:(id)sender;
+- (IBAction)startRelax:(UIButton *)sender;
+- (IBAction)justRelax:(UIButton *)sender;
+- (IBAction)relaxAndMeasure:(UIButton *)sender;
+- (IBAction)goToRelax:(UIButton *)sender;
 
 
 @end
@@ -53,6 +64,8 @@
 @implementation CurrentStepViewController
 
 NSDate *dateTime;
+NSTimer *timerAnimation;
+bool selectHeart = false;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -89,16 +102,36 @@ NSDate *dateTime;
 - (IBAction)startStep:(id)sender {
     _startStep.hidden = true;
     _endStep.hidden = false;
-    
+    printf("%d",2323);
     // Store startDate
     [database setStartDate:[NSDate date] toStep:currentStep];
+<<<<<<< HEAD
     [defaults synchronize];
+=======
+    
+    //Timer pra acontecer a animacao
+    [self.endStep rotation360:3 option: 0];
+    timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3
+                                     target:self
+                                   selector:@selector(animationButton)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+
+}
+
+- (void)animationButton{
+    [self.endStep rotation360:3 option: 0];
+>>>>>>> 0cef4475d2d3305b5ecfd17412ab096ae0236c1a
 }
 
 // endStep - When end button is clicked
 - (IBAction)circleButton:(id)sender {
     // Store endDate
     [database setEndDate:[NSDate date] toStep:currentStep];
+    
+    [timerAnimation invalidate];
+    
     // Show next step - store number and fetch next step
     // If there are still steps
     if (stepNumber < 3){
@@ -113,6 +146,7 @@ NSDate *dateTime;
     }
     // Final step ended
     else {
+        [defaults setInteger:0 forKey:@"currentStepNumber"];
         [self showPopup];
     }
 }
@@ -150,6 +184,59 @@ NSDate *dateTime;
     [UIView commitAnimations];
 }
 
+- (IBAction)startRelax:(UIButton *)sender {
+    [self showPopup:_relaxPopupView];
+}
+
+- (IBAction)justRelax:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"currentToRelax" sender:self];
+    // sem medir o batimento
+}
+
+- (IBAction)relaxAndMeasure:(UIButton *)sender {
+    [self closePopup:_relaxPopupView];
+    [self showPopup:_tutorialPopupView];
+}
+
+- (IBAction)goToRelax:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"currentToRelax" sender:self];
+    // medindo o batimento
+}
+
+- (void)showPopup:(UIView *)popupView {
+    popupView.hidden = false;
+    _darkView.hidden = false;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.7];
+    [_darkView setAlpha:0.55];
+    [popupView setAlpha:0.95];
+    [UIView commitAnimations];
+}
+
+- (void)closePopup:(UIView *)popupView {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.7];
+    //[_darkView setAlpha:0.0];
+    [popupView setAlpha:0.0];
+    [UIView commitAnimations];
+    
+    //Timer pra acontecer a animacao antes do hidden
+    [NSTimer scheduledTimerWithTimeInterval:0.7
+                                     target:self
+                                   selector:@selector(closeTagPopupHidden)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+- (void) closeTagPopupHidden {
+    // Hide all the popup elements
+    //_darkView.hidden = true;
+    _relaxPopupView.hidden = true;
+    //_tutorialPopupView.hidden = true;
+    
+}
+
+
 - (IBAction)datePicker:(UIDatePicker *)sender {
     dateTime = sender.date;
 }
@@ -164,6 +251,18 @@ NSDate *dateTime;
    // localNotification.repeatInterval = 5;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+}
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    if ([segue.identifier isEqualToString:@"CurrentToRelax"]) {
+        RelaxViewController *d = (RelaxViewController *)segue.destinationViewController;
+        d.selectHeartHate = selectHeart;
+    
+    }
     
 }
 

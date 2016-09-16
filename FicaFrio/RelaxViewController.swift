@@ -12,6 +12,7 @@ import UIKit
 class RelaxViewController: UIViewController {
     
     var startReadingHeartRate : GetHeartRate?
+    var selectHeartHate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,21 @@ class RelaxViewController: UIViewController {
         imageView.frame = CGRect(x: 110, y: 120, width: self.view.frame.size.width - 221, height: 223)
         view.addSubview(imageView)
         
+        if selectHeartHate {
+            startReadingHeartRate = GetHeartRate.init()
+        }
+        
+       // print(selectHeartHate)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        print("viewWillDisappear")
+        startReadingHeartRate?.pause()
+        startReadingHeartRate = nil
+        
         // Initialize database and user defaults
         let defaults = NSUserDefaults.standardUserDefaults()
         let database = BD.init()
-        
-        startReadingHeartRate = GetHeartRate.init()
         
         // Get current step and save its average heart rate on the database
         let currentGoalID = defaults.stringForKey("currentGoalID")
@@ -33,12 +44,6 @@ class RelaxViewController: UIViewController {
         let currentStep = database.fetchStep(stepNumber, forGoalID: currentGoalID)
         let avgHeartRate = defaults.floatForKey("avgHeartRate")
         database.setAvgHeartRate(avgHeartRate, toStep: currentStep)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        print("viewWillDisappear")
-        startReadingHeartRate?.pause()
-        startReadingHeartRate = nil
     }
 
     

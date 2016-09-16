@@ -26,9 +26,19 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func NewGoalButton(sender: UIButton) {
-        UIView.animateWithDuration(0.4, animations: {
-            self.NewGoalView.alpha = 1
-        })
+        UIView.animateWithDuration(0.6, animations: {
+            if self.NewGoalView.hidden {
+                self.NewGoalView.alpha = 1
+                self.NewGoalView.hidden = false
+            }
+            else {
+                self.NewGoalView.alpha = 0
+            }
+            
+            }, completion: {(finished:Bool) in
+                if self.NewGoalView.alpha == 0{
+                    self.NewGoalView.hidden = true
+                } })
     }
     
     @IBAction func SetTask(sender: AnyObject) {
@@ -39,18 +49,18 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     
     // Configura view
-    func ShowNewGoalView() {
-        UIView.animateWithDuration(0.4, animations: {
+   /* func ShowNewGoalView() {
+        UIView.animateWithDuration(0.6, animations: {
             self.NewGoalView.hidden = false
             self.NewGoalView.alpha = 0.98
         })
     }
     
-    
+ */
     
     override func viewDidLoad() {
     
-        NewGoalView.hidden = false
+        NewGoalView.hidden = true
         NewGoalView.alpha = 0
         
         super.viewDidLoad()
@@ -67,7 +77,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
  
  
      // Configura a logo
-        let logoGif = UIImage.gifImageWithName("GIF_INICIAL_1VEZ")
+        let logoGif = UIImage.gifImageWithName("GifInicial")
         let imageView = UIImageView(image: logoGif)
         imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3, height: imageView.frame.size.height/3)
         view.addSubview(imageView)
@@ -109,7 +119,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         print("While entering the characters this method gets called")
-        return true
+        let maxLength = 140
+        let currentString: NSString = textField.text!
+        let newString: NSString =
+            currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxLength
+        
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         print("TextField should return method called")
