@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O4b-DK-hPY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -36,41 +36,28 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUn-zs-xcQ">
-                                <frame key="frameInset" minX="106" minY="145" width="82" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="FeedBack"/>
-                                <connections>
-                                    <segue destination="qOg-3a-aVT" kind="show" id="scD-ro-sTL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
-                                <frame key="frameInset" minX="110" minY="531" width="156" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="19"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="22"/>
                                 <state key="normal" title="Nova Meta" backgroundImage="botao_novaMetaSeco"/>
                                 <connections>
                                     <action selector="NewGoalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6o8-NB-otu"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bf3-p5-Tgz">
-                                <frame key="frameInset" minX="67" minY="401" maxX="68" maxY="144"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAF-KP-r2s">
+                                <state key="normal" title="Button" image="popupIcon1"/>
+                                <connections>
+                                    <segue destination="qOg-3a-aVT" kind="show" id="lWd-tw-tJI"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf3-p5-Tgz">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="balao_InsirasuaMeta2" translatesAutoresizingMaskIntoConstraints="NO" id="iha-Oj-Tyn">
-                                        <frame key="frameInset" minX="-5" minY="-3" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Insira sua meta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Ej-Ztt">
-                                        <frame key="frameInset" minX="57" minY="23" width="133" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="balao_InsirasuaMeta2" translatesAutoresizingMaskIntoConstraints="NO" id="iha-Oj-Tyn"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insira sua meta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Ej-Ztt">
                                         <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="18"/>
                                         <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JP0-pm-4PN">
-                                        <frame key="frameInset" minX="32" minY="61" width="183" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JP0-pm-4PN">
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                         <connections>
@@ -78,8 +65,36 @@
                                         </connections>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="2tc-Ej-Ztt" firstAttribute="height" secondItem="bf3-p5-Tgz" secondAttribute="height" multiplier="0.22" id="7hc-zR-Gqf"/>
+                                    <constraint firstItem="2tc-Ej-Ztt" firstAttribute="width" secondItem="bf3-p5-Tgz" secondAttribute="width" multiplier="0.7" id="AsJ-6o-U8X"/>
+                                    <constraint firstItem="JP0-pm-4PN" firstAttribute="centerY" secondItem="bf3-p5-Tgz" secondAttribute="centerY" multiplier="1.1" id="Vkw-Xu-nTS"/>
+                                    <constraint firstItem="JP0-pm-4PN" firstAttribute="height" secondItem="bf3-p5-Tgz" secondAttribute="height" multiplier="0.2" id="Y77-dR-c6h"/>
+                                    <constraint firstItem="JP0-pm-4PN" firstAttribute="centerX" secondItem="bf3-p5-Tgz" secondAttribute="centerX" id="Z4T-J1-gf6"/>
+                                    <constraint firstItem="iha-Oj-Tyn" firstAttribute="centerX" secondItem="bf3-p5-Tgz" secondAttribute="centerX" id="bLq-xU-XmD"/>
+                                    <constraint firstItem="iha-Oj-Tyn" firstAttribute="height" secondItem="bf3-p5-Tgz" secondAttribute="height" id="g9g-2t-UCf"/>
+                                    <constraint firstItem="JP0-pm-4PN" firstAttribute="width" secondItem="bf3-p5-Tgz" secondAttribute="width" multiplier="0.8" id="jaa-Bw-20I"/>
+                                    <constraint firstItem="iha-Oj-Tyn" firstAttribute="centerY" secondItem="bf3-p5-Tgz" secondAttribute="centerY" id="jc9-Tb-Jtc"/>
+                                    <constraint firstItem="iha-Oj-Tyn" firstAttribute="width" secondItem="bf3-p5-Tgz" secondAttribute="width" id="loX-E3-T0F"/>
+                                    <constraint firstItem="2tc-Ej-Ztt" firstAttribute="centerX" secondItem="bf3-p5-Tgz" secondAttribute="centerX" id="nXU-MV-TNq"/>
+                                    <constraint firstItem="2tc-Ej-Ztt" firstAttribute="centerY" secondItem="bf3-p5-Tgz" secondAttribute="centerY" multiplier="0.55" id="uEA-YL-N5g"/>
+                                </constraints>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="bf3-p5-Tgz" firstAttribute="width" secondItem="te2-8B-Iba" secondAttribute="width" multiplier="1.53" id="AJT-QW-eXZ"/>
+                            <constraint firstItem="bf3-p5-Tgz" firstAttribute="centerX" secondItem="te2-8B-Iba" secondAttribute="centerX" id="FZh-f9-P3a"/>
+                            <constraint firstItem="te2-8B-Iba" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.62" id="Ghh-g6-J9D"/>
+                            <constraint firstItem="lAF-KP-r2s" firstAttribute="width" secondItem="te2-8B-Iba" secondAttribute="width" multiplier="0.27" id="RvA-Os-BNK"/>
+                            <constraint firstItem="te2-8B-Iba" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.075" id="Ti9-hR-ct7"/>
+                            <constraint firstItem="te2-8B-Iba" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.42" id="VyY-4M-73X"/>
+                            <constraint firstItem="te2-8B-Iba" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WKH-DM-y5K"/>
+                            <constraint firstItem="te2-8B-Iba" firstAttribute="top" secondItem="bf3-p5-Tgz" secondAttribute="bottom" constant="5" id="XcX-wf-PK5"/>
+                            <constraint firstItem="bf3-p5-Tgz" firstAttribute="height" secondItem="te2-8B-Iba" secondAttribute="height" multiplier="2.7" id="f4C-tc-dUh"/>
+                            <constraint firstItem="lAF-KP-r2s" firstAttribute="height" secondItem="te2-8B-Iba" secondAttribute="height" multiplier="0.65" id="o69-rT-ieo"/>
+                            <constraint firstItem="lAF-KP-r2s" firstAttribute="top" secondItem="te2-8B-Iba" secondAttribute="bottom" constant="13" id="rgZ-I5-Vlw"/>
+                            <constraint firstItem="lAF-KP-r2s" firstAttribute="centerX" secondItem="te2-8B-Iba" secondAttribute="centerX" id="uug-v6-jvb"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bqY-bP-R3Y"/>
                     <connections>
@@ -97,7 +112,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="342" y="652"/>
+            <point key="canvasLocation" x="341.60000000000002" y="651.72413793103453"/>
         </scene>
         <!--Set Steps View Controller-->
         <scene sceneID="9sB-HH-TfL">
@@ -818,7 +833,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="balao_InsirasuaMeta2" width="660" height="373"/>
+        <image name="balao_InsirasuaMeta2" width="590" height="305"/>
         <image name="botao_RespirarBatimento" width="458" height="196"/>
         <image name="botao_comecarTarefa" width="400" height="363"/>
         <image name="botao_naopreenchido" width="100" height="100"/>
