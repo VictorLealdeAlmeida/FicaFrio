@@ -41,6 +41,8 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *relaxPopupView;
+@property (weak, nonatomic) IBOutlet UIView *tutorialPopupView;
+
 
 
 
@@ -52,6 +54,8 @@
 - (IBAction)startRelax:(UIButton *)sender;
 - (IBAction)justRelax:(UIButton *)sender;
 - (IBAction)relaxAndMeasure:(UIButton *)sender;
+- (IBAction)goToRelax:(UIButton *)sender;
+
 
 @end
 
@@ -156,7 +160,7 @@ NSDate *dateTime;
 }
 
 - (IBAction)startRelax:(UIButton *)sender {
-    [self showRelaxPopup];
+    [self showPopup:_relaxPopupView];
 }
 
 - (IBAction)justRelax:(UIButton *)sender {
@@ -165,19 +169,48 @@ NSDate *dateTime;
 }
 
 - (IBAction)relaxAndMeasure:(UIButton *)sender {
-    // [self showTutorialPopup];
+    [self closePopup:_relaxPopupView];
+    [self showPopup:_tutorialPopupView];
+}
+
+- (IBAction)goToRelax:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"currentToRelax" sender:self];
     // medindo o batimento
 }
 
-- (void) showRelaxPopup {
-    _relaxPopupView.hidden = false;
+- (void)showPopup:(UIView *)popupView {
+    popupView.hidden = false;
     _darkView.hidden = false;
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
     [_darkView setAlpha:0.55];
-    [_relaxPopupView setAlpha:0.95];
+    [popupView setAlpha:0.95];
     [UIView commitAnimations];
 }
+
+- (void)closePopup:(UIView *)popupView {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.7];
+    //[_darkView setAlpha:0.0];
+    [popupView setAlpha:0.0];
+    [UIView commitAnimations];
+    
+    //Timer pra acontecer a animacao antes do hidden
+    [NSTimer scheduledTimerWithTimeInterval:0.7
+                                     target:self
+                                   selector:@selector(closeTagPopupHidden)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+- (void) closeTagPopupHidden {
+    // Hide all the popup elements
+    //_darkView.hidden = true;
+    _relaxPopupView.hidden = true;
+    //_tutorialPopupView.hidden = true;
+    
+}
+
 
 - (IBAction)datePicker:(UIDatePicker *)sender {
     dateTime = sender.date;
