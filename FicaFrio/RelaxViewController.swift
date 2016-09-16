@@ -19,7 +19,7 @@ class RelaxViewController: UIViewController {
         
         let RelaxGif = UIImage.gifImageWithName("Espiral3")
         let imageView = UIImageView(image: RelaxGif)
-        imageView.frame = CGRect(x: 110, y: 120, width: self.view.frame.size.width - 221, height: 223)
+        imageView.frame = CGRect(x: 110, y: 220, width: self.view.frame.size.width - 221, height: 223)
         view.addSubview(imageView)
         
         if selectHeartHate {
