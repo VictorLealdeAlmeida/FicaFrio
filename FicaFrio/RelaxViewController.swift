@@ -11,6 +11,8 @@ import UIKit
 
 class RelaxViewController: UIViewController {
     
+    var startReadingHeartRate : GetHeartRate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,7 +25,7 @@ class RelaxViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         let database = BD.init()
         
-        let startReadingHeartRate = GetHeartRate.init()
+        startReadingHeartRate = GetHeartRate.init()
         
         // Get current step and save its average heart rate on the database
         let currentGoalID = defaults.stringForKey("currentGoalID")
@@ -34,9 +36,11 @@ class RelaxViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated);
-        
+        print("viewWillDisappear")
+        startReadingHeartRate?.pause()
+        startReadingHeartRate = nil
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

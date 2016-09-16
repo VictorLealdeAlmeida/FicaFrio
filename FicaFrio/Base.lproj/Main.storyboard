@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -46,7 +46,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
                                 <frame key="frameInset" minX="109" minY="531" width="156" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Nova Tarefa" image="botao_novaMeta"/>
+                                <state key="normal" backgroundImage="botao_novaMeta"/>
                                 <connections>
                                     <action selector="NewGoalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6o8-NB-otu"/>
                                 </connections>
@@ -239,7 +239,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RYJ-dR-Hzo" firstAttribute="centerY" secondItem="OID-TJ-rVd" secondAttribute="centerY" multiplier="1.235" id="0nH-9T-bqA"/>
-                            <constraint firstItem="Ioc-nT-hx7" firstAttribute="bottom" secondItem="jeZ-L2-Rsu" secondAttribute="bottom" multiplier="1.074" id="2gL-RC-CLd"/>
+                            <constraint firstItem="Ioc-nT-hx7" firstAttribute="bottom" secondItem="jeZ-L2-Rsu" secondAttribute="bottom" multiplier="1.1" id="2gL-RC-CLd"/>
                             <constraint firstItem="Ve7-Uh-vFY" firstAttribute="centerX" secondItem="xS6-qK-uzN" secondAttribute="centerX" id="3YG-ov-OH5"/>
                             <constraint firstItem="k1d-5o-q4V" firstAttribute="centerX" secondItem="YxG-K6-e9c" secondAttribute="centerX" id="3f5-yI-k8W"/>
                             <constraint firstItem="Ioc-nT-hx7" firstAttribute="centerX" secondItem="jeZ-L2-Rsu" secondAttribute="centerX" id="5US-qN-6EY"/>
@@ -252,7 +252,7 @@
                             <constraint firstItem="aP8-LB-0qu" firstAttribute="centerY" secondItem="OID-TJ-rVd" secondAttribute="centerY" multiplier="0.61" id="AqD-66-cRR"/>
                             <constraint firstItem="evw-3v-Rch" firstAttribute="centerX" secondItem="OID-TJ-rVd" secondAttribute="centerX" id="BId-J2-ut8"/>
                             <constraint firstItem="OID-TJ-rVd" firstAttribute="centerY" secondItem="xS6-qK-uzN" secondAttribute="centerY" id="CMm-pd-2zz"/>
-                            <constraint firstItem="hSp-4Q-fd5" firstAttribute="centerY" secondItem="jeZ-L2-Rsu" secondAttribute="centerY" multiplier="0.985" id="CTe-9J-dHf"/>
+                            <constraint firstItem="hSp-4Q-fd5" firstAttribute="centerY" secondItem="jeZ-L2-Rsu" secondAttribute="centerY" multiplier="0.975" id="CTe-9J-dHf"/>
                             <constraint firstItem="hSp-4Q-fd5" firstAttribute="centerX" secondItem="jeZ-L2-Rsu" secondAttribute="centerX" id="EQV-Fx-boh"/>
                             <constraint firstItem="yeo-SX-KFo" firstAttribute="width" secondItem="jeZ-L2-Rsu" secondAttribute="width" multiplier="0.16" id="Eey-Mb-LFM"/>
                             <constraint firstItem="OID-TJ-rVd" firstAttribute="centerX" secondItem="xS6-qK-uzN" secondAttribute="centerX" id="GMW-fs-fLo"/>
@@ -265,15 +265,15 @@
                             <constraint firstItem="Ve7-Uh-vFY" firstAttribute="height" secondItem="xS6-qK-uzN" secondAttribute="height" multiplier="0.045" id="LHu-Ij-cgu"/>
                             <constraint firstItem="DSC-nz-6mP" firstAttribute="width" secondItem="jeZ-L2-Rsu" secondAttribute="width" multiplier="0.17" id="LRz-MA-HW4"/>
                             <constraint firstItem="jeZ-L2-Rsu" firstAttribute="top" secondItem="YxG-K6-e9c" secondAttribute="bottom" constant="8" id="M3v-0a-k6d"/>
-                            <constraint firstItem="Ioc-nT-hx7" firstAttribute="width" secondItem="xS6-qK-uzN" secondAttribute="width" multiplier="0.11" id="MxL-dp-IXV"/>
+                            <constraint firstItem="Ioc-nT-hx7" firstAttribute="width" secondItem="xS6-qK-uzN" secondAttribute="width" multiplier="0.1" id="MxL-dp-IXV"/>
                             <constraint firstItem="yeo-SX-KFo" firstAttribute="height" secondItem="jeZ-L2-Rsu" secondAttribute="height" multiplier="0.45" id="QBr-l3-HTT"/>
-                            <constraint firstItem="jeZ-L2-Rsu" firstAttribute="width" secondItem="xS6-qK-uzN" secondAttribute="width" multiplier="0.84" id="ROe-hT-7WS"/>
+                            <constraint firstItem="jeZ-L2-Rsu" firstAttribute="width" secondItem="xS6-qK-uzN" secondAttribute="width" multiplier="0.8" id="ROe-hT-7WS"/>
                             <constraint firstItem="DSC-nz-6mP" firstAttribute="centerX" secondItem="jeZ-L2-Rsu" secondAttribute="centerX" multiplier="0.44" id="TLY-PK-Zs9"/>
                             <constraint firstItem="Ioc-nT-hx7" firstAttribute="height" secondItem="xS6-qK-uzN" secondAttribute="height" multiplier="0.05" id="TRH-QT-6l5"/>
                             <constraint firstItem="CUa-V4-jGp" firstAttribute="width" secondItem="k1d-5o-q4V" secondAttribute="width" id="UEN-WP-Ma9"/>
                             <constraint firstItem="k1d-5o-q4V" firstAttribute="baseline" secondItem="YxG-K6-e9c" secondAttribute="baseline" multiplier="0.76" id="VYE-rD-LIB"/>
                             <constraint firstItem="spO-Nv-gvL" firstAttribute="centerY" secondItem="xS6-qK-uzN" secondAttribute="centerY" id="Wl6-2C-fEN"/>
-                            <constraint firstItem="jeZ-L2-Rsu" firstAttribute="height" secondItem="xS6-qK-uzN" secondAttribute="height" multiplier="0.43" id="Wvy-d3-b7D"/>
+                            <constraint firstItem="jeZ-L2-Rsu" firstAttribute="height" secondItem="xS6-qK-uzN" secondAttribute="height" multiplier="0.4" id="Wvy-d3-b7D"/>
                             <constraint firstItem="YbV-Pr-Wfh" firstAttribute="top" secondItem="hSp-4Q-fd5" secondAttribute="bottom" constant="-11" id="ar6-Er-Ycd"/>
                             <constraint firstItem="evw-3v-Rch" firstAttribute="centerY" secondItem="OID-TJ-rVd" secondAttribute="centerY" multiplier="1.08" id="bEy-jz-brw"/>
                             <constraint firstItem="jeZ-L2-Rsu" firstAttribute="centerX" secondItem="xS6-qK-uzN" secondAttribute="centerX" id="c9M-r7-WKu"/>
@@ -287,7 +287,7 @@
                             <constraint firstItem="spO-Nv-gvL" firstAttribute="height" secondItem="xS6-qK-uzN" secondAttribute="height" id="p1E-6s-fu7"/>
                             <constraint firstItem="DSC-nz-6mP" firstAttribute="centerY" secondItem="jeZ-L2-Rsu" secondAttribute="centerY" multiplier="1.035" id="qm4-Ra-5tM"/>
                             <constraint firstItem="spO-Nv-gvL" firstAttribute="centerX" secondItem="xS6-qK-uzN" secondAttribute="centerX" id="sXF-bx-ct8"/>
-                            <constraint firstItem="UbJ-4o-Uor" firstAttribute="top" secondItem="jeZ-L2-Rsu" secondAttribute="bottom" multiplier="0.97" constant="82" id="t0f-Bi-HiR"/>
+                            <constraint firstItem="UbJ-4o-Uor" firstAttribute="top" secondItem="jeZ-L2-Rsu" secondAttribute="bottom" constant="82" id="t0f-Bi-HiR"/>
                             <constraint firstItem="Evd-bf-N1S" firstAttribute="centerY" secondItem="OID-TJ-rVd" secondAttribute="centerY" multiplier="0.93" id="tPd-0q-Sf1"/>
                             <constraint firstItem="XA4-UE-o8P" firstAttribute="width" secondItem="CUa-V4-jGp" secondAttribute="width" id="vLW-Ub-9ZC"/>
                             <constraint firstItem="k1d-5o-q4V" firstAttribute="width" secondItem="YxG-K6-e9c" secondAttribute="width" id="w1N-f2-xAx"/>
