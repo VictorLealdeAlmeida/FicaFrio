@@ -433,6 +433,9 @@
                                 <frame key="frameInset" minX="134" minY="446" width="105" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Geral" image="popupIcon1"/>
+                                <connections>
+                                    <segue destination="qOg-3a-aVT" kind="show" id="SIK-03-OEX"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avaliação da Tarefa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unE-3l-n0x">
                                 <frame key="frameInset" minX="77" minY="388" width="221" height="24"/>
@@ -623,6 +626,15 @@
                                 <frame key="frameInset" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjL-et-cJ1">
+                                <frame key="frameInset" minX="10" minY="10" width="54" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="setavoltar"/>
+                                <connections>
+                                    <action selector="back:" destination="qOg-3a-aVT" eventType="touchUpInside" id="Up3-ei-wUp"/>
+                                    <action selector="back:" destination="whk-Og-WXW" eventType="touchUpInside" id="hSd-f3-i6Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1058823529" green="0.054901960780000002" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -804,6 +816,18 @@
                                     <action selector="timer:" destination="IH0-gW-iFA" eventType="touchUpInside" id="a08-IT-6Xc"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barra_superior" translatesAutoresizingMaskIntoConstraints="NO" id="AFB-C4-cgV">
+                                <frame key="frameInset" width="375" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi8-eU-eMy">
+                                <frame key="frameInset" minX="10" minY="10" width="54" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="setavoltar"/>
+                                <connections>
+                                    <segue destination="Rao-Rf-tPL" kind="show" id="bij-aJ-Wg1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -835,12 +859,13 @@
         <scene sceneID="PbC-fa-Z4f">
             <objects>
                 <navigationController storyboardIdentifier="navigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bF3-yD-Kli"/>
+                        <segue destination="O4b-DK-hPY" kind="show" id="bD3-Rz-XB4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjo-rF-rqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -850,6 +875,7 @@
     </scenes>
     <resources>
         <image name="balao_InsirasuaMeta2" width="590" height="305"/>
+        <image name="barra_superior" width="850" height="161"/>
         <image name="botao_RespirarBatimento" width="458" height="196"/>
         <image name="botao_comecarTarefa" width="400" height="363"/>
         <image name="botao_naopreenchido" width="100" height="100"/>
@@ -878,4 +904,8 @@
         <image name="setinha" width="70" height="57"/>
         <image name="topo_02" width="800" height="800"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="SIK-03-OEX"/>
+        <segue reference="bD3-Rz-XB4"/>
+    </inferredMetricsTieBreakers>
 </document>

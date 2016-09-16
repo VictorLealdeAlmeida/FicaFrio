@@ -11,6 +11,9 @@ import UIKit
 
 class RelaxViewController: UIViewController {
     
+    @IBAction func back(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     var startReadingHeartRate : GetHeartRate?
     var selectHeartHate = false
     

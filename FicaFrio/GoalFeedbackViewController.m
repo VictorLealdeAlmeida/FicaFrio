@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *center;
 @property (weak, nonatomic) IBOutlet UILabel *titleGoal;
 @property (weak, nonatomic) IBOutlet UILabel *bpm;
+- (IBAction)back:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *bpmValue;
 @property (strong, nonatomic) IBOutlet UIView *min;
 @property (weak, nonatomic) IBOutlet UILabel *minValue;
@@ -193,4 +194,7 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
     }
 }
 
+- (IBAction)back:(id)sender {
+    [[self navigationController] popViewControllerAnimated:YES];
+}
 @end

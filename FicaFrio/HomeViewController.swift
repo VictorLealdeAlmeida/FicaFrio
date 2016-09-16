@@ -6,8 +6,7 @@
 //  Copyright © 2016 PokeGroup. All rights reserved.
 //
 
-import Foundation
-
+import Foundation;
 import UIKit
 
 class HomeViewController: UIViewController, UITextFieldDelegate {
