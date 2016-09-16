@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *tagButton;
+@property (weak, nonatomic) IBOutlet UIButton *setStepButton;
 
 // Tag-related outlets
 @property (weak, nonatomic) IBOutlet UIImageView *tagPopupView;

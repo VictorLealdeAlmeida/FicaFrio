@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -313,10 +313,12 @@
                         <outlet property="descriptionLabel" destination="CUa-V4-jGp" id="PsG-ZI-U9Y"/>
                         <outlet property="goalLabel" destination="XA4-UE-o8P" id="2JF-eZ-inz"/>
                         <outlet property="pickTagLabel" destination="aP8-LB-0qu" id="nSx-w5-U9I"/>
+                        <outlet property="setStepButton" destination="MEa-h0-07R" id="QOD-nB-bir"/>
                         <outlet property="setStepsButton" destination="Ioc-nT-hx7" id="no8-Rk-ZZA"/>
                         <outlet property="stepNameTextField" destination="k1d-5o-q4V" id="bec-CH-geR"/>
                         <outlet property="stepNumberLabel" destination="hSp-4Q-fd5" id="gOt-GW-3X7"/>
                         <outlet property="stepTagLabel" destination="YbV-Pr-Wfh" id="BET-rz-lAk"/>
+                        <outlet property="tagButton" destination="ArW-Zk-PXg" id="cSQ-ap-PpN"/>
                         <outlet property="tagFiveButton" destination="lwY-ZA-aPW" id="m6D-Ag-GzB"/>
                         <outlet property="tagFourButton" destination="RYJ-dR-Hzo" id="90R-CM-3kx"/>
                         <outlet property="tagOneButton" destination="0Es-bb-5xN" id="j6g-CP-2sR"/>
@@ -373,7 +375,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Respirar" image="botao_respirar"/>
                                 <connections>
-                                    <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
+                                    <segue destination="whk-Og-WXW" kind="show" id="Yxx-gj-Ryl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-FI-8B7">
@@ -388,12 +390,6 @@
                                 <frame key="frameInset" minX="165" minY="467" width="43" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEl-E5-AmY">
-                                <frame key="frameInset" minX="-1" minY="-1" width="375" height="670"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                            </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fimDeMeta" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-lC-Xf1">
                                 <frame key="frameInset" minX="34" minY="61" width="306" height="546"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -461,6 +457,12 @@
                                 <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEl-E5-AmY">
+                                <frame key="frameInset" minX="6" minY="-3" width="375" height="670"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -718,7 +720,7 @@
         <scene sceneID="PbC-fa-Z4f">
             <objects>
                 <navigationController id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
