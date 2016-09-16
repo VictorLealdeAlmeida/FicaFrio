@@ -12,6 +12,9 @@
 @interface FeedbackViewController () <ChartViewDelegate>
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerTag;
+@property (weak, nonatomic) IBOutlet UILabel *mediaTag;
+@property (weak, nonatomic) IBOutlet UILabel *mediaGeral;
+@property (weak, nonatomic) IBOutlet UILabel *titulo;
 
 @end
 
@@ -108,6 +111,7 @@
         set1.fillColor = [UIColor blueColor];
         set2.fillColor = [UIColor yellowColor];
         set2.highlightColor = [[UIColor redColor] colorWithAlphaComponent:0.f];
+        set1.highlightColor = [[UIColor redColor] colorWithAlphaComponent:0.f];
         set2.drawCircleHoleEnabled = true;
         set2.mode = LineChartModeCubicBezier;
         set1.mode = LineChartModeLinear;

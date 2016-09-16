@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qOg-3a-aVT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -462,26 +463,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fundoRespiracao01" translatesAutoresizingMaskIntoConstraints="NO" id="df5-SM-EBg">
-                                <frame key="frameInset" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ona-RN-FVQ" customClass="LineChartView" customModule="Charts">
-                                <frame key="frameInset" minX="7" minY="252" width="361" height="256"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fundoRespiracao01" translatesAutoresizingMaskIntoConstraints="NO" id="df5-SM-EBg"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ona-RN-FVQ" customClass="LineChartView" customModule="Charts">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <pickerView alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZZ-YI-dmr">
-                                <frame key="frameInset" minX="79" minY="98" height="111" maxX="80"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZZ-YI-dmr">
                                 <color key="tintColor" red="0.2784313725" green="0.72941176470000002" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                             </pickerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_3" translatesAutoresizingMaskIntoConstraints="NO" id="rPK-ac-4RL">
+                                <frame key="frameInset" minX="41" minY="580" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_3" translatesAutoresizingMaskIntoConstraints="NO" id="LaX-2N-l46">
+                                <frame key="frameInset" minX="234" minY="580" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="85" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmB-CP-FQ6">
+                                <frame key="frameInset" minX="83" minY="591" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmE-TL-j3Q">
+                                <frame key="frameInset" minX="277" minY="587" width="27" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPm-Bi-c7M">
+                                <frame key="frameInset" minX="304" minY="592" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcG-cN-q0f">
+                                <frame key="frameInset" minX="109" minY="596" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Batimentos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUp-1J-DnY">
+                                <frame key="frameInset" minX="109" minY="47" width="156" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="df5-SM-EBg" firstAttribute="centerX" secondItem="ona-RN-FVQ" secondAttribute="centerX" id="Cgu-cC-ir0"/>
+                            <constraint firstItem="df5-SM-EBg" firstAttribute="width" secondItem="ehU-k5-oHJ" secondAttribute="width" id="D0v-9w-uFp"/>
+                            <constraint firstItem="ona-RN-FVQ" firstAttribute="top" secondItem="cZZ-YI-dmr" secondAttribute="bottom" constant="26" id="GZx-Hd-9Mo"/>
+                            <constraint firstItem="cZZ-YI-dmr" firstAttribute="centerX" secondItem="ona-RN-FVQ" secondAttribute="centerX" id="Gbf-Le-b2V"/>
+                            <constraint firstItem="cZZ-YI-dmr" firstAttribute="leading" secondItem="ehU-k5-oHJ" secondAttribute="leadingMargin" constant="63" id="PYa-TS-Q7p"/>
+                            <constraint firstItem="df5-SM-EBg" firstAttribute="leading" secondItem="ehU-k5-oHJ" secondAttribute="leading" id="X7O-fw-6L2"/>
+                            <constraint firstItem="ona-RN-FVQ" firstAttribute="leading" secondItem="ehU-k5-oHJ" secondAttribute="leadingMargin" constant="-9" id="exh-oM-l2V"/>
+                            <constraint firstItem="df5-SM-EBg" firstAttribute="height" secondItem="ehU-k5-oHJ" secondAttribute="height" id="gtF-fy-qlT"/>
+                            <constraint firstItem="df5-SM-EBg" firstAttribute="bottom" secondItem="Ue9-vh-r2Z" secondAttribute="top" id="oMY-Eq-vda"/>
+                            <constraint firstItem="ona-RN-FVQ" firstAttribute="top" secondItem="ehU-k5-oHJ" secondAttribute="top" constant="238" id="oQI-ca-oKN"/>
+                            <constraint firstItem="cZZ-YI-dmr" firstAttribute="top" secondItem="gwn-gR-toy" secondAttribute="bottom" constant="37" id="xvX-6f-1a2"/>
+                            <constraint firstItem="Ue9-vh-r2Z" firstAttribute="top" secondItem="ona-RN-FVQ" secondAttribute="bottom" constant="173" id="yma-QV-8JB"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="lineChartView" destination="ona-RN-FVQ" id="ZAH-KJ-6nN"/>
+                        <outlet property="mediaGeral" destination="rmB-CP-FQ6" id="aVe-sz-vJw"/>
+                        <outlet property="mediaTag" destination="lmE-TL-j3Q" id="MNn-JQ-duV"/>
                         <outlet property="pickerTag" destination="cZZ-YI-dmr" id="AeV-kT-6gZ"/>
+                        <outlet property="titulo" destination="KUp-1J-DnY" id="fCP-Z6-Bo4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Jj-CS-0Kn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -603,7 +657,7 @@
         <scene sceneID="PbC-fa-Z4f">
             <objects>
                 <navigationController id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
