@@ -55,7 +55,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
         TaskText.delegate = self;
-        TaskText.clearsOnBeginEditing = true
         self.view.addGestureRecognizer(tapGesture)
         
         insertGoalLabel.text = NSLocalizedString("Insira sua meta", comment:"")
