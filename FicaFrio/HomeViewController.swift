@@ -103,6 +103,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         TaskText.resignFirstResponder();
         return true;
     }
+    
     func ViewUpanimateMoving (up:Bool, upValue :CGFloat){
         let durationMovement:NSTimeInterval = 0.3
         let movement:CGFloat = ( up ? -upValue : upValue)

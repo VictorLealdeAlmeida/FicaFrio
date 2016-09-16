@@ -124,6 +124,12 @@
     else {
         if(![_stepNameTextField.text isEqual:@""] && ![[stepsTags objectAtIndex:(number-1)] isEqual:@""]) {
             [self rotateCircleToRight];
+        } else if (![_stepNameTextField.text isEqual:@""]){
+            printf("%d",289);
+            [_setStepsButton setImage:[UIImage imageNamed:@"botao_tag2"] forState:UIControlStateNormal];
+          //  [_setStepsButton.i setImage:[UIImage imageNamed:@"botao_tag2"]];
+            [_circleView setImage:[UIImage imageNamed:@"botao_tag2"]];
+
         }
         else {
             [self shake:_stepNameTextField];
