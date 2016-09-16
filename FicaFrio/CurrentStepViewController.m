@@ -142,6 +142,7 @@ bool selectHeart = false;
     }
     // Final step ended
     else {
+        [defaults setInteger:0 forKey:@"currentStepNumber"];
         [self showPopup];
     }
 }
