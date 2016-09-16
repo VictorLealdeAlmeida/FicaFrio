@@ -18,6 +18,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var TaskText: UITextField!
     @IBOutlet weak var insertGoalLabel: UILabel!
     
+    @IBOutlet var tapGesture: UITapGestureRecognizer!
+
+    @IBAction func DismissKeyboard(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
     
     @IBAction func NewGoalButton(sender: UIButton) {
         UIView.animateWithDuration(0.4, animations: {
@@ -41,6 +47,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
     override func viewDidLoad() {
     
         NewGoalView.hidden = false
@@ -49,17 +56,24 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         TaskText.delegate = self;
         TaskText.clearsOnBeginEditing = true
+        self.view.addGestureRecognizer(tapGesture)
         
         insertGoalLabel.text = NSLocalizedString("Insira sua meta", comment:"")
         
+        
+      /*  let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
+        backgroundImage.image = UIImage(named: "balao_InsirasuaMeta2.png")
+        self.NewGoalView.insertSubview(backgroundImage, atIndex: 0)
+     */
+ 
+ 
      // Configura a logo
-        let logoGif = UIImage.gifImageWithName("logo")
+        let logoGif = UIImage.gifImageWithName("GIF_INICIAL_1VEZ")
         let imageView = UIImageView(image: logoGif)
         imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3, height: imageView.frame.size.height/3)
         view.addSubview(imageView)
         
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -103,6 +117,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         TaskText.resignFirstResponder();
         return true;
     }
+    
     func ViewUpanimateMoving (up:Bool, upValue :CGFloat){
         let durationMovement:NSTimeInterval = 0.3
         let movement:CGFloat = ( up ? -upValue : upValue)

@@ -34,6 +34,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fundoRespiracao01" translatesAutoresizingMaskIntoConstraints="NO" id="Li1-it-D1R">
                                 <frame key="frameInset"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUn-zs-xcQ">
                                 <frame key="frameInset" minX="106" minY="145" width="82" height="34"/>
@@ -44,26 +45,27 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te2-8B-Iba">
-                                <frame key="frameInset" minX="109" minY="531" width="156" height="47"/>
+                                <frame key="frameInset" minX="110" minY="531" width="156" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="botao_novaMeta"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="19"/>
+                                <state key="normal" title="Nova Meta" backgroundImage="botao_novaMetaSeco"/>
                                 <connections>
                                     <action selector="NewGoalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6o8-NB-otu"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bf3-p5-Tgz">
-                                <frame key="frameInset" minX="56" minY="401" maxX="79" maxY="144"/>
+                                <frame key="frameInset" minX="67" minY="401" maxX="68" maxY="144"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="balao_InsirasuaMeta2" translatesAutoresizingMaskIntoConstraints="NO" id="iha-Oj-Tyn">
-                                        <frame key="frameInset" minX="3" minY="-3" width="240" height="128"/>
+                                        <frame key="frameInset" minX="-5" minY="-3" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Insira sua meta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Ej-Ztt">
-                                        <frame key="frameInset" minX="60" minY="23" width="133" height="30"/>
+                                        <frame key="frameInset" minX="57" minY="23" width="133" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="19"/>
-                                        <color key="textColor" red="0.43996394230769231" green="0.43996394230769231" blue="0.43996394230769231" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="18"/>
+                                        <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JP0-pm-4PN">
@@ -85,9 +87,15 @@
                         <outlet property="NewGoalView" destination="bf3-p5-Tgz" id="L2b-s0-c14"/>
                         <outlet property="TaskText" destination="JP0-pm-4PN" id="sCr-Rs-LCn"/>
                         <outlet property="insertGoalLabel" destination="2tc-Ej-Ztt" id="ndc-m9-f6t"/>
+                        <outlet property="tapGesture" destination="KJ2-Ed-7pE" id="hVc-sd-g2N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="KJ2-Ed-7pE">
+                    <connections>
+                        <action selector="DismissKeyboard:" destination="BYZ-38-t0r" id="Qiw-Ui-yXe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="341.60000000000002" y="651.72413793103453"/>
         </scene>
@@ -305,10 +313,12 @@
                         <outlet property="descriptionLabel" destination="CUa-V4-jGp" id="PsG-ZI-U9Y"/>
                         <outlet property="goalLabel" destination="XA4-UE-o8P" id="2JF-eZ-inz"/>
                         <outlet property="pickTagLabel" destination="aP8-LB-0qu" id="nSx-w5-U9I"/>
+                        <outlet property="setStepButton" destination="MEa-h0-07R" id="QOD-nB-bir"/>
                         <outlet property="setStepsButton" destination="Ioc-nT-hx7" id="no8-Rk-ZZA"/>
                         <outlet property="stepNameTextField" destination="k1d-5o-q4V" id="bec-CH-geR"/>
                         <outlet property="stepNumberLabel" destination="hSp-4Q-fd5" id="gOt-GW-3X7"/>
                         <outlet property="stepTagLabel" destination="YbV-Pr-Wfh" id="BET-rz-lAk"/>
+                        <outlet property="tagButton" destination="ArW-Zk-PXg" id="cSQ-ap-PpN"/>
                         <outlet property="tagFiveButton" destination="lwY-ZA-aPW" id="m6D-Ag-GzB"/>
                         <outlet property="tagFourButton" destination="RYJ-dR-Hzo" id="90R-CM-3kx"/>
                         <outlet property="tagOneButton" destination="0Es-bb-5xN" id="j6g-CP-2sR"/>
@@ -365,7 +375,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Respirar" image="botao_respirar"/>
                                 <connections>
-                                    <segue destination="whk-Og-WXW" kind="push" id="VGn-O3-wNa"/>
+                                    <segue destination="whk-Og-WXW" kind="show" id="Yxx-gj-Ryl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-FI-8B7">
@@ -380,12 +390,6 @@
                                 <frame key="frameInset" minX="165" minY="467" width="43" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEl-E5-AmY">
-                                <frame key="frameInset" minX="-1" minY="-1" width="375" height="670"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                            </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fimDeMeta" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-lC-Xf1">
                                 <frame key="frameInset" minX="34" minY="61" width="306" height="546"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -453,6 +457,12 @@
                                 <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEl-E5-AmY">
+                                <frame key="frameInset" minX="6" minY="-3" width="375" height="670"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -727,7 +737,7 @@
         <image name="balao_InsirasuaMeta2" width="660" height="373"/>
         <image name="botao_Tags" width="94" height="70"/>
         <image name="botao_comecarTarefa" width="400" height="363"/>
-        <image name="botao_novaMeta" width="600" height="196"/>
+        <image name="botao_novaMetaSeco" width="600" height="196"/>
         <image name="botao_respirar" width="400" height="403"/>
         <image name="botao_setarProximaTarefa" width="92" height="80"/>
         <image name="circuloPassos" width="400" height="400"/>

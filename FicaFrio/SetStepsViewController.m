@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *tagButton;
+@property (weak, nonatomic) IBOutlet UIButton *setStepButton;
 
 // Tag-related outlets
 @property (weak, nonatomic) IBOutlet UIImageView *tagPopupView;
@@ -124,6 +126,12 @@
     else {
         if(![_stepNameTextField.text isEqual:@""] && ![[stepsTags objectAtIndex:(number-1)] isEqual:@""]) {
             [self rotateCircleToRight];
+        } else if (![_stepNameTextField.text isEqual:@""]){
+            printf("%d",289);
+            [_setStepsButton setImage:[UIImage imageNamed:@"botao_tag2"] forState:UIControlStateNormal];
+          //  [_setStepsButton.i setImage:[UIImage imageNamed:@"botao_tag2"]];
+            [_circleView setImage:[UIImage imageNamed:@"botao_tag2"]];
+
         }
         else {
             [self shake:_stepNameTextField];
