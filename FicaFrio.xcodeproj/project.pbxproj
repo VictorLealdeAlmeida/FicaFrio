@@ -32,7 +32,7 @@
 		D4BBC1461D7EF7BB0058615A /* FicaFrio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1441D7EF7BB0058615A /* FicaFrio.xcdatamodeld */; };
 		D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4BBC1471D7EF7BB0058615A /* Assets.xcassets */; };
 		D4BBC14B1D7EF7BB0058615A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BBC1491D7EF7BB0058615A /* LaunchScreen.storyboard */; };
-		D4BBC15B1D7F02AC0058615A /* g.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC15A1D7F02AC0058615A /* g.m */; };
+		D4BBC15B1D7F02AC0058615A /* CurrentStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC15A1D7F02AC0058615A /* CurrentStepViewController.m */; };
 		D4BBC15E1D7F033F0058615A /* GoalFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC15D1D7F033F0058615A /* GoalFeedbackViewController.m */; };
 		D4BBC1611D7F03630058615A /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1601D7F03630058615A /* FeedbackViewController.m */; };
 		D4BBC1671D7F0AC50058615A /* SetStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1661D7F0AC50058615A /* SetStepsViewController.m */; };
@@ -136,7 +136,7 @@
 		D4BBC14A1D7EF7BB0058615A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4BBC14C1D7EF7BB0058615A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4BBC1591D7F02AC0058615A /* CurrentStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentStepViewController.h; sourceTree = "<group>"; };
-		D4BBC15A1D7F02AC0058615A /* g.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = g.m; sourceTree = "<group>"; };
+		D4BBC15A1D7F02AC0058615A /* CurrentStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentStepViewController.m; sourceTree = "<group>"; };
 		D4BBC15C1D7F033F0058615A /* GoalFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoalFeedbackViewController.h; sourceTree = "<group>"; };
 		D4BBC15D1D7F033F0058615A /* GoalFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoalFeedbackViewController.m; sourceTree = "<group>"; };
 		D4BBC15F1D7F03630058615A /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				D4BBC1591D7F02AC0058615A /* CurrentStepViewController.h */,
-				D4BBC15A1D7F02AC0058615A /* g.m */,
+				D4BBC15A1D7F02AC0058615A /* CurrentStepViewController.m */,
 				D4BBC15C1D7F033F0058615A /* GoalFeedbackViewController.h */,
 				D4BBC15D1D7F033F0058615A /* GoalFeedbackViewController.m */,
 				D4BBC15F1D7F03630058615A /* FeedbackViewController.h */,
@@ -428,7 +428,7 @@
 				D4E76D771D8310B0006F7203 /* GIFExtension.swift in Sources */,
 				D4BBC16D1D7F0DB80058615A /* SetGoalViewController.swift in Sources */,
 				AC9322891D86F206000051B0 /* Goal.m in Sources */,
-				D4BBC15B1D7F02AC0058615A /* g.m in Sources */,
+				D4BBC15B1D7F02AC0058615A /* CurrentStepViewController.m in Sources */,
 				AC3CA2081D8AD0D500B985B1 /* GetHeartRate.m in Sources */,
 				9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */,
 				D4BBC16F1D7F0DC30058615A /* HomeViewController.swift in Sources */,
