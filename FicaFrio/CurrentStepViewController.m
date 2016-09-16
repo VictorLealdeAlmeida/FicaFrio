@@ -72,6 +72,8 @@ NSDate *dateTime;
     stepNumber = [defaults integerForKey:@"currentStepNumber"];
     
     [self updateStep];
+    [self setNotification];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -151,14 +153,14 @@ NSDate *dateTime;
     dateTime = sender.date;
 }
 
-- (IBAction)setNotification:(UIButton *)sender {
+- (void)setNotification{
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     
     
     localNotification.alertBody = @"Bora pegar";
     
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
-    //localNotification.repeatInterval = 5;
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
+   // localNotification.repeatInterval = 5;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
