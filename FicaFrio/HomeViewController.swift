@@ -26,9 +26,21 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func NewGoalButton(sender: UIButton) {
-        UIView.animateWithDuration(0.4, animations: {
-            self.NewGoalView.alpha = 1
-        })
+        UIView.animateWithDuration(0.6, animations: {
+            if self.NewGoalView.hidden {
+                self.NewGoalView.alpha = 1
+                self.NewGoalView.hidden = false
+            }
+            else {
+                self.NewGoalView.alpha = 0
+            }
+            
+     //     self.NewGoalView.hidden = false
+
+            }, completion: {(finished:Bool) in
+                if self.NewGoalView.alpha == 0{
+                    self.NewGoalView.hidden = true
+                } })
     }
     
     @IBAction func SetTask(sender: AnyObject) {
@@ -39,18 +51,18 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     
     // Configura view
-    func ShowNewGoalView() {
-        UIView.animateWithDuration(0.4, animations: {
+   /* func ShowNewGoalView() {
+        UIView.animateWithDuration(0.6, animations: {
             self.NewGoalView.hidden = false
             self.NewGoalView.alpha = 0.98
         })
     }
     
-    
+ */
     
     override func viewDidLoad() {
     
-        NewGoalView.hidden = false
+        NewGoalView.hidden = true
         NewGoalView.alpha = 0
         
         super.viewDidLoad()
