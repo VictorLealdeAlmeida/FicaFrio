@@ -17,6 +17,8 @@
     NSArray *goalSteps;
     NSMutableArray *time;
     NSMutableArray *avgRate;
+    NSInteger *timeRange;
+    NSInteger *rateRange;
     Step *step;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *step1;
@@ -55,16 +57,17 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
     defaults = [NSUserDefaults standardUserDefaults];
     goalID = [defaults stringForKey:@"currentGoalID"];
     goalSteps = [database fetchStepsForGoalID:goalID];
-    printf("\n%lu", (unsigned long)goalSteps.count);
-    NSLog(@"Aqui %@",goalID);
     
     for (int i = 0; i < goalSteps.count; i++){
         step = goalSteps[i];
         [time addObject: step.duration];
         [avgRate addObject: step.avgHeartRate];
+        timeRange = timeRange + [step.duration integerValue];
+        rateRange = rateRange + [step.avgHeartRate integerValue];
         //step.avgHeartRate  - média de batimentos do passo i
         //step.duration      - duração do passo i
     }
+    
     
     _step1.hidden = YES;
     _step2.hidden = YES;
@@ -148,7 +151,6 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
 
 
 
-
 //Func que escolhe o tamnho da imagem de cada estapa a partir dos valores recebidos
 //Ainda tem que fazer os casos de valores iguais
 -(void)selectGraf: (int)valueOne value2: (int)valueTwo value3: (int)valueThree{
@@ -184,6 +186,10 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
             [_step1 setImage:[UIImage imageNamed:@"topo_03"]];
             [_step3 setImage:[UIImage imageNamed:@"esquerda_02"]];
         }
+    }else{
+        [_step1 setImage:[UIImage imageNamed:@"topo_02"]];
+        [_step2 setImage:[UIImage imageNamed:@"direita_02"]];
+        [_step3 setImage:[UIImage imageNamed:@"esquerda_02"]];
     }
 }
 

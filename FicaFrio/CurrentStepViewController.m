@@ -105,10 +105,10 @@ bool selectHeart = false;
     printf("%d",2323);
     // Store startDate
     [database setStartDate:[NSDate date] toStep:currentStep];
-<<<<<<< HEAD
-    [defaults synchronize];
-=======
-    
+
+    //[defaults synchronize];
+
+
     //Timer pra acontecer a animacao
     [self.endStep rotation360:3 option: 0];
     timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3
@@ -122,7 +122,6 @@ bool selectHeart = false;
 
 - (void)animationButton{
     [self.endStep rotation360:3 option: 0];
->>>>>>> 0cef4475d2d3305b5ecfd17412ab096ae0236c1a
 }
 
 // endStep - When end button is clicked

@@ -57,8 +57,8 @@
     _lineChartView.pinchZoomEnabled = YES;
     _lineChartView.drawGridBackgroundEnabled = YES;
     _lineChartView.gridBackgroundColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha: .0f];
-    _lineChartView.noDataText = @"Não há dado para essa Tag";
-    _lineChartView.noDataTextColor = [UIColor whiteColor];
+    _lineChartView.noDataText = @" ";
+    _lineChartView.noDataTextColor = [UIColor blueColor];
     _lineChartView.xAxis.drawGridLinesEnabled = NO;
     _lineChartView.leftAxis.drawGridLinesEnabled = NO;
     _lineChartView.backgroundColor = [UIColor colorWithRed: 0/255.0f green: 0/255.0f blue: 0/255.0f alpha:.0f];
