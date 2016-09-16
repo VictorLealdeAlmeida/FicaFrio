@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -349,7 +349,7 @@
         <!--Current Step View Controller-->
         <scene sceneID="Y3e-hz-7aB">
             <objects>
-                <viewController id="O4b-DK-hPY" customClass="CurrentStepViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="currentStep" useStoryboardIdentifierAsRestorationIdentifier="YES" id="O4b-DK-hPY" customClass="CurrentStepViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lwX-hf-4mB"/>
                         <viewControllerLayoutGuide type="bottom" id="UHw-2u-Ely"/>
@@ -361,24 +361,18 @@
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circuloPassos" translatesAutoresizingMaskIntoConstraints="NO" id="5ov-Kr-YOu">
                                 <gestureRecognizers/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-cC-Oy8">
-                                <frame key="frameInset" minX="57" minY="119" width="260" height="265"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-cC-Oy8">
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Thin" family="SF Compact Display" pointSize="25"/>
                                 <color key="textColor" red="0.47058823529999999" green="0.74117647060000003" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-FI-8B7">
-                                <frame key="frameInset" minX="162" minY="375" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-FI-8B7">
                                 <state key="normal" title="startStep" image="botao_naopreenchido"/>
                                 <connections>
                                     <action selector="startStep:" destination="O4b-DK-hPY" eventType="touchUpInside" id="ygD-2H-qx6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-Yy-Zph">
-                                <frame key="frameInset" minX="162" minY="375" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-Yy-Zph">
                                 <state key="normal" title="Concluído" image="botao_naopreenchido"/>
                                 <connections>
                                     <action selector="circleButton:" destination="O4b-DK-hPY" eventType="touchUpInside" id="tH2-jA-MgH"/>
@@ -390,10 +384,7 @@
                                     <action selector="startRelax:" destination="O4b-DK-hPY" eventType="touchUpInside" id="Rza-YZ-ho1"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seta_tarefas" translatesAutoresizingMaskIntoConstraints="NO" id="SZ2-V2-nPY">
-                                <frame key="frameInset" minX="165" minY="449" width="43" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seta_tarefas" translatesAutoresizingMaskIntoConstraints="NO" id="SZ2-V2-nPY"/>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Clique para começar o passo. ---" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSm-u2-YBc">
                                 <frame key="frameInset" minX="48" minY="127" width="278" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -408,9 +399,7 @@
                                 <color key="textColor" red="0.73333333329999995" green="0.89411764709999997" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NOME DA META AQUI" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWQ-je-imJ">
-                                <frame key="frameInset" minX="59" minY="93" width="256" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOME DA META AQUI" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWQ-je-imJ">
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="15"/>
                                 <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -544,26 +533,46 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ycL-cC-Oy8" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="4fo-67-nfH"/>
                             <constraint firstItem="rH2-1Z-rDA" firstAttribute="centerY" secondItem="5ov-Kr-YOu" secondAttribute="centerY" multiplier="0.908" id="5SF-0f-OKx"/>
+                            <constraint firstItem="SZ2-V2-nPY" firstAttribute="width" secondItem="5ov-Kr-YOu" secondAttribute="width" multiplier="0.1" id="6fw-p4-Z4Y"/>
                             <constraint firstItem="34u-gS-pDW" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="88s-Yb-LIq"/>
                             <constraint firstItem="rEl-E5-AmY" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="8Zo-45-rt7"/>
+                            <constraint firstItem="QeX-FI-8B7" firstAttribute="top" secondItem="ycL-cC-Oy8" secondAttribute="bottom" constant="-8" id="8qN-fe-BEJ"/>
                             <constraint firstItem="rH2-1Z-rDA" firstAttribute="height" secondItem="5ov-Kr-YOu" secondAttribute="height" multiplier="0.12" id="9rH-50-QdN"/>
+                            <constraint firstItem="QeX-FI-8B7" firstAttribute="centerX" secondItem="SZ2-V2-nPY" secondAttribute="centerX" id="BBg-Q6-f04"/>
                             <constraint firstItem="5ov-Kr-YOu" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" multiplier="2.04" id="DrR-lt-B81"/>
                             <constraint firstItem="5ov-Kr-YOu" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="1.18" id="ERK-iA-2Mc"/>
+                            <constraint firstItem="a1H-Yy-Zph" firstAttribute="height" secondItem="SZ2-V2-nPY" secondAttribute="height" multiplier="1.32" id="IEM-Sr-TGw"/>
                             <constraint firstItem="rEl-E5-AmY" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" id="Izl-Fx-4s5"/>
+                            <constraint firstItem="FWQ-je-imJ" firstAttribute="centerX" secondItem="ycL-cC-Oy8" secondAttribute="centerX" id="OJ8-Tw-bEL"/>
                             <constraint firstItem="wFP-yM-hgR" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" multiplier="0.62" id="PuZ-Y9-cj0"/>
+                            <constraint firstItem="FWQ-je-imJ" firstAttribute="height" secondItem="ycL-cC-Oy8" secondAttribute="height" multiplier="0.11" id="Q60-SQ-OsR"/>
                             <constraint firstItem="rEl-E5-AmY" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="QKA-yN-gOA"/>
                             <constraint firstItem="34u-gS-pDW" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="S1R-jd-Mx6"/>
                             <constraint firstItem="34u-gS-pDW" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="0.75" id="Sij-Ik-Tnn"/>
+                            <constraint firstItem="ycL-cC-Oy8" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="0.7" id="UTT-eM-aaz"/>
+                            <constraint firstItem="SZ2-V2-nPY" firstAttribute="height" secondItem="5ov-Kr-YOu" secondAttribute="height" multiplier="0.09" id="W0H-4w-rpD"/>
+                            <constraint firstItem="SZ2-V2-nPY" firstAttribute="centerX" secondItem="5ov-Kr-YOu" secondAttribute="centerX" id="YIo-CS-jd7"/>
+                            <constraint firstItem="a1H-Yy-Zph" firstAttribute="centerX" secondItem="SZ2-V2-nPY" secondAttribute="centerX" id="Zjz-vO-w3u"/>
                             <constraint firstItem="rH2-1Z-rDA" firstAttribute="width" secondItem="5ov-Kr-YOu" secondAttribute="width" multiplier="0.11" id="aFX-IH-ge5"/>
+                            <constraint firstItem="ycL-cC-Oy8" firstAttribute="top" secondItem="FWQ-je-imJ" secondAttribute="bottom" constant="2" id="ahP-BL-Yoe"/>
                             <constraint firstItem="5ov-Kr-YOu" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="c8g-5h-OZr"/>
+                            <constraint firstItem="QeX-FI-8B7" firstAttribute="height" secondItem="SZ2-V2-nPY" secondAttribute="height" multiplier="1.32" id="dUP-Dr-f1f"/>
                             <constraint firstItem="wFP-yM-hgR" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="0.75" id="fGz-kF-Lxg"/>
+                            <constraint firstItem="a1H-Yy-Zph" firstAttribute="width" secondItem="SZ2-V2-nPY" secondAttribute="width" multiplier="1.12" id="jKD-aw-W8C"/>
+                            <constraint firstItem="SZ2-V2-nPY" firstAttribute="top" secondItem="a1H-Yy-Zph" secondAttribute="bottom" constant="24" id="k42-cu-AfC"/>
                             <constraint firstItem="wFP-yM-hgR" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="lfx-lh-HmC"/>
+                            <constraint firstItem="QeX-FI-8B7" firstAttribute="width" secondItem="SZ2-V2-nPY" secondAttribute="width" multiplier="1.12" id="ljb-C8-XCE"/>
                             <constraint firstItem="rEl-E5-AmY" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" id="pNh-g4-rdo"/>
                             <constraint firstItem="5ov-Kr-YOu" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" multiplier="0.62" id="q1Y-ph-lli"/>
+                            <constraint firstItem="SZ2-V2-nPY" firstAttribute="top" secondItem="QeX-FI-8B7" secondAttribute="bottom" constant="24" id="qvQ-lW-Hxm"/>
                             <constraint firstItem="rH2-1Z-rDA" firstAttribute="centerX" secondItem="5ov-Kr-YOu" secondAttribute="centerX" id="s9Z-PX-UDB"/>
                             <constraint firstItem="wFP-yM-hgR" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="uq0-hc-dYQ"/>
+                            <constraint firstItem="5ov-Kr-YOu" firstAttribute="top" secondItem="SZ2-V2-nPY" secondAttribute="bottom" constant="-12" id="w7L-Nb-BRx"/>
+                            <constraint firstItem="ycL-cC-Oy8" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" multiplier="0.39" id="xMc-RT-iSC"/>
                             <constraint firstItem="34u-gS-pDW" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" multiplier="0.62" id="xNW-ur-c3r"/>
+                            <constraint firstItem="FWQ-je-imJ" firstAttribute="width" secondItem="ycL-cC-Oy8" secondAttribute="width" id="zlI-5w-MMk"/>
                         </constraints>
                     </view>
                     <connections>
@@ -822,8 +831,8 @@
         <!--Navigation Controller-->
         <scene sceneID="PbC-fa-Z4f">
             <objects>
-                <navigationController id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
+                <navigationController storyboardIdentifier="navigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rao-Rf-tPL" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

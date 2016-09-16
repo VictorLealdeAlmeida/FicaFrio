@@ -20,6 +20,23 @@
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"%ld", (long)[defaults integerForKey:@"currentStepNumber"]);
+    UIViewController *viewController;
+    
+    if ([defaults integerForKey:@"currentStepNumber"] == 0){
+        viewController = [storyboard instantiateViewControllerWithIdentifier:@"navigationController"];
+    }
+    else {
+        viewController = [storyboard instantiateViewControllerWithIdentifier:@"currentStep"];
+    }
+    
+    self.window.rootViewController = viewController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
