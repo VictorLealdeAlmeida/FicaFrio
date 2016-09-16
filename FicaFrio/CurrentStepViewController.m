@@ -52,6 +52,8 @@
 
 @implementation CurrentStepViewController
 
+NSDate *dateTime;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _startStep.hidden = false;
@@ -143,6 +145,23 @@
     [_infoLabel setAlpha:0.95];
     [_grafLabel setAlpha:0.95];
     [UIView commitAnimations];
+}
+
+- (IBAction)datePicker:(UIDatePicker *)sender {
+    dateTime = sender.date;
+}
+
+- (IBAction)setNotification:(UIButton *)sender {
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    
+    
+    localNotification.alertBody = @"Bora pegar";
+    
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+    //localNotification.repeatInterval = 5;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
 }
 
 @end
