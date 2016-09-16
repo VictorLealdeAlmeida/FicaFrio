@@ -7,6 +7,8 @@
 //
 
 #import "FeedbackViewController.h"
+#import "BD.h"
+#import "Step.h"
 @import Charts;
 
 @interface FeedbackViewController () <ChartViewDelegate>
@@ -19,10 +21,21 @@
 @end
 
 @implementation FeedbackViewController
- NSArray *pickerData;
+NSArray *pickerData;
+NSArray *arrayAutoexposicao;
+NSArray *arrayEstudos;
+NSArray *arrayTrabalho;
+NSArray *arrayInteracaoSocial;
+NSArray *arrayOutros;
+Step *currentStep;
+double average;
+BD *dataBD;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //BD - para buscar as informaçoes
+     dataBD = [[BD alloc] init];
     
     //PikerView
     //inicializaçao
@@ -37,11 +50,11 @@
     //Configuraçao de estilo do grafico
     _lineChartView.delegate = self;
     _lineChartView.descriptionText = @"Tap node for details";
+    _lineChartView.descriptionTextColor = [UIColor whiteColor];
     _lineChartView.dragEnabled = YES;
     [_lineChartView setScaleEnabled:YES];
     _lineChartView.pinchZoomEnabled = YES;
     _lineChartView.drawGridBackgroundEnabled = YES;
-    _lineChartView.descriptionTextColor = [UIColor whiteColor];
     _lineChartView.gridBackgroundColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha: .0f];
     _lineChartView.noDataText = @"Não há dado para essa Tag";
     _lineChartView.noDataTextColor = [UIColor whiteColor];
@@ -53,16 +66,13 @@
     _lineChartView.legend.enabled = NO;
     
     //BalloonMarker
-    //BalloonMarker
-    BalloonMarker *maker = [[BalloonMarker alloc] initWithColor: [UIColor colorWithRed: 94/255.0f green: 170/255.0f blue: 170/255.0f alpha: 0.4f] font: [UIFont systemFontOfSize:12.0]
-                                                      textColor: UIColor.whiteColor insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
+    BalloonMarker *maker = [[BalloonMarker alloc] initWithColor: [UIColor colorWithRed: 94/255.0f green: 170/255.0f blue: 170/255.0f alpha: 0.4f] font: [UIFont systemFontOfSize:12.0] textColor: UIColor.whiteColor insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
     maker.chartView = _lineChartView;
     maker.minimumSize = CGSizeMake(80.f, 40.f);
     _lineChartView.marker = maker;
     
-    NSArray *array = @[@2, @5, @7, @10, @4, @19, @21, @12, @30, @32, @37, @40];
-    [self setCharData:8 valor2:array];
-    
+    //busca no banco as informaçoes sobre cada Tag
+    [self inicializaVetoresTag];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -77,10 +87,17 @@
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
     for (int i = 0; i <valor2.count; i++) {
+        currentStep = valor2[i];
         [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: valor]];
-        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[valor2[i] doubleValue]]];
+        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[currentStep.avgHeartRate doubleValue]]];
+        average = average + [currentStep.avgHeartRate doubleValue];
     }
-    [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[valor2[(valor2.count - 1)] doubleValue]]];
+    if(valor2.count>0){
+        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[currentStep.avgHeartRate doubleValue]]];
+        average = average/valor2.count;
+    }else{
+        average = 0;
+    }
     
     LineChartDataSet *set1 = nil;
     LineChartDataSet *set2 = nil;
@@ -134,6 +151,8 @@
         [_lineChartView animateWithXAxisDuration:1.5];
     }
     
+    //Media da Tag
+    _mediaTag.text = [[NSNumber numberWithDouble:average] stringValue];
 }
 
 // The number of columns of data
@@ -157,25 +176,24 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSArray *array3 = @[@4, @10, @7, @10, @4, @19, @21, @12, @35, @32, @37, @40];
     if ([pickerData[row] isEqualToString:@"Estudos"]){
-        [self setCharData: 9.0 valor2:array3];
+        [self setCharData: 85.0 valor2:arrayEstudos];
         
     }
     if ([pickerData[row] isEqualToString:@"Autoexposição"]){
-        [self setCharData: 10.0 valor2:array3];
+        [self setCharData: 85.0 valor2:arrayAutoexposicao];
         
     }
     if ([pickerData[row] isEqualToString: @"Trabalho"]){
-        [self setCharData: 15.0 valor2:array3];
+        [self setCharData: 85.0 valor2:arrayTrabalho];
         
     }
     if ([pickerData[row] isEqualToString:@"Interação Social"]){
-        [self setCharData: 8.0 valor2:array3];
+        [self setCharData: 85.0 valor2:arrayInteracaoSocial];
         
     }
     if ([pickerData[row] isEqualToString:@"Outros"]){
-        [self setCharData: 20.0 valor2:array3];
+        [self setCharData: 85.0 valor2:arrayOutros];
         
     }
    
@@ -188,13 +206,21 @@
     {
         pickerLabel = [[UILabel alloc] init];
         [pickerLabel setTextColor:[UIColor whiteColor]];
-        [pickerLabel setFont:[UIFont fontWithName:@"SF-Compact-Display-Regular.otf" size: 15]];
+        pickerLabel.adjustsFontSizeToFitWidth = YES;
+        //[pickerLabel setFont:[UIFont fontWithName:@"SF-Compact-Display-Regular.otf" size: 17]];
         [pickerLabel setTextAlignment:NSTextAlignmentCenter];
     }
     [pickerLabel setText:[pickerData objectAtIndex:row]];
     return pickerLabel;
 }
 
+-(void)inicializaVetoresTag{
+    arrayAutoexposicao = [dataBD fetchStepsWithTag:@"Autoexposicao"];
+    arrayEstudos = [dataBD fetchStepsWithTag:@"Estudos"];
+    arrayInteracaoSocial = [dataBD fetchStepsWithTag: @"Interação Social"];
+    arrayTrabalho = [dataBD fetchStepsWithTag: @"Trabalho"];
+    arrayOutros = [dataBD fetchStepsWithTag: @"Outros"];
+}
 
 
 @end
