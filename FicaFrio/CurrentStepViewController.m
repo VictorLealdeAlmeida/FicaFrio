@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelStep;
 @property (weak, nonatomic) IBOutlet UIButton *startStep;
 @property (weak, nonatomic) IBOutlet UIButton *endStep;
+@property (weak, nonatomic) IBOutlet UILabel *goalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 
 
 //Popup
@@ -31,9 +34,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (weak, nonatomic) IBOutlet UIButton *grafButton;
-@property (weak, nonatomic) IBOutlet UILabel *backLabel;
-@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
-@property (weak, nonatomic) IBOutlet UILabel *grafLabel;
+@property (weak, nonatomic) IBOutlet UILabel *backLabel; // Nova Meta
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel; // Avaliação da Tarefa
+@property (weak, nonatomic) IBOutlet UILabel *grafLabel; // Avaliação Geral
 @property (weak, nonatomic) IBOutlet UIView *darkView;
 
 
@@ -53,6 +56,10 @@
     [super viewDidLoad];
     _startStep.hidden = false;
     _endStep.hidden = true;
+    
+    _backLabel.text = NSLocalizedString(@"Nova Meta", @"");
+    _infoLabel.text = NSLocalizedString(@"Avaliação da Tarefa", @"");
+    _grafLabel.text = NSLocalizedString(@"Avaliação Geral", @"");
     
     // Database
     defaults = [NSUserDefaults standardUserDefaults];
@@ -96,7 +103,8 @@
         [self.circleView rotation: 1.0 option:0];
         [self updateStep];
         [defaults setInteger:stepNumber forKey:@"currentStepNumber"];
-        [defaults synchronize];
+        [defaults setObject:currentStep.tag forKey:@"currentStepTag"];
+        //[defaults synchronize];
     }
     // Final step ended
     else {
@@ -109,6 +117,9 @@
     currentStep = [database fetchStep:(stepNumber-1) forGoalID:goalID];
     _labelStep.text = currentStep.name;
     // update goal and tag too
+    _goalLabel.text = [defaults stringForKey:@"goalName"];
+    _tagLabel.text = [defaults stringForKey:@"currentStepTag"];
+    NSLog(@"%@", [defaults stringForKey:@"currentStepTag"]);
 }
 
 - (void) showPopup{

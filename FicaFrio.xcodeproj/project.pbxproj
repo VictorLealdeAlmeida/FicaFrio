@@ -15,6 +15,7 @@
 		AC3CA2081D8AD0D500B985B1 /* GetHeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */; };
 		AC3CA20B1D8AD13300B985B1 /* PulseDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA20A1D8AD13300B985B1 /* PulseDetector.mm */; };
 		AC3CA20E1D8AD19200B985B1 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA20D1D8AD19200B985B1 /* Filter.m */; };
+		AC9148E41D8B8741005383AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC9148E61D8B8741005383AA /* Localizable.strings */; };
 		AC93225B1D86C7DB000051B0 /* BD.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93225A1D86C7DB000051B0 /* BD.m */; };
 		AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322791D86EE15000051B0 /* Step+CoreDataProperties.m */; };
 		AC93227D1D86EE15000051B0 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93227B1D86EE15000051B0 /* Step.m */; };
@@ -104,6 +105,10 @@
 		AC3CA20A1D8AD13300B985B1 /* PulseDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PulseDetector.mm; sourceTree = "<group>"; };
 		AC3CA20C1D8AD19200B985B1 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
 		AC3CA20D1D8AD19200B985B1 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
+		AC9148E51D8B8741005383AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AC9148E71D8B87B5005383AA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		AC9148E81D8B87B5005383AA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		AC9148E91D8B87B5005383AA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		AC9322591D86C7DB000051B0 /* BD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BD.h; sourceTree = "<group>"; };
 		AC93225A1D86C7DB000051B0 /* BD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BD.m; sourceTree = "<group>"; };
 		AC9322781D86EE15000051B0 /* Step+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Step+CoreDataProperties.h"; path = "../Step+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -231,6 +236,7 @@
 				D4BBC1571D7F01B70058615A /* Set Screens */,
 				D4BBC1A41D81B1450058615A /* Animation */,
 				D41A6BA91D871BB30074FA39 /* Main.storyboard */,
+				AC9148E61D8B8741005383AA /* Localizable.strings */,
 				D4BBC1471D7EF7BB0058615A /* Assets.xcassets */,
 				D4BBC1491D7EF7BB0058615A /* LaunchScreen.storyboard */,
 				D4BBC14C1D7EF7BB0058615A /* Info.plist */,
@@ -330,6 +336,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = D4BBC12C1D7EF7BA0058615A;
 			productRefGroup = D4BBC1361D7EF7BB0058615A /* Products */;
@@ -388,6 +395,7 @@
 				D41384751D88489F00281B48 /* SF-Compact-Display-Regular.otf in Resources */,
 				D4BBC14B1D7EF7BB0058615A /* LaunchScreen.storyboard in Resources */,
 				D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */,
+				AC9148E41D8B8741005383AA /* Localizable.strings in Resources */,
 				1E50F5E11D8B08A400CD05EC /* logo.gif in Resources */,
 				D4E76D751D830FC1006F7203 /* respiracao.gif in Resources */,
 				D41A6BAB1D871BB30074FA39 /* Main.storyboard in Resources */,
@@ -437,10 +445,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AC9148E61D8B8741005383AA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC9148E51D8B8741005383AA /* en */,
+				AC9148E91D8B87B5005383AA /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D41A6BA91D871BB30074FA39 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D41A6BAA1D871BB30074FA39 /* Base */,
+				AC9148E71D8B87B5005383AA /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -449,6 +467,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D4BBC14A1D7EF7BB0058615A /* Base */,
+				AC9148E81D8B87B5005383AA /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -460,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -507,6 +527,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

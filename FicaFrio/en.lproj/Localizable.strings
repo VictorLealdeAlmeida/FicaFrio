@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  FicaFrio
+
+  Created by Diana Monteiro on 15/09/16.
+  Copyright © 2016 PokeGroup. All rights reserved.
+*/
+
+"Insira sua meta" = "Insert your goal";
+
+"Divida sua meta em três passos e não esqueça de escolher uma tag para cada um deles!" = "Break down your goal into three steps and don’t forget to pick one tag for each!";
+"Digite sua tarefa" = "Type your task";
+
+"ESCOLHA UMA CATEGORIA" = "PICK A CATEGORY";
+"Autoexposição" = "Self-exposure";
+"Estudos" = "Studies";
+"Trabalho" = "Work";
+"Interação Social" = "Social interaction";
+"Outros" = "Others";
+
+"Nova Meta" = "New Goal";
+"Avaliação da Tarefa" = "Goal Feedback";
+"Avaliação Geral" = "Total Feedback";

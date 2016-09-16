@@ -15,9 +15,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     var CurrentGoal : String = ""
     
     @IBOutlet weak var NewGoalView: UIView!
-    
-    
     @IBOutlet weak var TaskText: UITextField!
+    @IBOutlet weak var insertGoalLabel: UILabel!
+    
     
     @IBAction func NewGoalButton(sender: UIButton) {
         UIView.animateWithDuration(0.4, animations: {
@@ -50,7 +50,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         TaskText.delegate = self;
         TaskText.clearsOnBeginEditing = true
         
-
+        insertGoalLabel.text = NSLocalizedString("Insira sua meta", comment:"")
         
      // Configura a logo
         let logoGif = UIImage.gifImageWithName("logo")
@@ -73,6 +73,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
     func textFieldDidEndEditing(textField: UITextField) {
         print("TextField did end editing method called")
+        
+        let goalName = TaskText.text
+        let defaults = NSUserDefaults.init()
+        defaults.setObject(goalName, forKey: "goalName")
         TaskText.resignFirstResponder();
         ViewUpanimateMoving(false, upValue: 100)
 
