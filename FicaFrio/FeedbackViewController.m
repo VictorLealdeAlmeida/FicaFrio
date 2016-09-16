@@ -25,8 +25,10 @@
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerTag;
 @property (weak, nonatomic) IBOutlet UILabel *mediaTag;
-@property (weak, nonatomic) IBOutlet UILabel *mediaGeral;
 @property (weak, nonatomic) IBOutlet UILabel *titulo;
+@property (weak, nonatomic) IBOutlet UILabel *nodata;
+- (IBAction)back:(id)sender;
+
 
 @end
 
@@ -75,7 +77,7 @@
     maker.chartView = _lineChartView;
     maker.minimumSize = CGSizeMake(80.f, 40.f);
     _lineChartView.marker = maker;
-    
+    _nodata.hidden = YES;
     //busca no banco as informaçoes sobre cada Tag
     [self inicializaVetoresTag];
     // Do any additional setup after loading the view, typically from a nib.
@@ -114,11 +116,13 @@
     if (_lineChartView.data.dataSetCount > 0){
         if (valor2.count == 0){
             _lineChartView.data = nil;
+            _nodata.hidden = NO;
         }else{
             set1 = (LineChartDataSet *)_lineChartView.data.dataSets[0];
             set2 = (LineChartDataSet *)_lineChartView.data.dataSets[1];
             set1.values = yVals1;
             set2.values = yVals2;
+            _nodata.hidden = YES;
         }
         [_lineChartView.data notifyDataChanged];
         [_lineChartView notifyDataSetChanged];
@@ -160,6 +164,9 @@
         //5 - finally set our data
         if(valor2.count > 0){
             _lineChartView.data = data;
+            _nodata.hidden = YES;
+        }else{
+            _nodata.hidden = NO;
         }
         _lineChartView.rightAxis.enabled = NO;
         [_lineChartView animateWithXAxisDuration:1.5];
@@ -238,6 +245,8 @@
 }
 
 
+- (IBAction)back:(id)sender {
+}
 @end
 
 

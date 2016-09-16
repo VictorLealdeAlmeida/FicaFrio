@@ -651,40 +651,22 @@
                             <pickerView alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZZ-YI-dmr">
                                 <color key="tintColor" red="0.2784313725" green="0.72941176470000002" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                             </pickerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_3" translatesAutoresizingMaskIntoConstraints="NO" id="rPK-ac-4RL">
-                                <frame key="frameInset" minX="41" minY="580" width="40" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_2" translatesAutoresizingMaskIntoConstraints="NO" id="LaX-2N-l46">
+                                <frame key="frameInset" minX="145" minY="545" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coracao_3" translatesAutoresizingMaskIntoConstraints="NO" id="LaX-2N-l46">
-                                <frame key="frameInset" minX="234" minY="580" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="85" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmB-CP-FQ6">
-                                <frame key="frameInset" minX="83" minY="591" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmE-TL-j3Q">
-                                <frame key="frameInset" minX="277" minY="587" width="27" height="30"/>
+                                <frame key="frameInset" minX="195" minY="565" width="27" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.11764705882352941" green="0.5490196078431373" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPm-Bi-c7M">
-                                <frame key="frameInset" minX="304" minY="592" width="35" height="21"/>
+                                <frame key="frameInset" minX="224" minY="570" width="35" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcG-cN-q0f">
-                                <frame key="frameInset" minX="109" minY="596" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.11764705882352941" green="0.5490196078431373" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Batimentos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUp-1J-DnY">
@@ -694,6 +676,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No data available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtN-Mj-fC3">
+                                <frame key="frameInset" minX="83" minY="609" width="209" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.11764705882352941" green="0.5490196078431373" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FR5-br-LHM">
+                                <frame key="frameInset" minX="7" minY="26" width="54" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="setavoltar"/>
+                                <connections>
+                                    <action selector="back:" destination="qOg-3a-aVT" eventType="touchUpInside" id="vli-kR-mZz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -713,8 +710,8 @@
                     </view>
                     <connections>
                         <outlet property="lineChartView" destination="ona-RN-FVQ" id="ZAH-KJ-6nN"/>
-                        <outlet property="mediaGeral" destination="rmB-CP-FQ6" id="aVe-sz-vJw"/>
                         <outlet property="mediaTag" destination="lmE-TL-j3Q" id="MNn-JQ-duV"/>
+                        <outlet property="nodata" destination="UtN-Mj-fC3" id="cq3-bb-jz1"/>
                         <outlet property="pickerTag" destination="cZZ-YI-dmr" id="AeV-kT-6gZ"/>
                         <outlet property="titulo" destination="KUp-1J-DnY" id="fCP-Z6-Bo4"/>
                     </connections>
@@ -837,8 +834,8 @@
         <!--Navigation Controller-->
         <scene sceneID="PbC-fa-Z4f">
             <objects>
-                <navigationController storyboardIdentifier="navigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
+                <navigationController storyboardIdentifier="navigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Rao-Rf-tPL" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -864,7 +861,7 @@
         <image name="coracao_2" width="200" height="175"/>
         <image name="coracao_3" width="200" height="175"/>
         <image name="direita_02" width="800" height="800"/>
-        <image name="esquerda_02" width="800" height="800"/>
+        <image name="esquerda_02" width="450" height="450"/>
         <image name="fimDeMeta" width="800" height="1261"/>
         <image name="fundoRespiracao01" width="750" height="1334"/>
         <image name="fundo_popup" width="800" height="1261"/>
@@ -877,6 +874,7 @@
         <image name="popup_TagSeco" width="554" height="873"/>
         <image name="relogio_2" width="200" height="175"/>
         <image name="seta_tarefas" width="100" height="84"/>
+        <image name="setavoltar" width="250" height="230"/>
         <image name="setinha" width="70" height="57"/>
         <image name="topo_02" width="800" height="800"/>
     </resources>
