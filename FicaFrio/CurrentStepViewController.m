@@ -78,7 +78,10 @@
     goalID = [defaults stringForKey:@"currentGoalID"];
     stepNumber = [defaults integerForKey:@"currentStepNumber"];
     
+    NSLog(@"Step number: %d", stepNumber);
+    
     [self updateStep];
+    [self updateCircleRotation];
     [self setNotification];
 
 }
@@ -152,6 +155,15 @@
     _goalLabel.text = [defaults stringForKey:@"goalName"];
     _tagLabel.text = [defaults stringForKey:@"currentStepTag"];
     NSLog(@"%@", [defaults stringForKey:@"currentStepTag"]);
+}
+
+- (void)updateCircleRotation {
+    if (stepNumber == 2) {
+        [self.circleView rotation: 1.0 option:0];
+    } else if (stepNumber == 3) {
+        [self.circleView rotation: 1.0 option:0];
+        [self.circleView rotation: 1.0 option:0];
+    }
 }
 
 - (void) showPopup{
@@ -262,7 +274,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-    if ([segue.identifier isEqualToString:@"CurrentToRelax"]) {
+    _darkView.hidden = true;
+    if ([segue.identifier isEqualToString:@"currentToRelax"]) {
         RelaxViewController *d = (RelaxViewController *)segue.destinationViewController;
         d.selectHeartHate = selectHeart;
     
