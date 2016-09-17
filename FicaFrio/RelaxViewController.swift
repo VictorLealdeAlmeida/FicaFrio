@@ -22,14 +22,12 @@ class RelaxViewController: UIViewController {
         
         let RelaxGif = UIImage.gifImageWithName("Espiral3")
         let imageView = UIImageView(image: RelaxGif)
-        imageView.frame = CGRect(x: 110, y: 220, width: self.view.frame.size.width - 221, height: 223)
+        imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/4, y: self.view.frame.size.height/4, width: imageView.frame.size.width/2, height: imageView.frame.size.height/2)
         view.addSubview(imageView)
         
         if selectHeartHate {
             startReadingHeartRate = GetHeartRate.init()
         }
-        
-       // print(selectHeartHate)
     }
     
     override func viewWillDisappear(animated: Bool) {

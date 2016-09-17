@@ -13,12 +13,14 @@
 #import "BD.h"
 
 @interface CurrentStepViewController () {
-    //int numberStep;
     BD *database;
     NSUserDefaults *defaults;
     NSInteger stepNumber;
     NSString *goalID;
     Step *currentStep;
+    NSDate *dateTime;
+    NSTimer *timerAnimation;
+    bool selectHeart;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
@@ -28,7 +30,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
-
 
 //Popup
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundPopup;
@@ -40,16 +41,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *grafLabel; // Avaliação Geral
 @property (weak, nonatomic) IBOutlet UIView *darkView;
 
-
 @property (weak, nonatomic) IBOutlet UIView *relaxPopupView;
 @property (weak, nonatomic) IBOutlet UIView *tutorialPopupView;
 
 
-
-
 //Actions popup
 - (IBAction)circleButton:(id)sender;
-//- (void) changeNumber;
 - (IBAction)newGoal:(id)sender;
 - (IBAction)startStep:(id)sender;
 - (IBAction)startRelax:(UIButton *)sender;
@@ -57,15 +54,10 @@
 - (IBAction)relaxAndMeasure:(UIButton *)sender;
 - (IBAction)goToRelax:(UIButton *)sender;
 
-
 @end
 
 
 @implementation CurrentStepViewController
-
-NSDate *dateTime;
-NSTimer *timerAnimation;
-bool selectHeart = false;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -75,6 +67,8 @@ bool selectHeart = false;
     _backLabel.text = NSLocalizedString(@"Nova Meta", @"");
     _infoLabel.text = NSLocalizedString(@"Avaliação da Tarefa", @"");
     _grafLabel.text = NSLocalizedString(@"Avaliação Geral", @"");
+    
+    selectHeart = false;
     
     // Database
     defaults = [NSUserDefaults standardUserDefaults];
@@ -188,8 +182,10 @@ bool selectHeart = false;
 }
 
 - (IBAction)justRelax:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"currentToRelax" sender:self];
+    [self closePopup:_relaxPopupView];
     // sem medir o batimento
+    selectHeart = false;
+    [self performSegueWithIdentifier:@"currentToRelax" sender:self];
 }
 
 - (IBAction)relaxAndMeasure:(UIButton *)sender {
@@ -198,8 +194,10 @@ bool selectHeart = false;
 }
 
 - (IBAction)goToRelax:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"currentToRelax" sender:self];
+    [self closePopup:_tutorialPopupView];
     // medindo o batimento
+    selectHeart = true;
+    [self performSegueWithIdentifier:@"currentToRelax" sender:self];
 }
 
 - (void)showPopup:(UIView *)popupView {
@@ -210,6 +208,13 @@ bool selectHeart = false;
     [_darkView setAlpha:0.55];
     [popupView setAlpha:0.95];
     [UIView commitAnimations];
+    
+//    UIImage *logoGif = [UIImage gifImageWithName:@"GIF_INICIAL_CERTO"];
+//    UIImageView *imageView = [UIImageView ]
+//    let imageView = UIImageView(image: logoGif)
+//    imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3, height: imageView.frame.size.height/3)
+//    view.addSubview(imageView)
+//    [self.view addsub]
 }
 
 - (void)closePopup:(UIView *)popupView {
