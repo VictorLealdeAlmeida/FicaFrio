@@ -47,6 +47,7 @@
 int direction= 1;
 int shakes = 47;
 BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
+double media;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,7 +69,11 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
         //step.avgHeartRate  - média de batimentos do passo i
         //step.duration      - duração do passo i
     }
-    
+    media = (int)timeRange/3;
+    _minValue.text = [[NSNumber numberWithDouble:media] stringValue];
+    media = (int)rateRange/3;
+    _bpmValue.text = [[NSNumber numberWithDouble:media] stringValue];
+    _titleGoal.text = @"Heartbeat";
     
     _step1.hidden = YES;
     _step2.hidden = YES;
@@ -122,10 +127,12 @@ BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
     if(flag){
         [_center setImage:[UIImage imageNamed:@"relogio_2"]];
         [self selectGraf: [[time objectAtIndex: 0] intValue] value2: [[time objectAtIndex: 1] intValue] value3: [[time objectAtIndex: 2] intValue]];
+        _titleGoal.text = @"Heartbeat";
         flag = NO;
     }else{
         [_center setImage:[UIImage imageNamed:@"coracao_2"]];
         [self selectGraf: [[avgRate objectAtIndex: 0] intValue] value2: [[avgRate objectAtIndex: 1] intValue] value3: [[avgRate objectAtIndex: 2] intValue]];
+        _titleGoal.text = @"Time";
         flag = YES;
     }
     [_center addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0 nextImege:_step1];
