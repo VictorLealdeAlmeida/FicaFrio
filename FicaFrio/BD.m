@@ -117,7 +117,13 @@
         return nil;
     }
     else {
-        return stepResults;
+        NSMutableArray *orderedSteps = [NSMutableArray arrayWithArray:@[@"",@"",@""]];;
+        for (int i = 0; i < stepResults.count; i++){
+            Step *step = [stepResults objectAtIndex:i];
+            [orderedSteps replaceObjectAtIndex:[step.number intValue] withObject:step];
+        }
+        NSLog(@"%@", orderedSteps);
+        return orderedSteps;
     }
 }
 

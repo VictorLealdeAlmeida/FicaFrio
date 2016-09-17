@@ -66,7 +66,6 @@ double media;
         [time addObject: step.duration];
         [avgRate addObject: step.avgHeartRate];
         timeRange = timeRange + [step.duration integerValue];
-        NSLog(@"duration: %d or %@", (int)timeRange, step.duration);
         rateRange = rateRange + [step.avgHeartRate integerValue];
         //step.avgHeartRate  - média de batimentos do passo i
         //step.duration      - duração do passo i

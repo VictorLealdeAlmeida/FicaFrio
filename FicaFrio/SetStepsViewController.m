@@ -158,7 +158,7 @@
 }
 
 - (void) addGoal {
-    NSString* goalName = @"placeholder goal";
+    NSString* goalName = [defaults stringForKey:@"goalName"];
     NSString* goalID = [[NSUUID UUID] UUIDString];
     [defaults setObject:goalID forKey:@"currentGoalID"];
     [defaults setInteger:1 forKey:@"currentStepNumber"];
