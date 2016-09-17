@@ -47,7 +47,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults integerForKey:@"currentStepNumber"] == 0) {
         // Show the dashboard
-        [navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"SDDashboardViewController"] animated:NO];
+        [navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"] animated:NO];
     } else {
         // Login
         [navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"currentStep"] animated:NO];
