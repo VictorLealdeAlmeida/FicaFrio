@@ -15,6 +15,7 @@
 		9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; };
 		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09CF871D8817C30079E6FB /* FicaFrio.swift */; };
+		AC1226011D8D87B1007D4860 /* Gif_Heart_Rate.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */; };
 		AC3CA2081D8AD0D500B985B1 /* GetHeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */; };
 		AC3CA20B1D8AD13300B985B1 /* PulseDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA20A1D8AD13300B985B1 /* PulseDetector.mm */; };
 		AC3CA20E1D8AD19200B985B1 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA20D1D8AD19200B985B1 /* Filter.m */; };
@@ -105,6 +106,7 @@
 		1E6D29B41D89A070008734E0 /* logoteste.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logoteste.gif; sourceTree = "<group>"; };
 		9F09CF731D8817670079E6FB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ChartsFramework/Charts.xcodeproj; sourceTree = "<group>"; };
 		9F09CF871D8817C30079E6FB /* FicaFrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FicaFrio.swift; sourceTree = SOURCE_ROOT; };
+		AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gif_Heart_Rate.gif; sourceTree = "<group>"; };
 		AC3CA2061D8AD0D500B985B1 /* GetHeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHeartRate.h; sourceTree = "<group>"; };
 		AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHeartRate.m; sourceTree = "<group>"; };
 		AC3CA2091D8AD13300B985B1 /* PulseDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulseDetector.h; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				1E50F5EB1D8C2B9D00CD05EC /* Espiral3.gif */,
 				1E50F6001D8C49C600CD05EC /* GifInicial.gif */,
 				1E50F6051D8C49E800CD05EC /* GIF_INICIAL_CERTO.gif */,
+				AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */,
 				D4BBC13B1D7EF7BB0058615A /* AppDelegate.h */,
 				D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */,
 				D4BBC1701D7F0DD30058615A /* RelaxViewController.swift */,
@@ -411,6 +414,7 @@
 				1E50F5EC1D8C2B9D00CD05EC /* Espiral3.gif in Resources */,
 				D4E76D751D830FC1006F7203 /* respiracao.gif in Resources */,
 				D41A6BAB1D871BB30074FA39 /* Main.storyboard in Resources */,
+				AC1226011D8D87B1007D4860 /* Gif_Heart_Rate.gif in Resources */,
 				1E6D29B51D89A070008734E0 /* logoteste.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

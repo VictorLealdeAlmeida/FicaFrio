@@ -11,6 +11,7 @@
 #import "FicaFrio-Swift.h"
 #import "Step.h"
 #import "BD.h"
+#import "FicaFrio-Swift.h"
 
 @interface CurrentStepViewController () {
     BD *database;
@@ -21,6 +22,7 @@
     NSDate *dateTime;
     NSTimer *timerAnimation;
     bool selectHeart;
+    bool stepStarted;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
@@ -77,8 +79,8 @@
     // Get current step (goal and number)
     goalID = [defaults stringForKey:@"currentGoalID"];
     stepNumber = [defaults integerForKey:@"currentStepNumber"];
+    stepStarted = [defaults boolForKey:@"stepStarted"];
     
-    NSLog(@"Step number: %d", stepNumber);
     
     [self updateStep];
     [self updateCircleRotation];
@@ -99,12 +101,12 @@
 - (IBAction)startStep:(id)sender {
     _startStep.hidden = true;
     _endStep.hidden = false;
-    printf("%d",2323);
+    
     // Store startDate
     [database setStartDate:[NSDate date] toStep:currentStep];
-
+    
+    [defaults setBool:TRUE forKey:@"stepStarted"];
     //[defaults synchronize];
-
 
     //Timer pra acontecer a animacao
     [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
@@ -126,6 +128,7 @@
     // Store endDate
     [database setEndDate:[NSDate date] toStep:currentStep];
     
+    [defaults setBool:FALSE forKey:@"stepStarted"];
     [timerAnimation invalidate];
     
     // Show next step - store number and fetch next step
@@ -138,7 +141,7 @@
         [self updateStep];
         [defaults setInteger:stepNumber forKey:@"currentStepNumber"];
         [defaults setObject:currentStep.tag forKey:@"currentStepTag"];
-        [defaults synchronize];
+        //[defaults synchronize];
     }
     // Final step ended
     else {
@@ -148,13 +151,25 @@
 }
 
 - (void)updateStep {
-    NSLog(@"entered updateStep");
     currentStep = [database fetchStep:(stepNumber-1) forGoalID:goalID];
     _labelStep.text = currentStep.name;
     // update goal and tag too
     _goalLabel.text = [defaults stringForKey:@"goalName"];
     _tagLabel.text = [defaults stringForKey:@"currentStepTag"];
-    NSLog(@"%@", [defaults stringForKey:@"currentStepTag"]);
+    
+    if (stepStarted) {
+        NSLog(@"Step has already started");
+        _startStep.hidden = true;
+        _endStep.hidden = false;
+        
+        //Timer pra acontecer a animacao
+        [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
+        timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3
+                                                          target:self
+                                                        selector:@selector(animationButton)
+                                                        userInfo:nil
+                                                         repeats:YES];
+    }
 }
 
 - (void)updateCircleRotation {
@@ -221,12 +236,15 @@
     [popupView setAlpha:0.95];
     [UIView commitAnimations];
     
-//    UIImage *logoGif = [UIImage gifImageWithName:@"GIF_INICIAL_CERTO"];
-//    UIImageView *imageView = [UIImageView ]
-//    let imageView = UIImageView(image: logoGif)
-//    imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3, height: imageView.frame.size.height/3)
-//    view.addSubview(imageView)
-//    [self.view addsub]
+    if (popupView == _tutorialPopupView) {
+        NSLog(@"gif should appear");
+        UIImage *logoGif = [UIImage gifImageWithName:@"Gif_Heart_Rate"];
+        //UIImageView *imageView = [[UIImageView alloc] setImage:logoGif];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:logoGif];
+        CGRect frame = CGRectMake(self.view.frame.size.width/2 - imageView.frame.size.width/13, self.view.frame.size.height/3 + imageView.frame.size.height/8, imageView.frame.size.width/6.5, imageView.frame.size.height/6.5);
+        [imageView setFrame:frame];
+        [self.view addSubview:imageView];
+    }
 }
 
 - (void)closePopup:(UIView *)popupView {

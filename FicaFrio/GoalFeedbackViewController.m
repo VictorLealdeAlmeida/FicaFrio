@@ -46,7 +46,7 @@
 
 int direction= 1;
 int shakes = 47;
-BOOL flag; //Denife qual infomaçao está sendo mostrada no grafico
+BOOL flag; //Define qual infomaçao está sendo mostrada no grafico
 double media;
 
 - (void)viewDidLoad {
@@ -60,16 +60,18 @@ double media;
     goalID = [defaults stringForKey:@"currentGoalID"];
     goalSteps = [database fetchStepsForGoalID:goalID];
     
+    
     for (int i = 0; i < goalSteps.count; i++){
         step = goalSteps[i];
         [time addObject: step.duration];
         [avgRate addObject: step.avgHeartRate];
         timeRange = timeRange + [step.duration integerValue];
+        NSLog(@"duration: %d or %@", (int)timeRange, step.duration);
         rateRange = rateRange + [step.avgHeartRate integerValue];
         //step.avgHeartRate  - média de batimentos do passo i
         //step.duration      - duração do passo i
     }
-    media = (int)timeRange/3;
+    media = ((int)timeRange/3)/60; // timeRange em segundos
     _minValue.text = [[NSNumber numberWithDouble:media] stringValue];
     media = (int)rateRange/3;
     _bpmValue.text = [[NSNumber numberWithDouble:media] stringValue];
