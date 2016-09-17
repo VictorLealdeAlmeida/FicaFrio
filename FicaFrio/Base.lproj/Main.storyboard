@@ -846,6 +846,9 @@
                                 <frame key="frameInset" minX="10" minY="10" width="54" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="setavoltar"/>
+                                <connections>
+                                    <action selector="back:" destination="IH0-gW-iFA" eventType="touchUpInside" id="2yZ-VX-nYA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -878,7 +881,7 @@
         <scene sceneID="PbC-fa-Z4f">
             <objects>
                 <navigationController storyboardIdentifier="navigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
