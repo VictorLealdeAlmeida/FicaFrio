@@ -414,6 +414,7 @@
                                 <state key="normal" title="Back" image="popupIcon3"/>
                                 <connections>
                                     <action selector="newGoal:" destination="O4b-DK-hPY" eventType="touchUpInside" id="LQH-r7-Uo3"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="PUB-o6-lYQ"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nova Meta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZY-mT-jQe">
@@ -645,7 +646,7 @@
                                 <state key="normal" image="setavoltar"/>
                                 <connections>
                                     <action selector="back:" destination="qOg-3a-aVT" eventType="touchUpInside" id="Up3-ei-wUp"/>
-                                    <action selector="back:" destination="whk-Og-WXW" eventType="touchUpInside" id="hSd-f3-i6Z"/>
+                                    <segue destination="O4b-DK-hPY" kind="show" id="K6w-Ng-OfA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -928,7 +929,8 @@
         <image name="topo_02" width="800" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SIK-03-OEX"/>
         <segue reference="bD3-Rz-XB4"/>
+        <segue reference="bF3-yD-Kli"/>
+        <segue reference="SIK-03-OEX"/>
     </inferredMetricsTieBreakers>
 </document>

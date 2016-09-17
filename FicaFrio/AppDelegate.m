@@ -26,6 +26,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%ld", (long)[defaults integerForKey:@"currentStepNumber"]);
     UIViewController *viewController;
+    //UINavigationController *navigationController;
+    //navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    //navigationController = (UINavigationController *) self.window.rootViewController;
     
     if ([defaults integerForKey:@"currentStepNumber"] == 0){
         viewController = [storyboard instantiateViewControllerWithIdentifier:@"navigationController"];
@@ -34,6 +37,8 @@
         viewController = [storyboard instantiateViewControllerWithIdentifier:@"currentStep"];
     }
     
+    //[navigationController pushViewController:viewController animated:nil];
+    //self.window.rootViewController = navigationController;
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];*/
     
