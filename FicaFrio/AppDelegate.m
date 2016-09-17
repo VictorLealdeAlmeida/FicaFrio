@@ -20,7 +20,7 @@
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
-    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    /*self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -35,7 +35,18 @@
     }
     
     self.window.rootViewController = viewController;
-    [self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];*/
+    
+    UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults integerForKey:@"currentStepNumber"] == 0) {
+        // Show the dashboard
+        [navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"SDDashboardViewController"] animated:NO];
+    } else {
+        // Login
+        [navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"currentStep"] animated:NO];
+    }
     
     return YES;
 }
