@@ -23,6 +23,7 @@
     NSTimer *timerAnimation;
     bool selectHeart;
     bool stepStarted;
+    UIImageView *imageView;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
@@ -240,7 +241,7 @@
         NSLog(@"gif should appear");
         UIImage *logoGif = [UIImage gifImageWithName:@"Gif_Heart_Rate"];
         //UIImageView *imageView = [[UIImageView alloc] setImage:logoGif];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:logoGif];
+        imageView = [[UIImageView alloc] initWithImage:logoGif];
         CGRect frame = CGRectMake(self.view.frame.size.width/2 - imageView.frame.size.width/13, self.view.frame.size.height/3 + imageView.frame.size.height/8, imageView.frame.size.width/6.5, imageView.frame.size.height/6.5);
         [imageView setFrame:frame];
         [self.view addSubview:imageView];
@@ -253,6 +254,10 @@
     //[_darkView setAlpha:0.0];
     [popupView setAlpha:0.0];
     [UIView commitAnimations];
+    
+    if (popupView == _tutorialPopupView) {
+        [imageView removeFromSuperview];
+    }
     
     //Timer pra acontecer a animacao antes do hidden
     [NSTimer scheduledTimerWithTimeInterval:0.7

@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var NewGoalView: UIView!
     @IBOutlet weak var TaskText: UITextField!
     @IBOutlet weak var insertGoalLabel: UILabel!
+    @IBOutlet weak var newGoalButton: UIButton!
     
     @IBOutlet var tapGesture: UITapGestureRecognizer!
 
@@ -61,6 +62,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
         NewGoalView.hidden = true
         NewGoalView.alpha = 0
+        
+        newGoalButton.setTitle(NSLocalizedString("Nova Meta", comment: ""), forState: UIControlState.Normal)
         
         super.viewDidLoad()
         TaskText.delegate = self;
