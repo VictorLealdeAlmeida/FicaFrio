@@ -94,9 +94,11 @@
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
     for (int i = 0; i <valor2.count; i++) {
-        currentStep = valor2[i];
+        currentStep = valor2[valor2.count-i-1];
         [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[currentStep.avgHeartRate doubleValue]]];
         average = average + [currentStep.avgHeartRate doubleValue];
+        //NSLog(@"%@ %@",currentStep.startDate, currentStep.name);
+        
     }
     
     for (int i = 0; i <valor2.count; i++){

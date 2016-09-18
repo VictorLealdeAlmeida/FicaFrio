@@ -151,6 +151,10 @@
     NSPredicate *predicateForStepTag = [NSPredicate predicateWithFormat:@"tag == %@", stepTag];
     [fetchRequest setPredicate:predicateForStepTag];
     
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"startDate" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    [fetchRequest setFetchLimit:7];
+    
     NSError *error;
     NSArray *stepResults = [_managedContext executeFetchRequest:fetchRequest error:&error];
     if (!stepResults) {
