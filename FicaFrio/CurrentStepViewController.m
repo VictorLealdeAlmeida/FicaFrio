@@ -46,6 +46,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *relaxPopupView;
 @property (weak, nonatomic) IBOutlet UIView *tutorialPopupView;
+@property (weak, nonatomic) IBOutlet UILabel *tutorialLabel;
+@property (weak, nonatomic) IBOutlet UILabel *measureLabel;
+
 
 
 //Actions popup
@@ -66,6 +69,9 @@
     [super viewDidLoad];
     _startStep.hidden = false;
     _endStep.hidden = true;
+    
+    _tutorialLabel.text = NSLocalizedString(@"Para medir seus batimentos, encoste a ponta do indicador na sua câmera:", "");
+    _measureLabel.text = NSLocalizedString(@"Deseja medir seus batimentos enquanto respira?", "");
     
     _backLabel.text = NSLocalizedString(@"Nova Meta", @"");
     _infoLabel.text = NSLocalizedString(@"Avaliação da Tarefa", @"");

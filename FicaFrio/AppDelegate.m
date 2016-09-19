@@ -21,36 +21,15 @@
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
     
-    /*self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"%ld", (long)[defaults integerForKey:@"currentStepNumber"]);
-    UIViewController *viewController;
-    //UINavigationController *navigationController;
-    //navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    //navigationController = (UINavigationController *) self.window.rootViewController;
-    
-    if ([defaults integerForKey:@"currentStepNumber"] == 0){
-        viewController = [storyboard instantiateViewControllerWithIdentifier:@"navigationController"];
-    }
-    else {
-        viewController = [storyboard instantiateViewControllerWithIdentifier:@"currentStep"];
-    }
-    
-    //[navigationController pushViewController:viewController animated:nil];
-    //self.window.rootViewController = navigationController;
-    self.window.rootViewController = viewController;
-    [self.window makeKeyAndVisible];*/
-    
     UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     if ([defaults integerForKey:@"currentStepNumber"] == 0) {
-        // Show the dashboard
+        // Load HomeViewController if there's no goal set
         [navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"] animated:NO];
     } else {
-        // Login
+        // Load CurrentStepViewController if there's an ongoing goal
         [navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"currentStep"] animated:NO];
     }
     

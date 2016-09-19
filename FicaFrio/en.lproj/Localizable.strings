@@ -19,6 +19,15 @@
 "Interação Social" = "Social interaction";
 "Outros" = "Others";
 
+"Deseja medir seus batimentos enquanto respira?" = "Do you want to measure your heart rate while breathing?";
+"Para medir seus batimentos, encoste a ponta do indicador na sua câmera:" = "To measure your heart rate, put the tip of your index finger on the camera:";
+
 "Nova Meta" = "New Goal";
 "Avaliação da Tarefa" = "Goal Feedback";
 "Avaliação Geral" = "Total Feedback";
+
+"Batimentos" = "Heart Rate";
+"Clique nos nós para mais detalhes" = "Tap node for details";
+"Sem dados disponíveis" = "No data available";
+
+"Tempo" = "Time";

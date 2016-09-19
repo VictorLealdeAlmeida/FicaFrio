@@ -7,7 +7,6 @@
 //
 
 #import "SetStepsViewController.h"
-#import "Step.h"
 #import "BD.h"
 
 @interface SetStepsViewController () {
@@ -20,34 +19,31 @@
     NSArray *tags;
     BD *database;
     NSUserDefaults *defaults;
+    BOOL clickedOnce;
 }
+
+@property (weak, nonatomic) IBOutlet UILabel *goalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *stepNameTextField;
+@property (weak, nonatomic) IBOutlet UIView *viewButton;
+@property (weak, nonatomic) IBOutlet UIImageView *arrow;
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
 @property (weak, nonatomic) IBOutlet UILabel *stepNumberLabel;
-@property (weak, nonatomic) IBOutlet UIView *viewButton; // ? shakes
-@property (weak, nonatomic) IBOutlet UITextField *stepNameTextField;
-@property (weak, nonatomic) IBOutlet UIImageView *arrow; // ? shakes
+@property (weak, nonatomic) IBOutlet UIButton *stepTagButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *setStepsButton;
-@property (weak, nonatomic) IBOutlet UIView *darkView;
 
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *goalLabel;
-
-//@property (weak, nonatomic) IBOutlet UIButton *tagButton;
-@property (weak, nonatomic) IBOutlet UIButton *setStepButton;
-
-// Tag-related outlets
+// Tag popup-related outlets
 @property (weak, nonatomic) IBOutlet UIImageView *tagPopupView;
+@property (weak, nonatomic) IBOutlet UIView *darkView;
 @property (weak, nonatomic) IBOutlet UILabel *pickTagLabel;
 @property (weak, nonatomic) IBOutlet UIButton *tagOneButton;
 @property (weak, nonatomic) IBOutlet UIButton *tagTwoButton;
 @property (weak, nonatomic) IBOutlet UIButton *tagThreeButton;
 @property (weak, nonatomic) IBOutlet UIButton *tagFourButton;
 @property (weak, nonatomic) IBOutlet UIButton *tagFiveButton;
-//@property (weak, nonatomic) IBOutlet UILabel *stepTagLabel;
-@property (weak, nonatomic) IBOutlet UIButton *stepTagButton;
-
-
 
 - (IBAction)goToNextStep:(UIButton *)sender;
 
@@ -55,7 +51,6 @@
 - (IBAction)circleLeft:(id)sender;
 - (IBAction)goToNextScreen:(UIButton *)sender;
 
-//- (IBAction)pickTag:(id)sender;
 - (IBAction)setTagOne:(UIButton *)sender;
 - (IBAction)setTagTwo:(UIButton *)sender;
 - (IBAction)setTagThree:(UIButton *)sender;
@@ -63,6 +58,8 @@
 - (IBAction)setTagFive:(UIButton *)sender;
 - (IBAction)closeViewTag:(id)sender;
 - (IBAction)changeTag:(UIButton *)sender;
+
+- (IBAction)dismissKeyboard:(UIControl *)sender;
 
 
 @end
@@ -73,6 +70,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _setStepsButton.hidden = true;
+    clickedOnce = FALSE;
     
     // Database
     defaults = [NSUserDefaults standardUserDefaults];
@@ -82,18 +80,16 @@
     stepsTags = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
     tags = @[NSLocalizedString(@"Autoexposição", ""), NSLocalizedString(@"Estudos", ""), NSLocalizedString(@"Trabalho", ""), NSLocalizedString(@"Interação Social", ""), NSLocalizedString(@"Outros", "")];
     
+    _goalLabel.text = [[defaults stringForKey:@"goalName"] uppercaseString];
     _descriptionLabel.text = NSLocalizedString(@"Divida sua meta em três passos e não esqueça de escolher uma tag para cada um deles!", "");
     _stepNameTextField.placeholder = NSLocalizedString(@"Digite sua tarefa", "");
-    
-    _goalLabel.text = [defaults stringForKey:@"goalName"];
-    
-    number = 1;
-    direction= 1;
-    shakes = 55;
 
     [_stepNameTextField setDelegate:self];
     
     // Sets para fazer o shake no textfield
+    number = 1;
+    direction= 1;
+    shakes = 55;
     [self shake:_stepNameTextField];
 }
 
@@ -101,50 +97,59 @@
     [super didReceiveMemoryWarning];
 }
 
-//Funcao que limita o numero de caracteres no textfield
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    // Prevent crashing undo bug – see note below.
-    if(range.length + range.location > textField.text.length)
-    {
-        return NO;
-    }
-    
-    NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    return newLength <= 140;
-}
 
-// Check step button
+// Confirm step and go to next
 - (IBAction)goToNextStep:(UIButton *)sender {
-    if ([self.view endEditing:YES]) { // Force end editing
-        [self checkIfCanGoToNextStep];
-    }
+    [self checkIfCanGoToNextStep];
 }
 
+// Checks if the circle can rotate without losing text input
+- (BOOL)checkIfCanRotate {
+    [_stepNameTextField resignFirstResponder]; // Dismiss keyboard
+    
+    if (!clickedOnce && ![_stepNameTextField.text isEqual:[stepsNames objectAtIndex:(number-1)]]) {
+        // HIGHLIGHT BUTTON!!!
+        clickedOnce = TRUE;
+        return FALSE;
+    }
+    clickedOnce = FALSE;
+    return TRUE;
+}
+
+// Checks if name and tag are set for current step
 - (void)checkIfCanGoToNextStep {
+    [_stepNameTextField resignFirstResponder]; // Dismiss keyboard
+    
+    // Save current step name
+    [stepsNames replaceObjectAtIndex:(number-1) withObject:_stepNameTextField.text];
+    
+    // If all steps are set, rotate back to step one
     if ([self checkIfCanFinish]) {
-        // Go back to step one
         if (number == 2) { [self rotateCircleToLeft]; }
         else if (number == 3) { [self rotateCircleToRight]; }
     }
+    // If there are still steps to be set
     else {
-        if(![_stepNameTextField.text isEqual:@""] && ![[stepsTags objectAtIndex:(number-1)] isEqual:@""]) {
-            [self rotateCircleToRight];
-        } else if (![_stepNameTextField.text isEqual:@""]){
-            [self.view endEditing:YES]; // Force end editing
-            [self showTagPopup];
-        }
-        else {
+        // If name isn't set, shake textbox
+        if ([[stepsNames objectAtIndex:(number-1)] isEqual:@""]) {
             [self shake:_stepNameTextField];
             [self shake:_viewButton];
             [self shake:_arrow];
+        // If the step name is set...
+        } else {
+            // ... but the tag isn't
+            if ([[stepsTags objectAtIndex:(number-1)] isEqual:@""]){
+                [self showTagPopup];
+            } else { // ... and the tag is also set, rotate to next step
+                [self rotateCircleToRight];
+            }
         }
     }
 }
 
+// If all steps names and tags are set, shows button to confirm all
 - (BOOL)checkIfCanFinish {
-    // If all steps names and tags are set, show button to complete
     if (![stepsNames containsObject:@""] && ![stepsTags containsObject:@""]) {
-        NSLog(@"all steps are set");
         _setStepsButton.hidden = false;
         return true;
     }
@@ -158,22 +163,15 @@
 }
 
 - (void) addGoal {
-    NSString* goalName = [defaults stringForKey:@"goalName"];
     NSString* goalID = [[NSUUID UUID] UUIDString];
     [defaults setObject:goalID forKey:@"currentGoalID"];
     [defaults setInteger:1 forKey:@"currentStepNumber"];
-    [defaults setObject:[stepsTags objectAtIndex:0] forKey:@"currentStepTag"];
-    [defaults synchronize];
-    [database createNewGoal:goalName withSteps:stepsNames tags:stepsTags andID:goalID];
+    //[defaults setObject:[stepsTags objectAtIndex:0] forKey:@"currentStepTag"];
+    //[defaults synchronize];
+    [database createNewGoal:[defaults stringForKey:@"goalName"] withSteps:stepsNames tags:stepsTags andID:goalID];
 }
 
 // Tag-related ----------------------------------------------------
-
-//- (IBAction)pickTag:(id)sender {
-//    [self.view endEditing:YES]; // Force end editing
-//    [self showTagPopup];
-//}
-
 - (IBAction)setTagOne:(UIButton *)sender {
     tagNumber = 1;
     [self closeTagPopup];
@@ -199,26 +197,33 @@
     [self closeTagPopup];
 }
 
+// Clicking outside the popup
 - (IBAction)closeViewTag:(id)sender {
     tagNumber = 5;
     [self closeTagPopup];
 }
 
+// Clicking on the current tag (to change it)
 - (IBAction)changeTag:(UIButton *)sender {
     [self showTagPopup];
 }
 
+- (IBAction)dismissKeyboard:(UIControl *)sender {
+    [_stepNameTextField resignFirstResponder];
+}
 // ----------------------------------------------------------------
 
 // Rotation-related -----------------------------------------------
 - (IBAction)circleRight:(id)sender {
-    //[self.view endEditing:YES]; // Force end editing
-    [self rotateCircleToRight];
+    if ([self checkIfCanRotate]) {
+        [self rotateCircleToRight];
+    }
 }
 
 - (IBAction)circleLeft:(id)sender {
-    //[self.view endEditing:YES]; // Force end editing
-    [self rotateCircleToLeft];
+    if ([self checkIfCanRotate]) {
+        [self rotateCircleToLeft];
+    }
 }
 
 - (void)rotateCircleToRight {
@@ -238,7 +243,6 @@
 - (void)updateStepText {
     _stepNameTextField.text = [stepsNames objectAtIndex:(number-1)];
     _stepNumberLabel.text = [NSString stringWithFormat:@"%d", number];
-    //_stepTagLabel.text = [stepsTags objectAtIndex:(number-1)];
     [_stepTagButton setTitle:[stepsTags objectAtIndex:(number-1)] forState:UIControlStateNormal];
     [self matchTextColorToStep];
 }
@@ -254,7 +258,6 @@
         textColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
     }
     _stepNumberLabel.textColor = textColor;
-    //_stepTagLabel.textColor = textColor;]
     [_stepTagButton setTitleColor:textColor forState:UIControlStateNormal];
 }
 // ----------------------------------------------------------------
@@ -270,18 +273,22 @@
 }
 
 // UITextField Delegates ----------------------------------------------
-// When return is clicked, end editing
+// When return is clicked, check if can go to next step
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSLog(@"text field should return");
-    [self.view endEditing:YES]; // Force end editing
+    [self checkIfCanGoToNextStep];
     return YES;
 }
 
-// Hides the keyboard, saves current step name and checks if can go to next step
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"text field did end editing");
-    [stepsNames replaceObjectAtIndex:(number-1) withObject:_stepNameTextField.text];
-    [self checkIfCanGoToNextStep];
+// Funcao que limita o numero de caracteres no textfield
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // Prevent crashing undo bug – see note below.
+    if(range.length + range.location > textField.text.length) {
+        return NO;
+    }
+    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return newLength <= 140;
 }
 // --------------------------------------------------------------------
 

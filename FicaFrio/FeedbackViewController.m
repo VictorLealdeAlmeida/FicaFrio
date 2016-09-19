@@ -37,14 +37,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _titulo.text = NSLocalizedString(@"Batimentos", "");
+    _nodata.text = NSLocalizedString(@"Sem dados disponíveis", "");
+    
     //BD - para buscar as informaçoes
      dataBD = [[BD alloc] init];
     
     //PikerView
     //inicializaçao
-    pickerData = @[@"Self-exposure", @"Studies", @"Work", @"Social interaction", @"Others"];
+    pickerData = @[NSLocalizedString(@"Autoexposição", ""), NSLocalizedString(@"Estudos", ""), NSLocalizedString(@"Trabalho", ""), NSLocalizedString(@"Interação Social", ""), NSLocalizedString(@"Outros", "")];
     
-    //Connet data
+    //Connect data
     _pickerTag.dataSource = self;
     _pickerTag.delegate = self;
     
@@ -52,7 +55,7 @@
     
     //Configuraçao de estilo do grafico
     _lineChartView.delegate = self;
-    _lineChartView.descriptionText = @"Tap node for details";
+    _lineChartView.descriptionText = NSLocalizedString(@"Clique nos nós para mais detalhes", "");
     _lineChartView.descriptionTextColor = [UIColor whiteColor];
     _lineChartView.dragEnabled = YES;
     [_lineChartView setScaleEnabled:YES];
@@ -199,23 +202,23 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if ([pickerData[row] isEqualToString:@"Studies"]){
+    if ([pickerData[row] isEqualToString:[pickerData objectAtIndex:1]]){
         [self setCharData: 85.0 valor2:arrayEstudos];
         
     }
-    if ([pickerData[row] isEqualToString:@"Self-exposure"]){
+    if ([pickerData[row] isEqualToString:[pickerData objectAtIndex:0]]){
         [self setCharData: 85.0 valor2:arrayAutoexposicao];
         
     }
-    if ([pickerData[row] isEqualToString: @"Work"]){
+    if ([pickerData[row] isEqualToString: [pickerData objectAtIndex:2]]){
         [self setCharData: 85.0 valor2:arrayTrabalho];
         
     }
-    if ([pickerData[row] isEqualToString:@"Social interaction"]){
+    if ([pickerData[row] isEqualToString:[pickerData objectAtIndex:3]]){
         [self setCharData: 85.0 valor2:arrayInteracaoSocial];
         
     }
-    if ([pickerData[row] isEqualToString:@"Others"]){
+    if ([pickerData[row] isEqualToString:[pickerData objectAtIndex:4]]){
         [self setCharData: 85.0 valor2:arrayOutros];
         
     }
@@ -238,11 +241,11 @@
 }
 
 -(void)inicializaVetoresTag{
-    arrayAutoexposicao = [dataBD fetchStepsWithTag: NSLocalizedString(@"Autoexposição", @"")];
-    arrayEstudos = [dataBD fetchStepsWithTag: NSLocalizedString(@"Estudos", @"")];
-    arrayInteracaoSocial = [dataBD fetchStepsWithTag: NSLocalizedString(@"Interação Social",@"")];
-    arrayTrabalho = [dataBD fetchStepsWithTag: NSLocalizedString(@"Trabalho", @"")];
-    arrayOutros = [dataBD fetchStepsWithTag: NSLocalizedString(@"Outros", @"")];
+    arrayAutoexposicao = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:0]];
+    arrayEstudos = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:1]];
+    arrayInteracaoSocial = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:3]];
+    arrayTrabalho = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:2]];
+    arrayOutros = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:4]];
     [self setCharData: 85 valor2: arrayAutoexposicao];
 }
 

@@ -107,10 +107,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
     func textFieldDidEndEditing(textField: UITextField) {
         print("TextField did end editing method called")
-        
-        let goalName = TaskText.text
-        let defaults = NSUserDefaults.init()
-        defaults.setObject(goalName, forKey: "goalName")
+//        let goalName = TaskText.text
+//        let defaults = NSUserDefaults.init()
+//        defaults.setObject(goalName, forKey: "goalName")
         TaskText.resignFirstResponder();
         ViewUpanimateMoving(false, upValue: 100)
 
@@ -140,6 +139,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         print("TextField should return method called")
         TaskText.resignFirstResponder();
+        let goalName = TaskText.text
+        let defaults = NSUserDefaults.init()
+        defaults.setObject(goalName, forKey: "goalName")
         self.performSegueWithIdentifier("homeToSet", sender: self)
         return true;
     }
