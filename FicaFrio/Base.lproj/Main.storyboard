@@ -323,7 +323,6 @@
                         <outlet property="descriptionLabel" destination="CUa-V4-jGp" id="PsG-ZI-U9Y"/>
                         <outlet property="goalLabel" destination="XA4-UE-o8P" id="2JF-eZ-inz"/>
                         <outlet property="pickTagLabel" destination="aP8-LB-0qu" id="nSx-w5-U9I"/>
-                        <outlet property="setStepButton" destination="MEa-h0-07R" id="QOD-nB-bir"/>
                         <outlet property="setStepsButton" destination="Ioc-nT-hx7" id="no8-Rk-ZZA"/>
                         <outlet property="stepNameTextField" destination="k1d-5o-q4V" id="bec-CH-geR"/>
                         <outlet property="stepNumberLabel" destination="hSp-4Q-fd5" id="gOt-GW-3X7"/>
@@ -960,7 +959,7 @@
         <image name="topo_02" width="800" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bD3-Rz-XB4"/>
         <segue reference="lWd-tw-tJI"/>
+        <segue reference="Fx5-TN-vww"/>
     </inferredMetricsTieBreakers>
 </document>
