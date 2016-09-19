@@ -123,7 +123,7 @@
                         <viewControllerLayoutGuide type="top" id="p7o-tT-b7i"/>
                         <viewControllerLayoutGuide type="bottom" id="UbJ-4o-Uor"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xS6-qK-uzN">
+                    <view key="view" contentMode="scaleToFill" id="xS6-qK-uzN" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -131,7 +131,7 @@
                                 <gestureRecognizers/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="frameOrigin" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Digite sua tarefa" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k1d-5o-q4V">
-                                <color key="backgroundColor" red="0.94509803921568625" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.95083212279206608" green="0.96024630222565088" blue="0.96024630222565088" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.73333333333333328" green="0.89411764705882346" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.55769230769230771" green="0.55769230769230771" blue="0.55769230769230771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="14"/>
@@ -147,7 +147,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.81960784313725488" green="0.82745098039215681" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.8795646438918111" green="0.89055036628707562" blue="0.89927884615384612" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="MEa-h0-07R" firstAttribute="centerY" secondItem="YxG-K6-e9c" secondAttribute="centerY" id="8ry-WB-bEO"/>
                                     <constraint firstItem="MEa-h0-07R" firstAttribute="height" secondItem="YxG-K6-e9c" secondAttribute="height" multiplier="0.6" id="BRU-lv-dhQ"/>
@@ -315,6 +315,9 @@
                             <constraint firstItem="YxG-K6-e9c" firstAttribute="centerX" secondItem="xS6-qK-uzN" secondAttribute="centerX" id="y6j-Se-Sdl"/>
                             <constraint firstItem="Ve7-Uh-vFY" firstAttribute="top" secondItem="YxG-K6-e9c" secondAttribute="bottom" id="zeZ-rl-m6Z"/>
                         </constraints>
+                        <connections>
+                            <action selector="dismissKeyboard:" destination="NTb-Zd-tsJ" eventType="touchUpInside" id="n08-xg-8jW"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="arrow" destination="Ve7-Uh-vFY" id="sWv-UC-GEY"/>
