@@ -16,6 +16,7 @@
     int tagNumber;
     NSMutableArray *stepsNames;
     NSMutableArray *stepsTags;
+    NSMutableArray *stepsImages;
     NSArray *tags;
     BD *database;
     NSUserDefaults *defaults;
@@ -78,6 +79,7 @@
     
     stepsNames = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
     stepsTags = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
+    //stepsImages = [NSMutableArray ]
     tags = @[NSLocalizedString(@"Autoexposição", ""), NSLocalizedString(@"Estudos", ""), NSLocalizedString(@"Trabalho", ""), NSLocalizedString(@"Interação Social", ""), NSLocalizedString(@"Outros", "")];
     
     _goalLabel.text = [[defaults stringForKey:@"goalName"] uppercaseString];
@@ -141,6 +143,7 @@
             if ([[stepsTags objectAtIndex:(number-1)] isEqual:@""]){
                 [self showTagPopup];
             } else { // ... and the tag is also set, rotate to next step
+                [[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
                 [self rotateCircleToRight];
             }
         }
@@ -245,7 +248,18 @@
     _stepNumberLabel.text = [NSString stringWithFormat:@"%d", number];
     [_stepTagButton setTitle:[stepsTags objectAtIndex:(number-1)] forState:UIControlStateNormal];
     [self matchTextColorToStep];
+    /*
+    // Trocar imagem do passo atual pela sem número
+    [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"passo%d_semnumero", number]]];
+    // Trocar imagem dos outros passos pela com número
+    [self incrementNumber];
+    [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"passo%d_comnumero", number]]];
+    [self decrementNumber];
+    [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"passo%d_comnumero", number]]];
+     */
 }
+
+
 
 // Matches color of text of labels inside the circle (number and tag)
 - (void)matchTextColorToStep {

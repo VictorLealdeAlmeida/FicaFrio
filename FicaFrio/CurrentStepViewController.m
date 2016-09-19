@@ -44,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *grafLabel; // Avaliação Geral
 @property (weak, nonatomic) IBOutlet UIView *darkView;
 
+
 @property (weak, nonatomic) IBOutlet UIView *relaxPopupView;
 @property (weak, nonatomic) IBOutlet UIView *tutorialPopupView;
 @property (weak, nonatomic) IBOutlet UILabel *tutorialLabel;
@@ -59,6 +60,8 @@
 - (IBAction)justRelax:(UIButton *)sender;
 - (IBAction)relaxAndMeasure:(UIButton *)sender;
 - (IBAction)goToRelax:(UIButton *)sender;
+- (IBAction)clickOutsideRelaxPopup:(UITapGestureRecognizer *)sender;
+- (IBAction)clickOutsideTutorialPopup:(UITapGestureRecognizer *)sender;
 
 @end
 
@@ -126,10 +129,6 @@
 
 }
 
-- (void)animationButton{
-    [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
-}
-
 // endStep - When end button is clicked
 - (IBAction)circleButton:(id)sender {
     // Store endDate
@@ -177,6 +176,10 @@
                                                         userInfo:nil
                                                          repeats:YES];
     }
+}
+
+- (void)animationButton{
+    [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
 }
 
 - (void)updateCircleRotation {
@@ -232,6 +235,17 @@
     // medindo o batimento
     selectHeart = true;
     [self performSegueWithIdentifier:@"currentToRelax" sender:self];
+}
+
+- (IBAction)clickOutsideRelaxPopup:(UITapGestureRecognizer *)sender {
+    [self closePopup:_relaxPopupView];
+}
+
+- (IBAction)clickOutsideTutorialPopup:(UITapGestureRecognizer *)sender {
+    [self closePopup:_tutorialPopupView];
+}
+
+- (IBAction)click:(UITapGestureRecognizer *)sender {
 }
 
 - (void)showPopup:(UIView *)popupView {

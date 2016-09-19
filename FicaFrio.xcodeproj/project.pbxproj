@@ -374,7 +374,6 @@
 				D4BBC15C1D7F033F0058615A /* GoalFeedbackViewController.h */,
 				D4BBC15D1D7F033F0058615A /* GoalFeedbackViewController.m */,
 				D4BBC15F1D7F03630058615A /* FeedbackViewController.h */,
-				D4BBC1601D7F03630058615A /* FeedbackViewController.m */,
 			);
 			name = Screen;
 			sourceTree = "<group>";
@@ -382,6 +381,7 @@
 		D4BBC1A41D81B1450058615A /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				D4BBC1601D7F03630058615A /* FeedbackViewController.m */,
 				D4BBC1A01D81B12E0058615A /* Animation.h */,
 				D4BBC1A11D81B12E0058615A /* Animation.m */,
 			);
@@ -503,7 +503,7 @@
 					};
 					D4F503F81D90117800EC7870 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = A975LQD622;
+						DevelopmentTeam = V66W3X69W9;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -889,7 +889,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = A975LQD622;
+				DEVELOPMENT_TEAM = V66W3X69W9;
 				INFOPLIST_FILE = "FicaFrioWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp.watchkitextension;
@@ -907,7 +907,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = A975LQD622;
+				DEVELOPMENT_TEAM = V66W3X69W9;
 				INFOPLIST_FILE = "FicaFrioWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp.watchkitextension;
@@ -947,6 +947,7 @@
 				D4F504151D90117800EC7870 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4F5041B1D90117800EC7870 /* Build configuration list for PBXNativeTarget "FicaFrioWatch" */ = {
 			isa = XCConfigurationList;
@@ -955,6 +956,7 @@
 				D4F504131D90117800EC7870 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
