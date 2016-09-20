@@ -509,12 +509,14 @@
 					D4F503EC1D90117800EC7870 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A975LQD622;
+
 						ProvisioningStyle = Automatic;
 					};
 					D4F503F81D90117800EC7870 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A975LQD622;
 						LastSwiftMigration = 0800;
+
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -866,6 +868,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A975LQD622;
+
 				IBSC_MODULE = FicaFrioWatch_Extension;
 				INFOPLIST_FILE = FicaFrioWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp;
@@ -873,7 +876,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
@@ -887,6 +890,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A975LQD622;
+
 				IBSC_MODULE = FicaFrioWatch_Extension;
 				INFOPLIST_FILE = FicaFrioWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp;
@@ -894,7 +898,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
@@ -906,6 +910,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				DEVELOPMENT_TEAM = A975LQD622;
+
 				INFOPLIST_FILE = "FicaFrioWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp.watchkitextension;
@@ -916,7 +921,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
@@ -927,7 +932,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = A975LQD622;
+
+                DEVELOPMENT_TEAM = A975LQD622;
+
 				INFOPLIST_FILE = "FicaFrioWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp.watchkitextension;
@@ -937,7 +944,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "FicaFrioWatch Extension/FicaFrioWatch Extension-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};

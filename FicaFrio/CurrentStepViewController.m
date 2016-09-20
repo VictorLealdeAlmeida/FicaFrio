@@ -103,6 +103,8 @@
     
     [self updateStep];
     [self updateCircleRotation];
+    
+    //[self setNotification];
 
 }
 
@@ -290,10 +292,10 @@
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     
     
-    localNotification.alertBody = @"TESTE";
+    localNotification.alertBody = [NSString stringWithFormat: @"Você ainda não terminou o passo %ld", (long)stepNumber];
     
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
-    localNotification.repeatInterval = 5;
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow: 12*60*60];
+    localNotification.repeatInterval = NSCalendarUnitDay;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
