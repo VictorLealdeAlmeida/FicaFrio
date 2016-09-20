@@ -236,8 +236,9 @@ void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v ) {
         float pulse=60.0/avePeriod;
         NSLog(@"Pulse rate: %f", pulse);
         long previousHeartRate = [defaults integerForKey:@"avgHeartRate"];
+        NSLog(@"Previous heart rate: %ld", previousHeartRate);
         avgHeartRate = (previousHeartRate + pulse)/2;
-        NSLog(@"Average heart rate: %d", avgHeartRate);
+        //NSLog(@"Average heart rate: %d", avgHeartRate);
         [defaults setInteger:avgHeartRate forKey:@"avgHeartRate"];
     }
 }

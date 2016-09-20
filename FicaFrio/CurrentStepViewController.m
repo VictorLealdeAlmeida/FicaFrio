@@ -236,7 +236,6 @@
     popupView.hidden = false;
     _popupBackground.hidden = false;
     currentPopup = popupView;
-    NSLog(@"%@", popupView);
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];

@@ -25,6 +25,7 @@
 		AC93227D1D86EE15000051B0 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93227B1D86EE15000051B0 /* Step.m */; };
 		AC9322881D86F206000051B0 /* Goal+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */; };
 		AC9322891D86F206000051B0 /* Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322871D86F206000051B0 /* Goal.m */; };
+		ACA7B64A1D9177A1009222FA /* Launch1_07.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ACA7B6491D9177A1009222FA /* Launch1_07.jpg */; };
 		D41384731D88489F00281B48 /* SF-Compact-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384701D88489F00281B48 /* SF-Compact-Display-Thin.otf */; };
 		D41384741D88489F00281B48 /* SF-Compact-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384711D88489F00281B48 /* SF-Compact-Display-Light.otf */; };
 		D41384751D88489F00281B48 /* SF-Compact-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384721D88489F00281B48 /* SF-Compact-Display-Regular.otf */; };
@@ -171,6 +172,7 @@
 		AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Goal+CoreDataProperties.m"; path = "../Goal+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AC9322861D86F206000051B0 /* Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Goal.h; path = ../Goal.h; sourceTree = "<group>"; };
 		AC9322871D86F206000051B0 /* Goal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Goal.m; path = ../Goal.m; sourceTree = "<group>"; };
+		ACA7B6491D9177A1009222FA /* Launch1_07.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Launch1_07.jpg; sourceTree = "<group>"; };
 		D41384701D88489F00281B48 /* SF-Compact-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Thin.otf"; sourceTree = "<group>"; };
 		D41384711D88489F00281B48 /* SF-Compact-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Light.otf"; sourceTree = "<group>"; };
 		D41384721D88489F00281B48 /* SF-Compact-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Regular.otf"; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				D41A6BA91D871BB30074FA39 /* Main.storyboard */,
 				AC9148E61D8B8741005383AA /* Localizable.strings */,
 				D4BBC1471D7EF7BB0058615A /* Assets.xcassets */,
+				ACA7B6491D9177A1009222FA /* Launch1_07.jpg */,
 				AC9657E41D8EE93600C840E4 /* Gifs */,
 				D4BBC1491D7EF7BB0058615A /* LaunchScreen.storyboard */,
 				D4BBC14C1D7EF7BB0058615A /* Info.plist */,
@@ -581,6 +584,7 @@
 				AC9148E41D8B8741005383AA /* Localizable.strings in Resources */,
 				1E50F6061D8C49E800CD05EC /* GIF_INICIAL_CERTO.gif in Resources */,
 				1E50F5EC1D8C2B9D00CD05EC /* Espiral3.gif in Resources */,
+				ACA7B64A1D9177A1009222FA /* Launch1_07.jpg in Resources */,
 				D4E76D751D830FC1006F7203 /* respiracao.gif in Resources */,
 				D41A6BAB1D871BB30074FA39 /* Main.storyboard in Resources */,
 				AC1226011D8D87B1007D4860 /* Gif_Heart_Rate.gif in Resources */,
@@ -801,6 +805,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -825,6 +830,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

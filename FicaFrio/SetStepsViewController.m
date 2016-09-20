@@ -33,7 +33,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *setStepButton;
 
 
-@property (weak, nonatomic) IBOutlet UIImageView *circleView;
+@property (weak, nonatomic) IBOutlet UIView *circleView;
+@property (weak, nonatomic) IBOutlet UIImageView *circleStepOne;
+@property (weak, nonatomic) IBOutlet UIImageView *circleStepTwo;
+@property (weak, nonatomic) IBOutlet UIImageView *circleStepThree;
 @property (weak, nonatomic) IBOutlet UILabel *stepNumberLabel;
 @property (weak, nonatomic) IBOutlet UIButton *stepTagButton;
 
@@ -82,7 +85,7 @@
     
     stepsNames = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
     stepsTags = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
-    //stepsImages = [NSMutableArray ]
+    stepsImages = [NSMutableArray arrayWithObjects:_circleStepOne, _circleStepTwo, _circleStepThree, nil];
     tags = @[NSLocalizedString(@"Self-exposure", ""), NSLocalizedString(@"Studies", ""), NSLocalizedString(@"Work", ""), NSLocalizedString(@"Social interaction", ""), NSLocalizedString(@"Others", "")];
     
     _titleLabel.text = NSLocalizedString(@"Steps", "");
@@ -132,9 +135,13 @@
     
     // Save current step name
     [stepsNames replaceObjectAtIndex:(number-1) withObject:_stepNameTextField.text];
-    
+    //[UIView beginAnimations:nil context:NULL];
+    //[UIView setAnimationDuration:0.7];
+    [[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
+    //[UIView commitAnimations];
     // If all steps are set, rotate back to step one
     if ([self checkIfCanFinish]) {
+        
         if (number == 2) { [self rotateCircleToLeft]; }
         else if (number == 3) { [self rotateCircleToRight]; }
     }
@@ -142,6 +149,7 @@
     else {
         // If name isn't set, shake textbox
         if ([[stepsNames objectAtIndex:(number-1)] isEqual:@""]) {
+            [[stepsImages objectAtIndex:(number-1)] setAlpha:0.3];
             [self shake:_stepNameTextField];
             [self shake:_viewButton];
             [self shake:_arrow];
@@ -149,10 +157,14 @@
         } else {
             // ... but the tag isn't
             if ([[stepsTags objectAtIndex:(number-1)] isEqual:@""]){
+                [[stepsImages objectAtIndex:(number-1)] setAlpha:0.3];
                 [self showTagPopup];
             } else { // ... and the tag is also set, rotate to next step
+                //[UIView beginAnimations:nil context:NULL];
+                //[UIView setAnimationDuration:0.7];
                 [[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
                 [self rotateCircleToRight];
+                //[UIView commitAnimations];
             }
         }
     }
@@ -254,15 +266,18 @@
     _stepNumberLabel.text = [NSString stringWithFormat:@"%d", number];
     [_stepTagButton setTitle:[stepsTags objectAtIndex:(number-1)] forState:UIControlStateNormal];
     [self matchTextColorToStep];
-    /*
+    
+    //[UIView beginAnimations:nil context:NULL];
+    //[UIView setAnimationDuration:1.0];
     // Trocar imagem do passo atual pela sem número
-    [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"passo%d_semnumero", number]]];
+    [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Roda_0%dsn", number]]];
     // Trocar imagem dos outros passos pela com número
     [self incrementNumber];
-    [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"passo%d_comnumero", number]]];
-    [self decrementNumber];
-    [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"passo%d_comnumero", number]]];
-     */
+    [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Roda_0%d", number]]];
+    [self incrementNumber];
+    [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Roda_0%d", number]]];
+    [self incrementNumber];
+    //[UIView commitAnimations];
 }
 
 
