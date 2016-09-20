@@ -947,6 +947,7 @@
 				D4F504151D90117800EC7870 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4F5041B1D90117800EC7870 /* Build configuration list for PBXNativeTarget "FicaFrioWatch" */ = {
 			isa = XCConfigurationList;
@@ -955,6 +956,7 @@
 				D4F504131D90117800EC7870 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
