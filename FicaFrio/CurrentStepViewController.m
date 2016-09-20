@@ -123,6 +123,7 @@
     
     // Store startDate
     [database setStartDate:[NSDate date] toStep:currentStep];
+    [defaults setInteger:0 forKey:@"avgHeartRate"];
     
     [defaults setBool:TRUE forKey:@"stepStarted"];
     //[defaults synchronize];
@@ -140,8 +141,10 @@
 
 // endStep - When end button is clicked
 - (IBAction)circleButton:(id)sender {
-    // Store endDate
+    // Store endDate and avgHeartRate
     [database setEndDate:[NSDate date] toStep:currentStep];
+    float avgHeartRate = [defaults floatForKey:@"avgHeartRate"];
+    [database setAvgHeartRate:avgHeartRate toStep:currentStep];
     
     [defaults setBool:FALSE forKey:@"stepStarted"];
     [timerAnimation invalidate];
@@ -299,7 +302,7 @@
     //_darkView.hidden = true;
     if ([segue.identifier isEqualToString:@"currentToRelax"]) {
         RelaxViewController *d = (RelaxViewController *)segue.destinationViewController;
-        d.selectHeartHate = selectHeart;
+        d.selectHeartRate = selectHeart;
     
     }
     

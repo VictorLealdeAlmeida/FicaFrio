@@ -302,7 +302,6 @@
 // Funcao que limita o numero de caracteres no textfield
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     // Prevent crashing undo bug – see note below.
-    _setStepButton.enabled = TRUE;
     
     if(range.length + range.location > textField.text.length) {
         return NO;
@@ -313,7 +312,6 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    _setStepButton.enabled = FALSE;
     // Save current step name - to avoid losing step name alterations when rotating circle
     [stepsNames replaceObjectAtIndex:(number-1) withObject:_stepNameTextField.text];
 }

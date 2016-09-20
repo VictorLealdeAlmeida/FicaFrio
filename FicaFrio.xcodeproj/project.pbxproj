@@ -374,6 +374,7 @@
 				D4BBC15C1D7F033F0058615A /* GoalFeedbackViewController.h */,
 				D4BBC15D1D7F033F0058615A /* GoalFeedbackViewController.m */,
 				D4BBC15F1D7F03630058615A /* FeedbackViewController.h */,
+				D4BBC1601D7F03630058615A /* FeedbackViewController.m */,
 			);
 			name = Screen;
 			sourceTree = "<group>";
@@ -381,7 +382,6 @@
 		D4BBC1A41D81B1450058615A /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				D4BBC1601D7F03630058615A /* FeedbackViewController.m */,
 				D4BBC1A01D81B12E0058615A /* Animation.h */,
 				D4BBC1A11D81B12E0058615A /* Animation.m */,
 			);

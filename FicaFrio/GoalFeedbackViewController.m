@@ -17,8 +17,8 @@
     NSArray *goalSteps;
     NSMutableArray *time;
     NSMutableArray *avgRate;
-    NSInteger *timeRange;
-    NSInteger *rateRange;
+    long timeRange;
+    long rateRange;
     Step *step;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *step1;
@@ -63,19 +63,27 @@ double media;
     goalID = [defaults stringForKey:@"currentGoalID"];
     goalSteps = [database fetchStepsForGoalID:goalID];
     
+    timeRange = 0;
+    rateRange = 0;
+    int zeros = 0;
     
     for (int i = 0; i < goalSteps.count; i++){
         step = goalSteps[i];
         [time addObject: step.duration];
         [avgRate addObject: step.avgHeartRate];
         timeRange = timeRange + [step.duration integerValue];
+        if ([step.avgHeartRate integerValue] == 0) {
+            zeros++;
+            NSLog(@"%d", zeros);
+        }
         rateRange = rateRange + [step.avgHeartRate integerValue];
+        NSLog(@"time range: %ld and rate range: %ld", timeRange, rateRange);
         //step.avgHeartRate  - média de batimentos do passo i
         //step.duration      - duração do passo i
     }
     media = ((int)timeRange/3)/60; // timeRange em segundos
     _minValue.text = [[NSNumber numberWithDouble:media] stringValue];
-    media = (int)rateRange/3;
+    media = (int)rateRange/(3-zeros);
     _bpmValue.text = [[NSNumber numberWithDouble:media] stringValue];
     _titleGoal.text = NSLocalizedString(@"Heart Rate", "");
     
