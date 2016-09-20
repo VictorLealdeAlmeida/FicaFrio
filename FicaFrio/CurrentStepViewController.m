@@ -103,7 +103,6 @@
     
     [self updateStep];
     [self updateCircleRotation];
-    [self setNotification];
 
 }
 
@@ -120,6 +119,9 @@
 - (IBAction)startStep:(id)sender {
     _startStep.hidden = true;
     _endStep.hidden = false;
+    
+    //Set notification
+    [self setNotification];
     
     // Store startDate
     [database setStartDate:[NSDate date] toStep:currentStep];
@@ -148,6 +150,8 @@
     
     [defaults setBool:FALSE forKey:@"stepStarted"];
     [timerAnimation invalidate];
+    
+    [self cancelNotification];
     
     // Show next step - store number and fetch next step
     // If there are still steps
@@ -286,15 +290,19 @@
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     
     
-    localNotification.alertBody = @"Bora pegar";
+    localNotification.alertBody = @"TESTE";
     
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
-   // localNotification.repeatInterval = 5;
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+    localNotification.repeatInterval = 5;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
 }
 
+
+-(void)cancelNotification{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+}
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
