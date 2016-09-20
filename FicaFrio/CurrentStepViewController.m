@@ -290,7 +290,7 @@
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     
     
-    localNotification.alertBody = @"Bora pegar";
+    localNotification.alertBody = @"";
     
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
    // localNotification.repeatInterval = 5;
