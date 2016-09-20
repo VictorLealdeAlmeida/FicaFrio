@@ -12,5 +12,8 @@
 @interface GetHeartRate : NSObject
 
 -(void) pause;
+-(void) resume;
+-(void) startCameraCapture;
+-(void) stopCameraCapture;
 
 @end

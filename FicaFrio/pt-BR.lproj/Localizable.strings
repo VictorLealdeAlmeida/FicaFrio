@@ -5,3 +5,35 @@
   Created by Diana Monteiro on 15/09/16.
   Copyright © 2016 PokeGroup. All rights reserved.
 */
+
+// HomeViewController
+"Insert your goal" = "Insira sua meta";
+"New Goal" = "Nova Meta";
+
+// SetStepsViewController
+"Steps" = "Passos";
+"Break down your goal into three steps and don’t forget to pick a category for each!" = "Divida sua meta em três passos e não esqueça de escolher uma categoria para cada um deles!";
+"Type your task" = "Digite sua tarefa";
+
+"PICK A CATEGORY" = "ESCOLHA UMA CATEGORIA";
+"Self-exposure" = "Autoexposição";
+"Studies" = "Estudos";
+"Work" = "Trabalho";
+"Social interaction" = "Interação Social";
+"Others" = "Outros";
+
+// CurrentStepViewController
+"Do you want to measure your heart rate while breathing?" = "Deseja medir seus batimentos enquanto respira?";
+"To measure your heart rate, put the tip of your index finger on the camera:" = "Para medir seus batimentos, encoste a ponta do indicador na sua câmera:";
+
+"Goal Feedback" = "Avaliação da Tarefa";
+"Total Feedback" = "Avaliação Geral";
+
+// FeedbackViewController
+"Heart Rate" = "Batimentos";
+"Tap node for details" = "Clique nos nós para mais detalhes";
+"No data available" = "Sem dados disponíveis";
+
+// GoalFeedbackViewController
+"Goal Feedback" = "Feedback da Meta";
+"Time" = "Tempo";

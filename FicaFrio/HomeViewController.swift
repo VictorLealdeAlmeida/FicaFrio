@@ -63,13 +63,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         NewGoalView.hidden = true
         NewGoalView.alpha = 0
         
-        newGoalButton.setTitle(NSLocalizedString("Nova Meta", comment: ""), forState: UIControlState.Normal)
+        newGoalButton.setTitle(NSLocalizedString("New Goal", comment: ""), forState: UIControlState.Normal)
         
         super.viewDidLoad()
         TaskText.delegate = self;
         self.view.addGestureRecognizer(tapGesture)
         
-        insertGoalLabel.text = NSLocalizedString("Insira sua meta", comment:"")
+        insertGoalLabel.text = NSLocalizedString("Insert your goal", comment:"")
         
         
       /*  let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)

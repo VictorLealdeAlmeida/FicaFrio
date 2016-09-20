@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, CURRENT_STATE) {
 #define MIN_FRAMES_FOR_FILTER_TO_SETTLE 10
 
 @interface GetHeartRate ()<AVCaptureVideoDataOutputSampleBufferDelegate> {
-    float avgHeartRate;
+    int avgHeartRate;
     NSUserDefaults *defaults;
 }
 
@@ -41,13 +41,15 @@ typedef NS_ENUM(NSUInteger, CURRENT_STATE) {
         defaults = [NSUserDefaults standardUserDefaults];
         self.filter=[[Filter alloc] init];
         self.pulseDetector=[[PulseDetector alloc] init];
-        [self startCameraCapture];
+        //[self startCameraCapture];
     }
     return self;
 }
 
 // start capturing frames
 -(void) startCameraCapture {
+    avgHeartRate = 0.0;
+    
     // Create the AVCapture Session
     self.session = [[AVCaptureSession alloc] init];
     
@@ -79,7 +81,10 @@ typedef NS_ENUM(NSUInteger, CURRENT_STATE) {
     videoOutput.videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA], (id)kCVPixelBufferPixelFormatTypeKey, nil];
     
     // set the minimum acceptable frame rate to 10 fps
-    videoOutput.minFrameDuration=CMTimeMake(1, 10);
+    //videoOutput.minFrameDuration=CMTimeMake(1, 10);
+    [_camera lockForConfiguration:nil];
+    [_camera setActiveVideoMinFrameDuration:CMTimeMake(1, 10)];
+    [_camera unlockForConfiguration];
     
     // and the size of the frames we want - we'll use the smallest frame size available
     [self.session setSessionPreset:AVCaptureSessionPresetLow];
@@ -109,7 +114,7 @@ typedef NS_ENUM(NSUInteger, CURRENT_STATE) {
 //#pragma mark Pause and Resume of pulse detection
 -(void) pause {
     if(self.currentState==STATE_PAUSED) return;
-
+    NSLog(@"paused");
     // switch off the torch
     if([self.camera isTorchModeSupported:AVCaptureTorchModeOn]) {
         [self.camera lockForConfiguration:nil];
@@ -120,20 +125,20 @@ typedef NS_ENUM(NSUInteger, CURRENT_STATE) {
     // let the application go to sleep if the phone is idle
     [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
-//
-//-(void) resume {
-//    if(self.currentState!=STATE_PAUSED) return;
-//
-//    // switch on the torch
-//    if([self.camera isTorchModeSupported:AVCaptureTorchModeOn]) {
-//        [self.camera lockForConfiguration:nil];
-//        self.camera.torchMode=AVCaptureTorchModeOn;
-//        [self.camera unlockForConfiguration];
-//    }
-//    self.currentState=STATE_SAMPLING;
-//    // stop the app from sleeping
-//    [UIApplication sharedApplication].idleTimerDisabled = YES;
-//}
+
+-(void) resume {
+    if(self.currentState!=STATE_PAUSED) return;
+    NSLog(@"resumed");
+    // switch on the torch
+    if([self.camera isTorchModeSupported:AVCaptureTorchModeOn]) {
+        [self.camera lockForConfiguration:nil];
+        self.camera.torchMode=AVCaptureTorchModeOn;
+        [self.camera unlockForConfiguration];
+    }
+    self.currentState=STATE_SAMPLING;
+    // stop the app from sleeping
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+}
 
 // r,g,b values are from 0 to 1 // h = [0,360], s = [0,1], v = [0,1]
 //	if s == 0, then h = -1 (undefined)
@@ -230,9 +235,10 @@ void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v ) {
         // got a value so show it
         float pulse=60.0/avePeriod;
         NSLog(@"Pulse rate: %f", pulse);
-        avgHeartRate = (avgHeartRate + pulse)/2;
-        NSLog(@"Average heart rate: %f", avgHeartRate);
-        [defaults setFloat:avgHeartRate forKey:@"avgHeartRate"];
+        long previousHeartRate = [defaults integerForKey:@"avgHeartRate"];
+        avgHeartRate = (previousHeartRate + pulse)/2;
+        NSLog(@"Average heart rate: %d", avgHeartRate);
+        [defaults setInteger:avgHeartRate forKey:@"avgHeartRate"];
     }
 }
 

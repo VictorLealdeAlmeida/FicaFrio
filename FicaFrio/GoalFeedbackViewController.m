@@ -17,14 +17,15 @@
     NSArray *goalSteps;
     NSMutableArray *time;
     NSMutableArray *avgRate;
-    NSInteger *timeRange;
-    NSInteger *rateRange;
+    long timeRange;
+    long rateRange;
     Step *step;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *step1;
 @property (weak, nonatomic) IBOutlet UIImageView *step2;
 @property (weak, nonatomic) IBOutlet UIImageView *step3;
 @property (weak, nonatomic) IBOutlet UIImageView *center;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleGoal;
 @property (weak, nonatomic) IBOutlet UILabel *bpm;
 - (IBAction)back:(id)sender;
@@ -52,6 +53,8 @@ double media;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _titleLabel.text = NSLocalizedString(@"Goal Feedback", "");
+    
     // Pegar dados do banco
     time = [NSMutableArray array];
     avgRate = [NSMutableArray array];
@@ -60,21 +63,29 @@ double media;
     goalID = [defaults stringForKey:@"currentGoalID"];
     goalSteps = [database fetchStepsForGoalID:goalID];
     
+    timeRange = 0;
+    rateRange = 0;
+    int zeros = 0;
     
     for (int i = 0; i < goalSteps.count; i++){
         step = goalSteps[i];
         [time addObject: step.duration];
         [avgRate addObject: step.avgHeartRate];
         timeRange = timeRange + [step.duration integerValue];
+        if ([step.avgHeartRate integerValue] == 0) {
+            zeros++;
+            NSLog(@"%d", zeros);
+        }
         rateRange = rateRange + [step.avgHeartRate integerValue];
+        NSLog(@"time range: %ld and rate range: %ld", timeRange, rateRange);
         //step.avgHeartRate  - média de batimentos do passo i
         //step.duration      - duração do passo i
     }
     media = ((int)timeRange/3)/60; // timeRange em segundos
     _minValue.text = [[NSNumber numberWithDouble:media] stringValue];
-    media = (int)rateRange/3;
+    media = (int)rateRange/(3-zeros);
     _bpmValue.text = [[NSNumber numberWithDouble:media] stringValue];
-    _titleGoal.text = NSLocalizedString(@"Batimentos", "");
+    _titleGoal.text = NSLocalizedString(@"Heart Rate", "");
     
     _step1.hidden = YES;
     _step2.hidden = YES;
@@ -128,12 +139,12 @@ double media;
     if(flag){
         [_center setImage:[UIImage imageNamed:@"relogio_2"]];
         [self selectGraf: [[time objectAtIndex: 0] intValue] value2: [[time objectAtIndex: 1] intValue] value3: [[time objectAtIndex: 2] intValue]];
-        _titleGoal.text = NSLocalizedString(@"Tempo", "");
+        _titleGoal.text = NSLocalizedString(@"Time", "");
         flag = NO;
     }else{
         [_center setImage:[UIImage imageNamed:@"coracao_2"]];
         [self selectGraf: [[avgRate objectAtIndex: 0] intValue] value2: [[avgRate objectAtIndex: 1] intValue] value3: [[avgRate objectAtIndex: 2] intValue]];
-        _titleGoal.text = NSLocalizedString(@"Batimentos", "");
+        _titleGoal.text = NSLocalizedString(@"Heart Rate", "");
         flag = YES;
     }
     [_center addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0 nextImege:_step1];

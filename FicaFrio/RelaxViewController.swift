@@ -15,39 +15,46 @@ class RelaxViewController: UIViewController {
     @IBAction func back(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
-    var startReadingHeartRate : GetHeartRate?
-    var selectHeartHate = false
+    var startReadingHeartRate : GetHeartRate?// = GetHeartRate.init()
+    var selectHeartRate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
+        startReadingHeartRate?.pause()
         
         let RelaxGif = UIImage.gifImageWithName("Espiral3")
         let imageView = UIImageView(image: RelaxGif)
         imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/4, y: self.view.frame.size.height/4, width: imageView.frame.size.width/2, height: imageView.frame.size.height/2)
         view.addSubview(imageView)
         
-        if selectHeartHate {
-            print("you chose to measure your heart rate");
+        if selectHeartRate {
+            print("selectHeartRate")
             startReadingHeartRate = GetHeartRate.init()
+            startReadingHeartRate?.startCameraCapture()
+            //startReadingHeartRate?.resume()
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
         print("viewWillDisappear")
-        if selectHeartHate {
+        if selectHeartRate {
             startReadingHeartRate?.pause()
-            startReadingHeartRate = nil
+            startReadingHeartRate?.stopCameraCapture()
+            //startReadingHeartRate = nil
         
             // Initialize database and user defaults
-            let defaults = NSUserDefaults.standardUserDefaults()
-            let database = BD.init()
+            //let defaults = NSUserDefaults.standardUserDefaults()
+            //let database = BD.init()
         
             // Get current step and save its average heart rate on the database
-            let currentGoalID = defaults.stringForKey("currentGoalID")
-            let stepNumber = defaults.integerForKey("currentStepNumber")
-            let currentStep = database.fetchStep(stepNumber, forGoalID: currentGoalID)
-            let avgHeartRate = defaults.floatForKey("avgHeartRate")
-            database.setAvgHeartRate(avgHeartRate, toStep: currentStep)
+            //let currentGoalID = defaults.stringForKey("currentGoalID")
+            //let stepNumber = defaults.integerForKey("currentStepNumber")
+            //let currentStep = database.fetchStep(stepNumber-1, forGoalID: currentGoalID)
+            //let previousHeartRate = defaults.integerForKey("avgHeartRate")
+            //defaults.setInteger(<#T##value: Int##Int#>, forKey: <#T##String#>)
+            //database.setAvgHeartRate(avgHeartRate, toStep: currentStep)
+            
         }
     }
 
