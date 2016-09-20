@@ -498,12 +498,12 @@
 					};
 					D4F503EC1D90117800EC7870 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = V66W3X69W9;
+						DevelopmentTeam = MD42R8FHUC;
 						ProvisioningStyle = Automatic;
 					};
 					D4F503F81D90117800EC7870 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = V66W3X69W9;
+						DevelopmentTeam = MD42R8FHUC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -851,7 +851,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = V66W3X69W9;
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				IBSC_MODULE = FicaFrioWatch_Extension;
 				INFOPLIST_FILE = FicaFrioWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp;
@@ -859,7 +859,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
@@ -871,7 +871,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = V66W3X69W9;
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				IBSC_MODULE = FicaFrioWatch_Extension;
 				INFOPLIST_FILE = FicaFrioWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp;
@@ -879,7 +879,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
@@ -889,7 +889,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = V66W3X69W9;
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				INFOPLIST_FILE = "FicaFrioWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp.watchkitextension;
@@ -897,7 +897,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
@@ -907,7 +907,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = V66W3X69W9;
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				INFOPLIST_FILE = "FicaFrioWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp.watchkitextension;
@@ -915,7 +915,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
