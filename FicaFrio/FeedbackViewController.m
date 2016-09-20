@@ -38,7 +38,7 @@
     [super viewDidLoad];
     
     _titulo.text = NSLocalizedString(@"Heart Rate", "");
-    _nodata.text = NSLocalizedString(@"No data available", "");
+    _nodata.text = NSLocalizedString(@"No data available!", "");
     
     //BD - para buscar as informaçoes
      dataBD = [[BD alloc] init];

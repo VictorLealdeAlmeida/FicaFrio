@@ -89,7 +89,7 @@ double media;
         media = 0;
     }
     _bpmValue.text = [[NSNumber numberWithDouble:media] stringValue];
-    _titleGoal.text = NSLocalizedString(@"Heart Rate", "");
+    _titleGoal.text = [NSLocalizedString(@"Heart Rate", "") uppercaseString];
     
     _step1.hidden = YES;
     _step2.hidden = YES;
@@ -143,12 +143,12 @@ double media;
     if(flag){
         [_center setImage:[UIImage imageNamed:@"relogio_2"]];
         [self selectGraf: [[time objectAtIndex: 0] intValue] value2: [[time objectAtIndex: 1] intValue] value3: [[time objectAtIndex: 2] intValue]];
-        _titleGoal.text = NSLocalizedString(@"Time", "");
+        _titleGoal.text = [NSLocalizedString(@"Time", "") uppercaseString];
         flag = NO;
     }else{
         [_center setImage:[UIImage imageNamed:@"coracao_2"]];
         [self selectGraf: [[avgRate objectAtIndex: 0] intValue] value2: [[avgRate objectAtIndex: 1] intValue] value3: [[avgRate objectAtIndex: 2] intValue]];
-        _titleGoal.text = NSLocalizedString(@"Heart Rate", "");
+        _titleGoal.text = [NSLocalizedString(@"Heart Rate", "") uppercaseString];
         flag = YES;
     }
     [_center addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0 nextImege:_step1];

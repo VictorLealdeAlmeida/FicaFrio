@@ -1068,7 +1068,7 @@
 					};
 					5BA8EC3F1A9D14DC00CE82E1 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = A975LQD622;
+						DevelopmentTeam = V66W3X69W9;
 						LastSwiftMigration = 0800;
 					};
 					65B3F5BE1C7370BE000983D0 = {
@@ -1704,7 +1704,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = A975LQD622;
+				DEVELOPMENT_TEAM = V66W3X69W9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2.2.5;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1727,7 +1727,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = A975LQD622;
+				DEVELOPMENT_TEAM = V66W3X69W9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2.2.5;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

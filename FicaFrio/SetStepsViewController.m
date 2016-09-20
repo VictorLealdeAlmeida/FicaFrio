@@ -79,6 +79,8 @@
     _setStepsButton.hidden = true;
     //clickedOnce = FALSE;
     
+    _stepNameTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
     // Database
     defaults = [NSUserDefaults standardUserDefaults];
     database = [BD new];
@@ -111,23 +113,6 @@
 - (IBAction)goToNextStep:(UIButton *)sender {
     [self checkIfCanGoToNextStep];
 }
-
-//// Checks if the circle can rotate without losing text input
-//- (BOOL)checkIfCanRotate {
-//    [_stepNameTextField resignFirstResponder]; // Dismiss keyboard
-//    
-//    if (!clickedOnce && ![_stepNameTextField.text isEqual:[stepsNames objectAtIndex:(number-1)]]) {
-//        // HIGHLIGHT BUTTON!!!
-//        [_setStepButton setHighlighted:TRUE];
-//        [self shake:_setStepButton];
-//        [self shake:_setStepButton];
-//        clickedOnce = TRUE;
-//        return FALSE;
-//    }
-//    [_setStepButton setHighlighted:FALSE];
-//    clickedOnce = FALSE;
-//    return TRUE;
-//}
 
 // Checks if name and tag are set for current step
 - (void)checkIfCanGoToNextStep {
@@ -323,7 +308,7 @@
     }
     
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    return newLength <= 140;
+    return newLength <= 100;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {

@@ -32,7 +32,7 @@
 // FeedbackViewController
 "Heart Rate" = "Batimentos";
 "Tap node for details" = "Clique nos nós para mais detalhes";
-"No data available" = "Sem dados disponíveis";
+"No data available!" = "Sem dados disponíveis!";
 
 // GoalFeedbackViewController
 "Goal Feedback" = "Feedback da Meta";

@@ -231,8 +231,11 @@ void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v ) {
     if(avePeriod==INVALID_PULSE_PERIOD) {
         // no value available
         NSLog(@"Invalid pulse rate");
+        _heartBeating.hidden = true;
+        
     } else {
         // got a value so show it
+        _heartBeating.hidden = false;
         float pulse=60.0/avePeriod;
         NSLog(@"Pulse rate: %f", pulse);
         long previousHeartRate = [defaults integerForKey:@"avgHeartRate"];

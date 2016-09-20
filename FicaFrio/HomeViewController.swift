@@ -66,6 +66,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         NewGoalView.hidden = true
         NewGoalView.alpha = 0
         
+        TaskText.autocapitalizationType = UITextAutocapitalizationType.Sentences
+        
         newGoalButton.setTitle(NSLocalizedString("New Goal", comment: ""), forState: UIControlState.Normal)
         
         super.viewDidLoad()
@@ -133,8 +135,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         return true;
     }
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        print("While entering the characters this method gets called")
-        let maxLength = 140
+        //print("While entering the characters this method gets called")
+        let maxLength = 45
         let currentString: NSString = textField.text!
         let newString: NSString =
             currentString.stringByReplacingCharactersInRange(range, withString: string)
