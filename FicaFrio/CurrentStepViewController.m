@@ -294,7 +294,7 @@
     
     localNotification.alertBody = [NSString stringWithFormat: @"Você ainda não terminou o passo %ld", (long)stepNumber];
     
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow: 12*60*60];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow: 12];
     localNotification.repeatInterval = NSCalendarUnitDay;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
