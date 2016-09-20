@@ -95,22 +95,27 @@
 - (void)setCharData:(double)valor valor2:(NSArray*)valor2{
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
+    int j = 0;
     
     for (int i = 0; i <valor2.count; i++) {
         currentStep = valor2[valor2.count-i-1];
-        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:i y:[currentStep.avgHeartRate doubleValue]]];
-        average = average + [currentStep.avgHeartRate doubleValue];
-        //NSLog(@"%@ %@",currentStep.startDate, currentStep.name);
+        if([currentStep.avgHeartRate integerValue] > 0){
+            [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(i-j) y:[currentStep.avgHeartRate doubleValue]]];
+            average = average + [currentStep.avgHeartRate doubleValue];
+            //NSLog(@"%@ %@",currentStep.startDate, currentStep.name);
+        }else{
+            j++;
+        }
         
     }
     
-    for (int i = 0; i <valor2.count; i++){
+    for (int i = 0; i <yVals2.count; i++){
         [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: average]];
     }
     
-    if(valor2.count>0){
+    if(yVals2.count>0){
         [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[currentStep.avgHeartRate doubleValue]]];
-        average = average/valor2.count;
+        average = average/(valor2.count-j);
     }else{
         average = 0;
     }
@@ -167,7 +172,7 @@
         [data setValueTextColor: [UIColor whiteColor]];
     
         //5 - finally set our data
-        if(valor2.count > 0){
+        if(yVals2.count > 0){
             _lineChartView.data = data;
             _nodata.hidden = YES;
         }else{

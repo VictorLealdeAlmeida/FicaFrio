@@ -83,7 +83,11 @@ double media;
     }
     media = ((int)timeRange/3)/60; // timeRange em segundos
     _minValue.text = [[NSNumber numberWithDouble:media] stringValue];
-    media = (int)rateRange/(3-zeros);
+    if(zeros < 3){
+        media = (int)rateRange/(3-zeros);
+    }else{
+        media = 0;
+    }
     _bpmValue.text = [[NSNumber numberWithDouble:media] stringValue];
     _titleGoal.text = NSLocalizedString(@"Heart Rate", "");
     
