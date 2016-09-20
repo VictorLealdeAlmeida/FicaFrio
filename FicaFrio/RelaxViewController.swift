@@ -27,7 +27,6 @@ class RelaxViewController: UIViewController {
         view.addSubview(imageView)
         
         if selectHeartHate {
-            print("you chose to measure your heart rate");
             startReadingHeartRate = GetHeartRate.init()
         }
     }

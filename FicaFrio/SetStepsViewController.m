@@ -20,15 +20,18 @@
     NSArray *tags;
     BD *database;
     NSUserDefaults *defaults;
-    BOOL clickedOnce;
+    //BOOL clickedOnce;
 }
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *stepNameTextField;
 @property (weak, nonatomic) IBOutlet UIView *viewButton;
 @property (weak, nonatomic) IBOutlet UIImageView *arrow;
+@property (weak, nonatomic) IBOutlet UIButton *setStepButton;
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
 @property (weak, nonatomic) IBOutlet UILabel *stepNumberLabel;
@@ -37,7 +40,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *setStepsButton;
 
 // Tag popup-related outlets
-@property (weak, nonatomic) IBOutlet UIImageView *tagPopupView;
+@property (weak, nonatomic) IBOutlet UIView *tagsPopupView;
 @property (weak, nonatomic) IBOutlet UIView *darkView;
 @property (weak, nonatomic) IBOutlet UILabel *pickTagLabel;
 @property (weak, nonatomic) IBOutlet UIButton *tagOneButton;
@@ -71,7 +74,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _setStepsButton.hidden = true;
-    clickedOnce = FALSE;
+    //clickedOnce = FALSE;
     
     // Database
     defaults = [NSUserDefaults standardUserDefaults];
@@ -80,11 +83,12 @@
     stepsNames = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
     stepsTags = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
     //stepsImages = [NSMutableArray ]
-    tags = @[NSLocalizedString(@"Autoexposição", ""), NSLocalizedString(@"Estudos", ""), NSLocalizedString(@"Trabalho", ""), NSLocalizedString(@"Interação Social", ""), NSLocalizedString(@"Outros", "")];
+    tags = @[NSLocalizedString(@"Self-exposure", ""), NSLocalizedString(@"Studies", ""), NSLocalizedString(@"Work", ""), NSLocalizedString(@"Social interaction", ""), NSLocalizedString(@"Others", "")];
     
+    _titleLabel.text = NSLocalizedString(@"Steps", "");
     _goalLabel.text = [[defaults stringForKey:@"goalName"] uppercaseString];
-    _descriptionLabel.text = NSLocalizedString(@"Divida sua meta em três passos e não esqueça de escolher uma tag para cada um deles!", "");
-    _stepNameTextField.placeholder = NSLocalizedString(@"Digite sua tarefa", "");
+    _descriptionLabel.text = NSLocalizedString(@"Break down your goal into three steps and don’t forget to pick a category for each!", "");
+    _stepNameTextField.placeholder = NSLocalizedString(@"Type your task", "");
 
     [_stepNameTextField setDelegate:self];
     
@@ -105,18 +109,22 @@
     [self checkIfCanGoToNextStep];
 }
 
-// Checks if the circle can rotate without losing text input
-- (BOOL)checkIfCanRotate {
-    [_stepNameTextField resignFirstResponder]; // Dismiss keyboard
-    
-    if (!clickedOnce && ![_stepNameTextField.text isEqual:[stepsNames objectAtIndex:(number-1)]]) {
-        // HIGHLIGHT BUTTON!!!
-        clickedOnce = TRUE;
-        return FALSE;
-    }
-    clickedOnce = FALSE;
-    return TRUE;
-}
+//// Checks if the circle can rotate without losing text input
+//- (BOOL)checkIfCanRotate {
+//    [_stepNameTextField resignFirstResponder]; // Dismiss keyboard
+//    
+//    if (!clickedOnce && ![_stepNameTextField.text isEqual:[stepsNames objectAtIndex:(number-1)]]) {
+//        // HIGHLIGHT BUTTON!!!
+//        [_setStepButton setHighlighted:TRUE];
+//        [self shake:_setStepButton];
+//        [self shake:_setStepButton];
+//        clickedOnce = TRUE;
+//        return FALSE;
+//    }
+//    [_setStepButton setHighlighted:FALSE];
+//    clickedOnce = FALSE;
+//    return TRUE;
+//}
 
 // Checks if name and tag are set for current step
 - (void)checkIfCanGoToNextStep {
@@ -218,15 +226,13 @@
 
 // Rotation-related -----------------------------------------------
 - (IBAction)circleRight:(id)sender {
-    if ([self checkIfCanRotate]) {
-        [self rotateCircleToRight];
-    }
+    [_stepNameTextField resignFirstResponder]; // Dismiss keyboard
+    [self rotateCircleToRight];
 }
 
 - (IBAction)circleLeft:(id)sender {
-    if ([self checkIfCanRotate]) {
-        [self rotateCircleToLeft];
-    }
+    [_stepNameTextField resignFirstResponder]; // Dismiss keyboard
+    [self rotateCircleToLeft];
 }
 
 - (void)rotateCircleToRight {
@@ -289,7 +295,6 @@
 // UITextField Delegates ----------------------------------------------
 // When return is clicked, check if can go to next step
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    NSLog(@"text field should return");
     [self checkIfCanGoToNextStep];
     return YES;
 }
@@ -297,12 +302,20 @@
 // Funcao que limita o numero de caracteres no textfield
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     // Prevent crashing undo bug – see note below.
+    _setStepButton.enabled = TRUE;
+    
     if(range.length + range.location > textField.text.length) {
         return NO;
     }
     
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     return newLength <= 140;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    _setStepButton.enabled = FALSE;
+    // Save current step name - to avoid losing step name alterations when rotating circle
+    [stepsNames replaceObjectAtIndex:(number-1) withObject:_stepNameTextField.text];
 }
 // --------------------------------------------------------------------
 
@@ -349,51 +362,32 @@
 - (void) showTagPopup{
     // Show all the popup elements
     
-    _pickTagLabel.text = NSLocalizedString(@"ESCOLHA UMA CATEGORIA", "");
+    _pickTagLabel.text = NSLocalizedString(@"PICK A CATEGORY", "");
     [_tagOneButton setTitle:tags[0] forState:UIControlStateNormal];
     [_tagTwoButton setTitle:tags[1] forState:UIControlStateNormal];
     [_tagThreeButton setTitle:tags[2] forState:UIControlStateNormal];
     [_tagFourButton setTitle:tags[3] forState:UIControlStateNormal];
     [_tagFiveButton setTitle:tags[4] forState:UIControlStateNormal];
     
+    _tagsPopupView.hidden = false;
     _darkView.hidden = false;
-    _tagPopupView.hidden = false;
-    _pickTagLabel.hidden = false;
-    _tagOneButton.hidden = false;
-    _tagTwoButton.hidden = false;
-    _tagThreeButton.hidden = false;
-    _tagFourButton.hidden = false;
-    _tagFiveButton.hidden = false;
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
+    [_tagsPopupView setAlpha:0.95];
     [_darkView setAlpha:0.55];
-    [_tagPopupView setAlpha:0.95];
-    [_pickTagLabel setAlpha:0.95];
-    [_tagOneButton setAlpha:0.95];
-    [_tagTwoButton setAlpha:0.95];
-    [_tagThreeButton setAlpha:0.95];
-    [_tagFourButton setAlpha:0.95];
-    [_tagFiveButton setAlpha:0.95];
     [UIView commitAnimations];
 }
 
 - (void) closeTagPopup{
     [stepsTags replaceObjectAtIndex:(number-1) withObject:[tags objectAtIndex:(tagNumber-1)]];
     [self updateStepText];
-    //_stepTagLabel.hidden = false;
     _stepTagButton.hidden = false;
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
+    [_tagsPopupView setAlpha:0.0];
     [_darkView setAlpha:0.0];
-    [_tagPopupView setAlpha:0.0];
-    [_pickTagLabel setAlpha:0.0];
-    [_tagOneButton setAlpha:0.0];
-    [_tagTwoButton setAlpha:0.0];
-    [_tagThreeButton setAlpha:0.0];
-    [_tagFourButton setAlpha:0.0];
-    [_tagFiveButton setAlpha:0.0];
     [UIView commitAnimations];
     
     //Timer pra acontecer a animacao antes do hidden
@@ -410,14 +404,8 @@
 
 - (void) closeTagPopupHidden{
     // Hide all the popup elements
+    _tagsPopupView.hidden = true;
     _darkView.hidden = true;
-    _tagPopupView.hidden = true;
-    _pickTagLabel.hidden = true;
-    _tagOneButton.hidden = true;
-    _tagTwoButton.hidden = true;
-    _tagThreeButton.hidden = true;
-    _tagFourButton.hidden = true;
-    _tagFiveButton.hidden = true;
 }
 // --------------------------------------------------------------------
 
