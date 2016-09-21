@@ -31,11 +31,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func NewGoalButton(sender: UIButton) {
         UIView.animateWithDuration(0.6, animations: {
             if self.NewGoalView.hidden {
+                // balloon appears
+                self.newGoalButton.setImage(UIImage.init(named: "botao_menos_novo"), forState: UIControlState.Normal)
                 self.NewGoalView.alpha = 1
                 self.NewGoalView.hidden = false
             }
             else {
+                // balloon disappears
                 self.NewGoalView.alpha = 0
+                self.newGoalButton.setImage(UIImage.init(named: "botao_azul_novaMeta"), forState: UIControlState.Normal)
             }
             
             }, completion: {(finished:Bool) in

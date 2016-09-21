@@ -16,6 +16,7 @@
 		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09CF871D8817C30079E6FB /* FicaFrio.swift */; };
 		AC1226011D8D87B1007D4860 /* Gif_Heart_Rate.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */; };
+		AC354B9E1D92D38500D023CE /* Launch_novo.png in Resources */ = {isa = PBXBuildFile; fileRef = AC354B9D1D92D38500D023CE /* Launch_novo.png */; };
 		AC3CA2081D8AD0D500B985B1 /* GetHeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */; };
 		AC3CA20B1D8AD13300B985B1 /* PulseDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA20A1D8AD13300B985B1 /* PulseDetector.mm */; };
 		AC3CA20E1D8AD19200B985B1 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA20D1D8AD19200B985B1 /* Filter.m */; };
@@ -25,7 +26,6 @@
 		AC93227D1D86EE15000051B0 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93227B1D86EE15000051B0 /* Step.m */; };
 		AC9322881D86F206000051B0 /* Goal+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */; };
 		AC9322891D86F206000051B0 /* Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322871D86F206000051B0 /* Goal.m */; };
-		ACA7B64A1D9177A1009222FA /* Launch1_07.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ACA7B6491D9177A1009222FA /* Launch1_07.jpg */; };
 		D41384731D88489F00281B48 /* SF-Compact-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384701D88489F00281B48 /* SF-Compact-Display-Thin.otf */; };
 		D41384741D88489F00281B48 /* SF-Compact-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384711D88489F00281B48 /* SF-Compact-Display-Light.otf */; };
 		D41384751D88489F00281B48 /* SF-Compact-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384721D88489F00281B48 /* SF-Compact-Display-Regular.otf */; };
@@ -154,6 +154,7 @@
 		9F09CF731D8817670079E6FB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ChartsFramework/Charts.xcodeproj; sourceTree = "<group>"; };
 		9F09CF871D8817C30079E6FB /* FicaFrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FicaFrio.swift; sourceTree = SOURCE_ROOT; };
 		AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gif_Heart_Rate.gif; sourceTree = "<group>"; };
+		AC354B9D1D92D38500D023CE /* Launch_novo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch_novo.png; sourceTree = "<group>"; };
 		AC3CA2061D8AD0D500B985B1 /* GetHeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHeartRate.h; sourceTree = "<group>"; };
 		AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHeartRate.m; sourceTree = "<group>"; };
 		AC3CA2091D8AD13300B985B1 /* PulseDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulseDetector.h; sourceTree = "<group>"; };
@@ -174,7 +175,6 @@
 		AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Goal+CoreDataProperties.m"; path = "../Goal+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AC9322861D86F206000051B0 /* Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Goal.h; path = ../Goal.h; sourceTree = "<group>"; };
 		AC9322871D86F206000051B0 /* Goal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Goal.m; path = ../Goal.m; sourceTree = "<group>"; };
-		ACA7B6491D9177A1009222FA /* Launch1_07.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Launch1_07.jpg; sourceTree = "<group>"; };
 		D41384701D88489F00281B48 /* SF-Compact-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Thin.otf"; sourceTree = "<group>"; };
 		D41384711D88489F00281B48 /* SF-Compact-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Light.otf"; sourceTree = "<group>"; };
 		D41384721D88489F00281B48 /* SF-Compact-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Regular.otf"; sourceTree = "<group>"; };
@@ -345,7 +345,7 @@
 				D41A6BA91D871BB30074FA39 /* Main.storyboard */,
 				AC9148E61D8B8741005383AA /* Localizable.strings */,
 				D4BBC1471D7EF7BB0058615A /* Assets.xcassets */,
-				ACA7B6491D9177A1009222FA /* Launch1_07.jpg */,
+				AC354B9D1D92D38500D023CE /* Launch_novo.png */,
 				AC9657E41D8EE93600C840E4 /* Gifs */,
 				D4BBC1491D7EF7BB0058615A /* LaunchScreen.storyboard */,
 				D4BBC14C1D7EF7BB0058615A /* Info.plist */,
@@ -595,10 +595,10 @@
 				AC9148E41D8B8741005383AA /* Localizable.strings in Resources */,
 				1E50F6061D8C49E800CD05EC /* GIF_INICIAL_CERTO.gif in Resources */,
 				1E50F5EC1D8C2B9D00CD05EC /* Espiral3.gif in Resources */,
-				ACA7B64A1D9177A1009222FA /* Launch1_07.jpg in Resources */,
 				D4E76D751D830FC1006F7203 /* respiracao.gif in Resources */,
 				D41A6BAB1D871BB30074FA39 /* Main.storyboard in Resources */,
 				AC1226011D8D87B1007D4860 /* Gif_Heart_Rate.gif in Resources */,
+				AC354B9E1D92D38500D023CE /* Launch_novo.png in Resources */,
 				1E6D29B51D89A070008734E0 /* logoteste.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
