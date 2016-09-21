@@ -109,13 +109,12 @@
         
     }
     
-    for (int i = 0; i <yVals2.count; i++){
-        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: average]];
-    }
-    
     if(yVals2.count>0){
         [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[currentStep.avgHeartRate doubleValue]]];
         average = average/(valor2.count-j);
+        for (int i = 0; i <yVals2.count; i++){
+            [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: average]];
+        }
     }else{
         average = 0;
     }
