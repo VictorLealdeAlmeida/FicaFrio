@@ -45,7 +45,7 @@
     
     //PikerView
     //inicializaçao
-    pickerData = @[NSLocalizedString(@"Autoexposição", ""), NSLocalizedString(@"Estudos", ""), NSLocalizedString(@"Trabalho", ""), NSLocalizedString(@"Interação Social", ""), NSLocalizedString(@"Outros", "")];
+    pickerData = @[NSLocalizedString(@"Self-exposure", ""), NSLocalizedString(@"Studies", ""), NSLocalizedString(@"Work", ""), NSLocalizedString(@"Social interaction", ""), NSLocalizedString(@"Others", "")];
     
     //Connect data
     _pickerTag.dataSource = self;
@@ -55,7 +55,7 @@
     
     //Configuraçao de estilo do grafico
     _lineChartView.delegate = self;
-    _lineChartView.descriptionText = NSLocalizedString(@"Clique nos nós para mais detalhes", "");
+    _lineChartView.descriptionText = NSLocalizedString(@"Tap node for details", "");
     _lineChartView.descriptionTextColor = [UIColor whiteColor];
     _lineChartView.dragEnabled = YES;
     [_lineChartView setScaleEnabled:YES];
@@ -71,8 +71,8 @@
     _lineChartView.leftAxis.enabled = NO;
     _lineChartView.legend.enabled = NO;
     
-    //ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:10.0 label:@""];
-   // [_lineChartView.xAxis addLimitLine:llXAxis];
+    ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:7.0 label:@""];
+    [_lineChartView.xAxis addLimitLine:llXAxis];
 
     
     //BalloonMarker
@@ -96,6 +96,7 @@
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     int j = 0;
+    average = 0;
     
     for (int i = 0; i <valor2.count; i++) {
         currentStep = valor2[valor2.count-i-1];
@@ -109,13 +110,12 @@
         
     }
     
-    for (int i = 0; i <yVals2.count; i++){
-        [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: average]];
-    }
-    
     if(yVals2.count>0){
-        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[currentStep.avgHeartRate doubleValue]]];
         average = average/(valor2.count-j);
+        for (int i = 0; i <yVals2.count; i++){
+            [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: average]];
+        }
+        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[currentStep.avgHeartRate doubleValue]]];
     }else{
         average = 0;
     }
