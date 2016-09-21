@@ -71,8 +71,8 @@
     _lineChartView.leftAxis.enabled = NO;
     _lineChartView.legend.enabled = NO;
     
-    //ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:10.0 label:@""];
-   // [_lineChartView.xAxis addLimitLine:llXAxis];
+    ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:7.0 label:@""];
+    [_lineChartView.xAxis addLimitLine:llXAxis];
 
     
     //BalloonMarker
@@ -96,6 +96,7 @@
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     int j = 0;
+    average = 0;
     
     for (int i = 0; i <valor2.count; i++) {
         currentStep = valor2[valor2.count-i-1];
@@ -110,11 +111,11 @@
     }
     
     if(yVals2.count>0){
-        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[currentStep.avgHeartRate doubleValue]]];
         average = average/(valor2.count-j);
         for (int i = 0; i <yVals2.count; i++){
             [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: average]];
         }
+        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[currentStep.avgHeartRate doubleValue]]];
     }else{
         average = 0;
     }
