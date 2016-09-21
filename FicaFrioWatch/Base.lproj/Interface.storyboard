@@ -64,10 +64,17 @@
             </objects>
             <point key="canvasLocation" x="478" y="346"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Relax Interface Controller-->
         <scene sceneID="hr0-xX-5tt">
             <objects>
-                <controller id="a9u-7N-6as"/>
+                <controller id="a9u-7N-6as" customClass="RelaxInterfaceController">
+                    <items>
+                        <imageView alignment="left" id="KhP-KG-dVc"/>
+                    </items>
+                    <connections>
+                        <outlet property="relaxImage" destination="KhP-KG-dVc" id="1vS-1x-XUO"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="753" y="346"/>
         </scene>

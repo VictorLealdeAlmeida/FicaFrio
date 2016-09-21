@@ -15,6 +15,8 @@
 		9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; };
 		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09CF871D8817C30079E6FB /* FicaFrio.swift */; };
+		9F81719B1D92D40200346491 /* RelaxInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F81719A1D92D40200346491 /* RelaxInterfaceController.m */; };
+		9F81719C1D92D40200346491 /* RelaxInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F81719A1D92D40200346491 /* RelaxInterfaceController.m */; };
 		AC1226011D8D87B1007D4860 /* Gif_Heart_Rate.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */; };
 		AC3CA2081D8AD0D500B985B1 /* GetHeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */; };
 		AC3CA20B1D8AD13300B985B1 /* PulseDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA20A1D8AD13300B985B1 /* PulseDetector.mm */; };
@@ -153,6 +155,8 @@
 		1E6D29B41D89A070008734E0 /* logoteste.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logoteste.gif; sourceTree = "<group>"; };
 		9F09CF731D8817670079E6FB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ChartsFramework/Charts.xcodeproj; sourceTree = "<group>"; };
 		9F09CF871D8817C30079E6FB /* FicaFrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FicaFrio.swift; sourceTree = SOURCE_ROOT; };
+		9F8171991D92D40200346491 /* RelaxInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelaxInterfaceController.h; sourceTree = "<group>"; };
+		9F81719A1D92D40200346491 /* RelaxInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelaxInterfaceController.m; sourceTree = "<group>"; };
 		AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gif_Heart_Rate.gif; sourceTree = "<group>"; };
 		AC3CA2061D8AD0D500B985B1 /* GetHeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHeartRate.h; sourceTree = "<group>"; };
 		AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHeartRate.m; sourceTree = "<group>"; };
@@ -420,6 +424,8 @@
 				D4F504071D90117800EC7870 /* NotificationController.m */,
 				D4F504091D90117800EC7870 /* ComplicationController.h */,
 				D4F5040A1D90117800EC7870 /* ComplicationController.m */,
+				9F8171991D92D40200346491 /* RelaxInterfaceController.h */,
+				9F81719A1D92D40200346491 /* RelaxInterfaceController.m */,
 				D4F5040C1D90117800EC7870 /* Assets.xcassets */,
 				D4F5040E1D90117800EC7870 /* Info.plist */,
 				D4F503FE1D90117800EC7870 /* Supporting Files */,
@@ -506,20 +512,17 @@
 				TargetAttributes = {
 					D4BBC1341D7EF7BB0058615A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = A975LQD622;
-
+						DevelopmentTeam = MD42R8FHUC;
 						LastSwiftMigration = 0800;
 					};
 					D4F503EC1D90117800EC7870 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = A975LQD622;
-
+						DevelopmentTeam = MD42R8FHUC;
 						ProvisioningStyle = Automatic;
 					};
 					D4F503F81D90117800EC7870 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = A975LQD622;
-
+						DevelopmentTeam = MD42R8FHUC;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -644,6 +647,7 @@
 				9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */,
 				D4BBC16F1D7F0DC30058615A /* HomeViewController.swift in Sources */,
 				D4BBC1A21D81B12E0058615A /* Animation.m in Sources */,
+				9F81719B1D92D40200346491 /* RelaxInterfaceController.m in Sources */,
 				AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */,
 				AC3CA20E1D8AD19200B985B1 /* Filter.m in Sources */,
 				AC93225B1D86C7DB000051B0 /* BD.m in Sources */,
@@ -657,6 +661,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F81719C1D92D40200346491 /* RelaxInterfaceController.m in Sources */,
 				D4F504051D90117800EC7870 /* ExtensionDelegate.m in Sources */,
 				D4F504261D91603900EC7870 /* RelaxWatchViewController.swift in Sources */,
 				D4F5040B1D90117800EC7870 /* ComplicationController.m in Sources */,
@@ -826,8 +831,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = A975LQD622;
-
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				INFOPLIST_FILE = FicaFrio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -852,8 +856,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = A975LQD622;
-
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				INFOPLIST_FILE = FicaFrio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -876,8 +879,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = A975LQD622;
-
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				IBSC_MODULE = FicaFrioWatch_Extension;
 				INFOPLIST_FILE = FicaFrioWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp;
@@ -898,8 +900,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = A975LQD622;
-
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				IBSC_MODULE = FicaFrioWatch_Extension;
 				INFOPLIST_FILE = FicaFrioWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp;
@@ -918,8 +919,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = A975LQD622;
-
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				INFOPLIST_FILE = "FicaFrioWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp.watchkitextension;
@@ -941,8 +941,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = A975LQD622;
-
+				DEVELOPMENT_TEAM = MD42R8FHUC;
 				INFOPLIST_FILE = "FicaFrioWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPiD.FicaFrio.watchkitapp.watchkitextension;
