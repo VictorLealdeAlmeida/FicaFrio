@@ -11,6 +11,8 @@
 
 @interface GetHeartRate : NSObject
 
+@property (nonatomic, weak) UIImageView *heartBeating;
+
 -(void) pause;
 -(void) resume;
 -(void) startCameraCapture;

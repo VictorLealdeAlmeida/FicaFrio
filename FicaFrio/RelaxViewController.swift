@@ -11,6 +11,9 @@ import UIKit
 
 class RelaxViewController: UIViewController {
     
+    @IBOutlet weak var gifView: UIImageView!
+    @IBOutlet weak var heartBeating: UIImageView!
+    
    
     @IBAction func back(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
@@ -24,15 +27,18 @@ class RelaxViewController: UIViewController {
         startReadingHeartRate?.pause()
         
         let RelaxGif = UIImage.gifImageWithName("Espiral3")
-        let imageView = UIImageView(image: RelaxGif)
-        imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/4, y: self.view.frame.size.height/4, width: imageView.frame.size.width/2, height: imageView.frame.size.height/2)
-        view.addSubview(imageView)
+        gifView.image = RelaxGif
+        //let imageView = UIImageView(image: RelaxGif)
+        //imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/4, y: self.view.frame.size.height/4, width: imageView.frame.size.width/2, height: imageView.frame.size.height/2)
+        //view.addSubview(imageView)
         
         if selectHeartRate {
             print("selectHeartRate")
             startReadingHeartRate = GetHeartRate.init()
+            startReadingHeartRate?.heartBeating = heartBeating;
             startReadingHeartRate?.startCameraCapture()
             //startReadingHeartRate?.resume()
+            
         }
     }
     

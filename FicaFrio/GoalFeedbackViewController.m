@@ -89,7 +89,7 @@ double media;
         media = 0;
     }
     _bpmValue.text = [[NSNumber numberWithDouble:media] stringValue];
-    _titleGoal.text = NSLocalizedString(@"Heart Rate", "");
+    _titleGoal.text = [NSLocalizedString(@"Heart Rate", "") uppercaseString];
     
     _step1.hidden = YES;
     _step2.hidden = YES;
@@ -143,12 +143,12 @@ double media;
     if(flag){
         [_center setImage:[UIImage imageNamed:@"relogio_2"]];
         [self selectGraf: [[time objectAtIndex: 0] intValue] value2: [[time objectAtIndex: 1] intValue] value3: [[time objectAtIndex: 2] intValue]];
-        _titleGoal.text = NSLocalizedString(@"Time", "");
+        _titleGoal.text = [NSLocalizedString(@"Time", "") uppercaseString];
         flag = NO;
     }else{
         [_center setImage:[UIImage imageNamed:@"coracao_2"]];
         [self selectGraf: [[avgRate objectAtIndex: 0] intValue] value2: [[avgRate objectAtIndex: 1] intValue] value3: [[avgRate objectAtIndex: 2] intValue]];
-        _titleGoal.text = NSLocalizedString(@"Heart Rate", "");
+        _titleGoal.text = [NSLocalizedString(@"Heart Rate", "") uppercaseString];
         flag = YES;
     }
     [_center addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0 nextImege:_step1];
@@ -178,42 +178,144 @@ double media;
 //Func que escolhe o tamnho da imagem de cada estapa a partir dos valores recebidos
 //Ainda tem que fazer os casos de valores iguais
 -(void)selectGraf: (int)valueOne value2: (int)valueTwo value3: (int)valueThree{
-   
+    NSLog(@"one: %d two: %d three: %d", valueOne, valueTwo, valueThree);
+    
+    if ((valueOne == valueTwo) && (valueOne == valueThree) && (valueTwo == valueThree)) {
+        // All values are equal
+        [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+        [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+        [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
+    }
+    else if ((valueOne != valueTwo) && (valueOne != valueThree) && (valueTwo != valueThree)) {
+        // All values are different
+        if ((valueOne > valueTwo) && (valueOne > valueThree)){
+            [_step1 setImage:[UIImage imageNamed:@"Roda_g_superior"]];
+            if(valueTwo > valueThree){
+                NSLog(@"two: %d > three: %d", valueTwo, valueThree);
+                [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
+                
+            }else {
+                NSLog(@"two: %d < three: %d", valueTwo, valueThree);
+                [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
+                
+            }
+        }else if((valueTwo > valueOne) && (valueTwo > valueThree)){
+            [_step2 setImage:[UIImage imageNamed:@"Roda_g_direita"]];
+            if(valueOne > valueThree){
+                NSLog(@"one: %d > three: %d", valueOne, valueThree);
+                [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
+                
+            }else {
+                NSLog(@"one: %d < three: %d", valueOne, valueThree);
+                [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
+            }
+        }else if((valueThree > valueOne) && (valueThree > valueTwo)){
+            [_step3 setImage:[UIImage imageNamed:@"Roda_g_esquerda"]];
+            if(valueOne > valueTwo){
+                NSLog(@"one: %d > two: %d", valueOne, valueTwo);
+                [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+                [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
+                
+            }else {
+                NSLog(@"one: %d < two: %d", valueOne, valueTwo);
+                [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
+                [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+            }
+        }
+    }
+    else {
+        // Only one value is different
+        if(valueOne == valueTwo) {
+            if (valueOne > valueThree){
+                [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+                [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
+            } else {
+                [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
+                [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
+            }
+        } else if (valueOne == valueThree){
+            if (valueOne > valueTwo){
+                [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+                [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
+            } else {
+                [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
+                [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
+            }
+        } else if (valueTwo == valueThree){
+            if (valueTwo > valueOne){
+                [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
+                [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
+            } else {
+                [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+                [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
+                [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
+            }
+        }
+    }
+    
+    
     if ((valueOne > valueTwo) && (valueOne > valueThree)){
-        [_step1 setImage:[UIImage imageNamed:@"topo_01"]];
+        [_step1 setImage:[UIImage imageNamed:@"Roda_g_superior"]];
         if(valueTwo > valueThree){
-            [_step2 setImage:[UIImage imageNamed:@"direita_02"]];
-            [_step3 setImage:[UIImage imageNamed:@"esquerda_03"]];
+            NSLog(@"two: %d > three: %d", valueTwo, valueThree);
+            [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+            [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
 
-        }else{
-            [_step2 setImage:[UIImage imageNamed:@"direita_03"]];
-            [_step3 setImage:[UIImage imageNamed:@"esquerda_02"]];
+        }else if(valueTwo < valueThree){
+            NSLog(@"two: %d < three: %d", valueTwo, valueThree);
+            [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
+            [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
 
+        }else {
+            NSLog(@"two: %d = three: %d", valueTwo, valueThree);
+            [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+            [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
         }
     }else if((valueTwo > valueOne) && (valueTwo > valueThree)){
-        [_step3 setImage:[UIImage imageNamed:@"esquerda_01"]];
+        [_step2 setImage:[UIImage imageNamed:@"Roda_g_direita"]];
         if(valueOne > valueThree){
-            [_step1 setImage:[UIImage imageNamed:@"topo_02"]];
-            [_step2 setImage:[UIImage imageNamed:@"direita_03"]];
+            NSLog(@"one: %d > three: %d", valueOne, valueThree);
+            [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+            [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
             
-        }else{
-            [_step1 setImage:[UIImage imageNamed:@"topo_03"]];
-            [_step2 setImage:[UIImage imageNamed:@"direita_02"]];
+        }else if(valueOne < valueThree){
+            NSLog(@"one: %d < three: %d", valueOne, valueThree);
+            [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
+            [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
+        }else {
+            NSLog(@"one: %d = three: %d", valueOne, valueThree);
+            [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+            [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
         }
     }else if((valueThree > valueOne) && (valueThree > valueTwo)){
-        [_step2 setImage:[UIImage imageNamed:@"direita_01"]];
+        [_step3 setImage:[UIImage imageNamed:@"Roda_g_esquerda"]];
         if(valueOne > valueTwo){
-            [_step1 setImage:[UIImage imageNamed:@"topo_02"]];
-            [_step3 setImage:[UIImage imageNamed:@"esquerda_03"]];
+            NSLog(@"one: %d > two: %d", valueOne, valueTwo);
+            [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+            [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
             
-        }else{
-            [_step1 setImage:[UIImage imageNamed:@"topo_03"]];
-            [_step3 setImage:[UIImage imageNamed:@"esquerda_02"]];
+        }else if(valueOne < valueTwo) {
+            NSLog(@"one: %d < two: %d", valueOne, valueTwo);
+            [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
+            [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+        }else {
+            NSLog(@"one: %d = two: %d", valueOne, valueTwo);
+            [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+            [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
         }
     }else{
-        [_step1 setImage:[UIImage imageNamed:@"topo_02"]];
-        [_step2 setImage:[UIImage imageNamed:@"direita_02"]];
-        [_step3 setImage:[UIImage imageNamed:@"esquerda_02"]];
+        [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
+        [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
+        [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
     }
 }
 

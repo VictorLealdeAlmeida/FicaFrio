@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="220" y="351"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Current Watch View Controller-->
         <scene sceneID="B1z-6b-cec">
             <objects>
-                <controller id="jJt-6K-aPf">
+                <controller id="jJt-6K-aPf" customClass="CurrentWatchViewController">
                     <items>
                         <group width="136" height="67" alignment="center" id="van-Ku-SPZ">
                             <items>
@@ -48,7 +48,11 @@
                             <items>
                                 <group width="39" alignment="center" verticalAlignment="center" id="A5I-3a-Iip">
                                     <items>
-                                        <button width="29" height="29" alignment="center" backgroundImage="logoteste" id="WLO-cB-yxg"/>
+                                        <button width="29" height="29" alignment="center" backgroundImage="logoteste" id="WLO-cB-yxg">
+                                            <connections>
+                                                <segue destination="a9u-7N-6as" kind="push" id="zEg-CR-CfZ"/>
+                                            </connections>
+                                        </button>
                                     </items>
                                 </group>
                                 <group width="39" alignment="center" verticalAlignment="center" id="yhV-zO-Def">
@@ -62,6 +66,13 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="478" y="346"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="hr0-xX-5tt">
+            <objects>
+                <controller id="a9u-7N-6as"/>
+            </objects>
+            <point key="canvasLocation" x="753" y="346"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

@@ -242,7 +242,6 @@
     popupView.hidden = false;
     _popupBackground.hidden = false;
     currentPopup = popupView;
-    NSLog(@"%@", popupView);
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
@@ -294,7 +293,7 @@
     
     localNotification.alertBody = [NSString stringWithFormat: @"Você ainda não terminou o passo %ld", (long)stepNumber];
     
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow: 12*60*60];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow: 12];
     localNotification.repeatInterval = NSCalendarUnitDay;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];

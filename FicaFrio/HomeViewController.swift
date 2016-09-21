@@ -13,6 +13,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     var CurrentGoal : String = ""
     
+    @IBOutlet weak var gifView: UIImageView!
+    
+    
     @IBOutlet weak var NewGoalView: UIView!
     @IBOutlet weak var TaskText: UITextField!
     @IBOutlet weak var insertGoalLabel: UILabel!
@@ -63,6 +66,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         NewGoalView.hidden = true
         NewGoalView.alpha = 0
         
+        TaskText.autocapitalizationType = UITextAutocapitalizationType.Sentences
+        
         newGoalButton.setTitle(NSLocalizedString("New Goal", comment: ""), forState: UIControlState.Normal)
         
         super.viewDidLoad()
@@ -80,9 +85,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
  
      // Configura a logo
         let logoGif = UIImage.gifImageWithName("GIF_INICIAL_CERTO")
-        let imageView = UIImageView(image: logoGif)
-        imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3, height: imageView.frame.size.height/3)
-        view.addSubview(imageView)
+        gifView.image
+            = logoGif
+        //let imageView = UIImageView(image: logoGif)
+        //imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3.2, height: imageView.frame.size.height/3.2)
+        //view.addSubview(imageView)
        // imageView.backgroundColor = UIColor.clearColor()
         
         //let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
@@ -128,8 +135,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         return true;
     }
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        print("While entering the characters this method gets called")
-        let maxLength = 140
+        //print("While entering the characters this method gets called")
+        let maxLength = 45
         let currentString: NSString = textField.text!
         let newString: NSString =
             currentString.stringByReplacingCharactersInRange(range, withString: string)
