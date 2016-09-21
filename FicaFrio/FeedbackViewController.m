@@ -45,7 +45,7 @@
     
     //PikerView
     //inicializaçao
-    pickerData = @[NSLocalizedString(@"Autoexposição", ""), NSLocalizedString(@"Estudos", ""), NSLocalizedString(@"Trabalho", ""), NSLocalizedString(@"Interação Social", ""), NSLocalizedString(@"Outros", "")];
+    pickerData = @[NSLocalizedString(@"Self-exposure", ""), NSLocalizedString(@"Studies", ""), NSLocalizedString(@"Work", ""), NSLocalizedString(@"Social interaction", ""), NSLocalizedString(@"Others", "")];
     
     //Connect data
     _pickerTag.dataSource = self;
@@ -55,7 +55,7 @@
     
     //Configuraçao de estilo do grafico
     _lineChartView.delegate = self;
-    _lineChartView.descriptionText = NSLocalizedString(@"Clique nos nós para mais detalhes", "");
+    _lineChartView.descriptionText = NSLocalizedString(@"Tap node for details", "");
     _lineChartView.descriptionTextColor = [UIColor whiteColor];
     _lineChartView.dragEnabled = YES;
     [_lineChartView setScaleEnabled:YES];
