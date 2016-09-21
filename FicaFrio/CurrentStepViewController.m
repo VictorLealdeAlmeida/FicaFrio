@@ -12,8 +12,9 @@
 #import "Step.h"
 #import "BD.h"
 #import "FicaFrio-Swift.h"
+#import <WatchConnectivity/WatchConnectivity.h>
 
-@interface CurrentStepViewController () {
+@interface CurrentStepViewController () <WCSessionDelegate>{
     BD *database;
     NSUserDefaults *defaults;
     NSInteger stepNumber;
@@ -104,7 +105,13 @@
     [self updateStep];
     [self updateCircleRotation];
     
-    //[self setNotification];
+    //Inicando comunicaçao com o relogio
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+    }
+    
 
 }
 
@@ -119,6 +126,10 @@
 
 // When start button is clicked
 - (IBAction)startStep:(id)sender {
+    [self startStepAction];
+}
+
+- (void)startStepAction{
     _startStep.hidden = true;
     _endStep.hidden = false;
     
@@ -131,20 +142,22 @@
     
     [defaults setBool:TRUE forKey:@"stepStarted"];
     //[defaults synchronize];
-
+    
     //Timer pra acontecer a animacao
     [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
     timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3
-                                     target:self
-                                   selector:@selector(animationButton)
-                                   userInfo:nil
-                                    repeats:YES];
-    
-
+                                                      target:self
+                                                    selector:@selector(animationButton)
+                                                    userInfo:nil
+                                                     repeats:YES];
 }
 
 // endStep - When end button is clicked
 - (IBAction)circleButton:(id)sender {
+    [self stopAction];
+}
+
+- (void)stopAction{
     // Store endDate and avgHeartRate
     [database setEndDate:[NSDate date] toStep:currentStep];
     float avgHeartRate = [defaults floatForKey:@"avgHeartRate"];
@@ -316,5 +329,29 @@
     }
     
 }
+
+bool x = false;
+
+- (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
+    
+    NSString *counterValue = [message objectForKey:@"startStop"];
+    
+    NSLog(@"%@",counterValue);
+    _descriptionLabel.text = [NSString stringWithFormat: @"Olha o numero ai %@", counterValue];
+
+    _tagLabel.text = counterValue;
+    
+    if (!x){
+        [self startStepAction];
+        x = true;
+    }else{
+        [self stopAction];
+        x = false;
+    }
+    
+
+  
+}
+
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "InterfaceController.h"
-
+#import <WatchConnectivity/WatchConnectivity.h>
 
 @interface InterfaceController()
 
@@ -19,7 +19,12 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
 
-    // Configure interface objects here.
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+    }
+
 }
 
 - (void)willActivate {
@@ -30,6 +35,20 @@
 - (void)didDeactivate {
     // This method is called when watch view controller is no longer visible
     [super didDeactivate];
+}
+
+- (IBAction)saveCounter {
+    NSString *startStop = [NSString stringWithFormat:@"%d", 23];
+    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStop"]];
+    
+    [[WCSession defaultSession] sendMessage:applicationData
+                               replyHandler:^(NSDictionary *reply) {
+                                   //handle reply from iPhone app here
+                               }
+                               errorHandler:^(NSError *error) {
+                                   //catch any errors here
+                               }
+     ];
 }
 
 @end
