@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jJt-6K-aPf">
     <dependencies>
         <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -35,7 +35,7 @@
                         <group width="136" height="67" alignment="center" id="van-Ku-SPZ">
                             <items>
                                 <label width="136" height="40" alignment="left" verticalAlignment="center" text="The TestFlight app allows testers to install and beta test apps on iOS, tvOS and watchOS devices." textAlignment="center" numberOfLines="6" id="kRs-A2-nZu">
-                                    <fontDescription key="font" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="9"/>
+                                    <fontDescription key="font" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="8"/>
                                 </label>
                             </items>
                         </group>
@@ -46,20 +46,17 @@
                         </group>
                         <group width="1" height="40" alignment="center" id="MLb-E1-6NU">
                             <items>
-                                <group width="39" alignment="center" verticalAlignment="center" id="A5I-3a-Iip">
-                                    <items>
-                                        <button width="29" height="29" alignment="center" backgroundImage="logoteste" id="WLO-cB-yxg">
-                                            <connections>
-                                                <segue destination="a9u-7N-6as" kind="push" id="zEg-CR-CfZ"/>
-                                            </connections>
-                                        </button>
-                                    </items>
-                                </group>
-                                <group width="39" alignment="center" verticalAlignment="center" id="yhV-zO-Def">
-                                    <items>
-                                        <button width="29" height="29" alignment="center" backgroundImage="botao_comecarTarefa" id="9CB-Y5-Wef"/>
-                                    </items>
-                                </group>
+                                <button width="43" height="43" alignment="center" verticalAlignment="center" backgroundImage="botao_comecarTarefa" id="WLO-cB-yxg">
+                                    <connections>
+                                        <segue destination="a9u-7N-6as" kind="push" id="zEg-CR-CfZ"/>
+                                    </connections>
+                                </button>
+                                <group width="22" alignment="center" verticalAlignment="center" id="A5I-3a-Iip"/>
+                                <button width="41" height="44" alignment="center" verticalAlignment="center" backgroundImage="botao_comecarTarefa" id="9CB-Y5-Wef">
+                                    <connections>
+                                        <action selector="startStopButton" destination="jJt-6K-aPf" id="7uf-ra-1kE"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
