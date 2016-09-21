@@ -11,12 +11,16 @@
 
 
 @interface CurrentWatchViewController() <WCSessionDelegate>
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *imageSet;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *startStop;
 - (IBAction)startStopButton;
 
 @end
 
 
 @implementation CurrentWatchViewController
+
+bool statusButton = false;
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
@@ -51,6 +55,19 @@
                                    NSLog(@"Deu erro");
                                }
      ];
+    
+    [self changeStartButton];
+    
+}
+
+- (void)changeStartButton {
+    if (statusButton){
+        [_startStop setBackgroundImageNamed:@"botao_naopreenchido"];
+        statusButton = false;
+    }else{
+        [_startStop setBackgroundImageNamed:@"botao_preenchido"];
+        statusButton = true;
+    }
 }
 
 

@@ -52,7 +52,7 @@
                                     </connections>
                                 </button>
                                 <group width="22" alignment="center" verticalAlignment="center" id="A5I-3a-Iip"/>
-                                <button width="41" height="44" alignment="center" verticalAlignment="center" backgroundImage="botao_comecarTarefa" id="9CB-Y5-Wef">
+                                <button width="41" height="44" alignment="center" verticalAlignment="center" backgroundImage="botao_naopreenchido" id="9CB-Y5-Wef">
                                     <connections>
                                         <action selector="startStopButton" destination="jJt-6K-aPf" id="7uf-ra-1kE"/>
                                     </connections>
@@ -60,6 +60,10 @@
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="imageSet" destination="waG-N8-Ocj" id="Xgc-oC-Qj7"/>
+                        <outlet property="startStop" destination="9CB-Y5-Wef" id="oUC-4v-VKl"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="478" y="346"/>
