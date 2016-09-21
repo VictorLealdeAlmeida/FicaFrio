@@ -12,8 +12,9 @@
 #import "Step.h"
 #import "BD.h"
 #import "FicaFrio-Swift.h"
+#import <WatchConnectivity/WatchConnectivity.h>
 
-@interface CurrentStepViewController () {
+@interface CurrentStepViewController () <WCSessionDelegate>{
     BD *database;
     NSUserDefaults *defaults;
     NSInteger stepNumber;
@@ -104,7 +105,13 @@
     [self updateStep];
     [self updateCircleRotation];
     
-    //[self setNotification];
+    //Inicando comunicaçao com o relogio
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+    }
+    
 
 }
 
@@ -316,5 +323,22 @@
     }
     
 }
+
+- (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
+    
+    
+    NSString *counterValue = [message objectForKey:@"startStop"];
+    
+    NSLog(@"%@",counterValue);
+    _descriptionLabel.text = [NSString stringWithFormat: @"Olha o numero ai %@", counterValue];
+
+    _tagLabel.text = counterValue;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        _tagLabel.text = counterValue;
+    });
+}
+
 
 @end
