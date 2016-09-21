@@ -44,7 +44,7 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf3-p5-Tgz">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="balao_InsirasuaMeta2" translatesAutoresizingMaskIntoConstraints="NO" id="iha-Oj-Tyn"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="balao_novo" translatesAutoresizingMaskIntoConstraints="NO" id="iha-Oj-Tyn"/>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insert your goal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Ej-Ztt">
                                         <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="18"/>
                                         <color key="textColor" red="0.46666666666666667" green="0.67843137254901964" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
@@ -93,11 +93,11 @@
                             <constraint firstItem="te2-8B-Iba" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.13" id="VyY-4M-73X"/>
                             <constraint firstItem="te2-8B-Iba" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.35" id="WKH-DM-y5K"/>
                             <constraint firstItem="Cqk-1E-ECe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XTc-ZN-6m1"/>
-                            <constraint firstItem="te2-8B-Iba" firstAttribute="top" secondItem="bf3-p5-Tgz" secondAttribute="bottom" constant="5" id="XcX-wf-PK5"/>
+                            <constraint firstItem="te2-8B-Iba" firstAttribute="top" secondItem="bf3-p5-Tgz" secondAttribute="bottom" constant="12" id="XcX-wf-PK5"/>
                             <constraint firstItem="lAF-KP-r2s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.65" id="e6V-O3-9rH"/>
                             <constraint firstItem="lAF-KP-r2s" firstAttribute="centerY" secondItem="te2-8B-Iba" secondAttribute="centerY" id="iil-cT-KX7"/>
                             <constraint firstItem="lAF-KP-r2s" firstAttribute="height" secondItem="te2-8B-Iba" secondAttribute="height" id="o69-rT-ieo"/>
-                            <constraint firstItem="bf3-p5-Tgz" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.23" id="uac-8D-MmP"/>
+                            <constraint firstItem="bf3-p5-Tgz" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.205" id="uac-8D-MmP"/>
                             <constraint firstItem="bf3-p5-Tgz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zrk-Cx-c4g"/>
                         </constraints>
                     </view>
@@ -135,7 +135,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barra_Nova" translatesAutoresizingMaskIntoConstraints="NO" id="jQP-Dx-MkL"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lu-te-36k">
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Thin" family="SF Compact Display" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -431,7 +431,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barra_Nova" translatesAutoresizingMaskIntoConstraints="NO" id="8uh-Up-BE5"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xr-vI-5fY">
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Thin" family="SF Compact Display" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -748,7 +748,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fundo_Novo" translatesAutoresizingMaskIntoConstraints="NO" id="tu7-kC-kBw"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjL-et-cJ1">
-                                <state key="normal" image="botao_voltar"/>
+                                <state key="normal" image="botao_voltar_novo"/>
                                 <connections>
                                     <action selector="back:" destination="whk-Og-WXW" eventType="touchUpInside" id="GKg-EU-fYP"/>
                                 </connections>
@@ -758,19 +758,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1058823529" green="0.054901960780000002" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AjL-et-cJ1" firstAttribute="centerX" secondItem="jPd-I5-wRI" secondAttribute="centerX" multiplier="0.25" id="AW6-QI-ZYz"/>
+                            <constraint firstItem="AjL-et-cJ1" firstAttribute="centerX" secondItem="jPd-I5-wRI" secondAttribute="centerX" multiplier="0.13" constant="4" id="AW6-QI-ZYz"/>
                             <constraint firstItem="tu7-kC-kBw" firstAttribute="width" secondItem="jPd-I5-wRI" secondAttribute="width" id="Dxc-lb-dia"/>
                             <constraint firstItem="OXU-eP-lfG" firstAttribute="centerY" secondItem="jPd-I5-wRI" secondAttribute="centerY" id="HEb-Sv-S87"/>
                             <constraint firstItem="tBF-8k-Yjv" firstAttribute="width" secondItem="jPd-I5-wRI" secondAttribute="width" id="IH4-CC-ZFS"/>
-                            <constraint firstItem="AjL-et-cJ1" firstAttribute="height" secondItem="jPd-I5-wRI" secondAttribute="height" multiplier="0.055" id="R1O-PC-fgZ"/>
+                            <constraint firstItem="AjL-et-cJ1" firstAttribute="height" secondItem="jPd-I5-wRI" secondAttribute="height" multiplier="0.04" id="R1O-PC-fgZ"/>
                             <constraint firstItem="OXU-eP-lfG" firstAttribute="height" secondItem="jPd-I5-wRI" secondAttribute="height" multiplier="0.65" id="Rv2-eh-Yg2"/>
                             <constraint firstItem="tu7-kC-kBw" firstAttribute="height" secondItem="jPd-I5-wRI" secondAttribute="height" id="VDd-cY-5Zn"/>
                             <constraint firstItem="tBF-8k-Yjv" firstAttribute="centerX" secondItem="jPd-I5-wRI" secondAttribute="centerX" id="aCq-CW-BZe"/>
-                            <constraint firstItem="AjL-et-cJ1" firstAttribute="centerY" secondItem="jPd-I5-wRI" secondAttribute="centerY" multiplier="0.13" id="aHU-GM-2Ee"/>
+                            <constraint firstItem="AjL-et-cJ1" firstAttribute="centerY" secondItem="jPd-I5-wRI" secondAttribute="centerY" multiplier="0.15" id="aHU-GM-2Ee"/>
                             <constraint firstItem="OXU-eP-lfG" firstAttribute="width" secondItem="jPd-I5-wRI" secondAttribute="width" id="e7S-se-AUc"/>
                             <constraint firstItem="tBF-8k-Yjv" firstAttribute="centerY" secondItem="jPd-I5-wRI" secondAttribute="centerY" multiplier="1.75" id="hYR-nG-dpw"/>
                             <constraint firstItem="OXU-eP-lfG" firstAttribute="centerX" secondItem="jPd-I5-wRI" secondAttribute="centerX" id="p18-hv-5pJ"/>
-                            <constraint firstItem="AjL-et-cJ1" firstAttribute="width" secondItem="jPd-I5-wRI" secondAttribute="width" multiplier="0.13" id="rfz-IL-5MG"/>
+                            <constraint firstItem="AjL-et-cJ1" firstAttribute="width" secondItem="jPd-I5-wRI" secondAttribute="width" multiplier="0.05" id="rfz-IL-5MG"/>
                             <constraint firstItem="tu7-kC-kBw" firstAttribute="centerX" secondItem="jPd-I5-wRI" secondAttribute="centerX" id="taK-QG-nAT"/>
                             <constraint firstItem="tu7-kC-kBw" firstAttribute="centerY" secondItem="jPd-I5-wRI" secondAttribute="centerY" id="u0U-bV-xdR"/>
                             <constraint firstItem="tBF-8k-Yjv" firstAttribute="height" secondItem="jPd-I5-wRI" secondAttribute="height" multiplier="0.085" id="xr0-xe-zdl"/>
@@ -800,13 +800,13 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fundo_Novo" translatesAutoresizingMaskIntoConstraints="NO" id="df5-SM-EBg"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FR5-br-LHM">
-                                <state key="normal" image="botao_voltar"/>
+                                <state key="normal" image="botao_voltar_novo"/>
                                 <connections>
                                     <action selector="back:" destination="qOg-3a-aVT" eventType="touchUpInside" id="vli-kR-mZz"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heart Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUp-1J-DnY">
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Thin" family="SF Compact Display" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -816,28 +816,28 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ona-RN-FVQ" customClass="LineChartView" customModule="Charts">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coracao_2" translatesAutoresizingMaskIntoConstraints="NO" id="LaX-2N-l46"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coracao_novo" translatesAutoresizingMaskIntoConstraints="NO" id="LaX-2N-l46"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmE-TL-j3Q">
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="28"/>
-                                <color key="textColor" red="0.28627450980392155" green="0.73333333333333328" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.46666666670000001" green="0.67843137249999996" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPm-Bi-c7M">
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="17"/>
-                                <color key="textColor" red="0.27843137254901962" green="0.72941176470588232" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.46666666666666667" green="0.67843137254901964" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data available!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtN-Mj-fC3">
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Thin" family="SF Compact Display" pointSize="17"/>
-                                <color key="textColor" red="0.2784313725" green="0.72941176470000002" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="17"/>
+                                <color key="textColor" red="0.46666666666666667" green="0.67843137254901964" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LaX-2N-l46" firstAttribute="centerY" secondItem="ehU-k5-oHJ" secondAttribute="centerY" multiplier="1.715" id="0rX-CC-93e"/>
-                            <constraint firstItem="FR5-br-LHM" firstAttribute="height" secondItem="LaX-2N-l46" secondAttribute="height" multiplier="0.85" id="5qf-Pl-Ccw"/>
-                            <constraint firstItem="FR5-br-LHM" firstAttribute="centerX" secondItem="ehU-k5-oHJ" secondAttribute="centerX" multiplier="0.2" constant="4.5" id="7dF-2D-nls"/>
+                            <constraint firstItem="FR5-br-LHM" firstAttribute="height" secondItem="LaX-2N-l46" secondAttribute="height" multiplier="0.6" id="5qf-Pl-Ccw"/>
+                            <constraint firstItem="FR5-br-LHM" firstAttribute="centerX" secondItem="ehU-k5-oHJ" secondAttribute="centerX" multiplier="0.13" constant="4" id="7dF-2D-nls"/>
                             <constraint firstItem="lmE-TL-j3Q" firstAttribute="centerY" secondItem="LaX-2N-l46" secondAttribute="centerY" multiplier="0.998" id="8xI-OQ-F1h"/>
                             <constraint firstItem="UtN-Mj-fC3" firstAttribute="width" secondItem="ehU-k5-oHJ" secondAttribute="width" id="AUw-4q-2Ya"/>
                             <constraint firstItem="UtN-Mj-fC3" firstAttribute="centerX" secondItem="ehU-k5-oHJ" secondAttribute="centerX" id="CUH-NB-s8i"/>
@@ -868,7 +868,7 @@
                             <constraint firstItem="CPm-Bi-c7M" firstAttribute="centerY" secondItem="lmE-TL-j3Q" secondAttribute="centerY" constant="4" id="tt5-gW-51z"/>
                             <constraint firstItem="UtN-Mj-fC3" firstAttribute="centerX" secondItem="ehU-k5-oHJ" secondAttribute="centerX" id="vS8-wa-XaD"/>
                             <constraint firstItem="LaX-2N-l46" firstAttribute="height" secondItem="ehU-k5-oHJ" secondAttribute="height" multiplier="0.06" id="yJN-Py-3gx"/>
-                            <constraint firstItem="FR5-br-LHM" firstAttribute="width" secondItem="LaX-2N-l46" secondAttribute="width" multiplier="1.25" id="z9V-nP-NHN"/>
+                            <constraint firstItem="FR5-br-LHM" firstAttribute="width" secondItem="LaX-2N-l46" secondAttribute="width" multiplier="0.45" id="z9V-nP-NHN"/>
                         </constraints>
                     </view>
                     <connections>
@@ -897,12 +897,12 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barra_Nova" translatesAutoresizingMaskIntoConstraints="NO" id="AFB-C4-cgV"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XER-5d-Uiu">
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Thin" family="SF Compact Display" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi8-eU-eMy">
-                                <state key="normal" image="botao_voltar"/>
+                                <state key="normal" image="botao_voltar_novo"/>
                                 <connections>
                                     <action selector="back:" destination="IH0-gW-iFA" eventType="touchUpInside" id="2yZ-VX-nYA"/>
                                 </connections>
@@ -977,7 +977,7 @@
                             <constraint firstItem="Twj-Vl-p1j" firstAttribute="centerY" secondItem="Iet-Xq-qFh" secondAttribute="centerY" multiplier="1.8" id="MeN-6j-QcW"/>
                             <constraint firstItem="GYG-V5-RL8" firstAttribute="height" secondItem="k4i-KB-r8W" secondAttribute="height" id="NEP-S9-zda"/>
                             <constraint firstItem="GYG-V5-RL8" firstAttribute="centerY" secondItem="k4i-KB-r8W" secondAttribute="centerY" id="Nyr-JC-0L9"/>
-                            <constraint firstItem="xi8-eU-eMy" firstAttribute="centerX" secondItem="AFB-C4-cgV" secondAttribute="centerX" multiplier="0.22" id="PTO-cn-Wa1"/>
+                            <constraint firstItem="xi8-eU-eMy" firstAttribute="centerX" secondItem="AFB-C4-cgV" secondAttribute="centerX" multiplier="0.13" constant="4" id="PTO-cn-Wa1"/>
                             <constraint firstItem="ZaK-Pp-17O" firstAttribute="height" secondItem="Iet-Xq-qFh" secondAttribute="height" multiplier="0.5" id="S5J-yb-3nV"/>
                             <constraint firstItem="ErA-sK-ygK" firstAttribute="centerX" secondItem="ZaK-Pp-17O" secondAttribute="centerX" id="TII-sy-6Ht"/>
                             <constraint firstItem="Twj-Vl-p1j" firstAttribute="height" secondItem="Iet-Xq-qFh" secondAttribute="height" multiplier="0.07" id="USi-tt-3EQ"/>
@@ -998,9 +998,9 @@
                             <constraint firstItem="Twj-Vl-p1j" firstAttribute="width" secondItem="Iet-Xq-qFh" secondAttribute="width" multiplier="0.145" id="gTn-ug-Gcx"/>
                             <constraint firstItem="k4i-KB-r8W" firstAttribute="width" secondItem="ZaK-Pp-17O" secondAttribute="width" id="hfX-pY-wPZ"/>
                             <constraint firstItem="AFB-C4-cgV" firstAttribute="top" secondItem="lQy-Dd-O0c" secondAttribute="bottom" constant="-20" id="lGo-aN-f0u"/>
-                            <constraint firstItem="xi8-eU-eMy" firstAttribute="height" secondItem="AFB-C4-cgV" secondAttribute="height" multiplier="0.38" id="mWq-wQ-009"/>
+                            <constraint firstItem="xi8-eU-eMy" firstAttribute="height" secondItem="AFB-C4-cgV" secondAttribute="height" multiplier="0.26" id="mWq-wQ-009"/>
                             <constraint firstItem="2Xc-Mv-cBl" firstAttribute="centerX" secondItem="AFB-C4-cgV" secondAttribute="centerX" id="sZq-jj-Li5"/>
-                            <constraint firstItem="xi8-eU-eMy" firstAttribute="width" secondItem="AFB-C4-cgV" secondAttribute="width" multiplier="0.13" id="sdz-lx-7Dt"/>
+                            <constraint firstItem="xi8-eU-eMy" firstAttribute="width" secondItem="AFB-C4-cgV" secondAttribute="width" multiplier="0.05" id="sdz-lx-7Dt"/>
                             <constraint firstItem="1G3-IF-n1Y" firstAttribute="centerY" secondItem="mSb-m4-B77" secondAttribute="centerY" constant="2" id="t8e-Aj-siO"/>
                             <constraint firstItem="xi8-eU-eMy" firstAttribute="centerY" secondItem="XER-5d-Uiu" secondAttribute="centerY" id="tIM-85-keV"/>
                             <constraint firstItem="XER-5d-Uiu" firstAttribute="centerX" secondItem="AFB-C4-cgV" secondAttribute="centerX" id="tjo-s7-mrC"/>
@@ -1038,7 +1038,7 @@
         <scene sceneID="PbC-fa-Z4f">
             <objects>
                 <navigationController storyboardIdentifier="navigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1059,7 +1059,7 @@
         <image name="Roda_m_direita" width="620" height="620"/>
         <image name="Roda_m_esquerda" width="620" height="620"/>
         <image name="Roda_m_superior" width="620" height="620"/>
-        <image name="balao_InsirasuaMeta2" width="590" height="305"/>
+        <image name="balao_novo" width="509" height="253"/>
         <image name="barra_Nova" width="750" height="142"/>
         <image name="botao_RespirarBatimento" width="458" height="196"/>
         <image name="botao_TerminouSetarTarefas" width="100" height="100"/>
@@ -1069,10 +1069,11 @@
         <image name="botao_respirar" width="400" height="403"/>
         <image name="botao_setarProximaTarefa" width="92" height="80"/>
         <image name="botao_soRespirar" width="458" height="196"/>
-        <image name="botao_voltar" width="235" height="134"/>
+        <image name="botao_voltar_novo" width="50" height="67"/>
         <image name="circuloPassos" width="400" height="400"/>
         <image name="coracao_2" width="200" height="175"/>
         <image name="coracao_3" width="200" height="175"/>
+        <image name="coracao_novo" width="145" height="127"/>
         <image name="coracao_respirar" width="144" height="126"/>
         <image name="fimDeMeta" width="800" height="1261"/>
         <image name="fundo_Novo" width="750" height="1334"/>

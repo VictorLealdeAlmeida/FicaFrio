@@ -126,6 +126,10 @@
 
 // When start button is clicked
 - (IBAction)startStep:(id)sender {
+    [self startStepAction];
+}
+
+- (void)startStepAction{
     _startStep.hidden = true;
     _endStep.hidden = false;
     
@@ -138,20 +142,22 @@
     
     [defaults setBool:TRUE forKey:@"stepStarted"];
     //[defaults synchronize];
-
+    
     //Timer pra acontecer a animacao
     [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
     timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3
-                                     target:self
-                                   selector:@selector(animationButton)
-                                   userInfo:nil
-                                    repeats:YES];
-    
-
+                                                      target:self
+                                                    selector:@selector(animationButton)
+                                                    userInfo:nil
+                                                     repeats:YES];
 }
 
 // endStep - When end button is clicked
 - (IBAction)circleButton:(id)sender {
+    [self stopAction];
+}
+
+- (void)stopAction{
     // Store endDate and avgHeartRate
     [database setEndDate:[NSDate date] toStep:currentStep];
     float avgHeartRate = [defaults floatForKey:@"avgHeartRate"];
@@ -324,8 +330,9 @@
     
 }
 
+bool x = false;
+
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
-    
     
     NSString *counterValue = [message objectForKey:@"startStop"];
     
@@ -334,10 +341,16 @@
 
     _tagLabel.text = counterValue;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        _tagLabel.text = counterValue;
-    });
+    if (!x){
+        [self startStepAction];
+        x = true;
+    }else{
+        [self stopAction];
+        x = false;
+    }
+    
+
+  
 }
 
 
