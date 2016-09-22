@@ -129,6 +129,16 @@
         
         if (number == 2) { [self rotateCircleToLeft]; }
         else if (number == 3) { [self rotateCircleToRight]; }
+        
+        // Rotates one full circle before going back to step one
+//        int numberOfRotations = 0;
+//        if (number == 2) { numberOfRotations = 5; }
+//        else if (number == 3) { numberOfRotations = 4; }
+//        
+//        for (int i = 0; i < numberOfRotations; i++) {
+//            [self rotateCircleToRight];
+//        }
+        
     }
     // If there are still steps to be set
     else {
@@ -159,6 +169,10 @@
 - (BOOL)checkIfCanFinish {
     if (![stepsNames containsObject:@""] && ![stepsTags containsObject:@""]) {
         _setStepsButton.hidden = false;
+        [_setStepsButton rotation360:1 option:0];
+        [_setStepsButton rotation360:1 option:0];
+        [_setStepsButton rotation360:1 option:0];
+        [_setStepsButton rotation360:1 option:0];
         return true;
     }
     return false;
