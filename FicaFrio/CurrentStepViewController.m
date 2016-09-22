@@ -112,7 +112,23 @@ bool startStopBool = false;
         WCSession *session = [WCSession defaultSession];
         session.delegate = self;
         [session activateSession];
+        
+        //Envia um um comunicado pra tirar o hidden das views
+        NSString *startStop = [NSString stringWithFormat:@"%d", 10];
+        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"watch"]];
+        
+        [[WCSession defaultSession] sendMessage:applicationData
+                                   replyHandler:^(NSDictionary *reply) {
+                                       //handle reply from iPhone app here
+                                   }
+                                   errorHandler:^(NSError *error) {
+                                       //catch any errors here
+                                       NSLog(@"Deu erro");
+                                   }
+         ];
+        
     }
+    
     
 }
 
@@ -180,7 +196,7 @@ bool startStopBool = false;
     stepStarted = TRUE;
     [defaults setBool:stepStarted forKey:@"stepStarted"];
     //[defaults synchronize];
-    
+ 
     //Timer pra acontecer a animacao
     [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
     timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3
@@ -370,14 +386,15 @@ bool startStopBool = false;
     
     NSString *counterValue = [message objectForKey:@"startStopToIphone"];
     
-    NSLog(@"%@",counterValue);
+    NSLog(@"RESULTADO %@",counterValue);
 
     if ([counterValue integerValue] == 0){
+        [self startAction];
         startStopBool = true;
-    }else{
+    }else if ([counterValue integerValue] == 1){
+        [self stopAction];
         startStopBool = false;
     }
     
-    [self startStopStepAction];
 }
 @end

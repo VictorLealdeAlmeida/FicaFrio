@@ -28,13 +28,17 @@
 @property (nonatomic, retain) HKAnchoredObjectQuery *heartQuery;
 @property (nonatomic, retain) HKQuantityType *heartType;
 @property (nonatomic, retain) NSMutableArray *sampleValues;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *relaxButton;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepText;
 
 @end
-
 
 @implementation CurrentWatchViewController
 
 bool statusButton = false;
+bool statusConnection = false;
+int step = 0;
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
@@ -45,9 +49,13 @@ bool statusButton = false;
         WCSession *session = [WCSession defaultSession];
         session.delegate = self;
         [session activateSession];
+        
     }
     
     self.lastAnchor = 0;
+
+
+
 }
 
 - (void)willActivate {
@@ -63,7 +71,7 @@ bool statusButton = false;
 - (IBAction)startStopButton {
     if (!flag){
         //Por aq vai passar o valor pra ligar o stop no ios
-        NSString *startStop = [NSString stringWithFormat:@"%d", 1];
+        NSString *startStop = [NSString stringWithFormat:@"%d", 0];
         NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
         
         [[WCSession defaultSession] sendMessage:applicationData
@@ -77,7 +85,7 @@ bool statusButton = false;
          ];
     }else{
         //Por aq vai passar o valor pra ligar o start no ios
-        NSString *startStop = [NSString stringWithFormat:@"%d", 0];
+        NSString *startStop = [NSString stringWithFormat:@"%d", 1];
         NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
         
         [[WCSession defaultSession] sendMessage:applicationData
@@ -100,28 +108,55 @@ bool statusButton = false;
         [_imageSet stopAnimating];
         [_imageSet setImageNamed:@"relogio"];
         flag = NO;
-        [self stopStoringHeartRate];
+        //[self stopStoringHeartRate];
+        
+        //Finaliza a sessao
+        if(step == 3){
+            step = 0;
+            _stepLabel.hidden = true;
+            _relaxButton.hidden = true;
+            _imageSet.hidden = true;
+            _stepText.hidden = true;
+            
+            statusConnection = false;
+        }
     }else{
         [_imageSet setImageNamed:@"relogio"];
         [_imageSet startAnimating];
         flag = YES;
         avgHeartRate = 0.0;
-        [self startStoringHeartRate];
+       // [self startStoringHeartRate];
+        
+        //Aumentar a label do watch
+        step++;
+        _stepLabel.text = [NSString stringWithFormat:@"%d", step];
     }
 }
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
-    NSString *counterValue = [message objectForKey:@"startStopToWatch"];
     
-    NSLog(@"%@",counterValue);
-    if ([counterValue integerValue] == 0){
-        statusButton = true;
+    //Quando iniciar a comunicacao, mostrar as views
+    if(!statusConnection){
+        _stepLabel.hidden = false;
+        _relaxButton.hidden = false;
+        _imageSet.hidden = false;
+        _stepText.hidden = false;
+        
+        statusConnection = true;
     }else{
-        statusButton = false;
+        NSString *counterValue = [message objectForKey:@"startStopToWatch"];
+        
+        NSLog(@"%@",counterValue);
+        if ([counterValue integerValue] == 0){
+            statusButton = true;
+        }else if ([counterValue integerValue] == 1){
+            statusButton = false;
+        }
+        
+        [self changeStartButton];
+        
     }
-    
-    [self changeStartButton];
 
     
 }
