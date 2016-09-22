@@ -76,6 +76,8 @@
 
 @implementation CurrentStepViewController
 
+bool startStopBool = false;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _startStep.hidden = false;
@@ -150,6 +152,8 @@
                                                     selector:@selector(animationButton)
                                                     userInfo:nil
                                                      repeats:YES];
+    
+    startStopBool = true;
 }
 
 // endStep - When end button is clicked
@@ -185,6 +189,9 @@
         [defaults setInteger:0 forKey:@"currentStepNumber"];
         [self showPopup:_confirmPopupView];
     }
+    
+    startStopBool = false;
+
 }
 
 - (void)updateStep {
@@ -330,8 +337,6 @@
     
 }
 
-bool x = false;
-
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
     NSString *counterValue = [message objectForKey:@"startStop"];
@@ -341,12 +346,10 @@ bool x = false;
 
     _tagLabel.text = counterValue;
     
-    if (!x){
+    if (!startStopBool){
         [self startStepAction];
-        x = true;
     }else{
         [self stopAction];
-        x = false;
     }
     
 
