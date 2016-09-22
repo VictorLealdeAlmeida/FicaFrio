@@ -115,6 +115,7 @@ bool startStopBool = false;
         [session activateSession];
     }
     
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -180,7 +181,7 @@ bool startStopBool = false;
     
     [defaults setBool:TRUE forKey:@"stepStarted"];
     //[defaults synchronize];
-    
+ 
     //Timer pra acontecer a animacao
     [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
     timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3

@@ -28,13 +28,17 @@
 @property (nonatomic, retain) HKAnchoredObjectQuery *heartQuery;
 @property (nonatomic, retain) HKQuantityType *heartType;
 @property (nonatomic, retain) NSMutableArray *sampleValues;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *relaxButton;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepText;
 
 @end
-
 
 @implementation CurrentWatchViewController
 
 bool statusButton = false;
+bool statusConnection = false;
+int step = 0;
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
@@ -45,9 +49,13 @@ bool statusButton = false;
         WCSession *session = [WCSession defaultSession];
         session.delegate = self;
         [session activateSession];
+        
     }
     
     self.lastAnchor = 0;
+
+
+
 }
 
 - (void)willActivate {
@@ -100,17 +108,40 @@ bool statusButton = false;
         [_imageSet stopAnimating];
         [_imageSet setImageNamed:@"relogio"];
         flag = NO;
-        [self stopStoringHeartRate];
+        //[self stopStoringHeartRate];
+        
+        if(step == 3){
+            step = 0;
+            _stepLabel.hidden = true;
+            _relaxButton.hidden = true;
+            _imageSet.hidden = true;
+            _stepText.hidden = true;
+        }
     }else{
         [_imageSet setImageNamed:@"relogio"];
         [_imageSet startAnimating];
         flag = YES;
         avgHeartRate = 0.0;
-        [self startStoringHeartRate];
+       // [self startStoringHeartRate];
+        
+        //Aumentar a label do watch
+        step++;
+        _stepLabel.text = [NSString stringWithFormat:@"%d", step];
     }
 }
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
+    
+    
+    //Quando iniciar a comunicao, mostrar as views
+  /*  if(!statusConnection){
+        _stepLabel.hidden = false;
+        _relaxButton.hidden = false;
+        _imageSet.hidden = false;
+        _stepText.hidden = false;
+        
+        statusConnection = true;
+    }*/
     
     NSString *counterValue = [message objectForKey:@"startStopToWatch"];
     

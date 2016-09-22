@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jJt-6K-aPf">
     <dependencies>
-        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
     </dependencies>
@@ -42,6 +41,7 @@
                         <group width="1" alignment="center" id="Ipx-ef-vGY">
                             <items>
                                 <imageView width="41" height="40" alignment="center" verticalAlignment="center" image="botao_naopreenchido" id="waG-N8-Ocj"/>
+                                <label alignment="center" hidden="YES" text="1" id="YJM-gJ-WxV"/>
                             </items>
                         </group>
                         <group width="1" height="40" alignment="center" id="MLb-E1-6NU">
@@ -66,6 +66,9 @@
                     </items>
                     <connections>
                         <outlet property="imageSet" destination="ebh-TL-cyV" id="oa3-pI-rtt"/>
+                        <outlet property="relaxButton" destination="WLO-cB-yxg" id="r7s-l7-HGL"/>
+                        <outlet property="stepLabel" destination="YJM-gJ-WxV" id="1H4-RV-SlW"/>
+                        <outlet property="stepText" destination="kRs-A2-nZu" id="r3N-qQ-E7Q"/>
                     </connections>
                 </controller>
             </objects>
