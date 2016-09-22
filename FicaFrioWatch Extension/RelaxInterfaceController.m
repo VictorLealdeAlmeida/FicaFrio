@@ -18,7 +18,7 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     [_relaxImage setImageNamed:@"respirar"];
-    [_relaxImage startAnimatingWithImagesInRange: NSMakeRange(1, 11) duration:0.5 repeatCount:3];
+    [_relaxImage startAnimatingWithImagesInRange: NSMakeRange(1, 67) duration:5 repeatCount:100];
     
     // Configure interface objects here.
 }
