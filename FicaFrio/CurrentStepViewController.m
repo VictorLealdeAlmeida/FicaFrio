@@ -129,6 +129,20 @@ bool startStopBool = false;
 // When start button is clicked
 - (IBAction)startStep:(id)sender {
     [self startStepAction];
+    
+    //Envia o 1 pra informar o watch que o play foi selecionado
+    NSString *startStop = [NSString stringWithFormat:@"%d", 1];
+    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
+    
+    [[WCSession defaultSession] sendMessage:applicationData
+                               replyHandler:^(NSDictionary *reply) {
+                                   //handle reply from iPhone app here
+                               }
+                               errorHandler:^(NSError *error) {
+                                   //catch any errors here
+                                   NSLog(@"Deu erro");
+                               }
+     ];
 }
 
 - (void)startStepAction{
@@ -159,6 +173,20 @@ bool startStopBool = false;
 // endStep - When end button is clicked
 - (IBAction)circleButton:(id)sender {
     [self stopAction];
+    
+    //Envia o 0 pra informar o watch que o stop foi selecionado
+    NSString *startStop = [NSString stringWithFormat:@"%d", 0];
+    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
+    
+    [[WCSession defaultSession] sendMessage:applicationData
+                               replyHandler:^(NSDictionary *reply) {
+                                   //handle reply from iPhone app here
+                               }
+                               errorHandler:^(NSError *error) {
+                                   //catch any errors here
+                                   NSLog(@"Deu erro");
+                               }
+     ];
 }
 
 - (void)stopAction{
@@ -351,8 +379,6 @@ bool startStopBool = false;
     }else{
         [self stopAction];
     }
-    
-
   
 }
 
