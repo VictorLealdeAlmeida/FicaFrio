@@ -63,7 +63,7 @@
 //Actions popup
 - (IBAction)circleButton:(id)sender;
 - (IBAction)newGoal:(id)sender;
-- (IBAction)startStep:(id)sender;
+- (IBAction)startStopStep:(id)sender;
 - (IBAction)startRelax:(UIButton *)sender;
 - (IBAction)justRelax:(UIButton *)sender;
 - (IBAction)relaxAndMeasure:(UIButton *)sender;
@@ -114,7 +114,6 @@ bool startStopBool = false;
         [session activateSession];
     }
     
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,25 +126,45 @@ bool startStopBool = false;
 }
 
 // When start button is clicked
-- (IBAction)startStep:(id)sender {
-    [self startStepAction];
+- (IBAction)startStopStep:(id)sender {
+    if (!startStopBool){
+        [self startStopStepAction];
+        
+        //Envia o 1 pra informar o watch que o play foi selecionado
+        NSString *startStop = [NSString stringWithFormat:@"%d", 1];
+        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
+        
+        [[WCSession defaultSession] sendMessage:applicationData
+                                   replyHandler:^(NSDictionary *reply) {
+                                       //handle reply from iPhone app here
+                                   }
+                                   errorHandler:^(NSError *error) {
+                                       //catch any errors here
+                                       NSLog(@"Deu erro");
+                                   }
+         ];
     
-    //Envia o 1 pra informar o watch que o play foi selecionado
-    NSString *startStop = [NSString stringWithFormat:@"%d", 1];
-    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
+    }else{
+        [self stopAction];
+        
+        //Envia o 0 pra informar o watch que o stop foi selecionado
+        NSString *startStop = [NSString stringWithFormat:@"%d", 0];
+        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
+        
+        [[WCSession defaultSession] sendMessage:applicationData
+                                   replyHandler:^(NSDictionary *reply) {
+                                       //handle reply from iPhone app here
+                                   }
+                                   errorHandler:^(NSError *error) {
+                                       //catch any errors here
+                                       NSLog(@"Deu erro");
+                                   }
+         ];
+    }
     
-    [[WCSession defaultSession] sendMessage:applicationData
-                               replyHandler:^(NSDictionary *reply) {
-                                   //handle reply from iPhone app here
-                               }
-                               errorHandler:^(NSError *error) {
-                                   //catch any errors here
-                                   NSLog(@"Deu erro");
-                               }
-     ];
 }
 
-- (void)startStepAction{
+- (void)startStopStepAction{
     _startStep.hidden = true;
     _endStep.hidden = false;
     
@@ -168,25 +187,6 @@ bool startStopBool = false;
                                                      repeats:YES];
     
     startStopBool = true;
-}
-
-// endStep - When end button is clicked
-- (IBAction)circleButton:(id)sender {
-    [self stopAction];
-    
-    //Envia o 0 pra informar o watch que o stop foi selecionado
-    NSString *startStop = [NSString stringWithFormat:@"%d", 0];
-    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
-    
-    [[WCSession defaultSession] sendMessage:applicationData
-                               replyHandler:^(NSDictionary *reply) {
-                                   //handle reply from iPhone app here
-                               }
-                               errorHandler:^(NSError *error) {
-                                   //catch any errors here
-                                   NSLog(@"Deu erro");
-                               }
-     ];
 }
 
 - (void)stopAction{
@@ -370,9 +370,7 @@ bool startStopBool = false;
     NSString *counterValue = [message objectForKey:@"startStop"];
     
     NSLog(@"%@",counterValue);
-    _descriptionLabel.text = [NSString stringWithFormat: @"Olha o numero ai %@", counterValue];
 
-    _tagLabel.text = counterValue;
     
     if (!startStopBool){
         [self startStepAction];
