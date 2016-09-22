@@ -78,6 +78,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         TaskText.delegate = self;
         self.view.addGestureRecognizer(tapGesture)
         
+        var number = 1;
+        let direction = 1;
+        let shakes = 55;
+
+        
         insertGoalLabel.text = NSLocalizedString("Insert your goal", comment:"")
         
         
@@ -106,6 +111,26 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         //blurEffectView.addSubview(imageView);
     }
     
+    func shakeview (NewGoalView: UIView, numberOfShakes : Int, direction: CGFloat, maxShakes : Int) {
+        
+        let interval : NSTimeInterval = 0.03
+        
+        UIView.animateWithDuration(interval, animations: { () -> Void in
+            NewGoalView.transform = CGAffineTransformMakeTranslation(5 * direction, 0)
+            
+            }, completion: { (aBool :Bool) -> Void in
+                
+                if (numberOfShakes >= maxShakes) {
+                    NewGoalView.transform = CGAffineTransformIdentity
+                    NewGoalView.becomeFirstResponder()
+                    return
+                }
+                
+        })
+        
+    }
+    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -153,7 +178,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         let goalName = TaskText.text
         let defaults = NSUserDefaults.init()
         defaults.setObject(goalName, forKey: "goalName")
-        self.performSegueWithIdentifier("homeToSet", sender: self)
+        if TaskText.text!.characters.count < 1 {
+            shakeview(NewGoalView, numberOfShakes: 1, direction: 1, maxShakes: 55);
+        }
+        else {
+            self.performSegueWithIdentifier("homeToSet", sender: self)
+        }
         return true;
     }
     
