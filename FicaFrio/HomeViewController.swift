@@ -22,6 +22,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var newGoalButton: UIButton!
     
     @IBOutlet var tapGesture: UITapGestureRecognizer!
+    
+    let number = 1;
+    let direction = 1;
+    let shakes = 55;
 
     @IBAction func DismissKeyboard(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
@@ -77,11 +81,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         TaskText.delegate = self;
         self.view.addGestureRecognizer(tapGesture)
-        
-        var number = 1;
-        let direction = 1;
-        let shakes = 55;
-
         
         insertGoalLabel.text = NSLocalizedString("Insert your goal", comment:"")
         
@@ -184,7 +183,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         let defaults = NSUserDefaults.init()
         defaults.setObject(goalName, forKey: "goalName")
         if TaskText.text!.characters.count < 1 {
-            shakeview(NewGoalView, numberOfShakes: 1, direction: 1, maxShakes: 55);
+            self.shakeview(NewGoalView, numberOfShakes: 1, direction: 1, maxShakes: 55);
         }
         else {
             self.performSegueWithIdentifier("homeToSet", sender: self)
