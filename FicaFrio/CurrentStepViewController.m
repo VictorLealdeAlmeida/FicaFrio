@@ -68,7 +68,6 @@
 - (IBAction)justRelax:(UIButton *)sender;
 - (IBAction)relaxAndMeasure:(UIButton *)sender;
 - (IBAction)goToRelax:(UIButton *)sender;
-//- (IBAction)clickOutsideOfPopup:(UITapGestureRecognizer *)sender;
 - (IBAction)clickOutsideOfPopup:(UITapGestureRecognizer *)sender;
 
 
@@ -178,7 +177,8 @@ bool startStopBool = false;
     [database setStartDate:[NSDate date] toStep:currentStep];
     [defaults setInteger:0 forKey:@"avgHeartRate"];
     
-    [defaults setBool:TRUE forKey:@"stepStarted"];
+    stepStarted = TRUE;
+    [defaults setBool:stepStarted forKey:@"stepStarted"];
     //[defaults synchronize];
     
     //Timer pra acontecer a animacao
@@ -198,7 +198,8 @@ bool startStopBool = false;
     float avgHeartRate = [defaults floatForKey:@"avgHeartRate"];
     [database setAvgHeartRate:avgHeartRate toStep:currentStep];
     
-    [defaults setBool:FALSE forKey:@"stepStarted"];
+    stepStarted = FALSE;
+    [defaults setBool:stepStarted forKey:@"stepStarted"];
     [timerAnimation invalidate];
     
     [self cancelNotification];
@@ -257,7 +258,13 @@ bool startStopBool = false;
 }
 
 - (IBAction)startRelax:(UIButton *)sender {
-    [self showPopup:_relaxPopupView];
+    if (stepStarted) {
+        [self showPopup:_relaxPopupView];
+    }
+    else {
+        selectHeart = false;
+        [self performSegueWithIdentifier:@"currentToRelax" sender:self];
+    }
 }
 
 - (IBAction)justRelax:(UIButton *)sender {
