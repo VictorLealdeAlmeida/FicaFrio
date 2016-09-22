@@ -169,10 +169,9 @@
 - (BOOL)checkIfCanFinish {
     if (![stepsNames containsObject:@""] && ![stepsTags containsObject:@""]) {
         _setStepsButton.hidden = false;
-        [_setStepsButton rotation360:1 option:0];
-        [_setStepsButton rotation360:1 option:0];
-        [_setStepsButton rotation360:1 option:0];
-        [_setStepsButton rotation360:1 option:0];
+        //[_setStepsButton rotation360:1 option:0];
+        //[_setStepsButton setFrame:CGRectMake(_setStepsButton.frame.origin.x, _setStepsButton.frame.origin.y, _setStepsButton.frame.size.width, _setStepsButton.frame.size.height)];
+        [_setStepsButton moveTo:CGPointMake(_setStepsButton.frame.origin.x + 50, _setStepsButton.frame.origin.y) duration:0.5 option:0];
         return true;
     }
     return false;

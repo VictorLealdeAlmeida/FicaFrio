@@ -24,6 +24,7 @@
 		AC4F260C1D941AC400DEB8C2 /* Espiral_Novo.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC4F260B1D941AC400DEB8C2 /* Espiral_Novo.gif */; };
 		AC4F26131D94260D00DEB8C2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4F26121D94260D00DEB8C2 /* HealthKit.framework */; };
 		AC4F26161D94275200DEB8C2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4F26151D94275200DEB8C2 /* HealthKit.framework */; };
+		AC4F26181D942BF000DEB8C2 /* INICIAL.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC4F26171D942BF000DEB8C2 /* INICIAL.gif */; };
 		AC9148E41D8B8741005383AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC9148E61D8B8741005383AA /* Localizable.strings */; };
 		AC93225B1D86C7DB000051B0 /* BD.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93225A1D86C7DB000051B0 /* BD.m */; };
 		AC93227C1D86EE15000051B0 /* Step+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9322791D86EE15000051B0 /* Step+CoreDataProperties.m */; };
@@ -172,6 +173,7 @@
 		AC4F26121D94260D00DEB8C2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		AC4F26141D94275200DEB8C2 /* FicaFrio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FicaFrio.entitlements; sourceTree = "<group>"; };
 		AC4F26151D94275200DEB8C2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		AC4F26171D942BF000DEB8C2 /* INICIAL.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = INICIAL.gif; sourceTree = "<group>"; };
 		AC9148E51D8B8741005383AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AC9148E71D8B87B5005383AA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		AC9148E81D8B87B5005383AA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				1E50F6001D8C49C600CD05EC /* GifInicial.gif */,
 				1E50F6051D8C49E800CD05EC /* GIF_INICIAL_CERTO.gif */,
 				AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */,
+				AC4F26171D942BF000DEB8C2 /* INICIAL.gif */,
 			);
 			name = Gifs;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				D4BBC1481D7EF7BB0058615A /* Assets.xcassets in Resources */,
 				AC9148E41D8B8741005383AA /* Localizable.strings in Resources */,
 				1E50F6061D8C49E800CD05EC /* GIF_INICIAL_CERTO.gif in Resources */,
+				AC4F26181D942BF000DEB8C2 /* INICIAL.gif in Resources */,
 				1E50F5EC1D8C2B9D00CD05EC /* Espiral3.gif in Resources */,
 				D4E76D751D830FC1006F7203 /* respiracao.gif in Resources */,
 				D41A6BAB1D871BB30074FA39 /* Main.storyboard in Resources */,
