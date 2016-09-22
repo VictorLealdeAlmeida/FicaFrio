@@ -10,9 +10,11 @@
 #import <WatchConnectivity/WatchConnectivity.h>
 
 
-@interface CurrentWatchViewController() <WCSessionDelegate>
+@interface CurrentWatchViewController() <WCSessionDelegate>{
+    BOOL flag;
+}
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *imageSet;
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *startStop;
+//@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *startStop;
 - (IBAction)startStopButton;
 
 @end
@@ -24,6 +26,8 @@ bool statusButton = false;
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
+    flag = NO;
+    [_imageSet setImageNamed:@"relogio"];
     
     if ([WCSession isSupported]) {
         WCSession *session = [WCSession defaultSession];
@@ -61,12 +65,14 @@ bool statusButton = false;
 }
 
 - (void)changeStartButton {
-    if (statusButton){
-        [_startStop setBackgroundImageNamed:@"botao_naopreenchido"];
-        statusButton = false;
+    if (flag){
+        [_imageSet stopAnimating];
+        [_imageSet setImageNamed:@"relogio"];
+        flag = NO;
     }else{
-        [_startStop setBackgroundImageNamed:@"botao_preenchido"];
-        statusButton = true;
+        [_imageSet setImageNamed:@"relogio"];
+        [_imageSet startAnimating];
+        flag = YES;
     }
 }
 

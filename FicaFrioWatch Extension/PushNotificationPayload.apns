@@ -2,15 +2,14 @@
     "aps": {
         "alert": {
             "body": "Test message",
-            "title": "Optional title"
+            "title": ""
         },
         "category": "myCategory"
     },
     
     "WatchKit Simulator Actions": [
         {
-            "title": "First Button",
-            "identifier": "firstButtonAction"
+            
         }
     ],
     
