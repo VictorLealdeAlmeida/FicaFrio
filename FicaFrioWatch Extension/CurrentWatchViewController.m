@@ -47,6 +47,7 @@ bool statusButton = false;
 }
 
 - (IBAction)startStopButton {
+    //Por aq vai passar o valor do hate heart
     NSString *startStop = [NSString stringWithFormat:@"%d", 23];
     NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStop"]];
     
@@ -74,6 +75,22 @@ bool statusButton = false;
         [_imageSet startAnimating];
         flag = YES;
     }
+}
+
+- (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
+    
+    NSString *counterValue = [message objectForKey:@"startStopToWatch"];
+    
+    NSLog(@"%@",counterValue);
+    if ([counterValue integerValue] == 0){
+        statusButton = true;
+    }else{
+        statusButton = false;
+    }
+    
+    [self changeStartButton];
+
+    
 }
 
 

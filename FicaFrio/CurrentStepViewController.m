@@ -76,6 +76,8 @@
 
 @implementation CurrentStepViewController
 
+bool startStopBool = false;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _startStep.hidden = false;
@@ -127,6 +129,20 @@
 // When start button is clicked
 - (IBAction)startStep:(id)sender {
     [self startStepAction];
+    
+    //Envia o 1 pra informar o watch que o play foi selecionado
+    NSString *startStop = [NSString stringWithFormat:@"%d", 1];
+    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
+    
+    [[WCSession defaultSession] sendMessage:applicationData
+                               replyHandler:^(NSDictionary *reply) {
+                                   //handle reply from iPhone app here
+                               }
+                               errorHandler:^(NSError *error) {
+                                   //catch any errors here
+                                   NSLog(@"Deu erro");
+                               }
+     ];
 }
 
 - (void)startStepAction{
@@ -150,11 +166,27 @@
                                                     selector:@selector(animationButton)
                                                     userInfo:nil
                                                      repeats:YES];
+    
+    startStopBool = true;
 }
 
 // endStep - When end button is clicked
 - (IBAction)circleButton:(id)sender {
     [self stopAction];
+    
+    //Envia o 0 pra informar o watch que o stop foi selecionado
+    NSString *startStop = [NSString stringWithFormat:@"%d", 0];
+    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
+    
+    [[WCSession defaultSession] sendMessage:applicationData
+                               replyHandler:^(NSDictionary *reply) {
+                                   //handle reply from iPhone app here
+                               }
+                               errorHandler:^(NSError *error) {
+                                   //catch any errors here
+                                   NSLog(@"Deu erro");
+                               }
+     ];
 }
 
 - (void)stopAction{
@@ -185,6 +217,9 @@
         [defaults setInteger:0 forKey:@"currentStepNumber"];
         [self showPopup:_confirmPopupView];
     }
+    
+    startStopBool = false;
+
 }
 
 - (void)updateStep {
@@ -330,8 +365,6 @@
     
 }
 
-bool x = false;
-
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
     NSString *counterValue = [message objectForKey:@"startStop"];
@@ -341,15 +374,11 @@ bool x = false;
 
     _tagLabel.text = counterValue;
     
-    if (!x){
+    if (!startStopBool){
         [self startStepAction];
-        x = true;
     }else{
         [self stopAction];
-        x = false;
     }
-    
-
   
 }
 

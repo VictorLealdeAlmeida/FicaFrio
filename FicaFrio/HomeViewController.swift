@@ -88,9 +88,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
  
  
      // Configura a logo
-        let logoGif = UIImage.gifImageWithName("GIF_INICIAL_CERTO")
-        gifView.image
-            = logoGif
+        //let logoGif = UIImage.gifImageWithName("GIF_INICIAL_CERTO")
+        //gifView.image = logoGif
+        
+        
+        let logoGif = UIImage.animatedImageNamed("GifInicial_Concertado-", duration: 1.75)
+        gifView.image = logoGif
+        gifView.animationRepeatCount = 1
+        
         //let imageView = UIImageView(image: logoGif)
         //imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3.2, height: imageView.frame.size.height/3.2)
         //view.addSubview(imageView)

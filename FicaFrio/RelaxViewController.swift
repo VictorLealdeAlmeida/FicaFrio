@@ -26,8 +26,12 @@ class RelaxViewController: UIViewController {
         print("viewDidLoad")
         startReadingHeartRate?.pause()
         
-        let RelaxGif = UIImage.gifImageWithName("Espiral3")
-        gifView.image = RelaxGif
+        let relaxGif = UIImage.gifImageWithName("Espiral_Novo")
+//        gifView.image = RelaxGif
+        
+//        let relaxGif = UIImage.animatedImageNamed("respirar", duration: 5)
+        gifView.image = relaxGif
+        
         //let imageView = UIImageView(image: RelaxGif)
         //imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/4, y: self.view.frame.size.height/4, width: imageView.frame.size.width/2, height: imageView.frame.size.height/2)
         //view.addSubview(imageView)
