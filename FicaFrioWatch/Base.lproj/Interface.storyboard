@@ -32,7 +32,7 @@
             <objects>
                 <controller id="jJt-6K-aPf" customClass="CurrentWatchViewController">
                     <items>
-                        <group width="136" height="67" alignment="center" id="van-Ku-SPZ">
+                        <group width="136" height="60" alignment="center" id="van-Ku-SPZ">
                             <items>
                                 <label width="136" height="40" alignment="left" verticalAlignment="center" text="The TestFlight app allows testers to install and beta test apps on iOS, tvOS and watchOS devices." textAlignment="center" numberOfLines="6" id="kRs-A2-nZu">
                                     <fontDescription key="font" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="8"/>
@@ -41,28 +41,31 @@
                         </group>
                         <group width="1" alignment="center" id="Ipx-ef-vGY">
                             <items>
-                                <imageView width="31" height="31" alignment="center" verticalAlignment="center" image="botao_naopreenchido" id="waG-N8-Ocj"/>
+                                <imageView width="41" height="40" alignment="center" verticalAlignment="center" image="botao_naopreenchido" id="waG-N8-Ocj"/>
                             </items>
                         </group>
                         <group width="1" height="40" alignment="center" id="MLb-E1-6NU">
                             <items>
-                                <button width="43" height="43" alignment="center" verticalAlignment="center" backgroundImage="botao_comecarTarefa" id="WLO-cB-yxg">
+                                <button width="43" height="43" alignment="center" verticalAlignment="center" backgroundImage="botao_respirar" id="WLO-cB-yxg">
                                     <connections>
                                         <segue destination="a9u-7N-6as" kind="push" id="zEg-CR-CfZ"/>
                                     </connections>
                                 </button>
-                                <group width="22" alignment="center" verticalAlignment="center" id="A5I-3a-Iip"/>
-                                <button width="41" height="44" alignment="center" verticalAlignment="center" backgroundImage="botao_naopreenchido" id="9CB-Y5-Wef">
-                                    <connections>
-                                        <action selector="startStopButton" destination="jJt-6K-aPf" id="7uf-ra-1kE"/>
-                                    </connections>
-                                </button>
+                                <group width="27" alignment="center" verticalAlignment="center" id="A5I-3a-Iip"/>
+                                <imageView width="39" height="1" alignment="center" contentMode="scaleAspectFill" id="ebh-TL-cyV">
+                                    <gestureRecognizers>
+                                        <tapGestureRecognizer id="KZK-l5-iVT">
+                                            <connections>
+                                                <action selector="startStopButton" destination="jJt-6K-aPf" id="d9b-bZ-0SJ"/>
+                                            </connections>
+                                        </tapGestureRecognizer>
+                                    </gestureRecognizers>
+                                </imageView>
                             </items>
                         </group>
                     </items>
                     <connections>
-                        <outlet property="imageSet" destination="waG-N8-Ocj" id="Xgc-oC-Qj7"/>
-                        <outlet property="startStop" destination="9CB-Y5-Wef" id="oUC-4v-VKl"/>
+                        <outlet property="imageSet" destination="ebh-TL-cyV" id="oa3-pI-rtt"/>
                     </connections>
                 </controller>
             </objects>
@@ -89,7 +92,10 @@
                     <items>
                         <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf">
+                        <color key="titleColor" red="0.47058823529411764" green="0.74117647058823533" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sashColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </notificationCategory>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
                         <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>

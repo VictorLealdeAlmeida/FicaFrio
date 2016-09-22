@@ -30,7 +30,7 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     [_relaxImage setImageNamed:@"respirar"];
-    [_relaxImage startAnimatingWithImagesInRange: NSMakeRange(1, 67) duration:5 repeatCount:100];
+    [_relaxImage startAnimatingWithImagesInRange: NSMakeRange(1, 70) duration:5 repeatCount:100];
     
     // Configure interface objects here.
     self.lastAnchor = 0;
