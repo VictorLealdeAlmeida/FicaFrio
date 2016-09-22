@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -447,7 +447,8 @@
                                 <color key="textColor" red="0.59215686270000001" green="0.79607843140000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-cC-Oy8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-cC-Oy8">
+                                <frame key="frameInset" minX="56.5" minY="141.5" width="262.5" height="260"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Thin" family="SF Compact Display" pointSize="25"/>
                                 <color key="textColor" red="0.47058823529999999" green="0.74117647060000003" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -462,16 +463,11 @@
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roda_normal" translatesAutoresizingMaskIntoConstraints="NO" id="5ov-Kr-YOu">
                                 <gestureRecognizers/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-FI-8B7">
-                                <state key="normal" image="botao_tarefaAtual_01"/>
-                                <connections>
-                                    <action selector="startStep:" destination="O4b-DK-hPY" eventType="touchUpInside" id="ygD-2H-qx6"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-Yy-Zph">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-Yy-Zph">
                                 <gestureRecognizers/>
                                 <state key="normal" title="Concluído" image="botao_tarefaAtual_01"/>
                                 <connections>
+                                    <action selector="startStopStep:" destination="O4b-DK-hPY" eventType="touchUpInside" id="fbm-tQ-uAg"/>
                                     <outletCollection property="gestureRecognizers" destination="Y3Z-20-29P" appends="YES" id="pP3-Xm-mkl"/>
                                 </connections>
                             </button>
@@ -485,9 +481,6 @@
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1no-Ec-GRu">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="gte-YY-sKX" appends="YES" id="jVd-9s-QQC"/>
-                                </connections>
                             </view>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tec-Tl-W2a" userLabel="Confirm Popup View">
                                 <subviews>
@@ -648,9 +641,7 @@
                             <constraint firstItem="1no-Ec-GRu" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="65Y-du-bHm"/>
                             <constraint firstItem="SZ2-V2-nPY" firstAttribute="width" secondItem="5ov-Kr-YOu" secondAttribute="width" multiplier="0.06" id="6fw-p4-Z4Y"/>
                             <constraint firstItem="34u-gS-pDW" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="88s-Yb-LIq"/>
-                            <constraint firstItem="QeX-FI-8B7" firstAttribute="top" secondItem="ycL-cC-Oy8" secondAttribute="bottom" constant="15" id="8qN-fe-BEJ"/>
                             <constraint firstItem="8uh-Up-BE5" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="8t3-Ad-9zw"/>
-                            <constraint firstItem="QeX-FI-8B7" firstAttribute="centerX" secondItem="SZ2-V2-nPY" secondAttribute="centerX" id="BBg-Q6-f04"/>
                             <constraint firstItem="tec-Tl-W2a" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="DEH-Is-c5I"/>
                             <constraint firstItem="5ov-Kr-YOu" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" multiplier="2.04" id="DrR-lt-B81"/>
                             <constraint firstItem="5ov-Kr-YOu" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="1.18" id="ERK-iA-2Mc"/>
@@ -673,16 +664,13 @@
                             <constraint firstItem="9Xr-vI-5fY" firstAttribute="centerX" secondItem="8uh-Up-BE5" secondAttribute="centerX" id="bPw-rr-vR3"/>
                             <constraint firstItem="5ov-Kr-YOu" firstAttribute="centerX" secondItem="mvB-qI-W75" secondAttribute="centerX" id="c8g-5h-OZr"/>
                             <constraint firstItem="tec-Tl-W2a" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="0.75" id="dEI-Fw-FRR"/>
-                            <constraint firstItem="QeX-FI-8B7" firstAttribute="height" secondItem="SZ2-V2-nPY" secondAttribute="height" multiplier="2.1" id="dUP-Dr-f1f"/>
                             <constraint firstItem="wFP-yM-hgR" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="0.75" id="fGz-kF-Lxg"/>
                             <constraint firstItem="a1H-Yy-Zph" firstAttribute="width" secondItem="SZ2-V2-nPY" secondAttribute="width" multiplier="2" id="jKD-aw-W8C"/>
                             <constraint firstItem="SZ2-V2-nPY" firstAttribute="top" secondItem="a1H-Yy-Zph" secondAttribute="bottom" constant="-7" id="k42-cu-AfC"/>
                             <constraint firstItem="wFP-yM-hgR" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="lfx-lh-HmC"/>
-                            <constraint firstItem="QeX-FI-8B7" firstAttribute="width" secondItem="SZ2-V2-nPY" secondAttribute="width" multiplier="2" id="ljb-C8-XCE"/>
                             <constraint firstItem="tec-Tl-W2a" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" multiplier="0.62" id="loP-1e-GLl"/>
                             <constraint firstItem="rH2-1Z-rDA" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="0.14" id="ma8-rf-ZAl"/>
                             <constraint firstItem="5ov-Kr-YOu" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" multiplier="0.62" id="q1Y-ph-lli"/>
-                            <constraint firstItem="SZ2-V2-nPY" firstAttribute="top" secondItem="QeX-FI-8B7" secondAttribute="bottom" constant="-7" id="qvQ-lW-Hxm"/>
                             <constraint firstItem="rH2-1Z-rDA" firstAttribute="centerX" secondItem="5ov-Kr-YOu" secondAttribute="centerX" id="s9Z-PX-UDB"/>
                             <constraint firstItem="1no-Ec-GRu" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" id="tnW-Ei-Zxk"/>
                             <constraint firstItem="tec-Tl-W2a" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="uGn-Vl-i73"/>
@@ -712,7 +700,6 @@
                         <outlet property="measureLabel" destination="Tjl-LM-FaJ" id="Twq-F1-Bbv"/>
                         <outlet property="popupBackground" destination="1no-Ec-GRu" id="plR-wm-FgQ"/>
                         <outlet property="relaxPopupView" destination="wFP-yM-hgR" id="s69-Qj-NRm"/>
-                        <outlet property="startStep" destination="QeX-FI-8B7" id="AtM-G1-6rU"/>
                         <outlet property="tagLabel" destination="HSj-5u-FI4" id="254-6I-nAy"/>
                         <outlet property="titleLabel" destination="9Xr-vI-5fY" id="xE9-uW-LQb"/>
                         <outlet property="tutorialLabel" destination="tgi-zS-Txx" id="hFD-ae-6YO"/>
@@ -723,12 +710,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhY-xQ-jHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Y3Z-20-29P">
                     <connections>
-                        <action selector="circleButton:" destination="O4b-DK-hPY" id="3sw-CG-Ztr"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="gte-YY-sKX">
-                    <connections>
-                        <action selector="clickOutsideOfPopup:" destination="O4b-DK-hPY" id="lmR-2h-yJZ"/>
+                        <action selector="startStopStep:" destination="O4b-DK-hPY" id="hne-d4-czR"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1092,7 +1074,7 @@
         <image name="setinha" width="70" height="57"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lWd-tw-tJI"/>
         <segue reference="Fx5-TN-vww"/>
+        <segue reference="SIK-03-OEX"/>
     </inferredMetricsTieBreakers>
 </document>

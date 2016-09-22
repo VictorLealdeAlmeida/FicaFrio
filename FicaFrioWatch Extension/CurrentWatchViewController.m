@@ -45,7 +45,7 @@ bool statusButton = false;
 - (IBAction)startStopButton {
     //Por aq vai passar o valor do hate heart
     NSString *startStop = [NSString stringWithFormat:@"%d", 23];
-    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStop"]];
+    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
     
     [[WCSession defaultSession] sendMessage:applicationData
                                replyHandler:^(NSDictionary *reply) {

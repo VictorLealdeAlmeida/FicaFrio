@@ -30,7 +30,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
 @property (weak, nonatomic) IBOutlet UILabel *labelStep;
-@property (weak, nonatomic) IBOutlet UIButton *startStep;
+//@property (weak, nonatomic) IBOutlet UIButton *startStep;
 @property (weak, nonatomic) IBOutlet UIButton *endStep;
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -38,7 +38,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 //Popup
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundPopup;
+//@property (weak, nonatomic) IBOutlet UIImageView *backgroundPopup;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (weak, nonatomic) IBOutlet UIButton *grafButton;
@@ -61,14 +61,14 @@
 
 
 //Actions popup
-- (IBAction)circleButton:(id)sender;
+//- (IBAction)circleButton:(id)sender;
 - (IBAction)newGoal:(id)sender;
 - (IBAction)startStopStep:(id)sender;
 - (IBAction)startRelax:(UIButton *)sender;
 - (IBAction)justRelax:(UIButton *)sender;
 - (IBAction)relaxAndMeasure:(UIButton *)sender;
 - (IBAction)goToRelax:(UIButton *)sender;
-- (IBAction)clickOutsideOfPopup:(UITapGestureRecognizer *)sender;
+//- (IBAction)clickOutsideOfPopup:(UITapGestureRecognizer *)sender;
 
 
 @end
@@ -80,8 +80,7 @@ bool startStopBool = false;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _startStep.hidden = false;
-    _endStep.hidden = true;
+  
     
     _titleLabel.text = NSLocalizedString(@"Steps", "");
     
@@ -127,8 +126,13 @@ bool startStopBool = false;
 
 // When start button is clicked
 - (IBAction)startStopStep:(id)sender {
+    [self startStopStepAction];
+}
+
+- (void)startStopStepAction{
+    
     if (!startStopBool){
-        [self startStopStepAction];
+        [self startAction];
         
         //Envia o 1 pra informar o watch que o play foi selecionado
         NSString *startStop = [NSString stringWithFormat:@"%d", 1];
@@ -143,7 +147,7 @@ bool startStopBool = false;
                                        NSLog(@"Deu erro");
                                    }
          ];
-    
+        
     }else{
         [self stopAction];
         
@@ -161,12 +165,9 @@ bool startStopBool = false;
                                    }
          ];
     }
-    
 }
 
-- (void)startStopStepAction{
-    _startStep.hidden = true;
-    _endStep.hidden = false;
+- (void)startAction{
     
     //Set notification
     [self setNotification];
@@ -204,8 +205,6 @@ bool startStopBool = false;
     // If there are still steps
     if (stepNumber < 3){
         stepNumber++;
-        _startStep.hidden = false;
-        _endStep.hidden = true;
         [self.circleView rotation: 1.0 option:0];
         [self updateStep];
         [defaults setInteger:stepNumber forKey:@"currentStepNumber"];
@@ -231,8 +230,6 @@ bool startStopBool = false;
     
     if (stepStarted) {
         NSLog(@"Step has already started");
-        _startStep.hidden = true;
-        _endStep.hidden = false;
         
         //Timer pra acontecer a animacao
         [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
@@ -330,11 +327,6 @@ bool startStopBool = false;
     
 }
 
-
-- (IBAction)datePicker:(UIDatePicker *)sender {
-    dateTime = sender.date;
-}
-
 - (void)setNotification{
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     
@@ -367,16 +359,18 @@ bool startStopBool = false;
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
-    NSString *counterValue = [message objectForKey:@"startStop"];
+    NSString *counterValue = [message objectForKey:@"startStopToIphone"];
     
     NSLog(@"%@",counterValue);
 
-    
-    if (!startStopBool){
-        [self startStepAction];
+    if ([counterValue integerValue] == 0){
+        startStopBool = true;
     }else{
-        [self stopAction];
+        startStopBool = false;
     }
+    
+    [self startStopStepAction];
+
   
 }
 
