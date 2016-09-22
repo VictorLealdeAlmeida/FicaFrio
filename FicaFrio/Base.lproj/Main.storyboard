@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rao-Rf-tPL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -447,8 +447,7 @@
                                 <color key="textColor" red="0.59215686270000001" green="0.79607843140000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-cC-Oy8">
-                                <frame key="frameInset" minX="56.5" minY="141.5" width="262.5" height="260"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="o contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-cC-Oy8">
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Thin" family="SF Compact Display" pointSize="25"/>
                                 <color key="textColor" red="0.47058823529999999" green="0.74117647060000003" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -481,6 +480,9 @@
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1no-Ec-GRu">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="SWl-ML-AWG" appends="YES" id="6K4-ch-c6X"/>
+                                </connections>
                             </view>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tec-Tl-W2a" userLabel="Confirm Popup View">
                                 <subviews>
@@ -670,6 +672,7 @@
                             <constraint firstItem="wFP-yM-hgR" firstAttribute="centerY" secondItem="mvB-qI-W75" secondAttribute="centerY" id="lfx-lh-HmC"/>
                             <constraint firstItem="tec-Tl-W2a" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" multiplier="0.62" id="loP-1e-GLl"/>
                             <constraint firstItem="rH2-1Z-rDA" firstAttribute="width" secondItem="mvB-qI-W75" secondAttribute="width" multiplier="0.14" id="ma8-rf-ZAl"/>
+                            <constraint firstItem="a1H-Yy-Zph" firstAttribute="top" secondItem="ycL-cC-Oy8" secondAttribute="bottom" constant="15.5" id="pUc-af-jDj"/>
                             <constraint firstItem="5ov-Kr-YOu" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" multiplier="0.62" id="q1Y-ph-lli"/>
                             <constraint firstItem="rH2-1Z-rDA" firstAttribute="centerX" secondItem="5ov-Kr-YOu" secondAttribute="centerX" id="s9Z-PX-UDB"/>
                             <constraint firstItem="1no-Ec-GRu" firstAttribute="height" secondItem="mvB-qI-W75" secondAttribute="height" id="tnW-Ei-Zxk"/>
@@ -711,6 +714,11 @@
                 <tapGestureRecognizer id="Y3Z-20-29P">
                     <connections>
                         <action selector="startStopStep:" destination="O4b-DK-hPY" id="hne-d4-czR"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="SWl-ML-AWG">
+                    <connections>
+                        <action selector="clickOutsideOfPopup:" destination="O4b-DK-hPY" id="geo-Zw-b29"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

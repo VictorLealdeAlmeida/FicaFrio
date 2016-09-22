@@ -69,6 +69,8 @@
 - (IBAction)relaxAndMeasure:(UIButton *)sender;
 - (IBAction)goToRelax:(UIButton *)sender;
 //- (IBAction)clickOutsideOfPopup:(UITapGestureRecognizer *)sender;
+- (IBAction)clickOutsideOfPopup:(UITapGestureRecognizer *)sender;
+
 
 
 @end
@@ -370,9 +372,5 @@ bool startStopBool = false;
     }
     
     [self startStopStepAction];
-
-  
 }
-
-
 @end
