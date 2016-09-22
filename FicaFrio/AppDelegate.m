@@ -8,13 +8,21 @@
 
 #import "AppDelegate.h"
 #import "FicaFrio-swift.h"
+@import HealthKit;
 
 @interface AppDelegate ()
+
+@property (nonatomic, retain) HKHealthStore *healthStore; // retain ou strong?
 
 @end
 
 @implementation AppDelegate
 
+- (void)applicationShouldRequestHealthAuthorization:(UIApplication *)application {
+    [self.healthStore handleAuthorizationForExtensionWithCompletion:^(BOOL success, NSError *error) {
+        //
+    }];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
