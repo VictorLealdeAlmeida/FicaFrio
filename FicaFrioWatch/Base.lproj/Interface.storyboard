@@ -40,7 +40,7 @@
                         </group>
                         <group width="1" alignment="center" id="Ipx-ef-vGY">
                             <items>
-                                <imageView width="41" height="40" alignment="center" verticalAlignment="center" image="botao_naopreenchido" id="waG-N8-Ocj"/>
+                                <imageView width="41" height="40" alignment="center" verticalAlignment="center" image="botao_respirar" id="waG-N8-Ocj"/>
                                 <label alignment="center" hidden="YES" text="1" id="YJM-gJ-WxV"/>
                             </items>
                         </group>
@@ -67,6 +67,7 @@
                     <connections>
                         <outlet property="imageSet" destination="ebh-TL-cyV" id="oa3-pI-rtt"/>
                         <outlet property="relaxButton" destination="WLO-cB-yxg" id="r7s-l7-HGL"/>
+                        <outlet property="stepImage" destination="waG-N8-Ocj" id="XsK-ba-tsZ"/>
                         <outlet property="stepLabel" destination="YJM-gJ-WxV" id="1H4-RV-SlW"/>
                         <outlet property="stepText" destination="kRs-A2-nZu" id="r3N-qQ-E7Q"/>
                     </connections>

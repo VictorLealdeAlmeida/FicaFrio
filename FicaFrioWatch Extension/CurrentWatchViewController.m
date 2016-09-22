@@ -17,6 +17,7 @@
 }
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *imageSet;
 //@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *startStop;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *stepImage;
 - (IBAction)startStopButton;
 
 @property (nonatomic, retain) HKHealthStore *healthStore; // retain ou strong?
@@ -129,7 +130,8 @@ int step = 0;
         
         //Aumentar a label do watch
         step++;
-        _stepLabel.text = [NSString stringWithFormat:@"%d", step];
+        [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", step]];
+        //_stepLabel.text = [NSString stringWithFormat:@"%d", step];
     }
 }
 
