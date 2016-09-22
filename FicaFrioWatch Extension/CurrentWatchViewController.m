@@ -133,26 +133,27 @@ int step = 0;
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
     
-    //Quando iniciar a comunicao, mostrar as views
-  /*  if(!statusConnection){
+    //Quando iniciar a comunicacao, mostrar as views
+    if(!statusConnection){
         _stepLabel.hidden = false;
         _relaxButton.hidden = false;
         _imageSet.hidden = false;
         _stepText.hidden = false;
         
         statusConnection = true;
-    }*/
-    
-    NSString *counterValue = [message objectForKey:@"startStopToWatch"];
-    
-    NSLog(@"%@",counterValue);
-    if ([counterValue integerValue] == 0){
-        statusButton = true;
     }else{
-        statusButton = false;
+        NSString *counterValue = [message objectForKey:@"startStopToWatch"];
+        
+        NSLog(@"%@",counterValue);
+        if ([counterValue integerValue] == 0){
+            statusButton = true;
+        }else if ([counterValue integerValue] == 1){
+            statusButton = false;
+        }
+        
+        [self changeStartButton];
+        
     }
-    
-    [self changeStartButton];
 
     
 }

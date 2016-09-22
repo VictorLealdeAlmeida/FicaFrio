@@ -33,7 +33,7 @@
                     <items>
                         <group width="136" height="60" alignment="center" id="van-Ku-SPZ">
                             <items>
-                                <label width="136" height="40" alignment="left" verticalAlignment="center" text="The TestFlight app allows testers to install and beta test apps on iOS, tvOS and watchOS devices." textAlignment="center" numberOfLines="6" id="kRs-A2-nZu">
+                                <label width="136" height="40" alignment="left" verticalAlignment="center" hidden="YES" text="The TestFlight app allows testers to install and beta test apps on iOS, tvOS and watchOS devices." textAlignment="center" numberOfLines="6" id="kRs-A2-nZu">
                                     <fontDescription key="font" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="8"/>
                                 </label>
                             </items>
@@ -46,13 +46,13 @@
                         </group>
                         <group width="1" height="40" alignment="center" id="MLb-E1-6NU">
                             <items>
-                                <button width="43" height="43" alignment="center" verticalAlignment="center" backgroundImage="botao_respirar" id="WLO-cB-yxg">
+                                <button width="43" height="43" alignment="center" verticalAlignment="center" hidden="YES" backgroundImage="botao_respirar" id="WLO-cB-yxg">
                                     <connections>
                                         <segue destination="a9u-7N-6as" kind="push" id="zEg-CR-CfZ"/>
                                     </connections>
                                 </button>
                                 <group width="27" alignment="center" verticalAlignment="center" id="A5I-3a-Iip"/>
-                                <imageView width="39" height="1" alignment="center" contentMode="scaleAspectFill" id="ebh-TL-cyV">
+                                <imageView width="39" height="1" alignment="center" hidden="YES" contentMode="scaleAspectFill" id="ebh-TL-cyV">
                                     <gestureRecognizers>
                                         <tapGestureRecognizer id="KZK-l5-iVT">
                                             <connections>

@@ -113,6 +113,21 @@ bool startStopBool = false;
         WCSession *session = [WCSession defaultSession];
         session.delegate = self;
         [session activateSession];
+        
+        //Envia um um comunicado pra tirar o hidden das views
+        NSString *startStop = [NSString stringWithFormat:@"%d", 10];
+        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"watch"]];
+        
+        [[WCSession defaultSession] sendMessage:applicationData
+                                   replyHandler:^(NSDictionary *reply) {
+                                       //handle reply from iPhone app here
+                                   }
+                                   errorHandler:^(NSError *error) {
+                                       //catch any errors here
+                                       NSLog(@"Deu erro");
+                                   }
+         ];
+        
     }
     
     
