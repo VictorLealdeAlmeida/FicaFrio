@@ -47,19 +47,35 @@ bool statusButton = false;
 }
 
 - (IBAction)startStopButton {
-    //Por aq vai passar o valor do hate heart
-    NSString *startStop = [NSString stringWithFormat:@"%d", 23];
-    NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
-    
-    [[WCSession defaultSession] sendMessage:applicationData
-                               replyHandler:^(NSDictionary *reply) {
-                                   //handle reply from iPhone app here
-                               }
-                               errorHandler:^(NSError *error) {
-                                   //catch any errors here
-                                   NSLog(@"Deu erro");
-                               }
-     ];
+    if (!flag){
+        //Por aq vai passar o valor pra ligar o stop no ios
+        NSString *startStop = [NSString stringWithFormat:@"%d", 1];
+        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
+        
+        [[WCSession defaultSession] sendMessage:applicationData
+                                   replyHandler:^(NSDictionary *reply) {
+                                       //handle reply from iPhone app here
+                                   }
+                                   errorHandler:^(NSError *error) {
+                                       //catch any errors here
+                                       NSLog(@"Deu erro");
+                                   }
+         ];
+    }else{
+        //Por aq vai passar o valor pra ligar o start no ios
+        NSString *startStop = [NSString stringWithFormat:@"%d", 0];
+        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
+        
+        [[WCSession defaultSession] sendMessage:applicationData
+                                   replyHandler:^(NSDictionary *reply) {
+                                       //handle reply from iPhone app here
+                                   }
+                                   errorHandler:^(NSError *error) {
+                                       //catch any errors here
+                                       NSLog(@"Deu erro");
+                                   }
+         ];
+    }
     
     [self changeStartButton];
     
@@ -70,10 +86,12 @@ bool statusButton = false;
         [_imageSet stopAnimating];
         [_imageSet setImageNamed:@"relogio"];
         flag = NO;
+        
     }else{
         [_imageSet setImageNamed:@"relogio"];
         [_imageSet startAnimating];
         flag = YES;
+    
     }
 }
 
