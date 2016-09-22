@@ -163,17 +163,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         let goalName = TaskText.text
         let defaults = NSUserDefaults.init()
         defaults.setObject(goalName, forKey: "goalName")
-<<<<<<< HEAD
         if TaskText.text!.characters.count < 1 {
             self.shakeview(NewGoalView, numberOfShakes: 1, direction: 1, maxShakes: 55);
         }
         else {
             self.performSegueWithIdentifier("homeToSet", sender: self)
         }
-=======
-        TaskText.text = ""
-        self.performSegueWithIdentifier("homeToSet", sender: self)
->>>>>>> 23b48cd49ae2351392ea0fce6858ec9dff06966f
+
         return true;
     }
     

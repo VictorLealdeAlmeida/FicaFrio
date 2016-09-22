@@ -379,14 +379,15 @@ bool startStopBool = false;
     
     NSString *counterValue = [message objectForKey:@"startStopToIphone"];
     
-    NSLog(@"%@",counterValue);
+    NSLog(@"RESULTADO %@",counterValue);
 
     if ([counterValue integerValue] == 0){
+        [self startAction];
         startStopBool = true;
-    }else{
+    }else if ([counterValue integerValue] == 1){
+        [self stopAction];
         startStopBool = false;
     }
     
-    [self startStopStepAction];
 }
 @end

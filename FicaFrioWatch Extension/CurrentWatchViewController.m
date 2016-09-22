@@ -71,7 +71,7 @@ int step = 0;
 - (IBAction)startStopButton {
     if (!flag){
         //Por aq vai passar o valor pra ligar o stop no ios
-        NSString *startStop = [NSString stringWithFormat:@"%d", 1];
+        NSString *startStop = [NSString stringWithFormat:@"%d", 0];
         NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
         
         [[WCSession defaultSession] sendMessage:applicationData
@@ -85,7 +85,7 @@ int step = 0;
          ];
     }else{
         //Por aq vai passar o valor pra ligar o start no ios
-        NSString *startStop = [NSString stringWithFormat:@"%d", 0];
+        NSString *startStop = [NSString stringWithFormat:@"%d", 1];
         NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
         
         [[WCSession defaultSession] sendMessage:applicationData
@@ -110,12 +110,15 @@ int step = 0;
         flag = NO;
         //[self stopStoringHeartRate];
         
+        //Finaliza a sessao
         if(step == 3){
             step = 0;
             _stepLabel.hidden = true;
             _relaxButton.hidden = true;
             _imageSet.hidden = true;
             _stepText.hidden = true;
+            
+            statusConnection = false;
         }
     }else{
         [_imageSet setImageNamed:@"relogio"];
