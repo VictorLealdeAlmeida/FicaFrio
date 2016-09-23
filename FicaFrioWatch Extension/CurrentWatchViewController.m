@@ -60,8 +60,8 @@ NSMutableArray<NSString*> *mutableArray;
     
     self.lastAnchor = 0;
     [_stepImage setImageNamed:@"GifInicial_Concertado-"];
-    [_stepImage startAnimatingWithImagesInRange: NSMakeRange(1, 19) duration:2 repeatCount:10];
-    [_stepText setText:@"Não há metas em adamento"];
+    [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
+    [_stepText setText:NSLocalizedString(@"No ongoing goals", "")];
     _stepText.hidden = false;
     
 
@@ -118,6 +118,8 @@ NSMutableArray<NSString*> *mutableArray;
         [_imageSet stopAnimating];
         [_imageSet setImageNamed:@"relogio"];
         flag = NO;
+        step++;
+        [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
         //[self stopStoringHeartRate];
         
         //Finaliza a sessao
@@ -126,11 +128,12 @@ NSMutableArray<NSString*> *mutableArray;
             _stepLabel.hidden = true;
             _relaxButton.hidden = true;
             _imageSet.hidden = true;
-            _stepText.hidden = true;
-            _stepImage.hidden = true;
-            
+            //_stepText.hidden = true;
+            //_stepImage.hidden = true;
             statusConnection = false;
-            
+            [_stepText setText:@"You Win!!"];
+            [_stepImage setImageNamed:@"GifInicial_Concertado-"];
+            [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
         }
     }else{
         [_imageSet setImageNamed:@"relogio"];
@@ -140,8 +143,10 @@ NSMutableArray<NSString*> *mutableArray;
        // [self startStoringHeartRate];
         
         //Aumentar a label do watch
-        step++;
-        [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", step]];
+
+        //step++;
+        //[_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", step]];
+        //_stepLabel.text = [NSString stringWithFormat:@"%d", step];
     }
 }
 
@@ -149,24 +154,31 @@ NSMutableArray<NSString*> *mutableArray;
     
     //Quando iniciar a comunicacao, mostrar as views
     if(!statusConnection){
-     //   NSString *counterText = [message objectForKey:@"textToWatch"];
-      //  [mutableArray addObject:counterText];
-        
-      //  _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[0]];
+        //NSString *counterText = [message objectForKey:@"textToWatch0"];
+        [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
+        [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
+        [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
+        _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[0]];
 
         _stepLabel.hidden = true;
         _relaxButton.hidden = false;
         _imageSet.hidden = false;
         _stepText.hidden = false;
+        _stepImage.hidden = false;
         [_stepImage setImageNamed: @"bola"];
         statusConnection = true;
         
     }else{
         NSString *counterValue = [message objectForKey:@"startStopToWatch"];
 
-        NSLog(@"%@",counterValue);
+        //NSLog(@"%@",counterValue);
+        
         if ([counterValue integerValue] == 0){
             statusButton = true;
+            if(step < 2){
+            _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[step+1]];
+            }
+
             [self changeStartButton];
         }else{
             statusButton = false;
