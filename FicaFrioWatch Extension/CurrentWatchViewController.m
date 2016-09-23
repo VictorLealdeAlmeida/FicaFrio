@@ -46,6 +46,9 @@ NSMutableArray<NSString*> *mutableArray;
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     
+    
+    [self requestAuthorization];
+    
     mutableArray = [[NSMutableArray alloc] init];
     
     flag = NO;
@@ -120,7 +123,7 @@ NSMutableArray<NSString*> *mutableArray;
         flag = NO;
         step++;
         [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
-        //[self stopStoringHeartRate];
+        [self stopStoringHeartRate];
         
         //Finaliza a sessao
         if(step == 3){
@@ -140,7 +143,7 @@ NSMutableArray<NSString*> *mutableArray;
         [_imageSet startAnimating];
         flag = YES;
         avgHeartRate = 0.0;
-       // [self startStoringHeartRate];
+        [self startStoringHeartRate];
         
         //Aumentar a label do watch
 
@@ -196,15 +199,14 @@ NSMutableArray<NSString*> *mutableArray;
 - (void)startStoringHeartRate {
     self.startStepDate = [NSDate date];
     // deprecated:
-    //self.workoutSession = [[HKWorkoutSession alloc] initWithActivityType:HKWorkoutActivityTypeOther locationType:HKWorkoutSessionLocationTypeUnknown];
-    HKWorkoutConfiguration *workoutConfig = [HKWorkoutConfiguration init];
-    NSError *error;
-    workoutConfig.activityType = HKWorkoutActivityTypeOther;
-    self.workoutSession = [[HKWorkoutSession alloc] initWithConfiguration:workoutConfig error:&error];
+    self.workoutSession = [[HKWorkoutSession alloc] initWithActivityType:HKWorkoutActivityTypeOther locationType:HKWorkoutSessionLocationTypeUnknown];
+    //HKWorkoutConfiguration *workoutConfig = [HKWorkoutConfiguration init];
+    //NSError *error;
+    //workoutConfig.activityType = HKWorkoutActivityTypeOther;
+    //self.workoutSession = [[HKWorkoutSession alloc] initWithConfiguration:workoutConfig error:&error];
     self.workoutSession.delegate = self;
     //NSLog(@"start");
     
-    [self requestAuthorization];
     [self.healthStore startWorkoutSession:self.workoutSession];
     
     //[self streamQueryHeartRateData];
