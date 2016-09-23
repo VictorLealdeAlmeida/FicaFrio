@@ -113,9 +113,10 @@ bool startStopBool = false;
         session.delegate = self;
         [session activateSession];
         
-        //Envia um um comunicado pra tirar o hidden das views
-        NSString *startStop = [NSString stringWithFormat:@"%d", 10];
-        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"watch"]];
+        //Envia o texto do step
+        //NSString *startStopText = [NSString stringWithFormat:@"%@", _labelStep.text];
+        NSArray * steps = [database fetchStepsForGoalID:goalID];
+        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[steps] forKeys:@[@"textToWatch"]];
         
         [[WCSession defaultSession] sendMessage:applicationData
                                    replyHandler:^(NSDictionary *reply) {
@@ -165,19 +166,7 @@ bool startStopBool = false;
                                    }
          ];
         
-        //Envia o texto do step
-        NSString *startStopText = [NSString stringWithFormat:@"%@", _descriptionLabel.text];
-        NSDictionary *applicationDataTwo = [[NSDictionary alloc] initWithObjects:@[startStopText] forKeys:@[@"textToWatch"]];
         
-        [[WCSession defaultSession] sendMessage:applicationDataTwo
-                                   replyHandler:^(NSDictionary *reply) {
-                                       //handle reply from iPhone app here
-                                   }
-                                   errorHandler:^(NSError *error) {
-                                       //catch any errors here
-                                       NSLog(@"Deu erro");
-                                   }
-         ];
         
     }else{
         [self stopAction];
@@ -195,6 +184,7 @@ bool startStopBool = false;
                                        NSLog(@"Deu erro");
                                    }
          ];
+        
     }
 }
 

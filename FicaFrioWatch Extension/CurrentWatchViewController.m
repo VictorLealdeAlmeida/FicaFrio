@@ -40,9 +40,14 @@
 bool statusButton = false;
 bool statusConnection = false;
 int step = 0;
+NSMutableArray<NSString*> *mutableArray;
+
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
+    
+    mutableArray = [[NSMutableArray alloc] init];
+    
     flag = NO;
     [_imageSet setImageNamed:@"relogio"];
     
@@ -142,33 +147,36 @@ int step = 0;
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
-    
     //Quando iniciar a comunicacao, mostrar as views
     if(!statusConnection){
+     //   NSString *counterText = [message objectForKey:@"textToWatch"];
+      //  [mutableArray addObject:counterText];
+        
+      //  _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[0]];
+
         _stepLabel.hidden = true;
         _relaxButton.hidden = false;
         _imageSet.hidden = false;
         _stepText.hidden = false;
         [_stepImage setImageNamed: @"bola"];
         statusConnection = true;
+        
     }else{
         NSString *counterValue = [message objectForKey:@"startStopToWatch"];
-        NSString *counterText = [message objectForKey:@"textToWatch"];
 
-        
         NSLog(@"%@",counterValue);
         if ([counterValue integerValue] == 0){
             statusButton = true;
-            _stepText.text = counterText;
-        }else if ([counterValue integerValue] == 1){
+            [self changeStartButton];
+        }else{
             statusButton = false;
+            [self changeStartButton];
+
         }
         
-        [self changeStartButton];
         
     }
 
-    
 }
 
 // CHAMAR ESSAS FUNÇÕES ---------------------------------------------------
