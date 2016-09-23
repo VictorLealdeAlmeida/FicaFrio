@@ -1,0 +1,12 @@
+
+/* Class = "WKInterfaceButton"; title = "Nova Meta"; ObjectID = "BKX-ZX-HEf"; */
+"BKX-ZX-HEf.title" = "Nova Meta";
+
+/* Class = "WKInterfaceLabel"; text = "Alert Label"; ObjectID = "IdU-wH-bcW"; */
+"IdU-wH-bcW.text" = "Alert Label";
+
+/* Class = "WKInterfaceLabel"; text = "1"; ObjectID = "YJM-gJ-WxV"; */
+"YJM-gJ-WxV.text" = "1";
+
+/* Class = "WKInterfaceLabel"; text = "The TestFlight app allows testers to install and beta test apps on iOS, tvOS and watchOS devices."; ObjectID = "kRs-A2-nZu"; */
+"kRs-A2-nZu.text" = "The TestFlight app allows testers to install and beta test apps on iOS, tvOS and watchOS devices.";
