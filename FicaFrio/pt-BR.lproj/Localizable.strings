@@ -37,3 +37,7 @@
 // GoalFeedbackViewController
 "Goal Feedback" = "Feedback da Meta";
 "Time" = "Tempo";
+
+
+
+"No ongoing goals" = "funcionou";

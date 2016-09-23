@@ -55,8 +55,8 @@ int step = 0;
     
     self.lastAnchor = 0;
     [_stepImage setImageNamed:@"GifInicial_Concertado-"];
-    [_stepImage startAnimatingWithImagesInRange: NSMakeRange(1, 19) duration:2 repeatCount:10];
-    [_stepText setText:@"Não há metas em adamento"];
+    [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
+    [_stepText setText:NSLocalizedString(@"No ongoing goals", "")];
     _stepText.hidden = false;
     
 
@@ -113,6 +113,8 @@ int step = 0;
         [_imageSet stopAnimating];
         [_imageSet setImageNamed:@"relogio"];
         flag = NO;
+        step++;
+        [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
         //[self stopStoringHeartRate];
         
         //Finaliza a sessao
@@ -121,10 +123,12 @@ int step = 0;
             _stepLabel.hidden = true;
             _relaxButton.hidden = true;
             _imageSet.hidden = true;
-            _stepText.hidden = true;
-            _stepImage.hidden = true;
+            //_stepText.hidden = true;
+            //_stepImage.hidden = true;
             statusConnection = false;
-            
+            [_stepText setText:@"You Win!!"];
+            [_stepImage setImageNamed:@"GifInicial_Concertado-"];
+            [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
         }
     }else{
         [_imageSet setImageNamed:@"relogio"];
@@ -134,8 +138,8 @@ int step = 0;
        // [self startStoringHeartRate];
         
         //Aumentar a label do watch
-        step++;
-        [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", step]];
+        //step++;
+        //[_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", step]];
         //_stepLabel.text = [NSString stringWithFormat:@"%d", step];
     }
 }
@@ -149,6 +153,7 @@ int step = 0;
         _relaxButton.hidden = false;
         _imageSet.hidden = false;
         _stepText.hidden = false;
+        _stepImage.hidden = false;
         [_stepImage setImageNamed: @"bola"];
         statusConnection = true;
     }else{
