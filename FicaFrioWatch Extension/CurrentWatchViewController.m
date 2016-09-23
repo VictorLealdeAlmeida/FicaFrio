@@ -53,25 +53,26 @@ NSMutableArray<NSString*> *mutableArray;
     flag = NO;
     [_imageSet setImageNamed:@"relogio"];
     
-    if ([WCSession isSupported]) {
-        WCSession *session = [WCSession defaultSession];
-        session.delegate = self;
-        [session activateSession];
-        
-    }
-    
     self.lastAnchor = 0;
     [_stepImage setImageNamed:@"GifInicial_Concertado-"];
     [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
     [_stepText setText:NSLocalizedString(@"No ongoing goals", "")];
     _stepText.hidden = false;
-    
-
 
 }
 
 - (void)willActivate {
     // This method is called when watch view controller is about to be visible to user
+    NSMutableDictionary *sendMsg;
+    sendMsg = [[NSMutableDictionary alloc] init];
+    sendMsg[@"value"]=@1;
+    
+    [[WCSession defaultSession]  sendMessage: sendMsg replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
+        step = [((NSNumber*)(replyMessage[@"value"])) integerValue];
+    } errorHandler:^(NSError * _Nonnull error) {
+        
+    }];
+    
     [super willActivate];
 }
 
