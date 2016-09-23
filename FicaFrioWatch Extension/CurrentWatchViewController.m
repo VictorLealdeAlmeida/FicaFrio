@@ -159,7 +159,7 @@ int step = 0;
     }else{
         NSString *counterValue = [message objectForKey:@"startStopToWatch"];
         
-        NSLog(@"%@",counterValue);
+        //NSLog(@"%@",counterValue);
         if ([counterValue integerValue] == 0){
             statusButton = true;
         }else if ([counterValue integerValue] == 1){

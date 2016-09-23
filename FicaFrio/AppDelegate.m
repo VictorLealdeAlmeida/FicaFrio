@@ -22,9 +22,20 @@
     [self.healthStore handleAuthorizationForExtensionWithCompletion:^(BOOL success, NSError *error) {
         //
     }];
+   
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults integerForKey:@"currentStepNumber"] == 0) {
+        // Show the dashboard
+        [navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"] animated:NO];
+    } else {
+        // Login
+        [navigationController pushViewController:[storyboard instantiateViewControllerWithIdentifier:@"currentStep"] animated:NO];
+    }
 
     return YES;
 }
