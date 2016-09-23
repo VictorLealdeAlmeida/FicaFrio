@@ -269,6 +269,7 @@
 		AC3CA1F91D8ACF0C00B985B1 /* iPhone_pulseRate */ = {
 			isa = PBXGroup;
 			children = (
+				AC9322871D86F206000051B0 /* Goal.m */,
 				AC3CA2061D8AD0D500B985B1 /* GetHeartRate.h */,
 				AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */,
 				AC3CA2091D8AD13300B985B1 /* PulseDetector.h */,
@@ -305,7 +306,6 @@
 				AC9322841D86F206000051B0 /* Goal+CoreDataProperties.h */,
 				AC9322851D86F206000051B0 /* Goal+CoreDataProperties.m */,
 				AC9322861D86F206000051B0 /* Goal.h */,
-				AC9322871D86F206000051B0 /* Goal.m */,
 				AC9322781D86EE15000051B0 /* Step+CoreDataProperties.h */,
 				AC9322791D86EE15000051B0 /* Step+CoreDataProperties.m */,
 				AC93227A1D86EE15000051B0 /* Step.h */,

@@ -46,7 +46,6 @@ NSMutableArray<NSString*> *mutableArray;
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     
-    
     [self requestAuthorization];
     
     mutableArray = [[NSMutableArray alloc] init];
