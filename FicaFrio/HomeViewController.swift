@@ -22,6 +22,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var newGoalButton: UIButton!
     
     @IBOutlet var tapGesture: UITapGestureRecognizer!
+    
+    let number = 1;
+    let direction = 1;
+    let shakes = 55;
 
     @IBAction func DismissKeyboard(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
@@ -51,7 +55,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func SetTask(sender: AnyObject) {
         self.resignFirstResponder()
         CurrentGoal = TaskText.text!
-
     }
     
     
@@ -86,31 +89,33 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         self.NewGoalView.insertSubview(backgroundImage, atIndex: 0)
      */
  
- 
      // Configura a logo
-        //let logoGif = UIImage.gifImageWithName("GIF_INICIAL_CERTO")
-        //gifView.image = logoGif
-        
-        
-        let logoGif = UIImage.animatedImageNamed("GifInicial_Concertado-", duration: 1.75)
+        let logoGif = UIImage.gifImageWithName("INICIAL")
+        //let logoGif = UIImage.animatedImageNamed("GifInicial_Concertado-", duration: 1.75)
         gifView.image = logoGif
-        gifView.animationRepeatCount = 1
-        
-        //let imageView = UIImageView(image: logoGif)
-        //imageView.frame = CGRect(x: self.view.frame.size.width/2 - imageView.frame.size.width/6, y: self.view.frame.size.height - imageView.frame.size.height, width: imageView.frame.size.width/3.2, height: imageView.frame.size.height/3.2)
-        //view.addSubview(imageView)
-       // imageView.backgroundColor = UIColor.clearColor()
-        
-        //let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
-        //let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        
-        //blurEffectView.frame = self.view.bounds
-        //blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight,]
-        
-        //self.view.addSubview(blurEffectView)
-        //blurEffectView.addSubview(imageView);
+        //gifView.animationRepeatCount = 1
     }
     
+    func shakeview (NewGoalView: UIView, numberOfShakes : Int, direction: CGFloat, maxShakes : Int) {
+        
+        let interval : NSTimeInterval = 0.03
+        
+        UIView.animateWithDuration(interval, animations: { () -> Void in
+            NewGoalView.transform = CGAffineTransformMakeTranslation(5 * direction, 0)
+            
+            }, completion: { (aBool :Bool) -> Void in
+                
+                if (numberOfShakes >= maxShakes) {
+                    NewGoalView.transform = CGAffineTransformIdentity
+                    NewGoalView.becomeFirstResponder()
+                    return
+                }
+                
+        })
+        
+    }
+    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -158,7 +163,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         let goalName = TaskText.text
         let defaults = NSUserDefaults.init()
         defaults.setObject(goalName, forKey: "goalName")
-        self.performSegueWithIdentifier("homeToSet", sender: self)
+        if TaskText.text!.characters.count < 1 {
+            self.shakeview(NewGoalView, numberOfShakes: 1, direction: 1, maxShakes: 55);
+        }
+        else {
+            self.performSegueWithIdentifier("homeToSet", sender: self)
+        }
+
         return true;
     }
     
