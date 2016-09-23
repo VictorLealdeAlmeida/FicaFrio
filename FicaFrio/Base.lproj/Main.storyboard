@@ -466,7 +466,6 @@
                                 <gestureRecognizers/>
                                 <state key="normal" title="Concluído" image="botao_tarefaAtual_01"/>
                                 <connections>
-                                    <action selector="startStopStep:" destination="O4b-DK-hPY" eventType="touchUpInside" id="fbm-tQ-uAg"/>
                                     <outletCollection property="gestureRecognizers" destination="Y3Z-20-29P" appends="YES" id="pP3-Xm-mkl"/>
                                 </connections>
                             </button>
@@ -1028,7 +1027,7 @@
         <scene sceneID="PbC-fa-Z4f">
             <objects>
                 <navigationController storyboardIdentifier="navigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

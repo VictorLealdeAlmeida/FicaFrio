@@ -122,8 +122,10 @@ int step = 0;
             _relaxButton.hidden = true;
             _imageSet.hidden = true;
             _stepText.hidden = true;
-
+            _stepImage.hidden = true;
+            
             statusConnection = false;
+            
         }
     }else{
         [_imageSet setImageNamed:@"relogio"];
@@ -143,11 +145,11 @@ int step = 0;
     
     //Quando iniciar a comunicacao, mostrar as views
     if(!statusConnection){
-        _stepLabel.hidden = false;
+        _stepLabel.hidden = true;
         _relaxButton.hidden = false;
         _imageSet.hidden = false;
         _stepText.hidden = false;
-        
+        [_stepImage setImageNamed: @"bola"];
         statusConnection = true;
     }else{
         NSString *counterValue = [message objectForKey:@"startStopToWatch"];
@@ -180,7 +182,7 @@ int step = 0;
     workoutConfig.activityType = HKWorkoutActivityTypeOther;
     self.workoutSession = [[HKWorkoutSession alloc] initWithConfiguration:workoutConfig error:&error];
     self.workoutSession.delegate = self;
-    NSLog(@"start");
+    //NSLog(@"start");
     
     [self requestAuthorization];
     [self.healthStore startWorkoutSession:self.workoutSession];
