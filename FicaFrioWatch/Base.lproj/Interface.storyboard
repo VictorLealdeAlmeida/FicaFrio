@@ -33,7 +33,7 @@
                     <items>
                         <group width="136" height="60" alignment="center" id="van-Ku-SPZ">
                             <items>
-                                <label width="136" height="40" alignment="left" verticalAlignment="center" hidden="YES" text="The TestFlight app allows testers to install and beta test apps on iOS, tvOS and watchOS devices." textAlignment="center" numberOfLines="6" id="kRs-A2-nZu">
+                                <label width="136" height="40" alignment="left" verticalAlignment="center" text="The TestFlight app allows testers to install and beta test apps on iOS, tvOS and watchOS devices." textAlignment="center" numberOfLines="6" id="kRs-A2-nZu">
                                     <fontDescription key="font" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="8"/>
                                 </label>
                             </items>

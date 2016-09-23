@@ -122,7 +122,7 @@ int step = 0;
             _relaxButton.hidden = true;
             _imageSet.hidden = true;
             _stepText.hidden = true;
-            
+
             statusConnection = false;
         }
     }else{
@@ -135,7 +135,6 @@ int step = 0;
         //Aumentar a label do watch
         step++;
         [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", step]];
-        //_stepLabel.text = [NSString stringWithFormat:@"%d", step];
     }
 }
 
@@ -152,10 +151,13 @@ int step = 0;
         statusConnection = true;
     }else{
         NSString *counterValue = [message objectForKey:@"startStopToWatch"];
+        NSString *counterText = [message objectForKey:@"textToWatch"];
+
         
         NSLog(@"%@",counterValue);
         if ([counterValue integerValue] == 0){
             statusButton = true;
+            _stepText.text = counterText;
         }else if ([counterValue integerValue] == 1){
             statusButton = false;
         }

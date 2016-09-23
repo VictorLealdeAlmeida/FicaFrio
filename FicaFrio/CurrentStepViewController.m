@@ -165,6 +165,20 @@ bool startStopBool = false;
                                    }
          ];
         
+        //Envia o texto do step
+        NSString *startStopText = [NSString stringWithFormat:@"%@", _descriptionLabel.text];
+        NSDictionary *applicationDataTwo = [[NSDictionary alloc] initWithObjects:@[startStopText] forKeys:@[@"textToWatch"]];
+        
+        [[WCSession defaultSession] sendMessage:applicationDataTwo
+                                   replyHandler:^(NSDictionary *reply) {
+                                       //handle reply from iPhone app here
+                                   }
+                                   errorHandler:^(NSError *error) {
+                                       //catch any errors here
+                                       NSLog(@"Deu erro");
+                                   }
+         ];
+        
     }else{
         [self stopAction];
         
