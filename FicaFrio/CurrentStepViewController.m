@@ -198,6 +198,8 @@ bool startStopBool = false;
     //[defaults synchronize];
  
     //Timer pra acontecer a animacao
+    //[_endStep setImage:[UIImage imageNamed:@"relogio"] forState: nil];
+    
     [self.endStep rotation360:3 option: UIViewAnimationOptionAllowUserInteraction];
     timerAnimation = [NSTimer scheduledTimerWithTimeInterval:3
                                                       target:self

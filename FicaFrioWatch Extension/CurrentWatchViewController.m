@@ -54,7 +54,11 @@ int step = 0;
     }
     
     self.lastAnchor = 0;
-
+    [_stepImage setImageNamed:@"GifInicial_Concertado-"];
+    [_stepImage startAnimatingWithImagesInRange: NSMakeRange(1, 19) duration:2 repeatCount:10];
+    [_stepText setText:@"Não há metas em adamento"];
+    _stepText.hidden = false;
+    
 
 
 }
