@@ -7,12 +7,21 @@
 //
 
 #import "ExtensionDelegate.h"
+#import <WatchConnectivity/WatchConnectivity.h>
 @import HealthKit;
 
 @implementation ExtensionDelegate
 
 - (void)applicationDidFinishLaunching {
     // Perform any final initialization of your application.
+    
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+        
+    }
+    
 }
 
 - (void)applicationDidBecomeActive {

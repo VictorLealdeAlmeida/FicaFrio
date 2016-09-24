@@ -20,6 +20,7 @@
     NSInteger stepNumber;
     NSString *goalID;
     Step *currentStep;
+    Step *stepsWatch;
     NSDate *dateTime;
     NSTimer *timerAnimation;
     bool selectHeart;
@@ -78,10 +79,11 @@
 @implementation CurrentStepViewController
 
 bool startStopBool = false;
+NSMutableArray<NSString *>* stepsText;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+    stepsText = [[NSMutableArray alloc] init];
     
     _titleLabel.text = NSLocalizedString(@"Steps", "");
     
@@ -113,9 +115,17 @@ bool startStopBool = false;
         session.delegate = self;
         [session activateSession];
         
-        //Envia um um comunicado pra tirar o hidden das views
-        NSString *startStop = [NSString stringWithFormat:@"%d", 10];
-        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"watch"]];
+        //Envia o texto do step
+        //NSString *startStopText = [NSString stringWithFormat:@"%@", _labelStep.text];
+        NSArray * steps = [database fetchStepsForGoalID:goalID];
+        
+        for (int i=0; i<steps.count; i++){
+            stepsWatch = steps[i];
+            [stepsText addObject: stepsWatch.name];
+            NSLog(@"%@",stepsText[i]);
+        }
+        
+        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[stepsText[0], stepsText[1], stepsText[2] ] forKeys:@[@"textToWatch0", @"textToWatch1", @"textToWatch2"]];
         
         [[WCSession defaultSession] sendMessage:applicationData
                                    replyHandler:^(NSDictionary *reply) {
@@ -126,6 +136,30 @@ bool startStopBool = false;
                                        NSLog(@"Deu erro");
                                    }
          ];
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      /*  //Envia o 1 pra informar o watch que o play foi selecionado
+        NSString *startStop = [NSString stringWithFormat:@"%d", 12121];
+        NSDictionary *applicationData2 = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
+        
+        [[WCSession defaultSession] sendMessage:applicationData2
+                                   replyHandler:^(NSDictionary *reply) {
+                                       //handle reply from iPhone app here
+                                   }
+                                   errorHandler:^(NSError *error) {
+                                       //catch any errors here
+                                       NSLog(@"Deu erro");
+                                   }
+         ];*/
         
     }
     
@@ -165,6 +199,8 @@ bool startStopBool = false;
                                    }
          ];
         
+        
+        
     }else{
         [self stopAction];
         
@@ -181,6 +217,7 @@ bool startStopBool = false;
                                        NSLog(@"Deu erro");
                                    }
          ];
+        
     }
 }
 

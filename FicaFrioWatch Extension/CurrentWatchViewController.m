@@ -42,31 +42,39 @@
 bool statusButton = false;
 bool statusConnection = false;
 int step = 0;
+NSMutableArray<NSString*> *mutableArray;
+
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
+    
+    [self requestAuthorization];
+    
+    mutableArray = [[NSMutableArray alloc] init];
+    
     flag = NO;
     [_imageSet setImageNamed:@"relogio"];
-    
-    if ([WCSession isSupported]) {
-        WCSession *session = [WCSession defaultSession];
-        session.delegate = self;
-        [session activateSession];
-        
-    }
     
     self.lastAnchor = 0;
     [_stepImage setImageNamed:@"GifInicial_Concertado-"];
     [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
     //[_stepText setText:NSLocalizedString(@"No goals", "")];
     _stepText.hidden = false;
-    
-
 
 }
 
 - (void)willActivate {
     // This method is called when watch view controller is about to be visible to user
+    NSMutableDictionary *sendMsg;
+    sendMsg = [[NSMutableDictionary alloc] init];
+    sendMsg[@"value"]=@1;
+    
+    [[WCSession defaultSession]  sendMessage: sendMsg replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
+        step = [((NSNumber*)(replyMessage[@"value"])) integerValue];
+    } errorHandler:^(NSError * _Nonnull error) {
+        
+    }];
+    
     [super willActivate];
 }
 
@@ -117,7 +125,7 @@ int step = 0;
         flag = NO;
         step++;
         [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
-        //[self stopStoringHeartRate];
+        [self stopStoringHeartRate];
         
         //Finaliza a sessao
         if(step == 3){
@@ -137,9 +145,10 @@ int step = 0;
         [_imageSet startAnimating];
         flag = YES;
         avgHeartRate = 0.0;
-       // [self startStoringHeartRate];
+        [self startStoringHeartRate];
         
         //Aumentar a label do watch
+
         //step++;
         //[_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", step]];
         //_stepLabel.text = [NSString stringWithFormat:@"%d", step];
@@ -148,31 +157,47 @@ int step = 0;
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
-    
     //Quando iniciar a comunicacao, mostrar as views
     if(!statusConnection){
+<<<<<<< HEAD
         //_stepLabel.hidden = true;
+=======
+        //NSString *counterText = [message objectForKey:@"textToWatch0"];
+        [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
+        [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
+        [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
+        _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[0]];
+
+        _stepLabel.hidden = true;
+>>>>>>> 9d991eb0a75ddff71a1c6a5290a68badba4485a1
         _relaxButton.hidden = false;
         _imageSet.hidden = false;
         _stepText.hidden = YES;
         _stepImage.hidden = false;
         [_stepImage setImageNamed: @"bola"];
         statusConnection = true;
+        
     }else{
         NSString *counterValue = [message objectForKey:@"startStopToWatch"];
-        
+
         //NSLog(@"%@",counterValue);
+        
         if ([counterValue integerValue] == 0){
             statusButton = true;
-        }else if ([counterValue integerValue] == 1){
+            if(step < 2){
+            _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[step+1]];
+            }
+
+            [self changeStartButton];
+        }else{
             statusButton = false;
+            [self changeStartButton];
+
         }
         
-        [self changeStartButton];
         
     }
 
-    
 }
 
 // CHAMAR ESSAS FUNÇÕES ---------------------------------------------------
@@ -180,15 +205,14 @@ int step = 0;
 - (void)startStoringHeartRate {
     self.startStepDate = [NSDate date];
     // deprecated:
-    //self.workoutSession = [[HKWorkoutSession alloc] initWithActivityType:HKWorkoutActivityTypeOther locationType:HKWorkoutSessionLocationTypeUnknown];
-    HKWorkoutConfiguration *workoutConfig = [HKWorkoutConfiguration init];
-    NSError *error;
-    workoutConfig.activityType = HKWorkoutActivityTypeOther;
-    self.workoutSession = [[HKWorkoutSession alloc] initWithConfiguration:workoutConfig error:&error];
+    self.workoutSession = [[HKWorkoutSession alloc] initWithActivityType:HKWorkoutActivityTypeOther locationType:HKWorkoutSessionLocationTypeUnknown];
+    //HKWorkoutConfiguration *workoutConfig = [HKWorkoutConfiguration init];
+    //NSError *error;
+    //workoutConfig.activityType = HKWorkoutActivityTypeOther;
+    //self.workoutSession = [[HKWorkoutSession alloc] initWithConfiguration:workoutConfig error:&error];
     self.workoutSession.delegate = self;
     //NSLog(@"start");
     
-    [self requestAuthorization];
     [self.healthStore startWorkoutSession:self.workoutSession];
     
     //[self streamQueryHeartRateData];
