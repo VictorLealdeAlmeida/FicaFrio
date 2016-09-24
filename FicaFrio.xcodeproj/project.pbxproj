@@ -15,6 +15,7 @@
 		9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; };
 		9F09CF831D8817A80079E6FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09CF7B1D8817670079E6FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09CF871D8817C30079E6FB /* FicaFrio.swift */; };
+		9F241E351D968F8C00685A04 /* InfoStepInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F241E341D968F8C00685A04 /* InfoStepInterfaceController.m */; };
 		9F81719C1D92D40200346491 /* RelaxInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F81719A1D92D40200346491 /* RelaxInterfaceController.m */; };
 		AC1226011D8D87B1007D4860 /* Gif_Heart_Rate.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */; };
 		AC354B9E1D92D38500D023CE /* Launch_novo.png in Resources */ = {isa = PBXBuildFile; fileRef = AC354B9D1D92D38500D023CE /* Launch_novo.png */; };
@@ -157,6 +158,8 @@
 		1E6D29B41D89A070008734E0 /* logoteste.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logoteste.gif; sourceTree = "<group>"; };
 		9F09CF731D8817670079E6FB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ChartsFramework/Charts.xcodeproj; sourceTree = "<group>"; };
 		9F09CF871D8817C30079E6FB /* FicaFrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FicaFrio.swift; sourceTree = SOURCE_ROOT; };
+		9F241E331D968F8C00685A04 /* InfoStepInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoStepInterfaceController.h; sourceTree = "<group>"; };
+		9F241E341D968F8C00685A04 /* InfoStepInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoStepInterfaceController.m; sourceTree = "<group>"; };
 		9F8171991D92D40200346491 /* RelaxInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelaxInterfaceController.h; sourceTree = "<group>"; };
 		9F81719A1D92D40200346491 /* RelaxInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelaxInterfaceController.m; sourceTree = "<group>"; };
 		AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gif_Heart_Rate.gif; sourceTree = "<group>"; };
@@ -447,6 +450,8 @@
 				D4F5040A1D90117800EC7870 /* ComplicationController.m */,
 				9F8171991D92D40200346491 /* RelaxInterfaceController.h */,
 				9F81719A1D92D40200346491 /* RelaxInterfaceController.m */,
+				9F241E331D968F8C00685A04 /* InfoStepInterfaceController.h */,
+				9F241E341D968F8C00685A04 /* InfoStepInterfaceController.m */,
 				D4F5040C1D90117800EC7870 /* Assets.xcassets */,
 				D4F5040E1D90117800EC7870 /* Info.plist */,
 				D4F503FE1D90117800EC7870 /* Supporting Files */,
@@ -701,6 +706,7 @@
 				D4F504261D91603900EC7870 /* RelaxWatchViewController.swift in Sources */,
 				D4F5040B1D90117800EC7870 /* ComplicationController.m in Sources */,
 				D4F504201D915F2500EC7870 /* CurrentWatchViewController.m in Sources */,
+				9F241E351D968F8C00685A04 /* InfoStepInterfaceController.m in Sources */,
 				D4F504021D90117800EC7870 /* InterfaceController.m in Sources */,
 				D4F504081D90117800EC7870 /* NotificationController.m in Sources */,
 			);
