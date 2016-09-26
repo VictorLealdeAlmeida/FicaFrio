@@ -137,16 +137,6 @@ NSMutableArray<NSString *>* stepsText;
                                    }
          ];
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
       /*  //Envia o 1 pra informar o watch que o play foi selecionado
         NSString *startStop = [NSString stringWithFormat:@"%d", 12121];
         NSDictionary *applicationData2 = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
@@ -421,15 +411,31 @@ NSMutableArray<NSString *>* stepsText;
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(NSDictionary<NSString *,id>* )message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
-    NSString *counterValue = [message objectForKey:@"startStopToIphone"];
-    
-    NSLog(@"RESULTADO %@",counterValue);
 
-      if ([message[@"value"]  isEqual: @1]) {
+
+      if ([message[@"callStep"]  isEqual: @1]) {
+        
           
-          printf("%d",112);
+          NSString *startStop = [NSString stringWithFormat:@"%d", 234];
+          NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"callStepValue"]];
+          
+          
+          
+          [[WCSession defaultSession] sendMessage:applicationData
+                                     replyHandler:^(NSDictionary *reply) {
+                                         //handle reply from iPhone app here
+                                     }
+                                     errorHandler:^(NSError *error) {
+                                         //catch any errors here
+                                         NSLog(@"Deu erro - 23");
+                                     }
+           ];
+   
           
       }else{
+          
+          NSString *counterValue = [message objectForKey:@"startStopToIphone"];
+          NSLog(@"RESULTADO %@",counterValue);
           
           if ([counterValue integerValue] == 0){
               [self startAction];

@@ -75,10 +75,10 @@ NSMutableArray<NSString*> *mutableArray;
 - (void)willActivate {
     NSMutableDictionary *sendMsg;
     sendMsg = [[NSMutableDictionary alloc] init];
-    sendMsg[@"value"]=@1;
+    sendMsg[@"callStep"]=@1;
     
     [[WCSession defaultSession]  sendMessage: sendMsg replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
-        step = [((NSNumber*)(replyMessage[@"value"])) integerValue];
+        step = [((NSNumber*)(replyMessage[@"callStep"])) integerValue];
     } errorHandler:^(NSError * _Nonnull error) {
         
     }];
@@ -166,39 +166,48 @@ NSMutableArray<NSString*> *mutableArray;
 }
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
+    NSLog(@"RESULTADO %@",message[@"callStepValue"]);
+
+    _stepText.text = message[@"callStepValue"];
     
-    //Quando iniciar a comunicacao, mostrar as views
-    if(!statusConnection){
+      //  if ([[message[@"callStepValue"]  isEqual: @""]) {
+            NSString *counterValue = [message objectForKey:@"callStepValue"];
+            NSLog(@"RESULTADO %@",counterValue);
+            
+      //  }else{
+            
+            //Quando iniciar a comunicacao, mostrar as views
+            if(!statusConnection){
 
-        [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
-        [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
-        [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
-        
-        _stepButton.hidden = NO;
-        _relaxButton.hidden = false;
-        _imageSet.hidden = false;
-        _stepText.hidden = YES;
-        _stepImage.hidden = YES;
-        [_stepButton setBackgroundImageNamed: @"bola1"];
-        statusConnection = true;
-        
-    }else{
-        NSString *counterValue = [message objectForKey:@"startStopToWatch"];
-        
-        if ([counterValue integerValue] == 0){
-            statusButton = true;
-            if(step < 2){
+                [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
+                [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
+                [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
+                
+                _stepButton.hidden = NO;
+                _relaxButton.hidden = false;
+                _imageSet.hidden = false;
+                _stepText.hidden = YES;
+                _stepImage.hidden = YES;
+                [_stepButton setBackgroundImageNamed: @"bola1"];
+                statusConnection = true;
+                
+            }else{
+                NSString *counterValue = [message objectForKey:@"startStopToWatch"];
+                
+                if ([counterValue integerValue] == 0){
+                    statusButton = true;
+                    if(step < 2){
+                    }
+
+                    [self changeStartButton];
+                }else{
+                    statusButton = false;
+                    [self changeStartButton];
+
+                }
+                
             }
-
-            [self changeStartButton];
-        }else{
-            statusButton = false;
-            [self changeStartButton];
-
-        }
-        
-        
-    }
+      //  }
 
 }
 
