@@ -68,6 +68,7 @@
             <objects>
                 <controller id="jJt-6K-aPf" customClass="CurrentWatchViewController">
                     <items>
+                        <label alignment="left" text="Label" id="BDv-Eg-17K"/>
                         <group width="134" height="93" alignment="center" id="Ipx-ef-vGY">
                             <items>
                                 <imageView width="83" height="83" alignment="center" verticalAlignment="center" image="GifInicial_Concertado-1" id="waG-N8-Ocj"/>
@@ -107,6 +108,7 @@
                         <outlet property="stepButton" destination="AV9-Ck-Crr" id="7eR-Vo-bVo"/>
                         <outlet property="stepImage" destination="waG-N8-Ocj" id="XsK-ba-tsZ"/>
                         <outlet property="stepText" destination="kRs-A2-nZu" id="r3N-qQ-E7Q"/>
+                        <outlet property="teste" destination="BDv-Eg-17K" id="wAP-wg-Y46"/>
                     </connections>
                 </controller>
             </objects>

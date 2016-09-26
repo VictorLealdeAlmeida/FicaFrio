@@ -34,6 +34,9 @@
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *relaxButton;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepText;
 
+
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *teste;
+
 @end
 
 @implementation CurrentWatchViewController
@@ -75,10 +78,10 @@ NSMutableArray<NSString*> *mutableArray;
 - (void)willActivate {
     NSMutableDictionary *sendMsg;
     sendMsg = [[NSMutableDictionary alloc] init];
-    sendMsg[@"value"]=@1;
+    sendMsg[@"callStep"]=@1;
     
     [[WCSession defaultSession]  sendMessage: sendMsg replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
-        step = [((NSNumber*)(replyMessage[@"value"])) integerValue];
+        step = [((NSNumber*)(replyMessage[@"callStep"])) integerValue];
     } errorHandler:^(NSError * _Nonnull error) {
         
     }];
@@ -161,7 +164,36 @@ NSMutableArray<NSString*> *mutableArray;
 }
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
+    NSLog(@"RESULTADO %@",message[@"callStepValue"]);
+
+    NSString *counterV = [message objectForKey:@"callStepValue"];
     
+    //Solucao "O pitch é amanhã"
+    //Virificando o status do ios
+    //Primeiro numero o passo o segundo 0 pra false e 1 pra true
+    if([counterV  isEqual: @"10"]){
+        step = 1;
+        statusButton = false;
+    }else if([counterV  isEqual: @"11"]){
+        step = 1;
+        statusButton = true;
+    }else if([counterV  isEqual: @"20"]){
+        step = 2;
+        statusButton = false;
+    }else if([counterV  isEqual: @"21"]){
+        step = 2;
+        statusButton = true;
+    }else if([counterV  isEqual: @"30"]){
+        step = 3;
+        statusButton = false;
+    }else if([counterV  isEqual: @"31"]){
+        step = 3;
+        statusButton = true;
+    }else
+    
+    _teste.text = counterV;
+
+
     //Quando iniciar a comunicacao, mostrar as views
     if(!statusConnection){
         if (mutableArray.count > 0){
@@ -188,16 +220,16 @@ NSMutableArray<NSString*> *mutableArray;
             statusButton = true;
             if(step < 2){
             }
+                [self changeStartButton];
+            }else{
+                statusButton = false;
+                [self changeStartButton];
 
-            [self changeStartButton];
-        }else{
-            statusButton = false;
-            [self changeStartButton];
-
+            }
+                
         }
-        
-        
-    }
+    
+
 
 }
 

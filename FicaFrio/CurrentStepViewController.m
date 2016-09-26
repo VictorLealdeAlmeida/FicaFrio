@@ -137,16 +137,6 @@ NSMutableArray<NSString *>* stepsText;
                                    }
          ];
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
       /*  //Envia o 1 pra informar o watch que o play foi selecionado
         NSString *startStop = [NSString stringWithFormat:@"%d", 12121];
         NSDictionary *applicationData2 = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
@@ -274,7 +264,6 @@ NSMutableArray<NSString *>* stepsText;
     }
     
     startStopBool = false;
-
 }
 
 - (void)updateStep {
@@ -421,15 +410,49 @@ NSMutableArray<NSString *>* stepsText;
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(NSDictionary<NSString *,id>* )message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
-    NSString *counterValue = [message objectForKey:@"startStopToIphone"];
-    
-    NSLog(@"RESULTADO %@",counterValue);
 
-      if ([message[@"value"]  isEqual: @1]) {
+
+      if ([message[@"callStep"]  isEqual: @1]) {
+        
+          int value = 0;
           
-          printf("%d",112);
+          if (stepStarted){
+              if (stepNumber == 1){
+                  value = 10;
+              }else if (stepNumber == 2){
+                  value = 20;
+              }else if (stepNumber == 3){
+                  value = 30;
+              }
+          }else{
+              if (stepNumber == 1){
+                  value = 11;
+              }else if (stepNumber == 2){
+                  value = 21;
+              }else if (stepNumber == 3){
+                  value = 31;
+              }
+          }
+          
+          
+          NSString *startStop = [NSString stringWithFormat:@"%d", value];
+          NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"callStepValue"]];
+          
+          [[WCSession defaultSession] sendMessage:applicationData
+                                     replyHandler:^(NSDictionary *reply) {
+                                         //handle reply from iPhone app here
+                                     }
+                                     errorHandler:^(NSError *error) {
+                                         //catch any errors here
+                                         NSLog(@"Deu erro - 23");
+                                     }
+           ];
+   
           
       }else{
+          
+          NSString *counterValue = [message objectForKey:@"startStopToIphone"];
+          NSLog(@"RESULTADO %@",counterValue);
           
           if ([counterValue integerValue] == 0){
               [self startAction];
@@ -442,7 +465,6 @@ NSMutableArray<NSString *>* stepsText;
       }
     
 }
-
 
 #pragma mark - Watch communication
 /*
