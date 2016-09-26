@@ -35,7 +35,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepText;
 
 
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *teste;
+//@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *teste;
 
 @end
 
@@ -72,6 +72,16 @@ NSMutableArray<NSString*> *mutableArray;
         [session activateSession];
         
     }
+    
+    //Pra buscar conexao com tela current
+    NSMutableDictionary *sendMsg;
+    sendMsg = [[NSMutableDictionary alloc] init];
+    sendMsg[@"callCurrent"]=@1;
+    
+    [[WCSession defaultSession]  sendMessage: sendMsg replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
+    } errorHandler:^(NSError * _Nonnull error) {
+        
+    }];
 
 }
 
@@ -81,7 +91,7 @@ NSMutableArray<NSString*> *mutableArray;
     sendMsg[@"callStep"]=@1;
     
     [[WCSession defaultSession]  sendMessage: sendMsg replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
-        step = [((NSNumber*)(replyMessage[@"callStep"])) integerValue];
+       // step = [((NSNumber*)(replyMessage[@"callStep"])) integerValue];
     } errorHandler:^(NSError * _Nonnull error) {
         
     }];
@@ -97,7 +107,7 @@ NSMutableArray<NSString*> *mutableArray;
 - (IBAction)startStopButton {
     if (!flag){
         //Por aq vai passar o valor pra ligar o stop no ios
-        NSString *startStop = [NSString stringWithFormat:@"%d", 0];
+        NSString *startStop = [NSString stringWithFormat:@"%d", 2];
         NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
         
         [[WCSession defaultSession] sendMessage:applicationData
@@ -110,6 +120,7 @@ NSMutableArray<NSString*> *mutableArray;
                                    }
          ];
     }else{
+        step++;
         //Por aq vai passar o valor pra ligar o start no ios
         NSString *startStop = [NSString stringWithFormat:@"%d", 1];
         NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToIphone"]];
@@ -134,10 +145,10 @@ NSMutableArray<NSString*> *mutableArray;
         [_imageSet stopAnimating];
         [_imageSet setImageNamed:@"relogio"];
         flag = NO;
-        step++;
-        [_stepButton setBackgroundImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
+        if(step < 3){
+            [_stepButton setBackgroundImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
+        }
         [self stopStoringHeartRate];
-        //  [self stopStoringHeartRate];
         //Finaliza a sessao
         if(step == 3){
             //step = 0;
@@ -163,35 +174,11 @@ NSMutableArray<NSString*> *mutableArray;
     }
 }
 
-- (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
+- (void)session:(nonnull WCSession *)session didReceiveMessage:(NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     NSLog(@"RESULTADO %@",message[@"callStepValue"]);
 
     NSString *counterV = [message objectForKey:@"callStepValue"];
     
-    //Solucao "O pitch é amanhã"
-    //Virificando o status do ios
-    //Primeiro numero o passo o segundo 0 pra false e 1 pra true
-    if([counterV  isEqual: @"10"]){
-        step = 1;
-        statusButton = false;
-    }else if([counterV  isEqual: @"11"]){
-        step = 1;
-        statusButton = true;
-    }else if([counterV  isEqual: @"20"]){
-        step = 2;
-        statusButton = false;
-    }else if([counterV  isEqual: @"21"]){
-        step = 2;
-        statusButton = true;
-    }else if([counterV  isEqual: @"30"]){
-        step = 3;
-        statusButton = false;
-    }else if([counterV  isEqual: @"31"]){
-        step = 3;
-        statusButton = true;
-    }else
-    
-    _teste.text = counterV;
 
 
     //Quando iniciar a comunicacao, mostrar as views
@@ -214,21 +201,53 @@ NSMutableArray<NSString*> *mutableArray;
         statusConnection = true;
         
     }else{
-        NSString *counterValue = [message objectForKey:@"startStopToWatch"];
-        
-        if ([counterValue integerValue] == 0){
+        /*NSString *counterValue = [message objectForKey:@"startStopToWatch"];
+        //2 == stop
+        if ([counterValue integerValue] == 2){
             statusButton = true;
-            if(step < 2){
-            }
-                [self changeStartButton];
-            }else{
-                statusButton = false;
-                [self changeStartButton];
-
-            }
-                
+            [self changeStartButton];
+        }else if ([counterValue integerValue] == 1){
+            statusButton = false;
+            [self changeStartButton];
+        }*/
+        
+        //Solucao "O pitch é amanhã"
+        //Virificando o status do ios
+        //Primeiro numero o passo o segundo 0 pra false e 1 pra true
+        if([counterV  isEqual: @"10"]){
+            step = 0;
+            flag = YES;
+            statusButton = false;
+        }else if([counterV  isEqual: @"11"]){
+            step = 0;
+            flag = NO;
+            statusButton = true;
+        }else if([counterV  isEqual: @"20"]){
+            step = 1;
+            flag = YES;
+            statusButton = false;
+        }else if([counterV  isEqual: @"21"]){
+            step = 1;
+            flag = NO;
+            statusButton = true;
+        }else if([counterV  isEqual: @"30"]){
+            step = 2;
+            flag = YES;
+            statusButton = false;
+        }else if([counterV  isEqual: @"31"]){
+            step = 2;
+            flag = NO;
+            statusButton = true;
+        }else if([counterV  isEqual: @"40"]){
+            step = 3;
+            flag = YES;
+            statusButton = NO;
         }
+        [self changeStartButton];//Mudar nome do botao ele serve pra ligar e desligar
+        //_teste.text = counterV;
+
     
+    }
 
 
 }
