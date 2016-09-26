@@ -14,22 +14,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
-                    <items>
-                        <imageView width="89" height="80" alignment="center" image="logoteste" id="xtj-iN-IAU"/>
-                        <group width="1" height="77" alignment="left" id="rQ8-CS-adp">
-                            <items>
-                                <button width="1" alignment="left" verticalAlignment="center" title="Nova Meta" id="BKX-ZX-HEf"/>
-                            </items>
-                        </group>
-                    </items>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="220" y="351"/>
-        </scene>
         <!--showStep-->
         <scene sceneID="e8R-hb-6Cl">
             <objects>
@@ -37,7 +21,7 @@
                     <items>
                         <group width="1" height="145" alignment="left" id="Jr2-Ff-fOV">
                             <items>
-                                <label width="136" height="155" alignment="left" text="Label" textAlignment="center" numberOfLines="5" id="8fw-1T-5t3">
+                                <label width="136" height="155" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="5" id="8fw-1T-5t3">
                                     <fontDescription key="font" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="17"/>
                                 </label>
                             </items>
@@ -55,16 +39,16 @@
             <objects>
                 <controller identifier="endView" id="51H-XH-yaB" customClass="EndViewController">
                     <items>
-                        <group width="1" height="80" alignment="center" id="QYA-MZ-b3z">
-                            <items>
-                                <imageView width="80" height="80" alignment="center" image="bola1" animationDuration="1" id="LdB-TI-oT4"/>
-                            </items>
-                        </group>
                         <group width="134" height="36" alignment="left" id="zZp-pY-Lon">
                             <items>
                                 <label width="131" height="27" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="2" id="ffO-J6-a9k">
                                     <fontDescription key="font" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="17"/>
                                 </label>
+                            </items>
+                        </group>
+                        <group width="1" height="91" alignment="center" id="QYA-MZ-b3z">
+                            <items>
+                                <imageView width="80" height="80" alignment="center" verticalAlignment="center" image="bola1" animationDuration="1" id="LdB-TI-oT4"/>
                             </items>
                         </group>
                     </items>
@@ -81,9 +65,9 @@
             <objects>
                 <controller id="jJt-6K-aPf" customClass="CurrentWatchViewController">
                     <items>
-                        <group width="1" height="91" alignment="center" id="Ipx-ef-vGY">
+                        <group width="134" height="93" alignment="center" id="Ipx-ef-vGY">
                             <items>
-                                <imageView width="80" height="80" alignment="center" verticalAlignment="center" image="botao_respirar" id="waG-N8-Ocj"/>
+                                <imageView width="83" height="83" alignment="center" verticalAlignment="center" image="GifInicial_Concertado-1" id="waG-N8-Ocj"/>
                                 <button width="1" height="100" alignment="right" verticalAlignment="center" hidden="YES" title="Button" id="AV9-Ck-Crr">
                                     <connections>
                                         <action selector="showStep" destination="jJt-6K-aPf" id="zuL-dc-RhD"/>
@@ -91,22 +75,18 @@
                                 </button>
                             </items>
                         </group>
-                        <group width="84" height="25" alignment="center" id="van-Ku-SPZ">
-                            <items>
-                                <label width="136" height="40" alignment="left" verticalAlignment="center" text="No goals" textAlignment="center" id="kRs-A2-nZu">
-                                    <fontDescription key="font" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="17"/>
-                                </label>
-                            </items>
-                        </group>
                         <group width="1" height="40" alignment="center" id="MLb-E1-6NU">
                             <items>
-                                <button width="43" height="43" alignment="center" verticalAlignment="center" hidden="YES" backgroundImage="botao_respirar" id="WLO-cB-yxg">
+                                <button width="43" height="43" alignment="left" verticalAlignment="center" hidden="YES" backgroundImage="botao_respirar" id="WLO-cB-yxg">
                                     <connections>
                                         <segue destination="a9u-7N-6as" kind="push" id="zEg-CR-CfZ"/>
                                     </connections>
                                 </button>
-                                <group width="27" alignment="center" verticalAlignment="center" id="A5I-3a-Iip"/>
-                                <imageView width="39" height="1" alignment="center" hidden="YES" contentMode="scaleAspectFill" id="ebh-TL-cyV">
+                                <label width="136" height="40" alignment="center" verticalAlignment="center" text="No goals" textAlignment="center" id="kRs-A2-nZu">
+                                    <color key="textColor" red="0.43529411764705883" green="0.76078431372549016" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="18"/>
+                                </label>
+                                <imageView width="39" height="1" alignment="right" hidden="YES" contentMode="scaleAspectFill" id="ebh-TL-cyV">
                                     <gestureRecognizers>
                                         <tapGestureRecognizer id="KZK-l5-iVT">
                                             <connections>
@@ -127,21 +107,21 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="478" y="352.5"/>
+            <point key="canvasLocation" x="478" y="352"/>
         </scene>
         <!--Relax Interface Controller-->
         <scene sceneID="hr0-xX-5tt">
             <objects>
                 <controller id="a9u-7N-6as" customClass="RelaxInterfaceController">
                     <items>
-                        <imageView alignment="left" id="KhP-KG-dVc"/>
+                        <imageView alignment="left" verticalAlignment="center" id="KhP-KG-dVc"/>
                     </items>
                     <connections>
                         <outlet property="relaxImage" destination="KhP-KG-dVc" id="1vS-1x-XUO"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="754" y="357"/>
+            <point key="canvasLocation" x="754" y="352"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

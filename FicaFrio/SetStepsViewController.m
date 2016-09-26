@@ -174,6 +174,9 @@
         [_setStepsButton moveTo:CGPointMake(_setStepsButton.frame.origin.x + 50, _setStepsButton.frame.origin.y) duration:0.5 option:0];
         return true;
     }
+    else {
+        _setStepsButton.hidden = true;
+    }
     return false;
 }
 
@@ -231,17 +234,20 @@
 
 - (IBAction)dismissKeyboard:(UIControl *)sender {
     [_stepNameTextField resignFirstResponder];
+    [self checkIfCanFinish];
 }
 // ----------------------------------------------------------------
 
 // Rotation-related -----------------------------------------------
 - (IBAction)circleRight:(id)sender {
     [_stepNameTextField resignFirstResponder]; // Dismiss keyboard
+    [self checkIfCanFinish];
     [self rotateCircleToRight];
 }
 
 - (IBAction)circleLeft:(id)sender {
     [_stepNameTextField resignFirstResponder]; // Dismiss keyboard
+    [self checkIfCanFinish];
     [self rotateCircleToLeft];
 }
 

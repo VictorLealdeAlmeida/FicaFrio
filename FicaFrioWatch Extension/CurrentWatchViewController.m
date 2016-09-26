@@ -13,6 +13,7 @@
 @interface CurrentWatchViewController() <WCSessionDelegate, HKWorkoutSessionDelegate> {
     BOOL flag;
     // MÉDIA DOS BATIMENTOS PARA PASSAR P/ IPHONE - ver se precisa passar dentro do handler em statisticsQueryHeartRateData
+    NSMutableArray<NSNumber*> *avgHeartRateteps;
     double avgHeartRate;
 }
 - (IBAction)showStep;
@@ -58,6 +59,7 @@ NSMutableArray<NSString*> *mutableArray;
     _stepButton.hidden = YES;
     [_stepImage setImageNamed:@"GifInicial_Concertado-"];
     [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
+    avgHeartRateteps = [[NSMutableArray alloc] init];
     //[_stepText setText:NSLocalizedString(@"No goals", "")];
     //_stepText.hidden = false;
 
@@ -304,6 +306,7 @@ NSMutableArray<NSString*> *mutableArray;
         //});
         // PASSAR PARA O IPHONE POR AQUI?
         avgHeartRate = average;
+        [avgHeartRateteps addObject: [NSNumber numberWithDouble: average]];
     }];
     
     [self.healthStore executeQuery:squery];

@@ -18,11 +18,10 @@
     NSArray *arrayTrabalho;
     NSArray *arrayInteracaoSocial;
     NSArray *arrayOutros;
-    NSArray *tags;
-    NSDictionary* tagsMedia;
     Step *currentStep;
     double average;
     BD *dataBD;
+    NSMutableArray *ordered;
 }
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerTag;
@@ -45,21 +44,16 @@
     //BD - para buscar as informaçoes
     dataBD = [[BD alloc] init];
     
-    //Inicializa as configs do grafico
-    [self setChar];
+    //PikerView
+    //inicializaçao
+    pickerData = @[NSLocalizedString(@"Self-exposure", ""), NSLocalizedString(@"Studies", ""), NSLocalizedString(@"Work", ""), NSLocalizedString(@"Social interaction", ""), NSLocalizedString(@"Others", "")];
     
-    //busca no banco as informaçoes sobre cada Tag
-    [self inicializaVetoresTag];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
-    // Dispose of any resources that can be recreated.
-}
-
--(void)setChar{
+    //Connect data
+    _pickerTag.dataSource = self;
+    _pickerTag.delegate = self;
+    
+    
+    
     //Configuraçao de estilo do grafico
     _lineChartView.delegate = self;
     _lineChartView.descriptionText = NSLocalizedString(@"Tap node for details", "");
@@ -88,6 +82,16 @@
     maker.minimumSize = CGSizeMake(80.f, 40.f);
     _lineChartView.marker = maker;
     _nodata.hidden = YES;
+    //busca no banco as informaçoes sobre cada Tag
+    [self inicializaVetoresTag];
+    ordered = [self orderTagArrays];
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)setCharData:(double)valor valor2:(NSArray*)valor2{
@@ -101,6 +105,7 @@
         if([currentStep.avgHeartRate integerValue] > 0){
             [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(i-j) y:[currentStep.avgHeartRate doubleValue]]];
             average = average + [currentStep.avgHeartRate doubleValue];
+            //NSLog(@"%@ %@",currentStep.startDate, currentStep.name);
         }else{
             j++;
         }
@@ -157,17 +162,17 @@
         set1.mode = LineChartModeLinear;
         set1.drawValuesEnabled = NO;
         set2.drawValuesEnabled = NO;
-
+        
         //3 - create an array to store our LineChartDataSets
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject: set1];
         [dataSets addObject:set2];
         LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-    
-    
+        
+        
         //4 - pass our months in for our x-axis label value along with our dataSets
         [data setValueTextColor: [UIColor whiteColor]];
-    
+        
         //5 - finally set our data
         if(yVals2.count > 0){
             _lineChartView.data = data;
@@ -198,33 +203,14 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-   
-    return pickerData[row];
+    
+    //return pickerData[row];
+    return ordered[row];
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if ([pickerData[row] isEqualToString:[pickerData objectAtIndex:1]]){
-        [self setCharData: 85.0 valor2:arrayEstudos];
-        
-    }
-    if ([pickerData[row] isEqualToString:[pickerData objectAtIndex:0]]){
-        [self setCharData: 85.0 valor2:arrayAutoexposicao];
-        
-    }
-    if ([pickerData[row] isEqualToString: [pickerData objectAtIndex:2]]){
-        [self setCharData: 85.0 valor2:arrayTrabalho];
-        
-    }
-    if ([pickerData[row] isEqualToString:[pickerData objectAtIndex:3]]){
-        [self setCharData: 85.0 valor2:arrayInteracaoSocial];
-        
-    }
-    if ([pickerData[row] isEqualToString:[pickerData objectAtIndex:4]]){
-        [self setCharData: 85.0 valor2:arrayOutros];
-        
-    }
-   
+    [self setCurrentData:ordered[row]];
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
@@ -238,62 +224,83 @@
         //[pickerLabel setFont:[UIFont fontWithName:@"SF-Compact-Display-Regular.otf" size: 17]];
         [pickerLabel setTextAlignment:NSTextAlignmentCenter];
     }
-    [pickerLabel setText:[pickerData objectAtIndex:row]];
+    //[pickerLabel setText:[pickerData objectAtIndex:row]];
+    [pickerLabel setText:[ordered objectAtIndex:row]];
     return pickerLabel;
 }
 
--(void)ordenaPickerView{
-    //PikerView
-    //inicializaçao
-    pickerData = @[tags[0], tags[1], tags[2], tags[3], tags[4]];
-    
-    //Connect data
-    _pickerTag.dataSource = self;
-    _pickerTag.delegate = self;
-
-    
-}
-
 -(void)inicializaVetoresTag{
-    arrayAutoexposicao = [dataBD fetchStepsWithTag: NSLocalizedString(@"Self-exposure", "")];
-    arrayEstudos = [dataBD fetchStepsWithTag: NSLocalizedString(@"Studies", "")];
-    arrayInteracaoSocial = [dataBD fetchStepsWithTag: NSLocalizedString(@"Social interaction", "")];
-    arrayTrabalho = [dataBD fetchStepsWithTag: NSLocalizedString(@"Work", "")];
-    arrayOutros = [dataBD fetchStepsWithTag: NSLocalizedString(@"Others", "")];
-    tagsMedia = @{
-                  NSLocalizedString(@"Self-exposure", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayAutoexposicao]],
-                  NSLocalizedString(@"Studies", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayEstudos]],
-                  NSLocalizedString(@"Social interaction", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayInteracaoSocial]],
-                  NSLocalizedString(@"Work", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayTrabalho]],
-                  NSLocalizedString(@"Others", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayOutros]],};
-    tags = [tagsMedia keysSortedByValueUsingComparator: ^NSComparisonResult(id obj1, id obj2) {
-               return [obj2 compare:obj1];
-           }];
-    NSLog(@"%@", tags);
-    [self ordenaPickerView];
+    arrayAutoexposicao = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:0]];
+    arrayEstudos = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:1]];
+    arrayTrabalho = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:2]];
+    arrayInteracaoSocial = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:3]];
+    arrayOutros = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:4]];
+    //[self setCharData: 85 valor2: arrayAutoexposicao];
 }
 
+
+-(NSMutableArray *) orderTagArrays{
+    NSMutableArray *orderedArray = [NSMutableArray arrayWithCapacity:5];
+    NSMutableArray *avgArray = [[NSMutableArray alloc] init];
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:arrayAutoexposicao,arrayEstudos,arrayTrabalho,arrayInteracaoSocial,arrayOutros, nil];
+    NSMutableArray *tags = [NSMutableArray arrayWithArray:pickerData];
+    
+    // Get average heart rates for each tag
+    for (int i = 0; i < array.count; i++) {
+        NSArray *stepsForCurrentTag = [array objectAtIndex:i];
+        double avg = 0.0;
+        int divisor = 0;
+        
+        for (int j = 0; j < stepsForCurrentTag.count; j++) {
+            Step *step = [stepsForCurrentTag objectAtIndex:j];
+            if([step.avgHeartRate integerValue] > 0){
+                avg = avg + [step.avgHeartRate doubleValue];
+                divisor = divisor + 1;
+            }
+        }
+        [avgArray addObject:[NSNumber numberWithDouble:(avg/divisor)]];
+    }
+    
+    NSArray *avgOrdered = [[[avgArray sortedArrayUsingSelector:@selector(compare:)] reverseObjectEnumerator] allObjects];
+    
+    for (int k = 0; k < array.count; k++) {
+        NSNumber *max = avgOrdered[k];
+        //NSLog(@"max: %@", max);
+        long index = [avgArray indexOfObject:max];
+        //NSLog(@"tag: %@", tags[index]);
+        [orderedArray insertObject:[tags objectAtIndex:index] atIndex:k];
+        [avgArray removeObjectAtIndex:index];
+        [tags removeObjectAtIndex:index];
+    }
+    
+    [self setCurrentData:orderedArray[0]];
+    
+    return orderedArray;
+}
+
+- (void)setCurrentData:(NSString *)currentTagName {
+    if ([currentTagName isEqualToString:[pickerData objectAtIndex:0]]){
+        [self setCharData: 85 valor2: arrayAutoexposicao];
+    }
+    else if ([currentTagName isEqualToString:[pickerData objectAtIndex:1]]){
+        [self setCharData: 85.0 valor2:arrayEstudos];
+    }
+    else if ([currentTagName isEqualToString: [pickerData objectAtIndex:2]]){
+        [self setCharData: 85.0 valor2:arrayTrabalho];
+    }
+    else if ([currentTagName isEqualToString:[pickerData objectAtIndex:3]]){
+        [self setCharData: 85.0 valor2:arrayInteracaoSocial];
+    }
+    else if ([currentTagName isEqualToString:[pickerData objectAtIndex:4]]){
+        [self setCharData: 85.0 valor2:arrayOutros];
+    }
+}
 
 - (IBAction)back:(id)sender {
     [[self navigationController] popViewControllerAnimated:YES];
 }
-
--(double)calculateAverange:(NSArray*)array{
-    double media = 0;
-    int j = 0;
-    for (int i = 0; i <array.count; i++) {
-        currentStep = array[array.count-i-1];
-        if([currentStep.avgHeartRate integerValue] > 0){
-            media = media + [currentStep.avgHeartRate doubleValue];
-        }else{
-            j++;
-        }
-        
-    }
-
-    return media/(array.count-j);
-}
 @end
+
 
 
 
