@@ -19,6 +19,7 @@
 @implementation AppDelegate
 
 - (void)applicationShouldRequestHealthAuthorization:(UIApplication *)application {
+    self.healthStore = [[HKHealthStore alloc] init];
     [self.healthStore handleAuthorizationForExtensionWithCompletion:^(BOOL success, NSError *error) {
         //
     }];

@@ -264,7 +264,6 @@ NSMutableArray<NSString *>* stepsText;
     }
     
     startStopBool = false;
-
 }
 
 - (void)updateStep {
@@ -415,11 +414,29 @@ NSMutableArray<NSString *>* stepsText;
 
       if ([message[@"callStep"]  isEqual: @1]) {
         
+          int value = 0;
           
-          NSString *startStop = [NSString stringWithFormat:@"%d", 234];
+          if (stepStarted){
+              if (stepNumber == 1){
+                  value = 10;
+              }else if (stepNumber == 2){
+                  value = 20;
+              }else if (stepNumber == 3){
+                  value = 30;
+              }
+          }else{
+              if (stepNumber == 1){
+                  value = 11;
+              }else if (stepNumber == 2){
+                  value = 21;
+              }else if (stepNumber == 3){
+                  value = 31;
+              }
+          }
+          
+          
+          NSString *startStop = [NSString stringWithFormat:@"%d", value];
           NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"callStepValue"]];
-          
-          
           
           [[WCSession defaultSession] sendMessage:applicationData
                                      replyHandler:^(NSDictionary *reply) {
@@ -448,7 +465,6 @@ NSMutableArray<NSString *>* stepsText;
       }
     
 }
-
 
 #pragma mark - Watch communication
 /*

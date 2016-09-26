@@ -34,6 +34,9 @@
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *relaxButton;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepText;
 
+
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *teste;
+
 @end
 
 @implementation CurrentWatchViewController
@@ -137,17 +140,12 @@ NSMutableArray<NSString*> *mutableArray;
         //  [self stopStoringHeartRate];
         //Finaliza a sessao
         if(step == 3){
-            step = 0;
+            //step = 0;
             //_stepLabel.hidden = true;
             _relaxButton.hidden = YES;
-            _imageSet.hidden = YES;
-            _stepText.hidden = NO;
-            _stepImage.hidden = NO;
             statusConnection = NO;
             _stepButton.hidden = YES;
-            
-            //Verificar qual passo deixou mais ansioso e enviar o numero do passo e a Tag
-            [self pushControllerWithName: @"endView" context: nil];
+           
         }
     }else{
         [_imageSet setImageNamed:@"relogio"];
@@ -155,7 +153,7 @@ NSMutableArray<NSString*> *mutableArray;
         flag = YES;
         avgHeartRate = 0.0;
         _stepImage.hidden = true;
-       // [self startStoringHeartRate];
+       [self startStoringHeartRate];
         
         //Aumentar a label do watch
 
@@ -168,46 +166,70 @@ NSMutableArray<NSString*> *mutableArray;
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     NSLog(@"RESULTADO %@",message[@"callStepValue"]);
 
-    _stepText.text = message[@"callStepValue"];
+    NSString *counterV = [message objectForKey:@"callStepValue"];
     
-      //  if ([[message[@"callStepValue"]  isEqual: @""]) {
-            NSString *counterValue = [message objectForKey:@"callStepValue"];
-            NSLog(@"RESULTADO %@",counterValue);
-            
-      //  }else{
-            
-            //Quando iniciar a comunicacao, mostrar as views
-            if(!statusConnection){
+    //Solucao "O pitch é amanhã"
+    //Virificando o status do ios
+    //Primeiro numero o passo o segundo 0 pra false e 1 pra true
+    if([counterV  isEqual: @"10"]){
+        step = 1;
+        statusButton = false;
+    }else if([counterV  isEqual: @"11"]){
+        step = 1;
+        statusButton = true;
+    }else if([counterV  isEqual: @"20"]){
+        step = 2;
+        statusButton = false;
+    }else if([counterV  isEqual: @"21"]){
+        step = 2;
+        statusButton = true;
+    }else if([counterV  isEqual: @"30"]){
+        step = 3;
+        statusButton = false;
+    }else if([counterV  isEqual: @"31"]){
+        step = 3;
+        statusButton = true;
+    }else
+    
+    _teste.text = counterV;
 
-                [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
-                [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
-                [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
-                
-                _stepButton.hidden = NO;
-                _relaxButton.hidden = false;
-                _imageSet.hidden = false;
-                _stepText.hidden = YES;
-                _stepImage.hidden = YES;
-                [_stepButton setBackgroundImageNamed: @"bola1"];
-                statusConnection = true;
-                
-            }else{
-                NSString *counterValue = [message objectForKey:@"startStopToWatch"];
-                
-                if ([counterValue integerValue] == 0){
-                    statusButton = true;
-                    if(step < 2){
-                    }
 
-                    [self changeStartButton];
-                }else{
-                    statusButton = false;
-                    [self changeStartButton];
-
-                }
-                
+    //Quando iniciar a comunicacao, mostrar as views
+    if(!statusConnection){
+        if (mutableArray.count > 0){
+            mutableArray[0] = [message objectForKey:@"textToWatch0"];
+            mutableArray[1] = [message objectForKey:@"textToWatch1"];
+            mutableArray[2] = [message objectForKey:@"textToWatch2"];
+        }else{
+            [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
+            [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
+            [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
+        }
+        _stepButton.hidden = NO;
+        _relaxButton.hidden = false;
+        _imageSet.hidden = false;
+        _stepText.hidden = YES;
+        _stepImage.hidden = YES;
+        [_stepButton setBackgroundImageNamed: @"bola1"];
+        statusConnection = true;
+        
+    }else{
+        NSString *counterValue = [message objectForKey:@"startStopToWatch"];
+        
+        if ([counterValue integerValue] == 0){
+            statusButton = true;
+            if(step < 2){
             }
-      //  }
+                [self changeStartButton];
+            }else{
+                statusButton = false;
+                [self changeStartButton];
+
+            }
+                
+        }
+    
+
 
 }
 
@@ -226,7 +248,7 @@ NSMutableArray<NSString*> *mutableArray;
     
     [self.healthStore startWorkoutSession:self.workoutSession];
     
-    //[self streamQueryHeartRateData];
+    [self streamQueryHeartRateData];
 }
 
 - (void)stopStoringHeartRate {
@@ -324,7 +346,18 @@ NSMutableArray<NSString*> *mutableArray;
         //});
         // PASSAR PARA O IPHONE POR AQUI?
         avgHeartRate = average;
+        if (avgHeartRateteps.count == 3){
+            [avgHeartRateteps removeAllObjects];
+        }
         [avgHeartRateteps addObject: [NSNumber numberWithDouble: average]];
+        if(step == 3){
+            step = 0;
+            _stepText.hidden = NO;
+            _stepImage.hidden = NO;
+            _imageSet.hidden = YES;
+            //Verificar qual passo deixou mais ansioso e enviar o numero do passo e a Tag
+            [self pushControllerWithName: @"endView" context: avgHeartRateteps];
+        }
     }];
     
     [self.healthStore executeQuery:squery];
