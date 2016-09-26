@@ -178,7 +178,7 @@ double media;
 //Func que escolhe o tamnho da imagem de cada estapa a partir dos valores recebidos
 //Ainda tem que fazer os casos de valores iguais
 -(void)selectGraf: (int)valueOne value2: (int)valueTwo value3: (int)valueThree{
-    NSLog(@"one: %d two: %d three: %d", valueOne, valueTwo, valueThree);
+    //NSLog(@"one: %d two: %d three: %d", valueOne, valueTwo, valueThree);
     
     if ((valueOne == valueTwo) && (valueOne == valueThree) && (valueTwo == valueThree)) {
         // All values are equal

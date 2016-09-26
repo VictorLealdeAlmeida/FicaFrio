@@ -140,9 +140,6 @@ NSMutableArray<NSString*> *mutableArray;
             //step = 0;
             //_stepLabel.hidden = true;
             _relaxButton.hidden = YES;
-            _imageSet.hidden = YES;
-            _stepText.hidden = NO;
-            _stepImage.hidden = NO;
             statusConnection = NO;
             _stepButton.hidden = YES;
            
@@ -167,11 +164,15 @@ NSMutableArray<NSString*> *mutableArray;
     
     //Quando iniciar a comunicacao, mostrar as views
     if(!statusConnection){
-
-        [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
-        [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
-        [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
-        
+        if (mutableArray.count > 0){
+            mutableArray[0] = [message objectForKey:@"textToWatch0"];
+            mutableArray[1] = [message objectForKey:@"textToWatch1"];
+            mutableArray[2] = [message objectForKey:@"textToWatch2"];
+        }else{
+            [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
+            [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
+            [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
+        }
         _stepButton.hidden = NO;
         _relaxButton.hidden = false;
         _imageSet.hidden = false;
@@ -313,9 +314,15 @@ NSMutableArray<NSString*> *mutableArray;
         //});
         // PASSAR PARA O IPHONE POR AQUI?
         avgHeartRate = average;
+        if (avgHeartRateteps.count == 3){
+            [avgHeartRateteps removeAllObjects];
+        }
         [avgHeartRateteps addObject: [NSNumber numberWithDouble: average]];
         if(step == 3){
             step = 0;
+            _stepText.hidden = NO;
+            _stepImage.hidden = NO;
+            _imageSet.hidden = YES;
             //Verificar qual passo deixou mais ansioso e enviar o numero do passo e a Tag
             [self pushControllerWithName: @"endView" context: avgHeartRateteps];
         }
