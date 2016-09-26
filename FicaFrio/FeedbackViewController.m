@@ -42,7 +42,7 @@
     _nodata.text = NSLocalizedString(@"No data available!", "");
     
     //BD - para buscar as informaçoes
-     dataBD = [[BD alloc] init];
+    dataBD = [[BD alloc] init];
     
     //PikerView
     //inicializaçao
@@ -52,7 +52,7 @@
     _pickerTag.dataSource = self;
     _pickerTag.delegate = self;
     
-
+    
     
     //Configuraçao de estilo do grafico
     _lineChartView.delegate = self;
@@ -74,7 +74,7 @@
     
     ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:7.0 label:@""];
     [_lineChartView.xAxis addLimitLine:llXAxis];
-
+    
     
     //BalloonMarker
     BalloonMarker *maker = [[BalloonMarker alloc] initWithColor: [UIColor colorWithRed: 94/255.0f green: 170/255.0f blue: 170/255.0f alpha: 0.4f] font: [UIFont systemFontOfSize:12.0] textColor: UIColor.whiteColor insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
@@ -90,7 +90,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
+    
     // Dispose of any resources that can be recreated.
 }
 
@@ -162,17 +162,17 @@
         set1.mode = LineChartModeLinear;
         set1.drawValuesEnabled = NO;
         set2.drawValuesEnabled = NO;
-
+        
         //3 - create an array to store our LineChartDataSets
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject: set1];
         [dataSets addObject:set2];
         LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-    
-    
+        
+        
         //4 - pass our months in for our x-axis label value along with our dataSets
         [data setValueTextColor: [UIColor whiteColor]];
-    
+        
         //5 - finally set our data
         if(yVals2.count > 0){
             _lineChartView.data = data;
@@ -203,7 +203,7 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-   
+    
     //return pickerData[row];
     return ordered[row];
 }
@@ -300,6 +300,7 @@
     [[self navigationController] popViewControllerAnimated:YES];
 }
 @end
+
 
 
 

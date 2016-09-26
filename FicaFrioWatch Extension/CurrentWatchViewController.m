@@ -13,10 +13,12 @@
 @interface CurrentWatchViewController() <WCSessionDelegate, HKWorkoutSessionDelegate> {
     BOOL flag;
     // MÉDIA DOS BATIMENTOS PARA PASSAR P/ IPHONE - ver se precisa passar dentro do handler em statisticsQueryHeartRateData
+    NSMutableArray<NSNumber*> *avgHeartRateteps;
     double avgHeartRate;
 }
+- (IBAction)showStep;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *stepButton;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *imageSet;
-//@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *startStop;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *stepImage;
 - (IBAction)startStopButton;
 
@@ -29,7 +31,6 @@
 @property (nonatomic, retain) HKAnchoredObjectQuery *heartQuery;
 @property (nonatomic, retain) HKQuantityType *heartType;
 @property (nonatomic, retain) NSMutableArray *sampleValues;
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *relaxButton;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepText;
 
@@ -54,15 +55,24 @@ NSMutableArray<NSString*> *mutableArray;
     [_imageSet setImageNamed:@"relogio"];
     
     self.lastAnchor = 0;
+    _stepImage.hidden = NO;
+    _stepButton.hidden = YES;
     [_stepImage setImageNamed:@"GifInicial_Concertado-"];
     [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
-    [_stepText setText:NSLocalizedString(@"No ongoing goals", "")];
-    _stepText.hidden = false;
+    avgHeartRateteps = [[NSMutableArray alloc] init];
+    //[_stepText setText:NSLocalizedString(@"No goals", "")];
+    //_stepText.hidden = false;
+    
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+        
+    }
 
 }
 
 - (void)willActivate {
-    // This method is called when watch view controller is about to be visible to user
     NSMutableDictionary *sendMsg;
     sendMsg = [[NSMutableDictionary alloc] init];
     sendMsg[@"value"]=@1;
@@ -122,28 +132,30 @@ NSMutableArray<NSString*> *mutableArray;
         [_imageSet setImageNamed:@"relogio"];
         flag = NO;
         step++;
-        [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
+        [_stepButton setBackgroundImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
         [self stopStoringHeartRate];
-        
+        //  [self stopStoringHeartRate];
         //Finaliza a sessao
         if(step == 3){
             step = 0;
-            _stepLabel.hidden = true;
-            _relaxButton.hidden = true;
-            _imageSet.hidden = true;
-            //_stepText.hidden = true;
-            //_stepImage.hidden = true;
-            statusConnection = false;
-            [_stepText setText:@"You Win!!"];
-            [_stepImage setImageNamed:@"GifInicial_Concertado-"];
-            [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
+            //_stepLabel.hidden = true;
+            _relaxButton.hidden = YES;
+            _imageSet.hidden = YES;
+            _stepText.hidden = NO;
+            _stepImage.hidden = NO;
+            statusConnection = NO;
+            _stepButton.hidden = YES;
+            
+            //Verificar qual passo deixou mais ansioso e enviar o numero do passo e a Tag
+            [self pushControllerWithName: @"endView" context: nil];
         }
     }else{
         [_imageSet setImageNamed:@"relogio"];
         [_imageSet startAnimating];
         flag = YES;
         avgHeartRate = 0.0;
-        [self startStoringHeartRate];
+        _stepImage.hidden = true;
+       // [self startStoringHeartRate];
         
         //Aumentar a label do watch
 
@@ -157,29 +169,25 @@ NSMutableArray<NSString*> *mutableArray;
     
     //Quando iniciar a comunicacao, mostrar as views
     if(!statusConnection){
-        //NSString *counterText = [message objectForKey:@"textToWatch0"];
+
         [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
         [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
         [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
-        _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[0]];
-
-        _stepLabel.hidden = true;
+        
+        _stepButton.hidden = NO;
         _relaxButton.hidden = false;
         _imageSet.hidden = false;
-        _stepText.hidden = false;
-        _stepImage.hidden = false;
-        [_stepImage setImageNamed: @"bola"];
+        _stepText.hidden = YES;
+        _stepImage.hidden = YES;
+        [_stepButton setBackgroundImageNamed: @"bola1"];
         statusConnection = true;
         
     }else{
         NSString *counterValue = [message objectForKey:@"startStopToWatch"];
-
-        //NSLog(@"%@",counterValue);
         
         if ([counterValue integerValue] == 0){
             statusButton = true;
             if(step < 2){
-            _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[step+1]];
             }
 
             [self changeStartButton];
@@ -307,6 +315,7 @@ NSMutableArray<NSString*> *mutableArray;
         //});
         // PASSAR PARA O IPHONE POR AQUI?
         avgHeartRate = average;
+        [avgHeartRateteps addObject: [NSNumber numberWithDouble: average]];
     }];
     
     [self.healthStore executeQuery:squery];
@@ -352,4 +361,7 @@ NSMutableArray<NSString*> *mutableArray;
 }
 
 
+- (IBAction)showStep {
+    [self pushControllerWithName: @"showStep" context: [NSString stringWithFormat: @"%@", mutableArray[step]]];
+}
 @end

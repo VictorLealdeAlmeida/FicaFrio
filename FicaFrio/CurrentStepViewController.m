@@ -199,9 +199,8 @@ NSMutableArray<NSString *>* stepsText;
                                    }
          ];
         
-        
-        
     }else{
+        
         [self stopAction];
         
         //Envia o 0 pra informar o watch que o stop foi selecionado
@@ -217,7 +216,6 @@ NSMutableArray<NSString *>* stepsText;
                                        NSLog(@"Deu erro");
                                    }
          ];
-        
     }
 }
 
@@ -421,19 +419,81 @@ NSMutableArray<NSString *>* stepsText;
     
 }
 
-- (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
+- (void)session:(nonnull WCSession *)session didReceiveMessage:(NSDictionary<NSString *,id>* )message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
     
     NSString *counterValue = [message objectForKey:@"startStopToIphone"];
     
     NSLog(@"RESULTADO %@",counterValue);
 
-    if ([counterValue integerValue] == 0){
-        [self startAction];
-        startStopBool = true;
-    }else if ([counterValue integerValue] == 1){
-        [self stopAction];
-        startStopBool = false;
-    }
+      if ([message[@"value"]  isEqual: @1]) {
+          
+          printf("%d",112);
+          
+      }else{
+          
+          if ([counterValue integerValue] == 0){
+              [self startAction];
+              startStopBool = true;
+          }else if ([counterValue integerValue] == 1){
+              [self stopAction];
+              startStopBool = false;
+          }
+          
+      }
     
 }
+
+
+#pragma mark - Watch communication
+/*
+- (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *,id> *)message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * _Nonnull))replyHandler{
+    
+    //Handling different message types
+    if (message[@"saveActivity"] != nil) {
+        
+        Activity *chosenActivity = [NSKeyedUnarchiver unarchiveObjectWithData:message[@"saveActivity"]];
+        
+        
+        //TODO: Properly handle error, forbidding user from requesting suggestions on watch
+ 
+        
+        [self monitorRegion:chosenActivity];
+        
+    } else {
+        
+        CLLocation *loc = [CLLocation alloc];
+        
+        //if watch series 2 is being used
+        if (![message[@"Coordinates"]  isEqual: @[@0, @0]]) {
+            NSNumber *latitude = message[@"Coordinates"][0];
+            NSNumber *longitude = message[@"Coordinates"][1];
+            loc = [loc initWithLatitude:[latitude doubleValue] longitude: [longitude doubleValue]];
+            
+        } else {
+            
+            
+            //[locationManager requestAlwaysAuthorization];
+            loc = [self.locationManager location];
+            NSLog(@"lat: %f long:%f", loc.coordinate.latitude, loc.coordinate.longitude);
+        }
+        
+        NSMutableArray *activities = [[NSMutableArray<Activity*> alloc] init];
+        
+        [[PlacesProviderSingleton sharedInstance] FindPlacesWithCoordinates:loc completionHandler:^(NSArray<Location *> *places, NSError *error) {
+            for(Location* place in places){
+                Activity* act = [[Activity alloc] initWithBadHabit:nil Place:place];
+                [activities addObject:act];
+            }
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:activities];
+            NSData *locData = [NSKeyedArchiver archivedDataWithRootObject:loc];
+            NSMutableDictionary *response = [[NSMutableDictionary alloc] init];
+            response[@"Activities"] = data;
+            response[@"Location"] = locData;
+            replyHandler(response);
+            
+        }];
+    }
+ 
+}*/
+
 @end
