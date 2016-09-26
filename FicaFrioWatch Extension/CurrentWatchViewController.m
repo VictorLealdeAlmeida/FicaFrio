@@ -137,7 +137,7 @@ NSMutableArray<NSString*> *mutableArray;
         //  [self stopStoringHeartRate];
         //Finaliza a sessao
         if(step == 3){
-            step = 0;
+            //step = 0;
             //_stepLabel.hidden = true;
             _relaxButton.hidden = YES;
             _imageSet.hidden = YES;
@@ -145,9 +145,7 @@ NSMutableArray<NSString*> *mutableArray;
             _stepImage.hidden = NO;
             statusConnection = NO;
             _stepButton.hidden = YES;
-            
-            //Verificar qual passo deixou mais ansioso e enviar o numero do passo e a Tag
-            [self pushControllerWithName: @"endView" context: nil];
+           
         }
     }else{
         [_imageSet setImageNamed:@"relogio"];
@@ -155,7 +153,7 @@ NSMutableArray<NSString*> *mutableArray;
         flag = YES;
         avgHeartRate = 0.0;
         _stepImage.hidden = true;
-       // [self startStoringHeartRate];
+       [self startStoringHeartRate];
         
         //Aumentar a label do watch
 
@@ -217,7 +215,7 @@ NSMutableArray<NSString*> *mutableArray;
     
     [self.healthStore startWorkoutSession:self.workoutSession];
     
-    //[self streamQueryHeartRateData];
+    [self streamQueryHeartRateData];
 }
 
 - (void)stopStoringHeartRate {
@@ -316,6 +314,11 @@ NSMutableArray<NSString*> *mutableArray;
         // PASSAR PARA O IPHONE POR AQUI?
         avgHeartRate = average;
         [avgHeartRateteps addObject: [NSNumber numberWithDouble: average]];
+        if(step == 3){
+            step = 0;
+            //Verificar qual passo deixou mais ansioso e enviar o numero do passo e a Tag
+            [self pushControllerWithName: @"endView" context: avgHeartRateteps];
+        }
     }];
     
     [self.healthStore executeQuery:squery];

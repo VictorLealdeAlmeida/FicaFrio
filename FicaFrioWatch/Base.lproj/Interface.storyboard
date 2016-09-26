@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jJt-6K-aPf">
     <dependencies>
-        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
     </dependencies>
@@ -19,9 +18,9 @@
             <objects>
                 <controller identifier="showStep" id="Qou-Tz-PgB" customClass="InfoStepInterfaceController">
                     <items>
-                        <group width="1" height="145" alignment="left" id="Jr2-Ff-fOV">
+                        <group width="1" height="157" alignment="left" id="Jr2-Ff-fOV">
                             <items>
-                                <label width="136" height="155" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="5" id="8fw-1T-5t3">
+                                <label width="136" height="155" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="8" id="8fw-1T-5t3">
                                     <fontDescription key="font" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="17"/>
                                 </label>
                             </items>
@@ -32,7 +31,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="478" y="25"/>
+            <point key="canvasLocation" x="478" y="28"/>
         </scene>
         <!--endView-->
         <scene sceneID="Kcm-4T-jFz">
@@ -41,19 +40,23 @@
                     <items>
                         <group width="134" height="36" alignment="left" id="zZp-pY-Lon">
                             <items>
-                                <label width="131" height="27" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="2" id="ffO-J6-a9k">
+                                <label alignment="center" verticalAlignment="center" text="HEARTRATE" textAlignment="center" numberOfLines="2" id="ffO-J6-a9k">
                                     <fontDescription key="font" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="17"/>
                                 </label>
                             </items>
                         </group>
-                        <group width="1" height="91" alignment="center" id="QYA-MZ-b3z">
+                        <group width="134" height="91" alignment="center" id="QYA-MZ-b3z">
                             <items>
-                                <imageView width="80" height="80" alignment="center" verticalAlignment="center" image="bola1" animationDuration="1" id="LdB-TI-oT4"/>
+                                <imageView width="50" height="50" alignment="center" verticalAlignment="center" image="coracao_01" contentMode="scaleAspectFit" animationDuration="2" id="LdB-TI-oT4"/>
+                                <imageView width="40" height="40" alignment="center" verticalAlignment="center" image="coracao_02" contentMode="scaleAspectFit" animationDuration="2" id="q9n-fJ-OPf"/>
+                                <imageView width="30" height="30" alignment="center" verticalAlignment="center" image="coracao_03" contentMode="scaleAspectFit" animationDuration="2" id="V7V-Iz-vbW"/>
                             </items>
                         </group>
                     </items>
                     <connections>
-                        <outlet property="imageStep" destination="LdB-TI-oT4" id="sDv-j9-4mH"/>
+                        <outlet property="step1" destination="LdB-TI-oT4" id="syz-v9-Bcm"/>
+                        <outlet property="step2" destination="q9n-fJ-OPf" id="xIo-A6-JEU"/>
+                        <outlet property="step3" destination="V7V-Iz-vbW" id="gZc-Q3-KTn"/>
                         <outlet property="tagText" destination="ffO-J6-a9k" id="y8P-bO-t1G"/>
                     </connections>
                 </controller>

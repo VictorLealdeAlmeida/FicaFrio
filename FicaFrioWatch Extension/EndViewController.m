@@ -9,15 +9,23 @@
 #import "EndViewController.h"
 
 @interface EndViewController ()
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *imageStep;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *tagText;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *step1;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *step2;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *step3;
 
 @end
 
 @implementation EndViewController
 
-- (void)awakeWithContext:(id)context {
+- (void)awakeWithContext:(NSArray<NSNumber*>*)context {
     [super awakeWithContext:context];
+    _tagText.text = [[NSNumber numberWithInt: context.count] stringValue];
+    [_step1 setWidth:30];
+    [_step1 setHeight:30];
+    [_step3 setHeight:50];
+    [_step3 setWidth: 50];
+    
     
     // Configure interface objects here.
 }
