@@ -58,11 +58,17 @@ NSMutableArray<NSString*> *mutableArray;
     [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
     [_stepText setText:NSLocalizedString(@"No ongoing goals", "")];
     _stepText.hidden = false;
+    
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+        
+    }
 
 }
 
 - (void)willActivate {
-    // This method is called when watch view controller is about to be visible to user
     NSMutableDictionary *sendMsg;
     sendMsg = [[NSMutableDictionary alloc] init];
     sendMsg[@"value"]=@1;
@@ -123,7 +129,7 @@ NSMutableArray<NSString*> *mutableArray;
         flag = NO;
         step++;
         [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
-        [self stopStoringHeartRate];
+      //  [self stopStoringHeartRate];
         
         //Finaliza a sessao
         if(step == 3){
@@ -143,7 +149,7 @@ NSMutableArray<NSString*> *mutableArray;
         [_imageSet startAnimating];
         flag = YES;
         avgHeartRate = 0.0;
-        [self startStoringHeartRate];
+       // [self startStoringHeartRate];
         
         //Aumentar a label do watch
 
