@@ -64,11 +64,12 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      notificationPayloadFile = "FicaFrioWatch Extension/PushNotificationPayload.apns">
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.carousel"
-         RemotePath = "/FicaFrio">
+         RemotePath = "/LUFT">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4F503EC1D90117800EC7870"
