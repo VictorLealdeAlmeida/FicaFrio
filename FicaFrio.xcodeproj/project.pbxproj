@@ -36,6 +36,7 @@
 		D41384751D88489F00281B48 /* SF-Compact-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D41384721D88489F00281B48 /* SF-Compact-Display-Regular.otf */; };
 		D41A6BAB1D871BB30074FA39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41A6BA91D871BB30074FA39 /* Main.storyboard */; };
 		D42A38F31D9499330096DA47 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42A38F21D9499330096DA47 /* HealthKit.framework */; };
+		D494F3B61D99587400FBF03E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D494F3B51D99587400FBF03E /* HealthKit.framework */; };
 		D4BBC13A1D7EF7BB0058615A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1391D7EF7BB0058615A /* main.m */; };
 		D4BBC13D1D7EF7BB0058615A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC13C1D7EF7BB0058615A /* AppDelegate.m */; };
 		D4BBC1461D7EF7BB0058615A /* FicaFrio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4BBC1441D7EF7BB0058615A /* FicaFrio.xcdatamodeld */; };
@@ -193,6 +194,7 @@
 		D41384721D88489F00281B48 /* SF-Compact-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Regular.otf"; sourceTree = "<group>"; };
 		D41A6BAA1D871BB30074FA39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D42A38F21D9499330096DA47 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		D494F3B51D99587400FBF03E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		D4BBC1351D7EF7BB0058615A /* FicaFrio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FicaFrio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BBC1391D7EF7BB0058615A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4BBC13B1D7EF7BB0058615A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F09CF821D8817A80079E6FB /* Charts.framework in Frameworks */,
+				D494F3B61D99587400FBF03E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +289,7 @@
 		AC4F26111D94260D00DEB8C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D494F3B51D99587400FBF03E /* HealthKit.framework */,
 				D42A38F21D9499330096DA47 /* HealthKit.framework */,
 			);
 			name = Frameworks;
@@ -540,7 +544,7 @@
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -868,6 +872,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FicaFrio/FicaFrio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -893,6 +898,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FicaFrio/FicaFrio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -927,7 +933,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -948,7 +954,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -971,7 +977,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -993,7 +999,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "FicaFrioWatch Extension/FicaFrioWatch Extension-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
