@@ -1,23 +1,23 @@
 //
-//  InfoStepInterfaceController.m
+//  EndViewController.m
 //  FicaFrio
 //
-//  Created by Bárbara Souza on 24/09/16.
+//  Created by Bárbara Souza on 25/09/16.
 //  Copyright © 2016 PokeGroup. All rights reserved.
 //
 
-#import "InfoStepInterfaceController.h"
+#import "EndViewController.h"
 
-@interface InfoStepInterfaceController ()
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *textStep;
+@interface EndViewController ()
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *imageStep;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *tagText;
 
 @end
 
-@implementation InfoStepInterfaceController
+@implementation EndViewController
 
-- (void)awakeWithContext:(NSString*)context {
+- (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
-    _textStep.text = context;
     
     // Configure interface objects here.
 }

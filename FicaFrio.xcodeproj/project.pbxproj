@@ -17,6 +17,7 @@
 		9F09CF881D8817C30079E6FB /* FicaFrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09CF871D8817C30079E6FB /* FicaFrio.swift */; };
 		9F241E351D968F8C00685A04 /* InfoStepInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F241E341D968F8C00685A04 /* InfoStepInterfaceController.m */; };
 		9F81719C1D92D40200346491 /* RelaxInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F81719A1D92D40200346491 /* RelaxInterfaceController.m */; };
+		9F92F69B1D97ECF000098621 /* EndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F92F69A1D97ECF000098621 /* EndViewController.m */; };
 		AC1226011D8D87B1007D4860 /* Gif_Heart_Rate.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */; };
 		AC354B9E1D92D38500D023CE /* Launch_novo.png in Resources */ = {isa = PBXBuildFile; fileRef = AC354B9D1D92D38500D023CE /* Launch_novo.png */; };
 		AC3CA2081D8AD0D500B985B1 /* GetHeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3CA2071D8AD0D500B985B1 /* GetHeartRate.m */; };
@@ -164,6 +165,8 @@
 		9F241E341D968F8C00685A04 /* InfoStepInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoStepInterfaceController.m; sourceTree = "<group>"; };
 		9F8171991D92D40200346491 /* RelaxInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelaxInterfaceController.h; sourceTree = "<group>"; };
 		9F81719A1D92D40200346491 /* RelaxInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelaxInterfaceController.m; sourceTree = "<group>"; };
+		9F92F6991D97ECF000098621 /* EndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndViewController.h; sourceTree = "<group>"; };
+		9F92F69A1D97ECF000098621 /* EndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndViewController.m; sourceTree = "<group>"; };
 		AC1226001D8D87B1007D4860 /* Gif_Heart_Rate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gif_Heart_Rate.gif; sourceTree = "<group>"; };
 		AC354B9D1D92D38500D023CE /* Launch_novo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch_novo.png; sourceTree = "<group>"; };
 		AC3CA2061D8AD0D500B985B1 /* GetHeartRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHeartRate.h; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 				9F81719A1D92D40200346491 /* RelaxInterfaceController.m */,
 				9F241E331D968F8C00685A04 /* InfoStepInterfaceController.h */,
 				9F241E341D968F8C00685A04 /* InfoStepInterfaceController.m */,
+				9F92F6991D97ECF000098621 /* EndViewController.h */,
+				9F92F69A1D97ECF000098621 /* EndViewController.m */,
 				D4F5040C1D90117800EC7870 /* Assets.xcassets */,
 				D4F5040E1D90117800EC7870 /* Info.plist */,
 				D4F503FE1D90117800EC7870 /* Supporting Files */,
@@ -706,6 +711,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F81719C1D92D40200346491 /* RelaxInterfaceController.m in Sources */,
+				9F92F69B1D97ECF000098621 /* EndViewController.m in Sources */,
 				D4F504051D90117800EC7870 /* ExtensionDelegate.m in Sources */,
 				D4F504261D91603900EC7870 /* RelaxWatchViewController.swift in Sources */,
 				D4F5040B1D90117800EC7870 /* ComplicationController.m in Sources */,

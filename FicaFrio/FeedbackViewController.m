@@ -18,6 +18,8 @@
     NSArray *arrayTrabalho;
     NSArray *arrayInteracaoSocial;
     NSArray *arrayOutros;
+    NSArray *tags;
+    NSDictionary* tagsMedia;
     Step *currentStep;
     double average;
     BD *dataBD;
@@ -41,18 +43,23 @@
     _nodata.text = NSLocalizedString(@"No data available!", "");
     
     //BD - para buscar as informaçoes
-     dataBD = [[BD alloc] init];
+    dataBD = [[BD alloc] init];
     
-    //PikerView
-    //inicializaçao
-    pickerData = @[NSLocalizedString(@"Self-exposure", ""), NSLocalizedString(@"Studies", ""), NSLocalizedString(@"Work", ""), NSLocalizedString(@"Social interaction", ""), NSLocalizedString(@"Others", "")];
+    //Inicializa as configs do grafico
+    [self setChar];
     
-    //Connect data
-    _pickerTag.dataSource = self;
-    _pickerTag.delegate = self;
-    
+    //busca no banco as informaçoes sobre cada Tag
+    [self inicializaVetoresTag];
+    // Do any additional setup after loading the view, typically from a nib.
+}
 
-    
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)setChar{
     //Configuraçao de estilo do grafico
     _lineChartView.delegate = self;
     _lineChartView.descriptionText = NSLocalizedString(@"Tap node for details", "");
@@ -73,7 +80,7 @@
     
     ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:7.0 label:@""];
     [_lineChartView.xAxis addLimitLine:llXAxis];
-
+    
     
     //BalloonMarker
     BalloonMarker *maker = [[BalloonMarker alloc] initWithColor: [UIColor colorWithRed: 94/255.0f green: 170/255.0f blue: 170/255.0f alpha: 0.4f] font: [UIFont systemFontOfSize:12.0] textColor: UIColor.whiteColor insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
@@ -81,15 +88,6 @@
     maker.minimumSize = CGSizeMake(80.f, 40.f);
     _lineChartView.marker = maker;
     _nodata.hidden = YES;
-    //busca no banco as informaçoes sobre cada Tag
-    [self inicializaVetoresTag];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)setCharData:(double)valor valor2:(NSArray*)valor2{
@@ -103,7 +101,6 @@
         if([currentStep.avgHeartRate integerValue] > 0){
             [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(i-j) y:[currentStep.avgHeartRate doubleValue]]];
             average = average + [currentStep.avgHeartRate doubleValue];
-            //NSLog(@"%@ %@",currentStep.startDate, currentStep.name);
         }else{
             j++;
         }
@@ -245,18 +242,56 @@
     return pickerLabel;
 }
 
+-(void)ordenaPickerView{
+    //PikerView
+    //inicializaçao
+    pickerData = @[tags[0], tags[1], tags[2], tags[3], tags[4]];
+    
+    //Connect data
+    _pickerTag.dataSource = self;
+    _pickerTag.delegate = self;
+
+    
+}
+
 -(void)inicializaVetoresTag{
-    arrayAutoexposicao = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:0]];
-    arrayEstudos = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:1]];
-    arrayInteracaoSocial = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:3]];
-    arrayTrabalho = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:2]];
-    arrayOutros = [dataBD fetchStepsWithTag: [pickerData objectAtIndex:4]];
-    [self setCharData: 85 valor2: arrayAutoexposicao];
+    arrayAutoexposicao = [dataBD fetchStepsWithTag: NSLocalizedString(@"Self-exposure", "")];
+    arrayEstudos = [dataBD fetchStepsWithTag: NSLocalizedString(@"Studies", "")];
+    arrayInteracaoSocial = [dataBD fetchStepsWithTag: NSLocalizedString(@"Social interaction", "")];
+    arrayTrabalho = [dataBD fetchStepsWithTag: NSLocalizedString(@"Work", "")];
+    arrayOutros = [dataBD fetchStepsWithTag: NSLocalizedString(@"Others", "")];
+    tagsMedia = @{
+                  NSLocalizedString(@"Self-exposure", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayAutoexposicao]],
+                  NSLocalizedString(@"Studies", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayEstudos]],
+                  NSLocalizedString(@"Social interaction", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayInteracaoSocial]],
+                  NSLocalizedString(@"Work", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayTrabalho]],
+                  NSLocalizedString(@"Others", "") : [NSDecimalNumber numberWithDouble:[self calculateAverange:arrayOutros]],};
+    tags = [tagsMedia keysSortedByValueUsingComparator: ^NSComparisonResult(id obj1, id obj2) {
+               return [obj2 compare:obj1];
+           }];
+    NSLog(@"%@", tags);
+    [self ordenaPickerView];
 }
 
 
 - (IBAction)back:(id)sender {
     [[self navigationController] popViewControllerAnimated:YES];
+}
+
+-(double)calculateAverange:(NSArray*)array{
+    double media = 0;
+    int j = 0;
+    for (int i = 0; i <array.count; i++) {
+        currentStep = array[array.count-i-1];
+        if([currentStep.avgHeartRate integerValue] > 0){
+            media = media + [currentStep.avgHeartRate doubleValue];
+        }else{
+            j++;
+        }
+        
+    }
+
+    return media/(array.count-j);
 }
 @end
 

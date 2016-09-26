@@ -18,7 +18,6 @@
 - (IBAction)showStep;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *stepButton;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *imageSet;
-//@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *startStop;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *stepImage;
 - (IBAction)startStopButton;
 
@@ -31,7 +30,6 @@
 @property (nonatomic, retain) HKAnchoredObjectQuery *heartQuery;
 @property (nonatomic, retain) HKQuantityType *heartType;
 @property (nonatomic, retain) NSMutableArray *sampleValues;
-//@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *relaxButton;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *stepText;
 
@@ -56,10 +54,12 @@ NSMutableArray<NSString*> *mutableArray;
     [_imageSet setImageNamed:@"relogio"];
     
     self.lastAnchor = 0;
+    _stepImage.hidden = NO;
+    _stepButton.hidden = YES;
     [_stepImage setImageNamed:@"GifInicial_Concertado-"];
     [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
     //[_stepText setText:NSLocalizedString(@"No goals", "")];
-    _stepText.hidden = false;
+    //_stepText.hidden = false;
 
 }
 
@@ -124,7 +124,7 @@ NSMutableArray<NSString*> *mutableArray;
         [_imageSet setImageNamed:@"relogio"];
         flag = NO;
         step++;
-        [_stepImage setImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
+        [_stepButton setBackgroundImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
         [self stopStoringHeartRate];
         
         //Finaliza a sessao
@@ -136,9 +136,8 @@ NSMutableArray<NSString*> *mutableArray;
             //_stepText.hidden = true;
             //_stepImage.hidden = true;
             statusConnection = false;
-            //[_stepText setText:@"You Win!!"];
-            [_stepImage setImageNamed:@"GifInicial_Concertado-"];
-            [_stepImage startAnimatingWithImagesInRange:  NSMakeRange(1, 19) duration:2 repeatCount:1000];
+            //Verificar qual passo deixou mais ansioso e enviar o numero do passo e a Tag 
+            [self pushControllerWithName: @"endView" context: nil];
         }
     }else{
         [_imageSet setImageNamed:@"relogio"];
@@ -159,33 +158,25 @@ NSMutableArray<NSString*> *mutableArray;
     
     //Quando iniciar a comunicacao, mostrar as views
     if(!statusConnection){
-<<<<<<< HEAD
-        //_stepLabel.hidden = true;
-=======
-        //NSString *counterText = [message objectForKey:@"textToWatch0"];
+
         [mutableArray addObject:[message objectForKey:@"textToWatch0"]];
         [mutableArray addObject:[message objectForKey:@"textToWatch1"]];
         [mutableArray addObject:[message objectForKey:@"textToWatch2"]];
-        _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[0]];
-
-        _stepLabel.hidden = true;
->>>>>>> 9d991eb0a75ddff71a1c6a5290a68badba4485a1
+        
+        _stepButton.hidden = NO;
         _relaxButton.hidden = false;
         _imageSet.hidden = false;
         _stepText.hidden = YES;
-        _stepImage.hidden = false;
-        [_stepImage setImageNamed: @"bola"];
+        _stepImage.hidden = YES;
+        [_stepButton setBackgroundImageNamed: @"bola"];
         statusConnection = true;
         
     }else{
         NSString *counterValue = [message objectForKey:@"startStopToWatch"];
-
-        //NSLog(@"%@",counterValue);
         
         if ([counterValue integerValue] == 0){
             statusButton = true;
             if(step < 2){
-            _stepText.text = [NSString stringWithFormat: @"%@", mutableArray[step+1]];
             }
 
             [self changeStartButton];
@@ -359,6 +350,6 @@ NSMutableArray<NSString*> *mutableArray;
 
 
 - (IBAction)showStep {
-    [self pushControllerWithName: @"detalhesStep" context: nil];
+    [self pushControllerWithName: @"detalhesStep" context: [NSString stringWithFormat: @"%@", mutableArray[step+1]]];
 }
 @end
