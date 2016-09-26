@@ -62,11 +62,17 @@ NSMutableArray<NSString*> *mutableArray;
     avgHeartRateteps = [[NSMutableArray alloc] init];
     //[_stepText setText:NSLocalizedString(@"No goals", "")];
     //_stepText.hidden = false;
+    
+    if ([WCSession isSupported]) {
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+        
+    }
 
 }
 
 - (void)willActivate {
-    // This method is called when watch view controller is about to be visible to user
     NSMutableDictionary *sendMsg;
     sendMsg = [[NSMutableDictionary alloc] init];
     sendMsg[@"value"]=@1;
@@ -128,17 +134,19 @@ NSMutableArray<NSString*> *mutableArray;
         step++;
         [_stepButton setBackgroundImageNamed: [NSString stringWithFormat:@"bola%d", (step+1)]];
         [self stopStoringHeartRate];
-        
+        //  [self stopStoringHeartRate];
         //Finaliza a sessao
         if(step == 3){
             step = 0;
             //_stepLabel.hidden = true;
-            _relaxButton.hidden = true;
-            _imageSet.hidden = true;
-            //_stepText.hidden = true;
-            //_stepImage.hidden = true;
-            statusConnection = false;
-            //Verificar qual passo deixou mais ansioso e enviar o numero do passo e a Tag 
+            _relaxButton.hidden = YES;
+            _imageSet.hidden = YES;
+            _stepText.hidden = NO;
+            _stepImage.hidden = NO;
+            statusConnection = NO;
+            _stepButton.hidden = YES;
+            
+            //Verificar qual passo deixou mais ansioso e enviar o numero do passo e a Tag
             [self pushControllerWithName: @"endView" context: nil];
         }
     }else{
@@ -146,7 +154,8 @@ NSMutableArray<NSString*> *mutableArray;
         [_imageSet startAnimating];
         flag = YES;
         avgHeartRate = 0.0;
-        [self startStoringHeartRate];
+        _stepImage.hidden = true;
+       // [self startStoringHeartRate];
         
         //Aumentar a label do watch
 
@@ -170,7 +179,7 @@ NSMutableArray<NSString*> *mutableArray;
         _imageSet.hidden = false;
         _stepText.hidden = YES;
         _stepImage.hidden = YES;
-        [_stepButton setBackgroundImageNamed: @"bola"];
+        [_stepButton setBackgroundImageNamed: @"bola1"];
         statusConnection = true;
         
     }else{
@@ -353,6 +362,6 @@ NSMutableArray<NSString*> *mutableArray;
 
 
 - (IBAction)showStep {
-    [self pushControllerWithName: @"detalhesStep" context: [NSString stringWithFormat: @"%@", mutableArray[step+1]]];
+    [self pushControllerWithName: @"showStep" context: [NSString stringWithFormat: @"%@", mutableArray[step]]];
 }
 @end

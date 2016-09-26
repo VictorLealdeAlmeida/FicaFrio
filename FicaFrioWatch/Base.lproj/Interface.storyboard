@@ -68,25 +68,25 @@
                         <group width="134" height="93" alignment="center" id="Ipx-ef-vGY">
                             <items>
                                 <imageView width="83" height="83" alignment="center" verticalAlignment="center" image="GifInicial_Concertado-1" id="waG-N8-Ocj"/>
-                                <button width="1" height="100" alignment="right" verticalAlignment="center" hidden="YES" title="Button" id="AV9-Ck-Crr">
+                                <button width="82" height="82" alignment="center" verticalAlignment="center" hidden="YES" id="AV9-Ck-Crr">
                                     <connections>
                                         <action selector="showStep" destination="jJt-6K-aPf" id="zuL-dc-RhD"/>
                                     </connections>
                                 </button>
                             </items>
                         </group>
-                        <group width="1" height="40" alignment="center" id="MLb-E1-6NU">
+                        <group width="136" height="51" alignment="center" id="MLb-E1-6NU">
                             <items>
                                 <button width="43" height="43" alignment="left" verticalAlignment="center" hidden="YES" backgroundImage="botao_respirar" id="WLO-cB-yxg">
                                     <connections>
                                         <segue destination="a9u-7N-6as" kind="push" id="zEg-CR-CfZ"/>
                                     </connections>
                                 </button>
-                                <label width="136" height="40" alignment="center" verticalAlignment="center" text="No goals" textAlignment="center" id="kRs-A2-nZu">
+                                <label width="136" height="40" alignment="center" verticalAlignment="center" text="No goals yet" textAlignment="center" id="kRs-A2-nZu">
                                     <color key="textColor" red="0.43529411764705883" green="0.76078431372549016" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="18"/>
                                 </label>
-                                <imageView width="39" height="1" alignment="right" hidden="YES" contentMode="scaleAspectFill" id="ebh-TL-cyV">
+                                <imageView width="43" height="45" alignment="right" verticalAlignment="center" hidden="YES" contentMode="scaleAspectFill" id="ebh-TL-cyV">
                                     <gestureRecognizers>
                                         <tapGestureRecognizer id="KZK-l5-iVT">
                                             <connections>
