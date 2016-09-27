@@ -185,7 +185,8 @@
     }
     
     //Media da Tag
-    _mediaTag.text = [[NSNumber numberWithDouble:average] stringValue];
+    //_mediaTag.text = [[NSNumber numberWithDouble:average] stringValue];
+    _mediaTag.text = [NSString stringWithFormat:@"%d", (int)average];
 }
 
 // The number of columns of data
