@@ -115,27 +115,6 @@ NSMutableArray<NSString *>* stepsText;
         session.delegate = self;
         [session activateSession];
         
-        //Envia o texto do step
-        //NSString *startStopText = [NSString stringWithFormat:@"%@", _labelStep.text];
-        NSArray * steps = [database fetchStepsForGoalID:goalID];
-        
-        for (int i=0; i<steps.count; i++){
-            stepsWatch = steps[i];
-            [stepsText addObject: stepsWatch.name];
-            NSLog(@"%@",stepsText[i]);
-        }
-        
-        NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[stepsText[0], stepsText[1], stepsText[2] ] forKeys:@[@"textToWatch0", @"textToWatch1", @"textToWatch2"]];
-        
-        [[WCSession defaultSession] sendMessage:applicationData
-                                   replyHandler:^(NSDictionary *reply) {
-                                       //handle reply from iPhone app here
-                                   }
-                                   errorHandler:^(NSError *error) {
-                                       //catch any errors here
-                                       NSLog(@"Deu erro");
-                                   }
-         ];
         
       /*  //Envia o 1 pra informar o watch que o play foi selecionado
         NSString *startStop = [NSString stringWithFormat:@"%d", 12121];
@@ -176,6 +155,7 @@ NSMutableArray<NSString *>* stepsText;
         [self startAction];
         
         //Envia o 1 pra informar o watch que o play foi selecionado
+        //2 significa desligado
         NSString *startStop = [NSString stringWithFormat:@"%d", 1];
         NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
         
@@ -193,8 +173,8 @@ NSMutableArray<NSString *>* stepsText;
         
         [self stopAction];
         
-        //Envia o 0 pra informar o watch que o stop foi selecionado
-        NSString *startStop = [NSString stringWithFormat:@"%d", 0];
+        //Envia o 2 pra informar o watch que o stop foi selecionado
+        NSString *startStop = [NSString stringWithFormat:@"%d", 2];
         NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[startStop] forKeys:@[@"startStopToWatch"]];
         
         [[WCSession defaultSession] sendMessage:applicationData
@@ -409,14 +389,36 @@ NSMutableArray<NSString *>* stepsText;
 }
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(NSDictionary<NSString *,id>* )message replyHandler:(nonnull void (^)(NSDictionary<NSString *,id> * __nonnull))replyHandler {
-    
 
+        if ([message[@"callCurrent"]  isEqual: @1]) {
+            
+            //Envia o texto do step
+            //NSString *startStopText = [NSString stringWithFormat:@"%@", _labelStep.text];
+            NSArray * steps = [database fetchStepsForGoalID:goalID];
+            
+            for (int i=0; i<steps.count; i++){
+                stepsWatch = steps[i];
+                [stepsText addObject: stepsWatch.name];
+                NSLog(@"%@",stepsText[i]);
+            }
+            
+            NSDictionary *applicationData = [[NSDictionary alloc] initWithObjects:@[stepsText[0], stepsText[1], stepsText[2] ] forKeys:@[@"textToWatch0", @"textToWatch1", @"textToWatch2"]];
+            
+            [[WCSession defaultSession] sendMessage:applicationData
+                                       replyHandler:^(NSDictionary *reply) {
+                                           //handle reply from iPhone app here
+                                       }
+                                       errorHandler:^(NSError *error) {
+                                           //catch any errors here
+                                           NSLog(@"Deu erro");
+                                       }
+             ];
 
-      if ([message[@"callStep"]  isEqual: @1]) {
+        }else if ([message[@"callStep"]  isEqual: @1]) {
         
           int value = 0;
           
-          if (stepStarted){
+          if (!stepStarted){
               if (stepNumber == 1){
                   value = 10;
               }else if (stepNumber == 2){
@@ -431,6 +433,8 @@ NSMutableArray<NSString *>* stepsText;
                   value = 21;
               }else if (stepNumber == 3){
                   value = 31;
+              }else if (stepNumber == 0){
+                  value = 40; //Fim
               }
           }
           
@@ -454,7 +458,7 @@ NSMutableArray<NSString *>* stepsText;
           NSString *counterValue = [message objectForKey:@"startStopToIphone"];
           NSLog(@"RESULTADO %@",counterValue);
           
-          if ([counterValue integerValue] == 0){
+          if ([counterValue integerValue] == 2){
               [self startAction];
               startStopBool = true;
           }else if ([counterValue integerValue] == 1){

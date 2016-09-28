@@ -21,7 +21,7 @@
 - (void)awakeWithContext:(NSArray<NSNumber*>*)context {
     CGFloat valorMedio = 40, valorMaior = 50, valorMenor = 30;
     [super awakeWithContext:context];
-    _tagText.text = [[NSNumber numberWithInt: context.count] stringValue];
+    //_tagText.text = [[NSNumber numberWithInt: context.count] stringValue];
     if(([context[0] doubleValue] == [context[1] doubleValue]) && ([context[0] doubleValue] == [context[2] doubleValue])){
         [_step1 setHeight:valorMedio];
         [_step1 setWidth:valorMedio];
