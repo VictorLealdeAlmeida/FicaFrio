@@ -54,9 +54,6 @@
                                         <color key="textColor" red="0.46666666666666667" green="0.67843137254901964" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go"/>
-                                        <connections>
-                                            <action selector="SetTask:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="A27-rY-nbw"/>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -139,23 +136,23 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOAL NAME HERE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA4-UE-o8P">
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOAL NAME HERE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="XA4-UE-o8P">
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="18"/>
                                 <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Break down your goal into three steps and don’t forget to pick a category for each!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="278" translatesAutoresizingMaskIntoConstraints="NO" id="CUa-V4-jGp">
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="12"/>
-                                <color key="textColor" red="0.59215686274509804" green="0.79607843137254897" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="frameOrigin" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Type your task" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="k1d-5o-q4V">
                                 <color key="backgroundColor" red="0.95083212279206608" green="0.96024630222565088" blue="0.96024630222565088" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.73333333333333328" green="0.89411764705882346" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.55769230769230771" green="0.55769230769230771" blue="0.55769230769230771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="14"/>
+                                <color key="textColor" red="0.28559945913461537" green="0.28421975160256413" blue="0.28697916666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Light" family="SF Compact Display" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Break down your goal into three steps!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="278" translatesAutoresizingMaskIntoConstraints="NO" id="CUa-V4-jGp">
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="13"/>
+                                <color key="textColor" red="0.59215686274509804" green="0.79607843137254897" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circuloPassos" translatesAutoresizingMaskIntoConstraints="NO" id="jeZ-L2-Rsu">
                                 <gestureRecognizers/>
                             </imageView>
@@ -359,7 +356,6 @@
                             <constraint firstItem="XA4-UE-o8P" firstAttribute="centerY" secondItem="CUa-V4-jGp" secondAttribute="centerY" multiplier="0.76" id="eWg-qa-Jgf"/>
                             <constraint firstItem="fYN-7H-R6l" firstAttribute="height" secondItem="xS6-qK-uzN" secondAttribute="height" multiplier="0.62" id="fsd-GV-BIS"/>
                             <constraint firstItem="1lu-te-36k" firstAttribute="centerX" secondItem="jQP-Dx-MkL" secondAttribute="centerX" id="gus-7X-0gA"/>
-                            <constraint firstItem="CUa-V4-jGp" firstAttribute="top" secondItem="k1d-5o-q4V" secondAttribute="bottom" multiplier="0.57" constant="-29" id="hvf-vx-AsN"/>
                             <constraint firstItem="fYN-7H-R6l" firstAttribute="centerY" secondItem="xS6-qK-uzN" secondAttribute="centerY" id="jmx-am-QDy"/>
                             <constraint firstItem="Ioc-nT-hx7" firstAttribute="top" secondItem="UFW-rg-jXu" secondAttribute="bottom" constant="17" id="mbG-G6-2Di"/>
                             <constraint firstItem="DSC-nz-6mP" firstAttribute="height" secondItem="jeZ-L2-Rsu" secondAttribute="height" multiplier="0.41" id="mdT-sV-txP"/>
@@ -375,6 +371,7 @@
                             <constraint firstItem="CUa-V4-jGp" firstAttribute="centerX" secondItem="k1d-5o-q4V" secondAttribute="centerX" id="whk-G1-80j"/>
                             <constraint firstItem="Ve7-Uh-vFY" firstAttribute="width" secondItem="xS6-qK-uzN" secondAttribute="width" multiplier="0.11" id="xY1-xq-Kfh"/>
                             <constraint firstItem="YxG-K6-e9c" firstAttribute="centerX" secondItem="xS6-qK-uzN" secondAttribute="centerX" id="y6j-Se-Sdl"/>
+                            <constraint firstItem="XA4-UE-o8P" firstAttribute="top" secondItem="jQP-Dx-MkL" secondAttribute="bottom" constant="5" id="yOI-eK-TnW"/>
                             <constraint firstItem="jQP-Dx-MkL" firstAttribute="height" secondItem="xS6-qK-uzN" secondAttribute="height" multiplier="0.13" id="yws-Tu-MwK"/>
                             <constraint firstItem="Ve7-Uh-vFY" firstAttribute="top" secondItem="YxG-K6-e9c" secondAttribute="bottom" id="zeZ-rl-m6Z"/>
                         </constraints>
@@ -1027,7 +1024,7 @@
         <scene sceneID="PbC-fa-Z4f">
             <objects>
                 <navigationController storyboardIdentifier="navigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Rao-Rf-tPL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-ui-lDV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-ui-lDV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1081,7 +1078,7 @@
         <image name="setinha" width="70" height="57"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="lWd-tw-tJI"/>
         <segue reference="Fx5-TN-vww"/>
-        <segue reference="SIK-03-OEX"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,26 +11,42 @@ import UIKit
 
 class HomeViewController: UIViewController, UITextFieldDelegate {
     
-    var CurrentGoal : String = ""
-    
     @IBOutlet weak var gifView: UIImageView!
-    
-    
     @IBOutlet weak var NewGoalView: UIView!
     @IBOutlet weak var TaskText: UITextField!
     @IBOutlet weak var insertGoalLabel: UILabel!
     @IBOutlet weak var newGoalButton: UIButton!
-    
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     
     let number = 1;
     let direction = 1;
     let shakes = 55;
-
-    @IBAction func DismissKeyboard(sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        NewGoalView.hidden = true
+        NewGoalView.alpha = 0
+        
+        TaskText.autocapitalizationType = UITextAutocapitalizationType.Sentences
+        TaskText.delegate = self
+        
+        self.view.addGestureRecognizer(tapGesture)
+        
+        insertGoalLabel.text = NSLocalizedString("Insert your goal", comment:"")
+        
+ 
+     // Configura a logo
+        let logoGif = UIImage.gifImageWithName("INICIAL")
+        //let logoGif = UIImage.animatedImageNamed("GifInicial_Concertado-", duration: 1.75)
+        gifView.image = logoGif
+        //gifView.animationRepeatCount = 1
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     @IBAction func NewGoalButton(sender: UIButton) {
         UIView.animateWithDuration(0.6, animations: {
@@ -52,48 +68,55 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
                 } })
     }
     
-    @IBAction func SetTask(sender: AnyObject) {
-        self.resignFirstResponder()
-        CurrentGoal = TaskText.text!
+    @IBAction func DismissKeyboard(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+
+    // UITextField Delegates
+    func textFieldDidBeginEditing(textField: UITextField) {
+        //print("TextField did begin editing method called")
+        ViewUpanimateMoving(true, upValue: 100)
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        //print("TextField did end editing method called")
+        TaskText.resignFirstResponder();
+        ViewUpanimateMoving(false, upValue: 100)
+
+    }
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        //print("While entering the characters this method gets called")
+        let maxLength = 45
+        let currentString: NSString = textField.text!
+        let newString: NSString =
+            currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxLength
+        
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        //print("TextField should return method called")
+        
+        if TaskText.text!.characters.count < 1 {
+            self.shakeview(NewGoalView, numberOfShakes: 1, direction: 1, maxShakes: 55);
+        }
+        else {
+            let goalName = TaskText.text
+            let defaults = NSUserDefaults.init()
+            defaults.setObject(goalName, forKey: "goalName")
+            self.performSegueWithIdentifier("homeToSet", sender: self)
+        }
+
+        return true;
     }
     
-    
-    // Configura view
-   /* func ShowNewGoalView() {
-        UIView.animateWithDuration(0.6, animations: {
-            self.NewGoalView.hidden = false
-            self.NewGoalView.alpha = 0.98
-        })
-    }
-    
- */
-    
-    override func viewDidLoad() {
-    
-        NewGoalView.hidden = true
-        NewGoalView.alpha = 0
-        
-        TaskText.autocapitalizationType = UITextAutocapitalizationType.Sentences
-        
-        newGoalButton.setTitle(NSLocalizedString("New Goal", comment: ""), forState: UIControlState.Normal)
-        
-        super.viewDidLoad()
-        TaskText.delegate = self;
-        self.view.addGestureRecognizer(tapGesture)
-        
-        insertGoalLabel.text = NSLocalizedString("Insert your goal", comment:"")
-        
-        
-      /*  let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
-        backgroundImage.image = UIImage(named: "balao_InsirasuaMeta2.png")
-        self.NewGoalView.insertSubview(backgroundImage, atIndex: 0)
-     */
- 
-     // Configura a logo
-        let logoGif = UIImage.gifImageWithName("INICIAL")
-        //let logoGif = UIImage.animatedImageNamed("GifInicial_Concertado-", duration: 1.75)
-        gifView.image = logoGif
-        //gifView.animationRepeatCount = 1
+    // Animations
+    func ViewUpanimateMoving (up:Bool, upValue :CGFloat){
+        let durationMovement:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -upValue : upValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(durationMovement)
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
     }
     
     func shakeview (NewGoalView: UIView, numberOfShakes : Int, direction: CGFloat, maxShakes : Int) {
@@ -110,80 +133,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
                     NewGoalView.becomeFirstResponder()
                     return
                 }
-                
         })
         
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // UITextField Delegates
-    func textFieldDidBeginEditing(textField: UITextField) {
-        print("TextField did begin editing method called")
-        ViewUpanimateMoving(true, upValue: 100)
-    }
-    func textFieldDidEndEditing(textField: UITextField) {
-        print("TextField did end editing method called")
-//        let goalName = TaskText.text
-//        let defaults = NSUserDefaults.init()
-//        defaults.setObject(goalName, forKey: "goalName")
-        TaskText.resignFirstResponder();
-        ViewUpanimateMoving(false, upValue: 100)
-
-    }
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        print("TextField should begin editing method called")
-        return true;
-    }
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        print("TextField should clear method called")
-        return true;
-    }
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        print("TextField should snd editing method called")
-        TaskText.resignFirstResponder()
-        return true;
-    }
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        //print("While entering the characters this method gets called")
-        let maxLength = 45
-        let currentString: NSString = textField.text!
-        let newString: NSString =
-            currentString.stringByReplacingCharactersInRange(range, withString: string)
-        return newString.length <= maxLength
-        
-    }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print("TextField should return method called")
-        TaskText.resignFirstResponder();
-        let goalName = TaskText.text
-        let defaults = NSUserDefaults.init()
-        defaults.setObject(goalName, forKey: "goalName")
-        if TaskText.text!.characters.count < 1 {
-            self.shakeview(NewGoalView, numberOfShakes: 1, direction: 1, maxShakes: 55);
-        }
-        else {
-            self.performSegueWithIdentifier("homeToSet", sender: self)
-        }
-
-        return true;
-    }
-    
-    func ViewUpanimateMoving (up:Bool, upValue :CGFloat){
-        let durationMovement:NSTimeInterval = 0.3
-        let movement:CGFloat = ( up ? -upValue : upValue)
-        UIView.beginAnimations( "animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(durationMovement)
-        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
-        UIView.commitAnimations()
-    }
-
-    
-    
     
 }

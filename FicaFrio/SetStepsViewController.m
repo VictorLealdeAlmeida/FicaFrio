@@ -20,7 +20,6 @@
     NSArray *tags;
     BD *database;
     NSUserDefaults *defaults;
-    //BOOL clickedOnce;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -77,7 +76,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _setStepsButton.hidden = true;
-    //clickedOnce = FALSE;
     
     _stepNameTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
     
@@ -92,7 +90,7 @@
     
     _titleLabel.text = NSLocalizedString(@"Steps", "");
     _goalLabel.text = [[defaults stringForKey:@"goalName"] uppercaseString];
-    _descriptionLabel.text = NSLocalizedString(@"Break down your goal into three steps and don’t forget to pick a category for each!", "");
+    _descriptionLabel.text = NSLocalizedString(@"Break down your goal into three steps!", "");
     _stepNameTextField.placeholder = NSLocalizedString(@"Type your task", "");
 
     [_stepNameTextField setDelegate:self];
@@ -101,7 +99,7 @@
     number = 1;
     direction= 1;
     shakes = 55;
-    [self shake:_stepNameTextField];
+    //[self shake:_stepNameTextField];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,10 +118,7 @@
     
     // Save current step name
     [stepsNames replaceObjectAtIndex:(number-1) withObject:_stepNameTextField.text];
-    //[UIView beginAnimations:nil context:NULL];
-    //[UIView setAnimationDuration:0.7];
     [[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
-    //[UIView commitAnimations];
     // If all steps are set, rotate back to step one
     if ([self checkIfCanFinish]) {
         
@@ -169,8 +164,6 @@
 - (BOOL)checkIfCanFinish {
     if (![stepsNames containsObject:@""] && ![stepsTags containsObject:@""]) {
         _setStepsButton.hidden = false;
-        //[_setStepsButton rotation360:1 option:0];
-        //[_setStepsButton setFrame:CGRectMake(_setStepsButton.frame.origin.x, _setStepsButton.frame.origin.y, _setStepsButton.frame.size.width, _setStepsButton.frame.size.height)];
         [_setStepsButton moveTo:CGPointMake(_setStepsButton.frame.origin.x + 50, _setStepsButton.frame.origin.y) duration:0.5 option:0];
         return true;
     }
@@ -191,7 +184,6 @@
     [defaults setObject:goalID forKey:@"currentGoalID"];
     [defaults setInteger:1 forKey:@"currentStepNumber"];
     //[defaults setObject:[stepsTags objectAtIndex:0] forKey:@"currentStepTag"];
-    //[defaults synchronize];
     [database createNewGoal:[defaults stringForKey:@"goalName"] withSteps:stepsNames tags:stepsTags andID:goalID];
 }
 
@@ -271,8 +263,6 @@
     [_stepTagButton setTitle:[stepsTags objectAtIndex:(number-1)] forState:UIControlStateNormal];
     [self matchTextColorToStep];
     
-    //[UIView beginAnimations:nil context:NULL];
-    //[UIView setAnimationDuration:1.0];
     // Trocar imagem do passo atual pela sem número
     [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Roda_0%dsn", number]]];
     // Trocar imagem dos outros passos pela com número
@@ -281,7 +271,6 @@
     [self incrementNumber];
     [[stepsImages objectAtIndex:(number-1)] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Roda_0%d", number]]];
     [self incrementNumber];
-    //[UIView commitAnimations];
 }
 
 

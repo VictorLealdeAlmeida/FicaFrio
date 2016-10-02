@@ -200,7 +200,6 @@ NSMutableArray<NSString *>* stepsText;
     
     stepStarted = TRUE;
     [defaults setBool:stepStarted forKey:@"stepStarted"];
-    //[defaults synchronize];
  
     //Timer pra acontecer a animacao
     //[_endStep setImage:[UIImage imageNamed:@"relogio"] forState: nil];

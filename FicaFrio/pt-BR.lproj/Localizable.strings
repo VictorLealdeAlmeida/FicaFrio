@@ -8,11 +8,10 @@
 
 // HomeViewController
 "Insert your goal" = "Insira sua meta";
-"New Goal" = "Nova Meta";
 
 // SetStepsViewController
 "Steps" = "Passos";
-"Break down your goal into three steps and don’t forget to pick a category for each!" = "Divida sua meta em três passos e não esqueça de escolher uma categoria para cada um deles!";
+"Break down your goal into three steps!" = "Divida sua meta em três passos!";
 "Type your task" = "Digite sua tarefa";
 
 "PICK A CATEGORY" = "ESCOLHA UMA CATEGORIA";
