@@ -60,7 +60,7 @@
                 [_step3 setWidth:valorMedio];
                 [_step3 setHeight:valorMedio];
             }
-        }else if (([context[2] doubleValue] > [context[0] doubleValue]) && ([context[2] doubleValue] > [context[0] doubleValue])){
+        }else if (([context[2] doubleValue] > [context[0] doubleValue]) && ([context[2] doubleValue] > [context[1] doubleValue])){
             [_step3 setHeight: valorMaior];
             [_step3 setHeight:valorMaior];
             if(([context[0] doubleValue] > [context[1] doubleValue])){
