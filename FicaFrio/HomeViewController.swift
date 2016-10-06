@@ -24,19 +24,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        NewGoalView.hidden = true
-        NewGoalView.alpha = 0
         
-        TaskText.autocapitalizationType = UITextAutocapitalizationType.Sentences
-        TaskText.delegate = self
-        
-        self.view.addGestureRecognizer(tapGesture)
-        
-        insertGoalLabel.text = NSLocalizedString("Insert your goal", comment:"")
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         // Configura a logo
         //let logoGif = UIImage.gifImageWithName("INICIAL")
         //let logoGif = UIImage.animatedImageNamed("inicial", duration: 2.25)
@@ -53,6 +41,16 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         gifView.animationDuration = 2.25
         gifView.animationRepeatCount = 1
         gifView.startAnimating()
+    
+        NewGoalView.hidden = true
+        NewGoalView.alpha = 0
+        
+        TaskText.autocapitalizationType = UITextAutocapitalizationType.Sentences
+        TaskText.delegate = self
+        
+        self.view.addGestureRecognizer(tapGesture)
+        
+        insertGoalLabel.text = NSLocalizedString("Insert your goal", comment:"")
     }
 
     override func didReceiveMemoryWarning() {

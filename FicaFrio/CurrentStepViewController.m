@@ -25,40 +25,31 @@
     NSTimer *timerAnimation;
     bool selectHeart;
     bool stepStarted;
-    UIImageView *imageView;
     UIView *currentPopup;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *circleView;
 @property (weak, nonatomic) IBOutlet UILabel *labelStep;
-//@property (weak, nonatomic) IBOutlet UIButton *startStep;
 @property (weak, nonatomic) IBOutlet UIButton *endStep;
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-//Popup
-//@property (weak, nonatomic) IBOutlet UIImageView *backgroundPopup;
+//Popups
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (weak, nonatomic) IBOutlet UIButton *grafButton;
 @property (weak, nonatomic) IBOutlet UILabel *backLabel; // Nova Meta
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel; // Avaliação da Tarefa
 @property (weak, nonatomic) IBOutlet UILabel *grafLabel; // Avaliação Geral
-//@property (weak, nonatomic) IBOutlet UIView *darkView;
-@property (weak, nonatomic) IBOutlet UIView *popupBackground;
-
-
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurBackground;
 @property (weak, nonatomic) IBOutlet UIView *confirmPopupView;
 @property (weak, nonatomic) IBOutlet UIView *relaxPopupView;
 @property (weak, nonatomic) IBOutlet UIView *tutorialPopupView;
 @property (weak, nonatomic) IBOutlet UILabel *tutorialLabel;
 @property (weak, nonatomic) IBOutlet UILabel *measureLabel;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *gifTutorial;
-
 
 
 //Actions popup
@@ -69,7 +60,7 @@
 - (IBAction)justRelax:(UIButton *)sender;
 - (IBAction)relaxAndMeasure:(UIButton *)sender;
 - (IBAction)goToRelax:(UIButton *)sender;
-- (IBAction)clickOutsideOfPopup:(UITapGestureRecognizer *)sender;
+- (IBAction)clickOutsidePopup:(UITapGestureRecognizer *)sender;
 
 
 
@@ -94,6 +85,9 @@ NSMutableArray<NSString *>* stepsText;
     _infoLabel.text = NSLocalizedString(@"Goal Feedback", @"");
     _grafLabel.text = NSLocalizedString(@"Total Feedback", @"");
     
+    UIImage *logoGif = [UIImage gifImageWithName:@"Gif_Heart_Rate"];
+    [_gifTutorial setImage:logoGif];
+    
     selectHeart = false;
     
     // Database
@@ -104,7 +98,6 @@ NSMutableArray<NSString *>* stepsText;
     goalID = [defaults stringForKey:@"currentGoalID"];
     stepNumber = [defaults integerForKey:@"currentStepNumber"];
     stepStarted = [defaults boolForKey:@"stepStarted"];
-    
     
     [self updateStep];
     [self updateCircleRotation];
@@ -133,6 +126,10 @@ NSMutableArray<NSString *>* stepsText;
     }
     
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    selectHeart = false;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -283,78 +280,58 @@ NSMutableArray<NSString *>* stepsText;
         [self showPopup:_relaxPopupView];
     }
     else {
-        selectHeart = false;
         [self performSegueWithIdentifier:@"currentToRelax" sender:self];
     }
 }
 
 - (IBAction)justRelax:(UIButton *)sender {
-    [self closePopup:_relaxPopupView];
     // sem medir o batimento
-    selectHeart = false;
+    [self closePopup];
     [self performSegueWithIdentifier:@"currentToRelax" sender:self];
 }
 
 - (IBAction)relaxAndMeasure:(UIButton *)sender {
-    [self closePopup:_relaxPopupView];
+    selectHeart = true;
+    [self closePopup];
     [self showPopup:_tutorialPopupView];
 }
 
 - (IBAction)goToRelax:(UIButton *)sender {
-    [self closePopup:_tutorialPopupView];
+    [self closePopup];
     // medindo o batimento
-    selectHeart = true;
     [self performSegueWithIdentifier:@"currentToRelax" sender:self];
 }
 
-- (IBAction)clickOutsideOfPopup:(UITapGestureRecognizer *)sender {
+- (IBAction)clickOutsidePopup:(UITapGestureRecognizer *)sender {
+    selectHeart = false;
+    
     if (currentPopup != _confirmPopupView) {
-        [self closePopup:currentPopup];
+        [self closePopup];
     }
 }
 
 - (void)showPopup:(UIView *)popupView {
     currentPopup = popupView;
+    
     popupView.hidden = false;
-    _popupBackground.hidden = false;
+    _blurBackground.hidden = false;
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.7];
-    [_popupBackground setAlpha:0.8];
-    [popupView setAlpha:0.95];
-    [UIView commitAnimations];
-    
-    if (popupView == _tutorialPopupView) {
-        UIImage *logoGif = [UIImage gifImageWithName:@"Gif_Heart_Rate"];
-        [_gifTutorial setImage:logoGif];
-    }
+    [UIView animateWithDuration:0.7 animations:^{
+        [_blurBackground setAlpha:1.0];
+        [popupView setAlpha:0.95];
+    }];
 }
 
-- (void)closePopup:(UIView *)popupView {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.7];
-    [_popupBackground setAlpha:0.0];
-    [popupView setAlpha:0.0];
-    [UIView commitAnimations];
+- (void)closePopup {
+    [UIView animateWithDuration:0.7 animations:^{
+        if (!selectHeart || currentPopup == _tutorialPopupView) {
+            [_blurBackground setAlpha:0.0];
+        }
+        
+        [currentPopup setAlpha:0.0];
+    }];
     
-    if (popupView == _tutorialPopupView) {
-        [imageView removeFromSuperview];
-    }
-    
-    //Timer pra acontecer a animacao antes do hidden
-    [NSTimer scheduledTimerWithTimeInterval:0.7
-                                     target:self
-                                   selector:@selector(closeTagPopupHidden)
-                                   userInfo:nil
-                                    repeats:NO];
-}
-
-- (void) closeTagPopupHidden {
-    // Hide all the popup elements
-    //_darkView.hidden = true;
-    _relaxPopupView.hidden = true;
-    //_tutorialPopupView.hidden = true;
-    
+    currentPopup.hidden = true;
 }
 
 - (void)setNotification{
@@ -378,7 +355,6 @@ NSMutableArray<NSString *>* stepsText;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-    //_darkView.hidden = true;
     if ([segue.identifier isEqualToString:@"currentToRelax"]) {
         RelaxViewController *d = (RelaxViewController *)segue.destinationViewController;
         d.selectHeartRate = selectHeart;

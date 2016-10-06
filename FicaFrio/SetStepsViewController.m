@@ -10,14 +10,13 @@
 #import "BD.h"
 
 @interface SetStepsViewController () {
-    int direction;
-    int shakes;
     int number;
     int tagNumber;
     NSMutableArray *stepsNames;
     NSMutableArray *stepsTags;
     NSMutableArray *stepsImages;
     NSArray *tags;
+    NSArray *tagButtons;
     BD *database;
     NSUserDefaults *defaults;
 }
@@ -31,7 +30,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *arrow;
 @property (weak, nonatomic) IBOutlet UIButton *setStepButton;
 
-
 @property (weak, nonatomic) IBOutlet UIView *circleView;
 @property (weak, nonatomic) IBOutlet UIImageView *circleStepOne;
 @property (weak, nonatomic) IBOutlet UIImageView *circleStepTwo;
@@ -43,7 +41,8 @@
 
 // Tag popup-related outlets
 @property (weak, nonatomic) IBOutlet UIView *tagsPopupView;
-@property (weak, nonatomic) IBOutlet UIView *darkView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurBackground;
+
 @property (weak, nonatomic) IBOutlet UILabel *pickTagLabel;
 @property (weak, nonatomic) IBOutlet UIButton *tagOneButton;
 @property (weak, nonatomic) IBOutlet UIButton *tagTwoButton;
@@ -65,6 +64,10 @@
 - (IBAction)closeViewTag:(id)sender;
 - (IBAction)changeTag:(UIButton *)sender;
 
+- (IBAction)clickOutsidePopup:(UITapGestureRecognizer *)sender;
+
+
+
 - (IBAction)dismissKeyboard:(UIControl *)sender;
 
 
@@ -75,38 +78,40 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _setStepsButton.hidden = true;
     
-    _stepNameTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
+    // Round tag button borders
     [self.stepTagButton.layer setCornerRadius:8.0f];
     [self.stepTagButton.layer setMasksToBounds:YES];
-    //[self.stepTagButton.layer setBorderWidth:1.0f];
-    //[self.stepTagButton.layer outline]
-    //[self.stepTagButton.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-    //[self.stepTagButton.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     
-    // Database
+    // Initialize database
     defaults = [NSUserDefaults standardUserDefaults];
     database = [BD new];
     
+    //
     stepsNames = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
     stepsTags = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
+    
+    //
     stepsImages = [NSMutableArray arrayWithObjects:_circleStepOne, _circleStepTwo, _circleStepThree, nil];
     tags = @[NSLocalizedString(@"Self-exposure", ""), NSLocalizedString(@"Studies", ""), NSLocalizedString(@"Work", ""), NSLocalizedString(@"Social interaction", ""), NSLocalizedString(@"Others", "")];
     
+    //
     _titleLabel.text = NSLocalizedString(@"Steps", "");
     _goalLabel.text = [[defaults stringForKey:@"goalName"] uppercaseString];
     _descriptionLabel.text = NSLocalizedString(@"Break down your goal into three steps!", "");
     _stepNameTextField.placeholder = NSLocalizedString(@"Type your task", "");
+    
+    // Tags popup initial configuration - setting text
+    tagButtons = [NSArray arrayWithObjects: _tagOneButton, _tagTwoButton, _tagThreeButton, _tagFourButton, _tagFiveButton, nil];
+    _pickTagLabel.text = NSLocalizedString(@"PICK A CATEGORY", "");
+    for (int i = 0; i < tagButtons.count; i++) {
+        [[tagButtons objectAtIndex:i] setTitle:tags[i] forState:UIControlStateNormal];
+    }
 
+    // Text field delegate
     [_stepNameTextField setDelegate:self];
     
-    // Sets para fazer o shake no textfield
     number = 1;
-    direction= 1;
-    shakes = 55;
-    //[self shake:_stepNameTextField];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,25 +136,13 @@
         
         if (number == 2) { [self rotateCircleToLeft]; }
         else if (number == 3) { [self rotateCircleToRight]; }
-        
-        // Rotates one full circle before going back to step one
-//        int numberOfRotations = 0;
-//        if (number == 2) { numberOfRotations = 5; }
-//        else if (number == 3) { numberOfRotations = 4; }
-//        
-//        for (int i = 0; i < numberOfRotations; i++) {
-//            [self rotateCircleToRight];
-//        }
-        
     }
     // If there are still steps to be set
     else {
         // If name isn't set, shake textbox
         if ([[stepsNames objectAtIndex:(number-1)] isEqual:@""]) {
             [[stepsImages objectAtIndex:(number-1)] setAlpha:0.3];
-            [self shake:_stepNameTextField];
-            [self shake:_viewButton];
-            [self shake:_arrow];
+            [self shakeTextBox];
         // If the step name is set...
         } else {
             // ... but the tag isn't
@@ -157,11 +150,8 @@
                 [[stepsImages objectAtIndex:(number-1)] setAlpha:0.3];
                 [self showTagPopup];
             } else { // ... and the tag is also set, rotate to next step
-                //[UIView beginAnimations:nil context:NULL];
-                //[UIView setAnimationDuration:0.7];
                 [[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
                 [self rotateCircleToRight];
-                //[UIView commitAnimations];
             }
         }
     }
@@ -170,8 +160,13 @@
 // If all steps names and tags are set, shows button to confirm all
 - (BOOL)checkIfCanFinish {
     if (![stepsNames containsObject:@""] && ![stepsTags containsObject:@""]) {
-        _setStepsButton.hidden = false;
-        [_setStepsButton moveTo:CGPointMake(_setStepsButton.frame.origin.x + 50, _setStepsButton.frame.origin.y) duration:0.5 option:0];
+    
+        NSLog(@"%d", _setStepsButton.hidden);
+        
+        if (_setStepsButton.hidden){
+            _setStepsButton.hidden = false;
+            [_setStepsButton moveTo:CGPointMake(_setStepsButton.frame.origin.x + 50, _setStepsButton.frame.origin.y) duration:0.5 option:0];
+        }
         return true;
     }
     else {
@@ -220,19 +215,18 @@
     [self closeTagPopup];
 }
 
-// Clicking outside the popup
-- (IBAction)closeViewTag:(id)sender {
+// Clicking on the current tag (to change it)
+- (IBAction)changeTag:(UIButton *)sender {
+    [self showTagPopup];
+}
+
+- (IBAction)clickOutsidePopup:(UITapGestureRecognizer *)sender {
     if ([[stepsTags objectAtIndex:(number-1)] isEqualToString:@""]) {
         tagNumber = 5;
     } else {
         tagNumber = (int) [tags indexOfObject:[stepsTags objectAtIndex:(number-1)]] + 1;
     }
     [self closeTagPopup];
-}
-
-// Clicking on the current tag (to change it)
-- (IBAction)changeTag:(UIButton *)sender {
-    [self showTagPopup];
 }
 
 - (IBAction)dismissKeyboard:(UIControl *)sender {
@@ -272,6 +266,11 @@
     _stepNameTextField.text = [stepsNames objectAtIndex:(number-1)];
     _stepNumberLabel.text = [NSString stringWithFormat:@"%d", number];
     [_stepTagButton setTitle:[NSString stringWithFormat:@" %@ ", [stepsTags objectAtIndex:(number-1)]] forState:UIControlStateNormal];
+    if ([[stepsTags objectAtIndex:(number-1)] isEqualToString:@""]) {
+        _stepTagButton.hidden = true;
+    } else {
+        _stepTagButton.hidden = false;
+    }
     [self matchTextColorToStep];
     
     // Trocar imagem do passo atual pela sem número
@@ -297,12 +296,8 @@
         textColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
     }
     _stepNumberLabel.textColor = textColor;
-    //UIColor *buttonColor = [UIColor colorWithRed:119.0/255.0 green:173.0/255.0 blue:177.0/255.0 alpha:1.0];
-    //UIColor *buttonColor = [UIColor colorWithRed:130.0/255.0 green:190.0/255.0 blue:196.0/255.0 alpha:1.0]; // mais claro
-    //UIColor *buttonColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
-    UIColor *buttonColor = [UIColor colorWithRed:39.0/255.0 green:112.0/255.0 blue:146.0/255.0 alpha:1.0];
+    //UIColor *buttonColor = [UIColor colorWithRed:39.0/255.0 green:112.0/255.0 blue:146.0/255.0 alpha:1.0];
     //[_stepTagButton setBackgroundColor:buttonColor];
-    //[_stepTagButton.layer setBorderColor:[buttonColor CGColor]];
     //[_stepTagButton setTitleColor:textColor forState:UIControlStateNormal];
 }
 // ----------------------------------------------------------------
@@ -345,17 +340,17 @@
 // Shake UIView passed as parameter
 - (void)shake:(UIView *)theOneYouWannaShake {
     [UIView animateWithDuration:0.03 animations:^ {
-         theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(5*direction, 0);
+         theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(5, 0);
     }
     completion:^(BOOL finished){
-         if(shakes >= 10) {
              theOneYouWannaShake.transform = CGAffineTransformIdentity;
-             return;
-         }
-         shakes++;
-         direction = direction * -1;
-         [self shake:theOneYouWannaShake];
      }];
+}
+
+- (void)shakeTextBox {
+    [self shake:_stepNameTextField];
+    [self shake:_viewButton];
+    [self shake:_arrow];
 }
 
 // Arredondar as bordas do TextField
@@ -383,26 +378,13 @@
 
 // Choosing tags -----------------------------------------------------
 - (void) showTagPopup{
-    // Show all the popup elements
-    
-    _pickTagLabel.text = NSLocalizedString(@"PICK A CATEGORY", "");
-    [_tagOneButton setTitle:tags[0] forState:UIControlStateNormal];
-    [_tagTwoButton setTitle:tags[1] forState:UIControlStateNormal];
-    [_tagThreeButton setTitle:tags[2] forState:UIControlStateNormal];
-    [_tagFourButton setTitle:tags[3] forState:UIControlStateNormal];
-    [_tagFiveButton setTitle:tags[4] forState:UIControlStateNormal];
-    
     _tagsPopupView.hidden = false;
-    _darkView.hidden = false;
+    _blurBackground.hidden = false;
     
     [UIView animateWithDuration:0.7 animations:^{
         [_tagsPopupView setAlpha:0.95];
-        [_darkView setAlpha:0.8];
+        [_blurBackground setAlpha:1.0];
     }];
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.7];
-//    
-//    [UIView commitAnimations];
 }
 
 - (void) closeTagPopup{
@@ -410,12 +392,10 @@
     [self updateStepText];
     _stepTagButton.hidden = false;
     
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.7];
-    [_tagsPopupView setAlpha:0.0];
-    [_darkView setAlpha:0.0];
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.7 animations:^{
+        [_tagsPopupView setAlpha:0.0];
+        [_blurBackground setAlpha:0.0];
+    }];
     
     //Timer pra acontecer a animacao antes do hidden
     [NSTimer scheduledTimerWithTimeInterval:0.7
@@ -432,7 +412,7 @@
 - (void) closeTagPopupHidden{
     // Hide all the popup elements
     _tagsPopupView.hidden = true;
-    _darkView.hidden = true;
+    _blurBackground.hidden = true;
 }
 // --------------------------------------------------------------------
 
