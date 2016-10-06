@@ -36,6 +36,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *circleStepThree;
 @property (weak, nonatomic) IBOutlet UILabel *stepNumberLabel;
 @property (weak, nonatomic) IBOutlet UIButton *stepTagButton;
+@property (weak, nonatomic) IBOutlet UIView *centerButtonView;
+@property (weak, nonatomic) IBOutlet UILabel *stepTagLabel;
+
+
 
 @property (weak, nonatomic) IBOutlet UIButton *setStepsButton;
 
@@ -61,7 +65,6 @@
 - (IBAction)setTagThree:(UIButton *)sender;
 - (IBAction)setTagFour:(UIButton *)sender;
 - (IBAction)setTagFive:(UIButton *)sender;
-- (IBAction)closeViewTag:(id)sender;
 - (IBAction)changeTag:(UIButton *)sender;
 
 - (IBAction)clickOutsidePopup:(UITapGestureRecognizer *)sender;
@@ -82,6 +85,9 @@
     // Round tag button borders
     [self.stepTagButton.layer setCornerRadius:8.0f];
     [self.stepTagButton.layer setMasksToBounds:YES];
+    
+    [_centerButtonView.layer setCornerRadius:120.0/2];//_centerButtonView.frame.size.width/2];
+    [_centerButtonView.layer setMasksToBounds:YES];
     
     // Initialize database
     defaults = [NSUserDefaults standardUserDefaults];
@@ -141,21 +147,31 @@
     else {
         // If name isn't set, shake textbox
         if ([[stepsNames objectAtIndex:(number-1)] isEqual:@""]) {
-            [[stepsImages objectAtIndex:(number-1)] setAlpha:0.3];
+            //[[stepsImages objectAtIndex:(number-1)] setAlpha:0.15];
             [self shakeTextBox];
         // If the step name is set...
         } else {
             // ... but the tag isn't
             if ([[stepsTags objectAtIndex:(number-1)] isEqual:@""]){
-                [[stepsImages objectAtIndex:(number-1)] setAlpha:0.3];
+                //[[stepsImages objectAtIndex:(number-1)] setAlpha:0.15];
                 [self showTagPopup];
             } else { // ... and the tag is also set, rotate to next step
-                [[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
+                //[[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
                 [self rotateCircleToRight];
             }
         }
     }
 }
+
+- (void)setSectionAlpha {
+    // If name and/or tag isn't set
+    if ([[stepsNames objectAtIndex:(number-1)] isEqual:@""] || [[stepsTags objectAtIndex:(number-1)] isEqual:@""]) {
+        [[stepsImages objectAtIndex:(number-1)] setAlpha:0.15];
+    } else {
+        // If it's all set
+        [[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
+    }
+    }
 
 // If all steps names and tags are set, shows button to confirm all
 - (BOOL)checkIfCanFinish {
@@ -249,12 +265,14 @@
 }
 
 - (void)rotateCircleToRight {
+    [self setSectionAlpha];
     [self incrementNumber];
     [self updateStepText];
     [self.circleView rotation: 1.0 option:0];
 }
 
 - (void)rotateCircleToLeft {
+    [self setSectionAlpha];
     [self decrementNumber];
     [self updateStepText];
     [self.circleView rotationOpposite: 1.0 option:0];
@@ -266,10 +284,13 @@
     _stepNameTextField.text = [stepsNames objectAtIndex:(number-1)];
     _stepNumberLabel.text = [NSString stringWithFormat:@"%d", number];
     [_stepTagButton setTitle:[NSString stringWithFormat:@" %@ ", [stepsTags objectAtIndex:(number-1)]] forState:UIControlStateNormal];
+    [_stepTagLabel setText:[NSString stringWithFormat:@" %@ ", [stepsTags objectAtIndex:(number-1)]]];
     if ([[stepsTags objectAtIndex:(number-1)] isEqualToString:@""]) {
         _stepTagButton.hidden = true;
+        _stepTagLabel.hidden = true;
     } else {
         _stepTagButton.hidden = false;
+        _stepTagLabel.hidden = false;
     }
     [self matchTextColorToStep];
     
@@ -289,13 +310,15 @@
 - (void)matchTextColorToStep {
     UIColor *textColor;
     if (number == 1){
-        textColor = [UIColor colorWithRed:0.78 green:0.89 blue:0.91 alpha:1.0];
+        //textColor = [UIColor colorWithRed:0.78 green:0.89 blue:0.91 alpha:1.0];
+        textColor = [UIColor colorWithRed:127.0/255 green:173.0/255 blue:178.0/255 alpha:1.0];
     }else if(number == 2){
         textColor = [UIColor colorWithRed:72.0/255.0 green:187.0/255.0 blue:199.0/255.0 alpha:1.0];
     }else if(number == 3){
         textColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
     }
     _stepNumberLabel.textColor = textColor;
+    _stepTagLabel.textColor = textColor;
     //UIColor *buttonColor = [UIColor colorWithRed:39.0/255.0 green:112.0/255.0 blue:146.0/255.0 alpha:1.0];
     //[_stepTagButton setBackgroundColor:buttonColor];
     //[_stepTagButton setTitleColor:textColor forState:UIControlStateNormal];
@@ -339,11 +362,37 @@
 
 // Shake UIView passed as parameter
 - (void)shake:(UIView *)theOneYouWannaShake {
-    [UIView animateWithDuration:0.03 animations:^ {
-         theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(5, 0);
-    }
-    completion:^(BOOL finished){
-             theOneYouWannaShake.transform = CGAffineTransformIdentity;
+    NSTimeInterval duration = 0.08;
+    CGFloat translation = 5.0;
+    
+    [UIView
+     animateWithDuration:duration
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseOut
+     animations:^ {
+         theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(translation, 0);
+     }
+     completion:^(BOOL finished){
+         
+         [UIView
+          animateWithDuration:duration
+          delay:0.0
+          options:UIViewAnimationOptionCurveEaseInOut
+          animations:^ {
+              theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(-translation, 0);
+          }
+          completion:^(BOOL finished){
+              
+              [UIView
+               animateWithDuration:duration
+               delay:0.0
+               options:UIViewAnimationOptionCurveEaseInOut
+               animations:^ {
+                   theOneYouWannaShake.transform = CGAffineTransformIdentity;
+               }
+               completion:^(BOOL finished){
+               }];
+          }];
      }];
 }
 
@@ -391,6 +440,7 @@
     [stepsTags replaceObjectAtIndex:(number-1) withObject:[tags objectAtIndex:(tagNumber-1)]];
     [self updateStepText];
     _stepTagButton.hidden = false;
+    _stepTagLabel.hidden = false;
     
     [UIView animateWithDuration:0.7 animations:^{
         [_tagsPopupView setAlpha:0.0];

@@ -6,7 +6,6 @@
 //  Copyright © 2016 Victor Leal Porto de Almeida Arruda. All rights reserved.
 //
 
-
 #import "CurrentStepViewController.h"
 #import "FicaFrio-Swift.h"
 #import "Step.h"
@@ -53,7 +52,6 @@
 
 
 //Actions popup
-//- (IBAction)circleButton:(id)sender;
 - (IBAction)newGoal:(id)sender;
 - (IBAction)startStopStep:(id)sender;
 - (IBAction)startRelax:(UIButton *)sender;
@@ -63,13 +61,11 @@
 - (IBAction)clickOutsidePopup:(UITapGestureRecognizer *)sender;
 
 
-
 @end
 
 
 @implementation CurrentStepViewController
 
-bool startStopBool = false;
 NSMutableArray<NSString *>* stepsText;
 
 - (void)viewDidLoad {
@@ -148,7 +144,7 @@ NSMutableArray<NSString *>* stepsText;
 
 - (void)startStopStepAction{
     
-    if (!startStopBool){
+    if (!stepStarted){
         [self startAction];
         
         //Envia o 1 pra informar o watch que o play foi selecionado
@@ -207,8 +203,6 @@ NSMutableArray<NSString *>* stepsText;
                                                     selector:@selector(animationButton)
                                                     userInfo:nil
                                                      repeats:YES];
-    
-    startStopBool = true;
 }
 
 - (void)stopAction{
@@ -238,8 +232,6 @@ NSMutableArray<NSString *>* stepsText;
         [defaults setInteger:0 forKey:@"currentStepNumber"];
         [self showPopup:_confirmPopupView];
     }
-    
-    startStopBool = false;
 }
 
 - (void)updateStep {
@@ -435,10 +427,8 @@ NSMutableArray<NSString *>* stepsText;
           
           if ([counterValue integerValue] == 2){
               [self startAction];
-              startStopBool = true;
           }else if ([counterValue integerValue] == 1){
               [self stopAction];
-              startStopBool = false;
           }
           
       }

@@ -20,7 +20,8 @@
     long timeRange;
     long rateRange;
     Step *step;
-    int biggerStep;
+    int maxRateStep;
+    int maxTimeStep;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *step1;
 @property (weak, nonatomic) IBOutlet UIImageView *step2;
@@ -28,19 +29,17 @@
 @property (weak, nonatomic) IBOutlet UIImageView *center;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleGoal;
-@property (weak, nonatomic) IBOutlet UILabel *bpm;
-- (IBAction)back:(id)sender;
-@property (weak, nonatomic) IBOutlet UILabel *bpmValue;
-@property (strong, nonatomic) IBOutlet UIView *min;
-@property (weak, nonatomic) IBOutlet UILabel *minValue;
 @property (weak, nonatomic) IBOutlet UIButton *heartButton;
+@property (weak, nonatomic) IBOutlet UILabel *bpm;
+@property (weak, nonatomic) IBOutlet UILabel *bpmValue;
 @property (weak, nonatomic) IBOutlet UIButton *timerButton;
-
-
+@property (weak, nonatomic) IBOutlet UILabel *min;
+@property (weak, nonatomic) IBOutlet UILabel *minValue;
 
 - (IBAction)animate:(id)sender;
 - (IBAction)heart:(id)sender;
 - (IBAction)timer:(id)sender;
+- (IBAction)back:(id)sender;
 
 -(void)selectGraf: (int)valueOne value2: (int)valueTwo value3: (int)valueThree;
 
@@ -48,8 +47,6 @@
 
 @implementation GoalFeedbackViewController
 
-int direction= 1;
-int shakes = 47;
 BOOL flag; //Define qual infomaçao está sendo mostrada no grafico
 double media;
 
@@ -65,8 +62,6 @@ double media;
     defaults = [NSUserDefaults standardUserDefaults];
     goalID = [defaults stringForKey:@"currentGoalID"];
     goalSteps = [database fetchStepsForGoalID:goalID];
-    
-    biggerStep = 1;
     
     timeRange = 0;
     rateRange = 0;
@@ -96,25 +91,13 @@ double media;
     _bpmValue.text = [[NSNumber numberWithDouble:media] stringValue];
     _titleGoal.text = [NSLocalizedString(@"Heart Rate", "") uppercaseString];
     
-    _step1.hidden = YES;
-    _step2.hidden = YES;
-    _step3.hidden = YES;
-    if(flag){
-        [_center setImage:[UIImage imageNamed:@"relogio_2"]];
-        flag = NO;
-    }else{
-        [_center setImage:[UIImage imageNamed:@"coracao_2"]];
-        flag = YES;
-    }
-    [_center addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0 nextImege:_step1];
-    [_step1 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:0.5 nextImege:_step2];
-    [_step2 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.0 nextImege:_step3];
-    [_step3 addSubviewWithZoomInAnimation:0.5 option:UIViewAnimationOptionCurveEaseIn delay:1.5 nextImege:nil];
+    flag = NO;
+    [self animateAction];
 
     //Chamada de func que monta o grafico
     [self selectGraf: [[avgRate objectAtIndex: 0] intValue] value2: [[avgRate objectAtIndex: 1] intValue] value3: [[avgRate objectAtIndex: 2] intValue]];
     
-    //[_heartButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"coracao_%d", biggerStep]] forState:UIControlStateNormal];
+    [self adjustMaxColors];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,11 +110,10 @@ double media;
 }
 
 - (IBAction)heart:(id)sender {
-    printf("%d",34);
     if (!flag){
         [self animateAction];
     }else{
-        [self shake:_heartButton];
+        [self shake:_center];
     }
 }
 
@@ -139,7 +121,7 @@ double media;
     if (flag){
         [self animateAction];
     }else{
-        [self shake:_timerButton];
+        [self shake:_center];
     }
 }
 
@@ -149,12 +131,12 @@ double media;
     _step3.hidden = YES;
     if(flag){
         [self selectGraf: [[time objectAtIndex: 0] intValue] value2: [[time objectAtIndex: 1] intValue] value3: [[time objectAtIndex: 2] intValue]];
-        [_center setImage:[UIImage imageNamed:[NSString stringWithFormat:@"relogio_%d", biggerStep]]];
+        [_center setImage:[UIImage imageNamed:[NSString stringWithFormat:@"relogio_%d", maxTimeStep]]];
         _titleGoal.text = [NSLocalizedString(@"Time", "") uppercaseString];
         flag = NO;
     }else{
         [self selectGraf: [[avgRate objectAtIndex: 0] intValue] value2: [[avgRate objectAtIndex: 1] intValue] value3: [[avgRate objectAtIndex: 2] intValue]];
-        [_center setImage:[UIImage imageNamed:[NSString stringWithFormat:@"coracao_%d", biggerStep]]];
+        [_center setImage:[UIImage imageNamed:[NSString stringWithFormat:@"coracao_%d", maxRateStep]]];
         _titleGoal.text = [NSLocalizedString(@"Heart Rate", "") uppercaseString];
         flag = YES;
     }
@@ -166,18 +148,38 @@ double media;
 
 // Shake UIView passed as parameter
 - (void)shake:(UIView *)theOneYouWannaShake{
-    [UIView animateWithDuration:0.03 animations:^ {
-        theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(5*direction, 0);
-    }
-                     completion:^(BOOL finished){
-                         if(shakes >= 10) {
-                             theOneYouWannaShake.transform = CGAffineTransformIdentity;
-                             return;
-                         }
-                         shakes++;
-                         direction = direction * -1;
-                         [self shake:theOneYouWannaShake];
-                     }];
+    NSTimeInterval duration = 0.08;
+    CGFloat translation = 5;
+    
+    [UIView
+     animateWithDuration:duration
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseOut
+     animations:^ {
+         theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(translation, 0);
+     }
+     completion:^(BOOL finished){
+         
+         [UIView
+          animateWithDuration:duration
+          delay:0.0
+          options:UIViewAnimationOptionCurveEaseInOut
+          animations:^ {
+              theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(-translation, 0);
+          }
+          completion:^(BOOL finished){
+         
+              [UIView
+               animateWithDuration:1.3*duration
+               delay:0.0
+               options:UIViewAnimationOptionCurveEaseInOut
+               animations:^ {
+                   theOneYouWannaShake.transform = CGAffineTransformIdentity;
+               }
+               completion:^(BOOL finished){
+               }];
+          }];
+     }];
 }
 
 
@@ -186,7 +188,6 @@ double media;
 //Ainda tem que fazer os casos de valores iguais
 -(void)selectGraf: (int)valueOne value2: (int)valueTwo value3: (int)valueThree{
     //NSLog(@"one: %d two: %d three: %d", valueOne, valueTwo, valueThree);
-    biggerStep = 1;
     
     if ((valueOne == valueTwo) && (valueOne == valueThree) && (valueTwo == valueThree)) {
         // All values are equal
@@ -198,7 +199,6 @@ double media;
         // All values are different
         if ((valueOne > valueTwo) && (valueOne > valueThree)){
             
-            biggerStep = 1;
             [_step1 setImage:[UIImage imageNamed:@"Roda_g_superior"]];
             if(valueTwo > valueThree){
                 NSLog(@"two: %d > three: %d", valueTwo, valueThree);
@@ -212,7 +212,6 @@ double media;
                 
             }
         }else if((valueTwo > valueOne) && (valueTwo > valueThree)){
-            biggerStep = 2;
             [_step2 setImage:[UIImage imageNamed:@"Roda_g_direita"]];
             if(valueOne > valueThree){
                 NSLog(@"one: %d > three: %d", valueOne, valueThree);
@@ -225,7 +224,6 @@ double media;
                 [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
             }
         }else if((valueThree > valueOne) && (valueThree > valueTwo)){
-            biggerStep = 3;
             [_step3 setImage:[UIImage imageNamed:@"Roda_g_esquerda"]];
             if(valueOne > valueTwo){
                 NSLog(@"one: %d > two: %d", valueOne, valueTwo);
@@ -243,36 +241,30 @@ double media;
         // Only one value is different
         if(valueOne == valueTwo) {
             if (valueOne > valueThree){
-                biggerStep = 1;
                 [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
                 [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
                 [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
             } else {
-                biggerStep = 3;
                 [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
                 [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
                 [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
             }
         } else if (valueOne == valueThree){
             if (valueOne > valueTwo){
-                biggerStep = 1;
                 [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
                 [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
                 [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
             } else {
-                biggerStep = 2;
                 [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
                 [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
                 [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
             }
         } else if (valueTwo == valueThree){
             if (valueTwo > valueOne){
-                biggerStep = 2;
                 [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
                 [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
                 [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
             } else {
-                biggerStep = 1;
                 [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
                 [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
                 [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
@@ -280,6 +272,42 @@ double media;
         }
     }
 }
+
+-(void)adjustMaxColors {
+    NSNumber *maxRate = [avgRate valueForKeyPath:@"@max.intValue"];
+    NSUInteger maxRateIndex = [avgRate indexOfObject:maxRate];
+    maxRateStep = (int)maxRateIndex + 1;
+    [self adjustTextColorOf:@"heart rate" toStep:maxRateStep];
+    
+    NSNumber *maxTime = [time valueForKeyPath:@"@max.intValue"];
+    NSUInteger maxTimeIndex = [time indexOfObject:maxTime];
+    maxTimeStep = (int)maxTimeIndex + 1;
+    [self adjustTextColorOf:@"time" toStep:maxTimeStep];
+}
+
+- (void)adjustTextColorOf:(NSString*)type toStep:(NSUInteger)maxStepNumber {
+    UIColor *textColor;
+    NSLog(@"%@: %lu", type, (unsigned long)maxStepNumber);
+    if (maxStepNumber == 1){
+        textColor = [UIColor colorWithRed:0.78 green:0.89 blue:0.91 alpha:1.0];
+    }else if(maxStepNumber == 2){
+        textColor = [UIColor colorWithRed:72.0/255.0 green:187.0/255.0 blue:199.0/255.0 alpha:1.0];
+    }else if(maxStepNumber == 3){
+        textColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
+    }
+    
+    if ([type  isEqual: @"heart rate"]){
+        [_heartButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"coracao_%lu", (unsigned long)maxStepNumber]] forState:UIControlStateNormal];
+        _bpm.textColor = textColor;
+        _bpmValue.textColor = textColor;
+        [_center setImage:[UIImage imageNamed:[NSString stringWithFormat:@"coracao_%lu", (unsigned long)maxStepNumber]]];
+    } else if ([type  isEqual: @"time"]){
+        [_timerButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"relogio_%lu", (unsigned long)maxStepNumber]] forState:UIControlStateNormal];
+        _min.textColor = textColor;
+        _minValue.textColor = textColor;
+    }
+}
+
 
 - (IBAction)back:(id)sender {
     [[self navigationController] popViewControllerAnimated:YES];
