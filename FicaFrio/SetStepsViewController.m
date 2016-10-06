@@ -79,6 +79,13 @@
     
     _stepNameTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
     
+    [self.stepTagButton.layer setCornerRadius:8.0f];
+    [self.stepTagButton.layer setMasksToBounds:YES];
+    //[self.stepTagButton.layer setBorderWidth:1.0f];
+    //[self.stepTagButton.layer outline]
+    //[self.stepTagButton.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    //[self.stepTagButton.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    
     // Database
     defaults = [NSUserDefaults standardUserDefaults];
     database = [BD new];
@@ -215,7 +222,11 @@
 
 // Clicking outside the popup
 - (IBAction)closeViewTag:(id)sender {
-    tagNumber = 5;
+    if ([[stepsTags objectAtIndex:(number-1)] isEqualToString:@""]) {
+        tagNumber = 5;
+    } else {
+        tagNumber = (int) [tags indexOfObject:[stepsTags objectAtIndex:(number-1)]] + 1;
+    }
     [self closeTagPopup];
 }
 
@@ -260,7 +271,7 @@
 - (void)updateStepText {
     _stepNameTextField.text = [stepsNames objectAtIndex:(number-1)];
     _stepNumberLabel.text = [NSString stringWithFormat:@"%d", number];
-    [_stepTagButton setTitle:[stepsTags objectAtIndex:(number-1)] forState:UIControlStateNormal];
+    [_stepTagButton setTitle:[NSString stringWithFormat:@" %@ ", [stepsTags objectAtIndex:(number-1)]] forState:UIControlStateNormal];
     [self matchTextColorToStep];
     
     // Trocar imagem do passo atual pela sem número
@@ -281,12 +292,18 @@
     if (number == 1){
         textColor = [UIColor colorWithRed:0.78 green:0.89 blue:0.91 alpha:1.0];
     }else if(number == 2){
-        textColor = [UIColor colorWithRed:0.51 green:0.77 blue:0.82 alpha:1.0];
+        textColor = [UIColor colorWithRed:72.0/255.0 green:187.0/255.0 blue:199.0/255.0 alpha:1.0];
     }else if(number == 3){
         textColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
     }
     _stepNumberLabel.textColor = textColor;
-    [_stepTagButton setTitleColor:textColor forState:UIControlStateNormal];
+    //UIColor *buttonColor = [UIColor colorWithRed:119.0/255.0 green:173.0/255.0 blue:177.0/255.0 alpha:1.0];
+    //UIColor *buttonColor = [UIColor colorWithRed:130.0/255.0 green:190.0/255.0 blue:196.0/255.0 alpha:1.0]; // mais claro
+    //UIColor *buttonColor = [UIColor colorWithRed:0.27 green:0.45 blue:0.58 alpha:1.0];
+    UIColor *buttonColor = [UIColor colorWithRed:39.0/255.0 green:112.0/255.0 blue:146.0/255.0 alpha:1.0];
+    //[_stepTagButton setBackgroundColor:buttonColor];
+    //[_stepTagButton.layer setBorderColor:[buttonColor CGColor]];
+    //[_stepTagButton setTitleColor:textColor forState:UIControlStateNormal];
 }
 // ----------------------------------------------------------------
 
@@ -378,17 +395,21 @@
     _tagsPopupView.hidden = false;
     _darkView.hidden = false;
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.7];
-    [_tagsPopupView setAlpha:0.95];
-    [_darkView setAlpha:0.55];
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.7 animations:^{
+        [_tagsPopupView setAlpha:0.95];
+        [_darkView setAlpha:0.8];
+    }];
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.7];
+//    
+//    [UIView commitAnimations];
 }
 
 - (void) closeTagPopup{
     [stepsTags replaceObjectAtIndex:(number-1) withObject:[tags objectAtIndex:(tagNumber-1)]];
     [self updateStepText];
     _stepTagButton.hidden = false;
+    
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];

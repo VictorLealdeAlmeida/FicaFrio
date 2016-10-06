@@ -36,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *heartButton;
 @property (weak, nonatomic) IBOutlet UIButton *timerButton;
 
+
+
 - (IBAction)animate:(id)sender;
 - (IBAction)heart:(id)sender;
 - (IBAction)timer:(id)sender;
@@ -111,6 +113,8 @@ double media;
 
     //Chamada de func que monta o grafico
     [self selectGraf: [[avgRate objectAtIndex: 0] intValue] value2: [[avgRate objectAtIndex: 1] intValue] value3: [[avgRate objectAtIndex: 2] intValue]];
+    
+    //[_heartButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"coracao_%d", biggerStep]] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -193,6 +197,7 @@ double media;
     else if ((valueOne != valueTwo) && (valueOne != valueThree) && (valueTwo != valueThree)) {
         // All values are different
         if ((valueOne > valueTwo) && (valueOne > valueThree)){
+            
             biggerStep = 1;
             [_step1 setImage:[UIImage imageNamed:@"Roda_g_superior"]];
             if(valueTwo > valueThree){
@@ -274,62 +279,6 @@ double media;
             }
         }
     }
-    
-    
-//    if ((valueOne > valueTwo) && (valueOne > valueThree)){
-//        [_step1 setImage:[UIImage imageNamed:@"Roda_g_superior"]];
-//        if(valueTwo > valueThree){
-//            NSLog(@"two: %d > three: %d", valueTwo, valueThree);
-//            [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
-//            [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
-//
-//        }else if(valueTwo < valueThree){
-//            NSLog(@"two: %d < three: %d", valueTwo, valueThree);
-//            [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
-//            [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
-//
-//        }else {
-//            NSLog(@"two: %d = three: %d", valueTwo, valueThree);
-//            [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
-//            [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
-//        }
-//    }else if((valueTwo > valueOne) && (valueTwo > valueThree)){
-//        [_step2 setImage:[UIImage imageNamed:@"Roda_g_direita"]];
-//        if(valueOne > valueThree){
-//            NSLog(@"one: %d > three: %d", valueOne, valueThree);
-//            [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
-//            [_step3 setImage:[UIImage imageNamed:@"Roda_p_esquerda"]];
-//            
-//        }else if(valueOne < valueThree){
-//            NSLog(@"one: %d < three: %d", valueOne, valueThree);
-//            [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
-//            [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
-//        }else {
-//            NSLog(@"one: %d = three: %d", valueOne, valueThree);
-//            [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
-//            [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
-//        }
-//    }else if((valueThree > valueOne) && (valueThree > valueTwo)){
-//        [_step3 setImage:[UIImage imageNamed:@"Roda_g_esquerda"]];
-//        if(valueOne > valueTwo){
-//            NSLog(@"one: %d > two: %d", valueOne, valueTwo);
-//            [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
-//            [_step2 setImage:[UIImage imageNamed:@"Roda_p_direita"]];
-//            
-//        }else if(valueOne < valueTwo) {
-//            NSLog(@"one: %d < two: %d", valueOne, valueTwo);
-//            [_step1 setImage:[UIImage imageNamed:@"Roda_p_superior"]];
-//            [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
-//        }else {
-//            NSLog(@"one: %d = two: %d", valueOne, valueTwo);
-//            [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
-//            [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
-//        }
-//    }else{
-//        [_step1 setImage:[UIImage imageNamed:@"Roda_m_superior"]];
-//        [_step2 setImage:[UIImage imageNamed:@"Roda_m_direita"]];
-//        [_step3 setImage:[UIImage imageNamed:@"Roda_m_esquerda"]];
-//    }
 }
 
 - (IBAction)back:(id)sender {

@@ -314,13 +314,13 @@ NSMutableArray<NSString *>* stepsText;
 }
 
 - (void)showPopup:(UIView *)popupView {
+    currentPopup = popupView;
     popupView.hidden = false;
     _popupBackground.hidden = false;
-    currentPopup = popupView;
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.7];
-    [_popupBackground setAlpha:0.55];
+    [_popupBackground setAlpha:0.8];
     [popupView setAlpha:0.95];
     [UIView commitAnimations];
     

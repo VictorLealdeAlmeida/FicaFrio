@@ -34,13 +34,25 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(tapGesture)
         
         insertGoalLabel.text = NSLocalizedString("Insert your goal", comment:"")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Configura a logo
+        //let logoGif = UIImage.gifImageWithName("INICIAL")
+        //let logoGif = UIImage.animatedImageNamed("inicial", duration: 2.25)
+        //gifView.image = logoGif
         
- 
-     // Configura a logo
-        let logoGif = UIImage.gifImageWithName("INICIAL")
-        //let logoGif = UIImage.animatedImageNamed("GifInicial_Concertado-", duration: 1.75)
-        gifView.image = logoGif
-        //gifView.animationRepeatCount = 1
+        var gifFrames: [UIImage] = []
+        
+        for i in 1...20 {
+            gifFrames.append(UIImage.init(named: "inicial\(i).png")!)
+        }
+        
+        gifView.animationImages = gifFrames
+        gifView.image = gifFrames.last
+        gifView.animationDuration = 2.25
+        gifView.animationRepeatCount = 1
+        gifView.startAnimating()
     }
 
     override func didReceiveMemoryWarning() {
