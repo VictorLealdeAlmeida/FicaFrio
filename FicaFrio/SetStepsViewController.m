@@ -136,7 +136,7 @@
     
     // Save current step name
     [stepsNames replaceObjectAtIndex:(number-1) withObject:_stepNameTextField.text];
-    [[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
+
     // If all steps are set, rotate back to step one
     if ([self checkIfCanFinish]) {
         
@@ -148,6 +148,7 @@
         // If name isn't set, shake textbox
         if ([[stepsNames objectAtIndex:(number-1)] isEqual:@""]) {
             //[[stepsImages objectAtIndex:(number-1)] setAlpha:0.15];
+            //[self setSectionAlpha];
             [self shakeTextBox];
         // If the step name is set...
         } else {
@@ -171,7 +172,7 @@
         // If it's all set
         [[stepsImages objectAtIndex:(number-1)] setAlpha:1.0];
     }
-    }
+}
 
 // If all steps names and tags are set, shows button to confirm all
 - (BOOL)checkIfCanFinish {
