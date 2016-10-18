@@ -119,7 +119,8 @@
         for (int i = 0; i <yVals2.count; i++){
             [yVals1 addObject:[[ChartDataEntry alloc] initWithX:i  y: average]];
         }
-        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1) y:[currentStep.avgHeartRate doubleValue]]];
+        [yVals2 addObject:[[ChartDataEntry alloc] initWithX:(valor2.count - 1-j) y:[currentStep.avgHeartRate doubleValue]]];
+        NSLog(@"%f",[currentStep.avgHeartRate doubleValue]);
     }else{
         average = 0;
     }
